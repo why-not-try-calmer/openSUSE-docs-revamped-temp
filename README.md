@@ -16,7 +16,7 @@
 ...
 Pipfile     # dependencies listed in pipenv format
 requirements.txt    # dependencies listed in pip format (added for compatibility purposes)
-project/
+project/    # where you run your mkdocs commands from (while the pipenv commands are to be run from the root directory)
     docs/   # contents files that mkdocs injects when building the website
     site/   # the source files of the generated website after each 'mkdocs build' command.
     ...
