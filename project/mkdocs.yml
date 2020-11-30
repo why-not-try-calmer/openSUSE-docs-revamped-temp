@@ -1,17 +1,33 @@
-site_name: openSUSE Docs
+site_name: openSUSE User Documentation Project
+
+plugins:
+    - search
+
+theme:
+    name: windmill
+
 nav:
-    - Pre-Install: 
+    - Pre-Install:
+        - New user nstall considerations: new_user_considerations.md
         - Leap or Tumbleweed: distro_choice.md
-        - Full ISO, Live  or net install: media_choice.md
-        - New user considerations: new_user_considerations.md
+        - Desktop Environment: desktop_choice.md
+        - Full, Live  or net install: media_choice.md
         - Full disk install or Dual Boot: full_or_dual_boot.md
+        - Partitioning your disk: disk_partition.md
         - Disk Encryption: disk_encryption.md
-        - What is Btrfs: btrfs.md
-    - Install: 
-        - Quick Install Guide: quick_install.md
-        - Preparing the USB Stick: usb_prepare.md
-        - Disk partitioning recomendations: partitions.md
-        - The Yast Installer Tree of Choices: yast_installer.md
+        - Snapshots and Btrfs: btrfs.md
+        - Distros for special uses: other_distros.md 
+        - Getting Help: help.md
+    - Install:
+        - Preparing the Install media:
+            - Prepare USB on Windows: usb_windows.md
+            - Prepare CD/DVD on Windows: disk_windows.md
+            - Prepare USB on macOS: usb_macos.md
+            - Prepare CD/DVD on macOS: disk_macos.md
+            - Prepare USB on Linux: usb_linux.md
+            - Prepare CD/DVD on Linux: disk_linux.md
+        - Step by step install: install-steps.md
+        - Quick install guide for the experienced: install_quick.md
     - Orientation:
         - The KDE Desktop: kde_desktop.md
         - KDE Settings: kde_settings.md
@@ -19,3 +35,44 @@ nav:
         - YaST: yast.md
         - Snapshot Managment: snapshots.md
         - Installing packages: install_package.md
+        - Upgrading: upgrade.md
+        - Backup: backup.md
+    - After Install Setup:
+        - Proprietary drivers: install_proprietary.md
+        - Printers: install_printer.md
+        - Scanners: install_scanner.md
+        - Wacom tablet: install_wacom.md
+        - Non-packaged binaries: non_packaged_binaries.md
+        - Bluetooth Sound: bluetooth.md
+        - Sharing files: sharing.md
+        - Syncing files with other devices: sync.md
+        - Advanced partitioning schemes: advanced_partitioning.md
+        - Wayland vs. xorg: display_server.md
+    - Recommended Setups:
+        - Office users: recommend_office.md
+        - Internet  and social media: recommend_internet.md
+        - Privacy advocates: recommend_privacy.md
+        - Graphics designers: recommend_graphics.md
+        - 3D animators: recommend_3d.md
+        - Audio recording: recommend_audio.md
+        - Photographers: recommend_photography.md
+        - Video editors: recommend_video.md
+        - Education: recommend_education.md
+        - Software developers: recommend_developer.md
+        - System administrators: recommend_admin.md
+        - Hackers: recommend_hacker.md
+        - GIS users: recommend_gis.md
+        - Home automation: recommend_automation.md
+        - Servers/NAS: recommend_server.md
+        - Firewall/Router: recommend_network.md
+    - Advanced Topics:
+        - Yast overview: yast.md
+        - Yast vs. Zypper: yast-zypper.md
+        - Zypper overview: zypper.md
+        - Recovering using Snapper: snapper.md
+        - Rporting Bugs: reporting_bugs.md
+        - Contribuiting to the community: contribute.md
+    - Other Documentation:
+        - Reference Documentation: reference_docs.md
+        - Wiki: wiki_info.md
+          
