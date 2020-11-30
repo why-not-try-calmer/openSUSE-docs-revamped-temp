@@ -5,6 +5,7 @@ nav:
         - Full ISO, Live  or net install: media_choice.md
         - New user considerations: new_user_considerations.md
         - Full disk install or Dual Boot: full_or_dual_boot.md
+        - Disk Encryption: disk_encryption.md
         - What is Btrfs: btrfs.md
     - Install: 
         - Quick Install Guide: quick_install.md
