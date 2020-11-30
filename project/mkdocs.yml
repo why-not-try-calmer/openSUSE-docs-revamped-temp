@@ -1,4 +1,20 @@
-site_name: My Docs
+site_name: openSUSE Docs
 nav:
-    - Home: index.md
-    - The Yast Installer Tree of Choices: yast_installer.md
+    - Pre-Install: 
+        - Leap or Tumbleweed: distro_choice.md
+        - Full ISO, Live  or net install: media_choice.md
+        - New user considerations: new_user_considerations.md
+        - Full disk install or Dual Boot: full_or_dual_boot.md
+        - What is Btrfs: btrfs.md
+    - Install: 
+        - Quick Install Guide: quick_install.md
+        - Preparing the USB Stick: usb_prepare.md
+        - Disk partitioning recomendations: partitions.md
+        - The Yast Installer Tree of Choices: yast_installer.md
+    - Orientation:
+        - The KDE Desktop: kde_desktop.md
+        - KDE Settings: kde_settings.md
+        - KDE Resources: kde_resources.md
+        - YaST: yast.md
+        - Snapshot Managment: snapshots.md
+        - Installing packages: install_package.md
