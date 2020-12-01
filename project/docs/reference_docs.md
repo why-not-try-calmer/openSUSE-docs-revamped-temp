@@ -6,8 +6,8 @@ date:
 
 # Reference Documentation
 
-Suse and openSUSE have authored a comprehensive set of reference guides that cover the following
-subjects:
+Suse and openSUSE have authored a comprehensive set of reference documentation and guides suitable
+for corporate and users and system administrators.
 
 **TODO:** Complete links, only a first line links are currently populated. [Source links](https://doc.opensuse.org/)
 
