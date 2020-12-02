@@ -1,21 +1,53 @@
 site_name: openSUSE User Documentation Project
+repo_url: https://github.com/Nycticorax/openSUSE-docs-revamped
+edit_uri: blob/dev/project/docs
 
 plugins:
     - search
+    - git-revision-date
 
 theme:
-    name: windmill
+    name: material
+    font: false
+    palette:
+        scheme: default
+        primary: green
+        accent: red
+    logo: image/Button-filled-colour.png
+    favicon: image/geeko-color.png
+    features:
+        - navigation.instant
+    icon:
+        repo: fontawesome/brands/github
+
+extra:
+    logo: image/geeko-color.png
+
+markdown_extensions:
+    - admonition
+    - pymdownx.details
+    - pymdownx.superfences
+    - pymdownx.emoji:
+        emoji_index: !!python/name:materialx.emoji.twemoji
+        emoji_generator: !!python/name:materialx.emoji.to_svg
+    - toc:
+        permalink: ⚓︎
+        toc_depth: 5
 
 nav:
+    - Home: index.md
+    - Doc Team onboarding:
+        - Todo: todo.md
+        - Markdown: markdown.md
     - Pre-Install:
         - New user nstall considerations: new_user_considerations.md
-        - Leap or Tumbleweed: distro_choice.md
-        - Desktop Environment: desktop_choice.md
-        - Full, Live  or net install: media_choice.md
+        - Leap or Tumbleweed?: distro_choice.md
+        - Full, Live  or net install?: media_choice.md
+        - Desktop Environments: desktop_choice.md
         - Full disk install or Dual Boot: full_or_dual_boot.md
-        - Partitioning your disk: disk_partition.md
+        - Disk Partitioning: disk_partition.md
         - Disk Encryption: disk_encryption.md
-        - Snapshots and Btrfs: btrfs.md
+        - Snapshots/Btrfs: btrfs.md
         - Distros for special uses: other_distros.md 
         - Getting Help: help.md
     - Install:
@@ -42,6 +74,7 @@ nav:
         - Printers: install_printer.md
         - Scanners: install_scanner.md
         - Wacom tablet: install_wacom.md
+        - Adding repositories: add_repo.md
         - Non-packaged binaries: non_packaged_binaries.md
         - Bluetooth Sound: bluetooth.md
         - Sharing files: sharing.md
@@ -49,8 +82,8 @@ nav:
         - Advanced partitioning schemes: advanced_partitioning.md
         - Wayland vs. xorg: display_server.md
     - Recommended Setups:
+        - Internet & social: recommend_internet.md
         - Office users: recommend_office.md
-        - Internet  and social media: recommend_internet.md
         - Privacy advocates: recommend_privacy.md
         - Graphics designers: recommend_graphics.md
         - 3D animators: recommend_3d.md
@@ -75,4 +108,3 @@ nav:
     - Other Documentation:
         - Reference Documentation: reference_docs.md
         - Wiki: wiki_info.md
-          

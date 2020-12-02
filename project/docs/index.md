@@ -27,7 +27,7 @@ Now that you have a plan, this section will walk you step by step preparing your
 
 Experienced user will find a quick info cheet on notable installation options and procedures for reference. 
 
-At this stage and with minimum fuss you will have a running system with sane defaults that is ready for daily use. From here you can move forward at your leisure, or when you need to.
+> At this stage and with minimum fuss you will have a running system with sane defaults that is ready for daily use. From here you can move forward at your leisure, or when you need to.
 
 ### OS Orientation
 Here you will find several walk-though for the different features of Linux in general and openSUSE in
@@ -54,4 +54,3 @@ Zypper, Snapper, etc.
 ### Other Documentation
 In this section you will have reference documentation and guides suitable for corporate users and system 
 administrators in various formats (HTML, PDF and EPUB)
-          
