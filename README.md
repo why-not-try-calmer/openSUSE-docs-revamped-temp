@@ -29,3 +29,6 @@ project/    # where you run your mkdocs commands from (while the pipenv commands
     * Require pull request reviews before merging
     * Require status checks to pass before merging
     * Require branches to be up to date before merging
+    
+## Reviewing code
+* Amusing and relevant: https://mtlynch.io/code-review-love/#4-answer-questions-with-the-code-itself
