@@ -10,7 +10,7 @@ theme:
     name: material
     font: false
     palette:
-        scheme: default
+        scheme: preference
         primary: green
         accent: red
     logo: image/Button-filled-colour.png
