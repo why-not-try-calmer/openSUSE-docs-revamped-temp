@@ -9,6 +9,7 @@ plugins:
 theme:
     name: material
     font: false
+    custom_dir: overrides
     palette:
         scheme: preference
         primary: green
@@ -20,8 +21,14 @@ theme:
     icon:
         repo: fontawesome/brands/github
 
+copyright: Licensed under GPLv3
+
 extra:
     logo: image/geeko-color.png
+    social:
+    - icon: button-filled-monochrome
+      link: https://www.opensuse.org
+      name: openSUSE Main Website
 
 markdown_extensions:
     - admonition
