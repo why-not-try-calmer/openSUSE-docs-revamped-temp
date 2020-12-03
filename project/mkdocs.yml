@@ -21,8 +21,6 @@ theme:
     icon:
         repo: fontawesome/brands/github
 
-copyright: Licensed under GPLv3
-
 extra:
     logo: image/geeko-color.png
     social:
