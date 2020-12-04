@@ -27,7 +27,10 @@ extra:
     - icon: button-filled-monochrome
       link: https://www.opensuse.org
       name: openSUSE Main Website
-
+    - icon: fontawesome/brands/github
+      link: https://github.com/openSUSE
+      name: openSUSE GitHub
+      
 markdown_extensions:
     - admonition
     - pymdownx.details
