@@ -5,3 +5,5 @@ name = "pypi"
 
 [packages]
 mkdocs = "*"
+mkdocs-material = "*"
+mkdocs-git-revision-date-plugin = "*"
