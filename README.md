@@ -2,8 +2,8 @@
 * You can either install mkdocs from pip or from a virtual environment.
 * It's highly recommended to use a virtual environment and not pip, so that the dependencies of this project won't mess with your system-wide python packages / modules. You still need to use pip to install pipenv though ;).
 * Personnally I am using pipenv, which you install on openSUSE distributions with: `pip3 install --user pipenv`. Then you'll need to add `~/.local/bin` to your PATH. The best method for that depends on your shell:
-    * in Bash add "PATH=$PATH:/home/your-user-name/.local/bin" to `.bashrc`
-    * in ZSH add "export PATH=$PATH/home/your-user-name/.local/bin" to `.zshrc`
+    * in `bash` add `PATH=$PATH:/home/your-user-name/.local/bin` to `.bashrc`
+    * in `zsh` add `export PATH=$PATH/home/your-user-name/.local/bin` to `.zshrc`
 
 * Then 
     1. clone this repo where you want in your home folder
@@ -23,12 +23,17 @@ project/    # where you run your mkdocs commands from (while the pipenv commands
 ...
 ```
 
-## Branches & rules
-* The default branch -- the working branch -- is not `main` or `master` but `dev`. That's the branch where day-to-day work should happen.
+## Branches, workflow, rules
+* The default branch -- the working branch -- is not `main` or `master` but `dev`. I will merge from one milestone to the other.
+* PRs should be made against one of the following three branches. The names are self-explanatory:
+    * `structure`
+    * `design`
+    * `contents`
+*  New features should be proposed or discussed using `dev` as baseline, unless they directly target one of the three branches mentioned in the three other branches mentioned so far.
 * `master` enforces the same basic rules, bear them in mind if something is not working as expected:
     * Require pull request reviews before merging
     * Require status checks to pass before merging
     * Require branches to be up to date before merging
-    
+
 ## Reviewing code
 * Amusing and relevant: https://mtlynch.io/code-review-love/#4-answer-questions-with-the-code-itself
