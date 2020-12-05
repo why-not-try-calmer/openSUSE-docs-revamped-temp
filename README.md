@@ -29,7 +29,7 @@ project/    # where you run your mkdocs commands from (while the pipenv commands
     * `structure`
     * `design`
     * `contents`
-*  New features should be proposed or discussed using `dev` as baseline, unless they directly target one of the three branches mentioned in the three other branches mentioned so far.
+*  New features should be proposed or discussed using `dev` as baseline, unless they directly target `structure`, `design` or `contents`.
 * `master` enforces the same basic rules, bear them in mind if something is not working as expected:
     * Require pull request reviews before merging
     * Require status checks to pass before merging
