@@ -13,7 +13,6 @@ plugins:
         #comment out the next two options to make every page have its own PDF
         combined: true
         combined_output_path: docs.pdf
-        #also watch out for https://github.com/zhaoterryy/mkdocs-pdf-export-plugin/issues/87
         
 theme:
     name: material
