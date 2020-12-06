@@ -5,7 +5,16 @@ edit_uri: blob/dev/project/docs
 plugins:
     - search
     - git-revision-date
-
+    - pdf-export:
+        verbose: true
+        media_type: print
+        #enable PDF printing by running "export ENABLE_PDF_EXPORT=1"
+        enabled_if_env: ENABLE_PDF_EXPORT
+        #comment out the next two options to make every page have its own PDF
+        combined: true
+        combined_output_path: docs.pdf
+        #also watch out for https://github.com/zhaoterryy/mkdocs-pdf-export-plugin/issues/87
+        
 theme:
     name: material
     font: false
