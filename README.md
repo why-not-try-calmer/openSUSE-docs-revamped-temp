@@ -25,10 +25,11 @@ project/    # where you run your mkdocs commands from (while the pipenv commands
 
 ## Branches, workflow, rules
 * The default branch -- the working branch -- is not `main` or `master` but `dev`. I will merge from one milestone to the other.
-* Three types of commits. No PR should convey more than one type of commit. The names are self-explanatory:
-    * `structure`
-    * `design`
-    * `contents`
+* Three types of commits. No PR should whenever possible concern just one type of commit:
+    * `structure` (how the textual and multimedia contents breaks down into different parts)
+    * `design` (web and non-web visuals)
+    * `web-functions` (functionalities invoked from the web release of the docs)
+    * `contents` (textual and multimedia contents)
 * New features should be proposed or discussed using `dev` as baseline, unless they refer to a particular `structure`-, `design`- or `contents`- commit.
 * `master` enforces the same basic rules, bear them in mind if something is not working as expected:
     * Require pull request reviews before merging
