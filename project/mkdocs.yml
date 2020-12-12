@@ -5,7 +5,8 @@ edit_uri: blob/dev/project/docs
 plugins:
     - search
     - git-revision-date
-
+    - mkdocs-versioning:
+        version: 0.3.0
 theme:
     name: material
     font: false
