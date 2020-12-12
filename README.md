@@ -1,3 +1,8 @@
+## /!\ Disclaimer
+This is the construction site for the upcoming Leap and Tumbleweed documentation. Please do not consider any of this as official documentation. Use instead:
+- Generic documentation based on Leap: https://doc.opensuse.org/
+- Tumbleweed specific knowledge-base: https://en.opensuse.org/Portal:Tumbleweed
+
 ## Getting started
 * You can either install mkdocs from pip or from a virtual environment.
 * It's highly recommended to use a virtual environment and not pip, so that the dependencies of this project won't mess with your system-wide python packages / modules. You still need to use pip to install pipenv though ;).
