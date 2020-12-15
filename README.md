@@ -8,11 +8,12 @@ This is the construction site for the upcoming Leap and Tumbleweed documentation
 The default branch -- the working branch -- is not `main` or `master` but `dev`. I will merge from one milestone to the other.
 ### Commits
 Three types of commits. PRs should whenever possible concern just one type of commit:
-    * `structure` (how the textual and multimedia contents breaks down into different parts)
-    * `design` (web and non-web visuals)
-    * `web-functions` (functionalities invoked from the web release of the docs)
-    * `contents` (textual and multimedia contents)
-* New features should be proposed or discussed using `dev` as baseline, unless they refer to a particular `structure`-, `design`- or `contents`- commit.
+ * `structure` (how the textual and multimedia contents breaks down into different parts)
+ * `design` (web and non-web visuals)
+ * `web-functions` (functionalities invoked from the web release of the docs)
+ * `contents` (textual and multimedia contents)
+
+New features should be proposed or discussed using `dev` as baseline, unless they refer to a particular `structure`-, `design`- or `contents`- commit.
 ### Pull Requests (PRs)
 When lodging a PR please make sure to give us permission to commit to the Pull Request branch by checking the `Allow edits from maintainers` checkbox on the Pull Request. Otherwise we won't be able to work with you on your PR.
 ## Reviewing code
