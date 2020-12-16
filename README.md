@@ -7,7 +7,7 @@ This is the construction site for the upcoming Leap and Tumbleweed documentation
 ### Branches
 The default branch -- the working branch -- is not `main` or `master` but `dev`. I will merge from one milestone to the other.
 ### Commits
-Three types of commits. PRs should whenever possible concern just one type of commit:
+4 types of commits. PRs should whenever possible concern just one type of commit:
  * `structure` (how the textual and multimedia contents breaks down into different parts)
  * `design` (web and non-web visuals)
  * `web-functions` (functionalities invoked from the web release of the docs)
