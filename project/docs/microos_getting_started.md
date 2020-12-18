@@ -53,17 +53,6 @@ $ sudo rebootmgrctl is-active
 RebootMgr is dead
 $ sudo rebootmgrctl status
 Error: The name org.opensuse.RebootMgr was not provided by any .service files
-$ sudo transactional-update pkg install
-bash-completion wget unzip nfs-client autofs
-$ sudo reboot
-```
-If you want to install flathub for only your user (in `/home/~ folder`):
-```
-$ flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-```
-If you want to install flathub for all users (in /var folder):
-```
-$ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 ```
 and the following:
 ```
@@ -73,6 +62,21 @@ $ sudo transactional-update shell
 # zypper al libzypp-plugin-appdata
 # exit
 $ sudo reboot
+```
+
+I also recommend installing a few more packages that are useful.
+```
+$ sudo transactional-update pkg install
+bash-completion wget nfs-client autofs
+$ sudo reboot
+```
+If you want to install flathub for only your user (in `/home/~ folder`):
+```
+$ flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+```
+If you want to install flathub for all users (in /var folder):
+```
+$ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 ```
 
 ### Installing flatpaks
@@ -85,16 +89,27 @@ etc.
 ### Installing snapds
 ```
 $ sudo transactional-update shell
+
 # zypper addrepo --refresh https://download.opensuse.org/repositories/system:/snappy/openSUSE_Tumbleweed snappy
+
 # zypper --gpg-auto-import-keys refresh
+
 # zypper ref
+
 # zypper dup --from snappy
+
 # zypper in snapd
+
 # exit
+
 $ sudo reboot
+
 $ sudo mksubvolume /snap
+
 $ source /etc/profile
+
 $ sudo systemctl enable --now snapd
+
 $ sudo systemctl enable --now snapd.apparmor
 ```
 You can install snaps then via the terminal:
@@ -105,27 +120,37 @@ $ sudo snap install
 ### Installing virtualbox
 ```
 $ sudo transactional-update shell
+
 # zypper ref
+
 # zypper in virtualbox-qt
+
 # exit
+
 $ sudo reboot
 ```
 
-### Adding install the extension pack for the host
+## Adding the extension pack for the host
 ```
 $ sudo transactional-update shell
+
 # cd /tmp
+
 # LatestVirtualBoxVersion=$(wget -qO - https://download.virtualbox.org/virtualbox/LATEST-STABLE.TXT) && wget "https://download.virtualbox.org/virtualbox/${LatestVirtualBoxVersion}/Oracle_VM_VirtualBox_Extension_Pack-${LatestVirtualBoxVersion}.vbox-extpack"
+
 # VBoxManage extpack install --replace Oracle_VM_VirtualBox_Extension_Pack-${LatestVirtualBoxVersion}.vbox-extpack
+
 # exit
+
 $ sudo reboot
 ```
 
 ### Adding software from OBS
-Find what you are looking for on software.opensuse.org
-Choose the OpenSUSE Tumbleweed repo, but you can't use the 1-click install, as there is no YaST and the 1-click installer has no access to a transactional-update.
-So for example if we install zerotier. choose a TumbleWeed repository. But click on 'Expert Download'
-And choose the 'Add repository and install manually' option.
+Find what you are looking for on software.opensuse.org.
+
+Then choose the OpenSUSE Tumbleweed repo, but you can't use the 1-click install, as there is no YaST and the 1-click installer has no access to a transactional-update.
+So for example if we install `zerotier`, pick a TumbleWeed repository. But click on _Expert Download_
+And choose the _Add repository and install manually_ option.
 ```
 $ sudo transactional-update shell
 # zypper addrepo https://download.opensuse.org/repositories/home:alphard:Network:RPM/openSUSE_Tumbleweed/home:alphard:Network:RPM.repo # zypper ref
