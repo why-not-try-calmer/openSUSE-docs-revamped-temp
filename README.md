@@ -5,7 +5,7 @@ This is the construction site for the upcoming Leap and Tumbleweed documentation
 
 ## Contributing
 * If you are not familiar with the fork -> pull request workflow, please refer to [this](https://jarv.is/notes/how-to-pull-request-fork-github/).
-* When adding a new article make sure it lands at `/project/docs`
+* When adding a new article make sure it lands in `/project/docs`
 * Please try to comply with the guidelines under 'Commits' and 'Pull Requests' below.
 ### Branches
 The default branch -- the working branch -- is not `main` or `master` but `dev`. I will merge from one milestone to the other.
