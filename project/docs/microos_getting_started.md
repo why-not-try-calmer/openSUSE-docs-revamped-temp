@@ -95,12 +95,12 @@ Snaps are mainly used within Ubuntu, however it is possible to install them as w
 
 ```
 $ sudo transactional-update shell
-# zypper addrepo --refresh https://download.opensuse.org/repositories/system:/snappy/openSUSE_Tumbleweed snappy
-# zypper --gpg-auto-import-keys refresh
-# zypper ref
-# zypper dup --from snappy
-# zypper in snapd
-# exit
+  # zypper addrepo --refresh https://download.opensuse.org/repositories/system:/snappy/openSUSE_Tumbleweed snappy
+  # zypper --gpg-auto-import-keys refresh
+  # zypper ref
+  # zypper dup --from snappy
+  # zypper in snapd
+  # exit
 $ sudo reboot
 $ sudo mksubvolume /snap
 $ source /etc/profile
@@ -115,19 +115,19 @@ $ sudo snap install snap-store
 ### Installing virtualbox
 ```
 $ sudo transactional-update shell
-# zypper ref
-# zypper in virtualbox-qt
-# exit
+  # zypper ref
+  # zypper in virtualbox-qt
+  # exit
 $ sudo reboot
 ```
 
 ## Adding the extension pack for the host
 ```
 $ sudo transactional-update shell
-# cd /tmp
-# LatestVirtualBoxVersion=$(wget -qO - https://download.virtualbox.org/virtualbox/LATEST-STABLE.TXT) && wget "https://download.virtualbox.org/virtualbox/${LatestVirtualBoxVersion}/Oracle_VM_VirtualBox_Extension_Pack-${LatestVirtualBoxVersion}.vbox-extpack"
-# VBoxManage extpack install --replace Oracle_VM_VirtualBox_Extension_Pack-${LatestVirtualBoxVersion}.vbox-extpack
-# exit
+  # cd /tmp
+  # LatestVirtualBoxVersion=$(wget -qO - https://download.virtualbox.org/virtualbox/LATEST-STABLE.TXT) && wget "https://download.virtualbox.org/virtualbox/${LatestVirtualBoxVersion}/Oracle_VM_VirtualBox_Extension_Pack-${LatestVirtualBoxVersion}.vbox-extpack"
+  # VBoxManage extpack install --replace Oracle_VM_VirtualBox_Extension_Pack-${LatestVirtualBoxVersion}.vbox-extpack
+  # exit
 $ sudo reboot
 ```
 
@@ -139,9 +139,9 @@ So for example if we install `zerotier`, pick a TumbleWeed repository. But click
 And choose the _Add repository and install manually_ option.
 ```
 $ sudo transactional-update shell
-# zypper addrepo https://download.opensuse.org/repositories/home:alphard:Network:RPM/openSUSE_Tumbleweed/home:alphard:Network:RPM.repo # zypper ref
-# zypper in zerotier-one
-# exit
+  # zypper addrepo https://download.opensuse.org/repositories/home:alphard:Network:RPM/openSUSE_Tumbleweed/home:alphard:Network:RPM.repo # zypper ref
+  # zypper in zerotier-one
+  # exit
 $ sudo reboot
 ```
 ### Tips if you're installing on laptop
