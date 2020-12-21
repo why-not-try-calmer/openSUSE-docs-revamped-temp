@@ -146,8 +146,11 @@ $ sudo reboot
 ```
 ### Tips if you're installing on laptop
 My laptop install was missing 2 important packages:
+
 * `tlp` for better battery management
+
 * `ModemManager` because my laptop has a WWAN moden
+
 You can install both with:
 ```
 $ sudo transactional-update pkg install tlp ModemManager
