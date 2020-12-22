@@ -4,7 +4,7 @@ Zypper is a command line package manager for installing, updating and removing p
 
 ### Definitions
 
-??? Show
+??? info "Show Definitions"
     `repository`
     :   Local or remote directory containing packages and various package information (package metadata).
 
