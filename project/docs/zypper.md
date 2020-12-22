@@ -4,20 +4,21 @@ Zypper is a command line package manager for installing, updating and removing p
 
 ### Definitions
 
-`repository`
-:   Local or remote directory containing packages and various package information (package metadata).
+??? Show
+    `repository`
+    :   Local or remote directory containing packages and various package information (package metadata).
 
-`package`
-:   Software package (RPM package, source package). Patches, patterns, and products are also commonly referred to as different types of packages.
+    `package`
+    :   Software package (RPM package, source package). Patches, patterns, and products are also commonly referred to as different types of packages.
 
-`patch`
-:   Represents a package or a group of packages needed to install an update (a bug fix mostly).
+    `patch`
+    :   Represents a package or a group of packages needed to install an update (a bug fix mostly).
 
-`pattern`
-:   Represents a group of packages. For example an Http Server pattern would have the dependencies defined so that all packages needed to run and manage an http server would have been triggered for installation when upon installing the pattern.
+    `pattern`
+    :   Represents a group of packages. For example an Http Server pattern would have the dependencies defined so that all packages needed to run and manage an http server would have been triggered for installation when upon installing the pattern.
 
-`product`
-:   Represents the whole product (e.g. 'openSUSE Leap 15.3').
+    `product`
+    :   Represents the whole product (e.g. 'openSUSE Leap 15.3').
 
 ### Usage
 
