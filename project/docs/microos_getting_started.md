@@ -1,6 +1,6 @@
 ## Setting up MicroOS as a desktop OS
 ### Pre-installation
-1. grab ISO from https://en.opensuse.org/Portal:MicroOS/Downloads
+1. grab ISO from [https://en.opensuse.org/Portal:MicroOS/Downloads](https://en.opensuse.org/Portal:MicroOS/Downloads)
 2. put ISO on a USB drive and start the installation proces.
 3. choose if you want to use Gnome or KDE.
 
@@ -132,7 +132,7 @@ $ sudo reboot
 ```
 
 ### Adding software from OBS
-Find what you are looking for on software.opensuse.org.
+Find what you are looking for on [https://software.opensuse.org](https://software.opensuse.org).
 
 Then choose the OpenSUSE Tumbleweed repo, but you can't use the 1-click install, as there is no YaST and the 1-click installer has no access to a transactional-update.
 So for example if we install `zerotier`, pick a TumbleWeed repository. But click on _Expert Download_
