@@ -35,12 +35,11 @@ Zypper is a command line package manager for installing, updating and removing p
 !!! tip
     To make Zypper use the default answers without user interaction, use the `--non-interactive` global option.
 
-### Commands
-
-!!! note
-    Zypper provides commands to be used in various manners, but it also provides abbreviated aliases of those commands. If there is an alias it will be listed next to the command.
+### Commands    
 
 !!! tip
+    Zypper provides commands to be used in various manners, but it also provides abbreviated aliases of those commands. If there is an alias it will be listed next to the command.
+
     ``# zypper`` without any commands or arguments will print a list of commands and options.
 
 #### Repository Management
