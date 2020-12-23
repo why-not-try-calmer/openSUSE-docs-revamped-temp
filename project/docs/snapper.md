@@ -56,7 +56,7 @@ Upon identification of a recovery snapshot, reboot openSUSE. At the boot menu, s
 
 ![Boot Menu Selection](image/snapper_boot_selection.png)
 
-On the Read-only Snapshot menu, scroll down to, and select, snapshot #47. openSUSE will appear to boot as normal.
+On the Read-only Snapshot menu, scroll down to, and select, the desired recovery snapshot. Snapshot #47 is used here as an example. openSUSE will appear to boot as normal.
 
 !!! tip
     There isn't a scroll indicator on the Read-only Snapshot Menu, but it is possible to scroll down to select more options, if available.
