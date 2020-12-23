@@ -69,7 +69,7 @@ $ sudo transactional-update dup
 Or
 ```
 $ sudo transactional-update shell
-  # supper duo
+  # zypper dup
   # exit
 ```
 
