@@ -3,6 +3,8 @@ This is the construction site for the upcoming Leap and Tumbleweed documentation
 - Generic documentation based on Leap: https://doc.opensuse.org/
 - Tumbleweed specific knowledge-base: https://en.opensuse.org/Portal:Tumbleweed
 
+## Get in touch
+We often hang out on [Telegram](https://t.me/opensuse_docs), bridged to the IRC `#docs:opensuse.org` and to `#docs` on [this Discord channel](https://discord.gg/opensuse)
 ## Contributing
 * If you are not familiar with the fork -> pull request workflow, please refer to [this](https://jarv.is/notes/how-to-pull-request-fork-github/).
 * When adding a new article make sure it lands in `/project/docs`
