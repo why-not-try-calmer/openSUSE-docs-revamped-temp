@@ -62,6 +62,17 @@ $ sudo rebootmgrctl status
 *Error: The name org.opensuse.RebootMgr was not provided by any .service files*
 ```
 
+Updates are now to be initialised manually with:
+```
+$ sudo transactional-update dup
+```
+Or
+```
+$ sudo transactional-update shell
+  # supper duo
+  # exit
+```
+
 I also recommend installing a few more packages that are useful.
 ```
 $ sudo transactional-update pkg install
@@ -139,7 +150,8 @@ So for example if we install `zerotier`, pick a TumbleWeed repository. But click
 And choose the _Add repository and install manually_ option.
 ```
 $ sudo transactional-update shell
-  # zypper addrepo https://download.opensuse.org/repositories/home:alphard:Network:RPM/openSUSE_Tumbleweed/home:alphard:Network:RPM.repo # zypper ref
+  # zypper addrepo https://download.opensuse.org/repositories/home:alphard:Network:RPM/openSUSE_Tumbleweed/home:alphard:Network:RPM.repo 
+  # zypper ref
   # zypper in zerotier-one
   # exit
 $ sudo reboot
