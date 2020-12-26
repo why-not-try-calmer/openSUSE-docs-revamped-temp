@@ -166,6 +166,6 @@ If you prefer one of these desktop environments, de-select the __A very basic de
           * Click __Accept__ and __Continue__
 
     !!! note
-        In this setup configuration, you shouldn't have any Desktop Environment patterns selected; Cinnamon will be installed from the command-line following openSUSE installation.
+        In this setup configuration, you shouldn't have any Desktop Environment patterns selected, unless you desire multiple desktop environments.
         
         Clicking the __Details...__ button on __Installer__ &gt; __Software Selection and System Tasks__ displays packages associated with the respective patterns.
