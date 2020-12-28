@@ -5,8 +5,7 @@ name = "pypi"
 
 [packages]
 mkdocs = "*"
-
-[dev-packages]
-
-[requires]
-python_version = "3.8"
+mkdocs-material = "*"
+mkdocs-git-revision-date-plugin = "*"
+mkdocs-versioning = "*"
+mkdocs-pdf-export-plugin = "*"

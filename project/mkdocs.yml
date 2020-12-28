@@ -1,1 +1,129 @@
-site_name: My Docs
+site_name: openSUSE User Documentation Project
+repo_url: https://github.com/Nycticorax/openSUSE-docs-revamped
+edit_uri: blob/dev/project/docs
+
+plugins:
+    - search
+    - git-revision-date
+    - mkdocs-versioning:
+        version: 0.3.0
+    - pdf-export:
+        verbose: true
+        media_type: print
+        #enable PDF printing by running "export ENABLE_PDF_EXPORT=1"
+        enabled_if_env: ENABLE_PDF_EXPORT
+        #comment out the next two options to make every page have its own PDF
+        combined: true
+        combined_output_path: docs.pdf
+        
+theme:
+    name: material
+    font: false
+    custom_dir: overrides
+    palette:
+        scheme: preference
+        primary: green
+        accent: red
+    logo: image/Button-filled-colour.png
+    favicon: image/geeko-color.png
+    features:
+        - navigation.instant
+    icon:
+        repo: fontawesome/brands/github
+
+extra:
+    logo: image/geeko-color.png
+    social:
+    - icon: button-filled-monochrome
+      link: https://www.opensuse.org
+      name: openSUSE Main Website
+    - icon: fontawesome/brands/github
+      link: https://github.com/openSUSE
+      name: openSUSE GitHub
+      
+markdown_extensions:
+    - admonition
+    - def_list
+    - pymdownx.details
+    - pymdownx.superfences
+    - pymdownx.emoji:
+        emoji_index: !!python/name:materialx.emoji.twemoji
+        emoji_generator: !!python/name:materialx.emoji.to_svg
+    - toc:
+        permalink: ⚓︎
+        toc_depth: 5
+
+nav:
+    - Home: index.md
+    - Doc Team onboarding:
+        - Todo: todo.md
+        - Markdown: markdown.md
+    - Pre-Install:
+        - New user nstall considerations: new_user_considerations.md
+        - Leap or Tumbleweed?: distro_choice.md
+        - Full, Live  or net install?: media_choice.md
+        - Desktop Environments: desktop_choice.md
+        - Full disk install or Dual Boot: full_or_dual_boot.md
+        - Disk Partitioning: disk_partition.md
+        - Disk Encryption: disk_encryption.md
+        - Snapshots/Btrfs: btrfs.md
+        - Distros for special uses: other_distros.md 
+        - Getting Help: help.md
+    - Install:
+        - Preparing the Install media:
+            - Prepare USB on Windows: usb_windows.md
+            - Prepare CD/DVD on Windows: disk_windows.md
+            - Prepare USB on macOS: usb_macos.md
+            - Prepare CD/DVD on macOS: disk_macos.md
+            - Prepare USB on Linux: usb_linux.md
+            - Prepare CD/DVD on Linux: disk_linux.md
+        - Step by step install: install-steps.md
+        - Quick install guide for the experienced: install_quick.md
+    - Orientation:
+        - The KDE Desktop: kde_desktop.md
+        - KDE Settings: kde_settings.md
+        - KDE Resources: kde_resources.md
+        - YaST: yast.md
+        - Snapshot Managment: snapshots.md
+        - Installing packages: install_package.md
+        - Upgrading: upgrade.md
+        - Backup: backup.md
+    - After Install Setup:
+        - Proprietary drivers: install_proprietary.md
+        - Printers: install_printer.md
+        - Scanners: install_scanner.md
+        - Wacom tablet: install_wacom.md
+        - Adding repositories: add_repo.md
+        - Non-packaged binaries: non_packaged_binaries.md
+        - Bluetooth Sound: bluetooth.md
+        - Sharing files: sharing.md
+        - Syncing files with other devices: sync.md
+        - Advanced partitioning schemes: advanced_partitioning.md
+        - Wayland vs. xorg: display_server.md
+    - Recommended Setups:
+        - Internet & social: recommend_internet.md
+        - Office users: recommend_office.md
+        - Privacy advocates: recommend_privacy.md
+        - Graphics designers: recommend_graphics.md
+        - 3D animators: recommend_3d.md
+        - Audio recording: recommend_audio.md
+        - Photographers: recommend_photography.md
+        - Video editors: recommend_video.md
+        - Education: recommend_education.md
+        - Software developers: recommend_developer.md
+        - System administrators: recommend_admin.md
+        - Hackers: recommend_hacker.md
+        - GIS users: recommend_gis.md
+        - Home automation: recommend_automation.md
+        - Servers/NAS: recommend_server.md
+        - Firewall/Router: recommend_network.md
+    - Advanced Topics:
+        - Yast overview: yast.md
+        - Yast vs. Zypper: yast-zypper.md
+        - Zypper overview: zypper.md
+        - Recovering using Snapper: snapper.md
+        - Rporting Bugs: reporting_bugs.md
+        - Contribuiting to the community: contribute.md
+    - Other Documentation:
+        - Reference Documentation: reference_docs.md
+        - Wiki: wiki_info.md
