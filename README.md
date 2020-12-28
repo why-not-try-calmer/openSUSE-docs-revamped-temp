@@ -10,7 +10,8 @@ We often hang out on [this Telegram chat](https://t.me/opensuse_docs), which by 
 * When adding a new article make sure it lands in `/project/docs`
 * Please try to comply with the guidelines under 'Commits' and 'Pull Requests' below.
 ### Branches
-The default branch -- the working branch -- is not `main` or `master` but `dev`. I will merge from one milestone to the other.
+* The default branch -- the working branch -- is not `main` or `master` but `dev`. I will merge from one milestone to the other.
+* 28 December 2020: added `design-test` for trying out all things about design. Just create a merge request when you feel the design is so good as to deserve to be applied to `dev`.
 ### Commits
 4 types of commits. PRs should whenever possible concern just one type of commit:
  * `structure` (how the textual and multimedia contents breaks down into different parts)
