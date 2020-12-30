@@ -70,6 +70,6 @@ The check passes just in case the above command outputs calls it a success.
 ### Integrity check
 It is an instance of the command:
 ```
-$  sha256 <Image.iso>
+$  sha256sum <Image.iso>
 ```
 The check passes just in case the output of the above equals the checksum written in plain text in the __Target Checksum__ (see [Definitions & assumptions](#assumptions-definitions)).
