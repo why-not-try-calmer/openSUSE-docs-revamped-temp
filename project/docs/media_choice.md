@@ -31,10 +31,10 @@ The two other installation media we provide are DVD images and Network installer
 
 You perform an _integrity check_ when you want to make sure that a given file has not been tampered with. It typically involves making sure that a file's checksum matches a certain target.
 
-You perform an _authenticity check_ when you want to make sure that a file -- typically the file that specifies the checksum target -- was obtained from a legitimate source (i.e. openSUSE). Because performing on integrity check against an inauthentic target does not make sense, you want to authentcity check before integrity checking.
+You perform an _authenticity check_ when you want to make sure that a file -- typically the file that specifies the checksum target -- was obtained from a legitimate source (i.e. openSUSE). Because performing an integrity check against an inauthentic target does not make sense, you want to first authenticity check, and only then integrity check.
 
 ### Assumptions & definitions
-In what follows, we make the following assumptions:
+In what follows we make the following assumptions:
 
 1. You have downloaded an openSUSE Live, Network or DVD image from openSUSE website (hereafter: the __Image__):
     * [Tumbleweed](https://software.opensuse.org/distributions/tumbleweed)
