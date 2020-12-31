@@ -40,15 +40,7 @@ In what follows we make the following assumptions:
     * [Tumbleweed](https://software.opensuse.org/distributions/tumbleweed)
     * [Leap](https://software.opensuse.org/distributions/leap)
 2. You have obtained the __Target Checksum__ file for your image, by clicking on the _Checksum_ next to the image. 
-3. You have obtained openSUSE gpg __Public Key__ either from
-    ```
-    $  wget https://download.opensuse.org/tumbleweed/repo/oss/gpg-pubkey-3dbdc284-53674dd4.asc
-    ```
-    and addded it to your keyring with
-    ```
-    $  gpg --import <Public Key.asc>
-    ```
-    or by importing it via its keyid into your gpg keyring with
+3. You have obtained openSUSE gpg __Public Key__ by importing it via its keyid into your gpg keyring with
     ```
     $  gpg --recv-keys 0x22C07BA534178CD02EFE22AAB88B2FD43DBDC284
     ```
