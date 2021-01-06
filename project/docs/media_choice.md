@@ -48,6 +48,12 @@ In what follows we make the following assumptions:
     ```
     $  wget http://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-KDE-Live-x86_64-Current.iso.sha256.asc
     ```
+!!! note
+    Step (4) above makes use of the official ftp directories:
+    * [Tumbleweed](http://download.opensuse.org/tumbleweed/).
+    * [Leap](http://download.opensuse.org/distribution/openSUSE-current/)
+    The Tumbleweed detached signature files are held within a single directory. Regarding Leap however you need to use the `/live`
+    subdirectory for the live images and the rescue images
 
 ### Authenticity check
 It is an instance of the command:
