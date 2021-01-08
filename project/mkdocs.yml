@@ -1,6 +1,7 @@
 site_name: openSUSE User Documentation Project
 repo_url: https://github.com/Nycticorax/openSUSE-docs-revamped
-edit_uri: blob/dev/project/docs
+edit_uri: ""
+#edit_uri: blob/dev/project/docs
 
 plugins:
     - search
@@ -55,6 +56,7 @@ markdown_extensions:
 
 nav:
     - Home: index.md
+    - Version Selector: "../"
     - Doc Team onboarding:
         - Todo: todo.md
         - Markdown: markdown.md
