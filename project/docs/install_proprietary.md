@@ -1,4 +1,12 @@
 ## Nvidia proprietary drivers
+
+### Determine which driver is required by your GPU
+
+1. There are two Nvidia driver options available in the Nvidia repository - nvidia-glG05 and nvidia-glG04.
+2. The nvidia-glG05 package corresponds with the Nvidia 460 series driver.
+3. The nvidia-glG04 package corresponds with the Nvidia 390 series driver.
+4. Please reference the Nvidia [website](https://www.nvidia.com/en-us/drivers/unix/) to determine which driver best supports your GPU.
+
 ### Setup the driver
 
 1. Go to _YAsT2_.
