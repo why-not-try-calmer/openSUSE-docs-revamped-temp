@@ -1,3 +1,9 @@
+!!! warning
+    This is the construction site for the upcoming Leap and Tumbleweed documentation. Please do not consider any of this as official documentation. Use instead the links below
+
+* [Generic documentation based on Leap](https://doc.opensuse.org/)
+* [Tumbleweed specific knowledge-base](https://en.opensuse.org/Portal:Tumbleweed)
+
 # Welcome 
 Are you looking for **sane** Linux documentation? You are in the right place. This is a young project that aims
 to provide a user friendly guide for quickly installing and setting up openSUSE with minimum fuss.
