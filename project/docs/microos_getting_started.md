@@ -168,3 +168,25 @@ You can install both with:
 $ sudo transactional-update pkg install tlp ModemManager
 $ sudo reboot
 ```
+
+
+## Known Issues
+### No graphical session/login screen in Hyper-V
+hyper-v needs package "xf86-video-fbdev" for graphical session
+```
+sudo transactional-update pkg install xf86-video-fbdev
+```
+
+### Toolbox is not starting ("potentially insufficient UIDs and GIDs")
+uid/guid needs to be set for toolbox to work
+```
+echo "<yourusername>:100000:65536" > /etc/subuid 
+echo "<yourusername>:100000:65536" > /etc/subgid
+```
+
+### Graphical applications in the toolbox are missing fonts/icons
+They need to be installed inside the toolbox
+```
+sudo zypper install xorg-x11-fonts-core adwaita-icon-theme
+```
+
