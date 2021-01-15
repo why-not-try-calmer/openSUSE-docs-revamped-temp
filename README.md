@@ -14,7 +14,6 @@ We often hang out on [this Telegram chat](https://t.me/opensuse_docs), which by 
 * Please try to comply with the guidelines under 'Commits' and 'Pull Requests' below.
 ### Branches
 * The default branch -- the working branch -- is not `main` or `master` but `dev`. I will merge from one milestone to the other.
-* _28 December 2020_: added `design-test` for trying out all things about design. Just create a merge request when you feel the design is so good as to deserve to be applied to `dev`.
 ### Commits
 4 types of commits. PRs should whenever possible concern just one type of commit:
  * `structure` (how the textual and multimedia contents breaks down into different parts)
@@ -25,9 +24,6 @@ We often hang out on [this Telegram chat](https://t.me/opensuse_docs), which by 
 New features should be proposed or discussed using `dev` as baseline, unless they refer to a particular `structure`-, `design`- or `contents`- commit.
 ### Pull Requests (PRs)
 When lodging a PR please make sure to give us permission to commit to the Pull Request branch by checking the `Allow edits from maintainers` checkbox on the Pull Request. Otherwise we won't be able to work with you on your PR.
-## Reviewing code
-* Amusing and relevant: https://mtlynch.io/code-review-love/#4-answer-questions-with-the-code-itself
-
 ## Building and serving the docs
 * You can either install mkdocs from pip or from a virtual environment.
 * It's highly recommended to use a virtual environment and not pip, so that the dependencies of this project won't mess with your system-wide python packages / modules. You still need to use pip to install pipenv though ;).
@@ -53,6 +49,7 @@ project/    # where you run your mkdocs commands from (while the pipenv commands
     ...
 ...
 ```
+`.gitignore` should not let you commit any `build` directory. Please make sure that is the case.
 ## Table of contents
 ### Before installing
 1. Choosing a distribution
