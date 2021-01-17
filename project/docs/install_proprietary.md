@@ -12,12 +12,12 @@
 ####With Yast
 1. Go to _YAsT2_.
 2. Then _Software Management_.
-3. On the menu, click __Configuration__ > __Repositories__... (or do `Ctrl + R`).
-4. Click __Add__ > __Community Repositories__.
-5. Select __nVidia Graphics Drivers__ > __Accept__ > __Trust__.
-6. On the _Configured Software Repositories_ > Click __Ok__
-7. Back to _Software Management Windows_"_ > __View__ > __Repositories__ > Select __nVidia Graphics Drivers__.
-8. Select __x11-video-nvidiaG05__ > __Accept__ (Some graphic cards need _G04_, see the first section above)
+3. On the menu, click __Configuration__ &gt; __Repositories__... (or do `Ctrl + R`).
+4. Click __Add__ &gt; __Community Repositories__.
+5. Select __nVidia Graphics Drivers__ &gt; __Accept__ &gt; __Trust__.
+6. On the _Configured Software Repositories_ &gt; Click __Ok__
+7. Back to _Software Management Windows_" &gt; __View__ &gt; __Repositories__ &gt; Select __nVidia Graphics Drivers__.
+8. Select __x11-video-nvidiaG05__ &gt; __Accept__ (Some graphic cards need _G04_, see the first section above)
 9. Reboot.
 
 ####Using the command line
