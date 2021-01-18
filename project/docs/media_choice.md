@@ -44,17 +44,17 @@ In what follows we make the following assumptions:
     ```
     $  gpg --recv-keys 0x22C07BA534178CD02EFE22AAB88B2FD43DBDC284
     ```
-4. (_Tumbleweed only_) You have obtained an openSUSE gpg __Detached Signature__ file corresponding to the image you want to perform the check upon. The Tumbleweed detached signature files are held within a single directory [here](http://download.opensuse.org/tumbleweed/iso/). Regarding Leap however you need to start [there](http://download.opensuse.org/distribution/openSUSE-current/) and use the `/live` subdirectory for the live images and the rescue images, and the `/iso` subdirectory for net installers and DVD images. Once you have the signature file, the command looks like this (i.e. for KDE Live):
+4. You have obtained an openSUSE gpg __Detached Signature__ file corresponding to the image you want to perform the check upon. The Tumbleweed detached signature files are held within a single directory [here](http://download.opensuse.org/tumbleweed/iso/). Regarding Leap however you need to start [there](http://download.opensuse.org/distribution/openSUSE-current/) and use the `/live` subdirectory for the live images and the rescue images (the `/iso` subdirectory does not provide any detached signature for net installers and DVD images). Once you have the address of the signature file, the command looks like this (i.e. for KDE Live):
     ```
     $  wget http://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-KDE-Live-x86_64-Current.iso.sha256.asc
     ```
 
 ### Authenticity check
-For Tumbleweed the authenticity check is an instance of the command:
+For Tumbleweed (all images) and Leap (only live images) the authenticity check is an instance of the command:
 ```
 $  gpg --verify <Detached Signature.asc> <Target Checksum.iso.sha256>
 ```
-For Leap the authenticity check uses no signature (clearsign check); it is an instance of the command:
+For Leap non-live images (typically DVD images) the authenticity check uses no signature (clearsign check); it is an instance of the command:
 ```
 $  gpg --verify <Target Checksum.iso.sha256>
 ```
