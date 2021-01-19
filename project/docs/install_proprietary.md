@@ -46,7 +46,7 @@
 1. Follow the above directions to install the correct driver. 
 2. The open source AMD GPU drivers will load by default.
 3. You can launch a program using the Nvidia card using an environment variable. For example, to run __supertuxkart__ using the the Nvidia driver, you can run `__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia supertuxkart`.
-4. 3. To launch a game from Steam using the Nvidia driver, you can modify properties of the game, choose __Set Launch Options__ and add `__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia %command%`.
+4. To launch a game from Steam using the Nvidia driver, you can modify properties of the game, choose __Set Launch Options__ and add `__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia %command%`.
 
 ###CUDA
 1. CUDA can be installed with the __Nvidia-ComputeG05__ or __Nvidia-ComputeG04__ package.
