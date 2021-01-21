@@ -4,6 +4,7 @@ If you are a desktop user, openSUSE offers the choice between two Linux distribu
 * [Tumbleweed](https://software.opensuse.org/distributions/tumbleweed)
 * [Leap](https://software.opensuse.org/distributions/leap)
 
+### Tumbleweed
 Tumbleweed is a _rolling-release_ distribution: instead of having fixed points where you will be offered to perform a system upgrade (think of Windows, Ubuntu, or macOS, where each numbered version leads to the next), you will be frequently offered to upgrade multiple components of your system.
 
 ??? info
@@ -13,22 +14,27 @@ Even though Tumbleweed uses a rolling-release model, it is very stable: the pack
 
 What you have to bear in mind, however, is that Tumbleweed requires a reliable internet connection and a healthy hard drive to work as designed. It also requires that you sometimes take interest in the updating process. This means that you should probably not pick Tumbleweed if any of these conditions holds for you:
 
+### Leap
+Leap is a more traditional distribution -- it uses a fixed-points release model, just like Windows, Ubuntu, or macOS. Leap is a very battle-hardened operating system, made mostly up of packages brought from SUSE Linux Entreprise, a commercial Linux operating system for servers, and of packages brought from Tumbleweed after they were tested, tried and used by the community.
+
+It is worth noting that Leap provides a Linux kernel that is several years behind the version offered by Tumbleweed. 
+
+??? info
+    The kernel is the heart of any Linux operating system. It is key for a smooth user experience with recent machines, especially laptops and computers heavily relying on periphericals
+    
+This means that you might be better served by Tumbleweed if you have a recent computer or rely extensively on "exotic" hardware.
+
+### Our recommendation
+Pick Tumbleweed if you intend to use your machine as a desktop machine, unless you are concerned with any of these blockers:
+
 * you don't want or you cannot update frequently over the network, because you have a very limited bandwidth or unreliable internet access
-* you cannot afford to reboot your computer frequently to install the aforementioned updates
+* you cannot afford to reboot your computer frequently to install updates
 * you don't want to use, or for some reason cannot afford to switch between, different snapshots
 * you have an old computer (more than 7-year old) which cannot take advantage of recent kernels
 * you have a fixed set of packages you know you are going to install once and forget about, and usually you never wants to have anything to do with command line utilities
 
-If any is true for you, you might be better served by Leap, which uses a fixed-points release model, just like Windows, Ubuntu, or macOS. Leap is a very battle-hardened operating system, made mostly up of packages brought from SUSE Linux Entreprise, a commercial Linux operating system for servers, and of packages brought from Tumbleweed after they were tested, tried and used by the community.
-
-It is worth noting that Leap provides a Linux kernel that is several years behind the version offered by Tumbleweed. Because the kernel is key to a smooth user experience with recent machines, especially laptops and computers heavily relying on periphericals, you might be better served by Tumbleweed if you have a recent or exotic hardware.
-
-??? recommendation
-    Pick Tumbleweed if you intend to use your machine as a desktop machine, unless you are concerned with any of the five blockers listed above.
-
 ??? info
-    Even though we don't recommend that if you are new user, it is possible to use microOS as a desktop computer, taking advantage of transactional updates. This might be interested if you are an advanced user and want to provide friends or relatives with an operating system that will require no maintenance for them, a very little for you. You might be interested in [this page]() for more about this use case
-
+    Even though we don't recommend that if you are new user, it is possible to use microOS as a desktop computer, taking advantage of transactional updates. This might be interested if you are an advanced user and want to provide friends or relatives with an operating system that will require no maintenance for them, a very little for you. You might be interested in [this page]() for more about this use case.
 
 ## Desktop Environments
 Leap offers the __GNOME__ and __KDE Plasma__ desktop environments by default. Tumbleweed offers __GNOME__, __KDE Plasma__, and __XFCE__. These options are chosen during the __System Role__ selection of the installation. Additional options are available in the __Software__ selection of the installer. These desktop environment patterns may also be viewed and modified with the [YaST](/yast/) __Software Management__ module.
