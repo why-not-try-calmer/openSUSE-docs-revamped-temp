@@ -28,6 +28,19 @@ This means that you might be better served by Tumbleweed if you have a recent co
 ### Our recommendation
 Pick Tumbleweed if you intend to use your machine as a desktop machine, unless you are concerned with any of these blockers:
 
+### Leap
+Leap is a more traditional distribution -- it uses a fixed-points release model, just like Windows, Ubuntu, or macOS. Leap is a very battle-hardened operating system, made mostly up of packages brought from SUSE Linux Entreprise, a commercial Linux operating system for servers, and of packages brought from Tumbleweed after they were tested, tried and used by the community.
+
+It is worth noting that Leap provides a Linux kernel that is several years behind the version offered by Tumbleweed. 
+
+??? info
+    The kernel is the heart of any Linux operating system. It is key for a smooth user experience with recent machines, especially laptops and computers heavily relying on periphericals
+    
+This means that you might be better served by Tumbleweed if you have a recent computer or rely extensively on "exotic" hardware.
+
+### Our recommendation
+Pick Tumbleweed if you intend to use your machine as a desktop machine, unless you are concerned with any of these blockers:
+
 * you don't want or you cannot update frequently over the network, because you have a very limited bandwidth or unreliable internet access
 * you cannot afford to reboot your computer frequently to install updates
 * you don't want to use, or for some reason cannot afford to switch between, different snapshots
