@@ -6,6 +6,9 @@ This is the construction site for the upcoming Leap and Tumbleweed documentation
 - Generic documentation based on Leap: https://doc.opensuse.org/
 - Tumbleweed specific knowledge-base: https://en.opensuse.org/Portal:Tumbleweed
 
+## Goal
+Take a look at the "About" section (right panel). You can also check [this](https://news.opensuse.org/2020/10/12/join-our-team-and-help-us-imporove-the-openSUSE-learning-experience/) out for context.
+
 ## Get in touch
 We often hang out on [this Telegram chat](https://t.me/opensuse_docs), which by the way is bridged to the IRC `#docs:opensuse.org` and to `#docs` on [this Discord channel](https://discord.gg/opensuse).
 ## Contributing
