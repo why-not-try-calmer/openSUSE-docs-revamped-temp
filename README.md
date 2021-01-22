@@ -11,7 +11,7 @@ Take a look at the "About" section (right panel). You can also check [this](http
 * wikis make it difficult to sort the outdated / unofficial stuff from the up-to-date / official stuff
 * the official docs is slightly outdated, provides too little recommendations or best-practice advices on top of technical facts, is tedious to navigate at times and does not cater for Tumbleweed users.
 
-We are working with people from the official docs to move to a maintainer-centric model, which we believe will best serve the openSUSE community.
+We are working with people from the official docs to move to a maintainer-centric model, which we believe will better serve the openSUSE community.
 
 ## Getting in touch
 We often hang out on [this Telegram chat](https://t.me/opensuse_docs), which by the way is bridged to the IRC `#docs:opensuse.org` and to `#docs` on [this Discord channel](https://discord.gg/opensuse).
