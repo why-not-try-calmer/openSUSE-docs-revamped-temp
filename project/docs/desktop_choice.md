@@ -12,7 +12,7 @@ Tumbleweed is a _rolling-release_ distribution: instead of having fixed points w
 
 Even though Tumbleweed uses a rolling-release model, it is very stable: the packages are thoroughly tested and tried, and you can always retreat to the previous state of Tumbleweed (in jargon: "switching to the previous snapshot". Snapshots are explained [here]()).
 
-What you have to bear in mind, however, is that Tumbleweed requires a reliable internet connection and a healthy hard drive to work as designed. It also requires that you sometimes take interest in the updating process. This means that you should probably not pick Tumbleweed if any of these conditions holds for you:
+What you have to bear in mind, however, is that Tumbleweed requires a reliable internet connection and a healthy hard drive to work as designed. It also requires that you sometimes take interest in the updating process.
 
 ### Leap
 Leap is a more traditional distribution -- it uses a fixed-points release model, just like Windows, Ubuntu, or macOS. Leap is a very battle-hardened operating system, made mostly up of packages brought from SUSE Linux Entreprise, a commercial Linux operating system for servers, and of packages brought from Tumbleweed after they were tested, tried and used by the community.
