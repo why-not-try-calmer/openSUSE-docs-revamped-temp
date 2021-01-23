@@ -1,4 +1,5 @@
-## Choosing an openSUSE distribution
+# Choosing an installation image
+## openSUSE distributions
 If you are a desktop user, openSUSE offers the choice between two Linux distributions designed to meet your needs:
 
 * [Tumbleweed](https://software.opensuse.org/distributions/tumbleweed)
@@ -43,11 +44,12 @@ Modern desktop environments have evolved into highly consistent and productive c
 
 One of the distinguishing options of openSUSE, during the installation, is the ability to choose a desktop environment. This provides a certain level of assurance that you will have a well-supported desktop experience for that respective desktop environment, no derivatives or spin-offs needed.
 
-### Installation
+## Installation
 
 During __openSUSE Installation__, there is a section titled __System Role__, which applies patterns to the software selected for the respective installation. This is the primary means to select a desktop environment. There is an additional option titled __Generic Desktop__. If you wish to install a desktop environment available in the installer, but not in a Role, you can select __Generic Desktop__ and customize the Software selection later within the installer.
 
 The descriptions below are as provided by the respective projects.
+
 ### GNOME
 > GNOME 3 has been designed from the ground up to help you have the best     possible computing experience.
 >
@@ -57,6 +59,7 @@ The descriptions below are as provided by the respective projects.
 
 ??? info "Install Gnome"
     __Installer__ &gt; __System Role__: Select __Desktop with GNOME__
+
 ### KDE Plasma
 > Plasma is made to stay out of the way as it helps you get things done. But under its light and intuitive surface, it's a powerhouse. So you're free to choose ways of usage right as you need them and when you need them.
 >
@@ -66,6 +69,7 @@ The descriptions below are as provided by the respective projects.
 
 ??? info "Install KDE Plasma"
     __Installer__ &gt; __System Role__: Select __Desktop with KDE Plasma__
+
 ### XFCE
 > Xfce is a lightweight desktop environment for UNIX-like operating systems. It aims to be fast and low on system resources, while still being visually appealing and user friendly.
 >
@@ -90,8 +94,10 @@ The descriptions below are as provided by the respective projects.
     
     !!! note
         Clicking the __Details...__ button on __Installer__ &gt; __Software Selection and System Tasks__ displays packages associated with the respective patterns. 
+
 ### Generic Desktop
 Another option for a __System Role__ is the __Generic Desktop__ environment. This option enables __IceWM__, but also allows selection of one of the optional desktop environments later, during the __Software__ selection of the installation. If you intend to choose one of the other desktop environments, choose __Yes__, when asked "Activate online repositories now?" and ensure __Main Repository (OSS)__ is enabled on the __Online Repositories__ step.
+
 #### IceWM
 > IceWM is a window manager for the X Window System. The goal of IceWM is speed, simplicity, and not getting in the user’s way. It comes with a taskbar with pager, global and per-window keybindings and a dynamic menu system. Application windows can be managed by keyboard and mouse. Windows can be iconified to the taskbar, to the tray, to the desktop or be made hidden. They are controllable by a quick switch window (Alt+Tab) and in a window list.
 >
@@ -182,6 +188,7 @@ If you prefer one of these desktop environments, de-select the __A very basic de
     
     !!! note
         Clicking the __Details...__ button on __Installer__ &gt; __Software Selection and System Tasks__ displays packages associated with the respective patterns.
+
 ### Advanced Options
 #### Cinnamon
 > Cinnamon is a Linux desktop which provides advanced innovative features and a traditional user experience.
