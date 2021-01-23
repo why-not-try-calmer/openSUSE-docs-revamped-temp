@@ -54,7 +54,7 @@ nav:
     - Home: index.md
     - Version Selector: "../"
     - Before installing:
-        - Choosing a distribution: desktop_choice.md
+        - Choosing the right image: pick_an_image.md
         - Installation setups: ""
         - Preparing the installation media: media_choice.md
     - Installing:
