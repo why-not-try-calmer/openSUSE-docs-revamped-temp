@@ -1,3 +1,42 @@
+# Choosing an installation image
+## openSUSE distributions
+If you are a desktop user, openSUSE offers the choice between two Linux distributions designed to meet your needs:
+
+* [Tumbleweed](https://software.opensuse.org/distributions/tumbleweed)
+* [Leap](https://software.opensuse.org/distributions/leap)
+
+### Tumbleweed
+Tumbleweed is a _rolling-release_ distribution: instead of having fixed points where you will be offered to perform a system upgrade (think of Windows, Ubuntu, or macOS, where each numbered version leads to the next), you will be frequently offered to upgrade multiple components of your system.
+
+??? info
+    Those components are called _packages_, because they "pack" the programs and resources making up most of your system, along with tools to install them). "Upgrading" means "Upgrading packages" (i.e. those that constitute you Linux distribution).
+
+Even though Tumbleweed uses a rolling-release model, it is very stable: the packages are thoroughly tested and tried, and you can always retreat to the previous state of Tumbleweed (in jargon: "switching to the previous snapshot". Snapshots are explained [here]()).
+
+What you have to bear in mind, however, is that Tumbleweed requires a reliable internet connection and a healthy hard drive to work as designed. It also requires that you sometimes take interest in the updating process.
+
+### Leap
+Leap is a more traditional distribution -- it uses a fixed-points release model, just like Windows, Ubuntu, or macOS. Leap is a very battle-hardened operating system, made mostly up of packages brought from SUSE Linux Entreprise, a commercial Linux operating system for servers, and of packages brought from Tumbleweed after they were tested, tried and used by the community.
+
+It is worth noting that Leap provides a Linux kernel that is several years behind the version offered by Tumbleweed. 
+
+??? info
+    The kernel is the heart of any Linux operating system. It is key for a smooth user experience with recent machines, especially laptops and computers heavily relying on periphericals
+    
+This means that you might be better served by Tumbleweed if you have a recent computer or rely extensively on "exotic" hardware.
+
+### Our recommendation
+Pick Tumbleweed if you intend to use your machine as a desktop machine, unless you are concerned with any of these blockers:
+
+* you don't want or you cannot update frequently over the network, because you have a very limited bandwidth or unreliable internet access
+* you cannot afford to reboot your computer frequently to install updates
+* you don't want to use, or for some reason cannot afford to switch between, different snapshots
+* you have an old computer (more than 7-year old) which cannot take advantage of recent kernels
+* you have a fixed set of packages you know you are going to install once and forget about, and usually you never wants to have anything to do with command line utilities
+
+??? info
+    Even though we don't recommend that if you are new user, it is possible to use microOS as a desktop computer, taking advantage of transactional updates. This might be interested if you are an advanced user and want to provide friends or relatives with an operating system that will require no maintenance for them, a very little for you. You might be interested in [this page]() for more about this use case.
+
 ## Desktop Environments
 Leap offers the __GNOME__ and __KDE Plasma__ desktop environments by default. Tumbleweed offers __GNOME__, __KDE Plasma__, and __XFCE__. These options are chosen during the __System Role__ selection of the installation. Additional options are available in the __Software__ selection of the installer. These desktop environment patterns may also be viewed and modified with the [YaST](/yast/) __Software Management__ module.
 
@@ -5,11 +44,12 @@ Modern desktop environments have evolved into highly consistent and productive c
 
 One of the distinguishing options of openSUSE, during the installation, is the ability to choose a desktop environment. This provides a certain level of assurance that you will have a well-supported desktop experience for that respective desktop environment, no derivatives or spin-offs needed.
 
-### Installation
+## Installation
 
 During __openSUSE Installation__, there is a section titled __System Role__, which applies patterns to the software selected for the respective installation. This is the primary means to select a desktop environment. There is an additional option titled __Generic Desktop__. If you wish to install a desktop environment available in the installer, but not in a Role, you can select __Generic Desktop__ and customize the Software selection later within the installer.
 
 The descriptions below are as provided by the respective projects.
+
 ### GNOME
 > GNOME 3 has been designed from the ground up to help you have the best     possible computing experience.
 >
@@ -19,6 +59,7 @@ The descriptions below are as provided by the respective projects.
 
 ??? info "Install Gnome"
     __Installer__ &gt; __System Role__: Select __Desktop with GNOME__
+
 ### KDE Plasma
 > Plasma is made to stay out of the way as it helps you get things done. But under its light and intuitive surface, it's a powerhouse. So you're free to choose ways of usage right as you need them and when you need them.
 >
@@ -28,6 +69,7 @@ The descriptions below are as provided by the respective projects.
 
 ??? info "Install KDE Plasma"
     __Installer__ &gt; __System Role__: Select __Desktop with KDE Plasma__
+
 ### XFCE
 > Xfce is a lightweight desktop environment for UNIX-like operating systems. It aims to be fast and low on system resources, while still being visually appealing and user friendly.
 >
@@ -52,8 +94,10 @@ The descriptions below are as provided by the respective projects.
     
     !!! note
         Clicking the __Details...__ button on __Installer__ &gt; __Software Selection and System Tasks__ displays packages associated with the respective patterns. 
+
 ### Generic Desktop
 Another option for a __System Role__ is the __Generic Desktop__ environment. This option enables __IceWM__, but also allows selection of one of the optional desktop environments later, during the __Software__ selection of the installation. If you intend to choose one of the other desktop environments, choose __Yes__, when asked "Activate online repositories now?" and ensure __Main Repository (OSS)__ is enabled on the __Online Repositories__ step.
+
 #### IceWM
 > IceWM is a window manager for the X Window System. The goal of IceWM is speed, simplicity, and not getting in the user’s way. It comes with a taskbar with pager, global and per-window keybindings and a dynamic menu system. Application windows can be managed by keyboard and mouse. Windows can be iconified to the taskbar, to the tray, to the desktop or be made hidden. They are controllable by a quick switch window (Alt+Tab) and in a window list.
 >
@@ -144,6 +188,7 @@ If you prefer one of these desktop environments, de-select the __A very basic de
     
     !!! note
         Clicking the __Details...__ button on __Installer__ &gt; __Software Selection and System Tasks__ displays packages associated with the respective patterns.
+
 ### Advanced Options
 #### Cinnamon
 > Cinnamon is a Linux desktop which provides advanced innovative features and a traditional user experience.
