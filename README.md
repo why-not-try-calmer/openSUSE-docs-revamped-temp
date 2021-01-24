@@ -31,6 +31,19 @@ We often hang out on [this Telegram chat](https://t.me/opensuse_docs), which by 
 New features should be proposed or discussed using `dev` as baseline, unless they refer to a particular `structure`-, `design`- or `contents`- commit.
 ### Pull Requests (PRs)
 When lodging a PR please make sure to give us permission to commit to the Pull Request branch by checking the `Allow edits from maintainers` checkbox on the Pull Request. Otherwise we won't be able to work with you on your PR.
+### Style
+_Structure_. Each document should start with an intro stating the end goal, the important presuppositions (typically about pre-requirements) that the document is making, and an outline of the main steps on the path to the goal.
+
+_Technical jargon_. Important and unavoidable jargon should be defined (typically inlined, with info boxes). Overall the document should be understanble by a teenager (think secondary school textbook).
+
+_Format_:
+* reference points and path items in italics, ex: "_Settings_ > _Energy Saving_"
+* action in bold, ex. "click __Yes__"
+* code instructions part of a stepwise recipe between line breaks in code, ex. 
+```
+$ sudo zypper dup
+```
+* short snippets of code or not part of a stepwise recipe can be inlined as in "... run `sudo zypper dup` before anything else".
 ## Building and serving the docs
 * You can either install mkdocs from pip or from a virtual environment.
 * It's highly recommended to use a virtual environment and not pip, so that the dependencies of this project won't mess with your system-wide python packages / modules. You still need to use pip to install pipenv though ;).
