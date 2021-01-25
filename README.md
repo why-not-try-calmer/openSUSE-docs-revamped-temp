@@ -1,5 +1,5 @@
 ## Live demo
-Our latest build is live at https://opensuse.github.io/openSUSE-docs-revamped/0.3.1.
+Our latest build is live at https://opensuse.github.io/openSUSE-docs-revamped/.
 
 ## /!\ Disclaimer
 This is the construction site for the upcoming Leap and Tumbleweed documentation. Please do not consider any of this as official documentation. Use instead:
