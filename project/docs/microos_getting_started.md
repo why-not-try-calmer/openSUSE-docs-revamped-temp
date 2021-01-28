@@ -9,6 +9,7 @@ This document is meant for users interested in using the openSUSE MicroOS as a d
 4. If desired, select _encryption_. 
 
 In what follows:
+
 * commands starting with `$` can be copied straight into your terminal prompt.
 * commands starting with `#` can only be run inside a transactional-update shell.
 
@@ -17,6 +18,7 @@ In what follows:
 
 ### Ways to install applications
 You can install applications in several ways:
+
 * flatpaks from flathub -- the _preferred solution_
 * RPM's via `sudo transactional-update pkg install package_name`
 * RPM's in a toolbox `toolbox -u`
