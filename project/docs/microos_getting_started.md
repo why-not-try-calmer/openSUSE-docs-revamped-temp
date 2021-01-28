@@ -228,6 +228,7 @@ $ sudo reboot
 
 ### Tips if you're installing on laptop
 Two important packages were found missing for some users:
+
 * `tlp` for better battery management
 * `ModemManager` for laptops with a WWAN moden
 
