@@ -1,5 +1,5 @@
 ### Before installing
-1. Choosing a distribution
+1. Choosing a distribution: [pick_and_image.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/pick_an_image.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/37) 
     * openSUSE distributions
     * desktop Environments
     * getting the right installer
@@ -10,12 +10,13 @@
     * disk partitioning
     * disk encryption
     * snapshots/btrfs
-3. Preparing the installation media
+3. Preparing the installation media: [media_choice.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/media_choice.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/26)
     * requisites
     * step by step guide
 ### Installing
 4. Step by step guide
 5. Quick install for experienced users
+   * MicroOS: [microos_getting_started.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/microos_getting_started.md),[issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/24)
 ### Distro basics
 6. KDE Plasma basics
     * X, XWayland & Wayland sessions
@@ -28,9 +29,9 @@
     * using extensions & plugins
     * learning more
 8. Interlude: Fundamental openSUSE concepts
-    * zypper
-    * YaST
-    * snapper & brtfs
+    * zypper: [zypper.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/zypper.md),[issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/32)
+    * YaST: [yast_installer.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/yast_installer.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/yast_installer.md)
+    * snapper & brtfs: [snapper.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/snapper.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/34)
     * the Tumbleweed way
 9. Getting & installing software
     * the Leap way & the Tumbleweed way
@@ -60,7 +61,7 @@
 13. Finding & installing additional software
     * codecs
     * drivers
-    * case study: Intel, NVIDIA and AMD drivers
+    * case study: Intel, NVIDIA and AMD drivers: [install_proprietary.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/install_proprietary.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/28)
     * case study: printers
     * case study: scanners
     * case study: touchscreens
@@ -79,7 +80,7 @@
     * suspend & lock
     * CPU power control
 17. Pairing, syncing, sharing
-    * bluetooth audio
+    * bluetooth audio: [bluetooth.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/bluetooth.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/27)
     * sharing files
     * syncing files with other devices
 18. Advanced fine-tunings
