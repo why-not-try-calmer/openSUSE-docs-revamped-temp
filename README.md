@@ -12,7 +12,8 @@ Take a look at the "About" section (right panel). You can also check [this](http
 * the official docs is slightly outdated, provides too little recommendations or best-practice advices on top of technical facts, is tedious to navigate at times and does not cater for Tumbleweed users.
 
 ## Contributing
-Instructions available [here](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/CONTRIBUTING.md).
+1. Check out on the table of contents below.
+2. Refer to the instructions available [here](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/CONTRIBUTING.md).
 
 We are working with people from the official docs to move to a maintainer-centric model, which we believe will better serve the openSUSE community.
 ## Table of contents
