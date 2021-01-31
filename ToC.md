@@ -16,7 +16,7 @@
 ### Installing
 4. Step by step guide
 5. Quick install for experienced users
-   * MicroOS: [microos_getting_started.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/microos_getting_started.md),[issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/24)
+   * MicroOS: [microos_getting_started.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/microos_getting_started.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/24)
 ### Distro basics
 6. KDE Plasma basics
     * X, XWayland & Wayland sessions
