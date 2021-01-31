@@ -1,3 +1,4 @@
+__NB__: Unless mentioned otherwise, a document corresponding to a parent section covers all topics listed as its children sections.
 ### Before installing
 1. Choosing a distribution: [pick_and_image.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/pick_an_image.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/37) 
     * openSUSE distributions
