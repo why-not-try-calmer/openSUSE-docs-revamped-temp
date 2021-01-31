@@ -29,7 +29,7 @@
     * using extensions & plugins
     * learning more
 8. Interlude: Fundamental openSUSE concepts
-    * zypper: [zypper.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/zypper.md),[issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/32)
+    * zypper: [zypper.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/zypper.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/32)
     * YaST: [yast_installer.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/yast_installer.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/yast_installer.md)
     * snapper & brtfs: [snapper.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/snapper.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/34)
     * the Tumbleweed way
