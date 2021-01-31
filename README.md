@@ -7,7 +7,7 @@ This is the construction site for the upcoming Leap and Tumbleweed documentation
 - Tumbleweed specific knowledge-base: https://en.opensuse.org/Portal:Tumbleweed
 
 ## About
-Take a look at the "About" section (right panel). You can also check [this](https://news.opensuse.org/2020/10/12/join-our-team-and-help-us-imporove-the-openSUSE-learning-experience/) out for context. If you wonder why we are doing this when there is already an official documentation along with wikis, the answer is two-fold a nutshell:
+Take a look at the "About" section (right panel). You can also check [this](https://news.opensuse.org/2020/10/12/join-our-team-and-help-us-imporove-the-openSUSE-learning-experience/) out for context. If you wonder why we are doing this when there is already an official documentation along with wikis, the answer is two-fold:
 * wikis make it difficult to sort the outdated / unofficial stuff from the up-to-date / official stuff
 * the official docs is slightly outdated, provides too little recommendations or best-practice advices on top of technical facts, is tedious to navigate at times and does not cater for Tumbleweed users.
 
