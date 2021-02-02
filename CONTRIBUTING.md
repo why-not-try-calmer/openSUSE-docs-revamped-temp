@@ -10,11 +10,12 @@ marked "ready for release" <--- review on language #2 <--- review on contents #2
 ```
 _Collaboration workflow_:
 If you are new to `git` and GitHub, you might be interested in https://jarv.is/notes/how-to-pull-request-fork-github/.
-Other things to bear in mind:
-* when using `git checkout -b < meaningful name > <...>`, make sure that `meaningful name` follows the schema described under __Branches__ below. 
-* When adding a new article make sure it lands in `/project/docs`.
-* Please try to comply with the guidelines under 'Commits' and 'Pull Requests' below.
-* Check out on the [table of contents](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/ToC.md) to track every document's status and discussions. Please edit it if you add a new document.
+Checklist before opening a Pull Request (PR):
+* When doing `git checkout -b <meaningful name> <...>`, did you make sure that `meaningful name` satisfied the schema described under __Branches__ below? If not, you can still rename it using `git branch -m <new name that satsfies the schema> `.
+* If you have added a new article:
+  * did it land in `/project/docs`? If not, move it there.
+  * have you added it to [table of contents](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/ToC.md)? Just follow the examples already there.
+* Are you going to make your PR editabled for us? If you don't know how, you will have to check the `Allow edits from maintainers` checkbox on the Pull Request screen, in GitHub. Otherwise we won't be able to work with you on your PR.
 ### Branches
 * The default branch -- the working branch -- is not `main` or `master` but `dev`. I will merge from one milestone to the other.
 * 4 types of branch names, named after the type of commits you want to contribute. PRs should whenever possible concern just one type of commit.
@@ -23,7 +24,7 @@ Other things to bear in mind:
   * `web-functions` (functionalities invoked from the web release of the docs)
   * `contents` (textual and multimedia contents)
 ### Pull Requests (PRs)
-When lodging a PR please make sure to give us permission to commit to the Pull Request branch by checking the `Allow edits from maintainers` checkbox on the Pull Request. Otherwise we won't be able to work with you on your PR.
+When lodging a PR please make sure to give us permission to commit to the Pull Request branch by
 ### Style
 _Structure_. Each document should start with an intro stating the end goal, the important presuppositions (typically about pre-requirements) that the document is making, and an outline of the main steps on the path to the goal.
 
