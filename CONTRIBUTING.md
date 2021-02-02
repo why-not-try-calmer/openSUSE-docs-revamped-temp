@@ -9,20 +9,19 @@ new document ------> review on structure and contents #1 ------> review on langu
 marked "ready for release" <--- review on language #2 <--- review on contents #2  <------
 ```
 _Collaboration workflow_:
-* If you are not familiar with the fork -> pull request workflow, please refer to [this](https://jarv.is/notes/how-to-pull-request-fork-github/).
-* When adding a new article make sure it lands in `/project/docs`
+If you are new to `git` and GitHub, you might be interested in https://jarv.is/notes/how-to-pull-request-fork-github/.
+Other things to bear in mind:
+* when using `git checkout -b < meaningful name > <...>`, make sure that `meaningful name` follows the schema described under __Branches__ below. 
+* When adding a new article make sure it lands in `/project/docs`.
 * Please try to comply with the guidelines under 'Commits' and 'Pull Requests' below.
-* Check out on the [table of contents](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/ToC.md) to track every document's status and discussions.
+* Check out on the [table of contents](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/ToC.md) to track every document's status and discussions. Please edit it if you add a new document.
 ### Branches
 * The default branch -- the working branch -- is not `main` or `master` but `dev`. I will merge from one milestone to the other.
-### Commits
-4 types of commits. PRs should whenever possible concern just one type of commit:
- * `structure` (how the textual and multimedia contents breaks down into different parts)
- * `design` (web and non-web visuals)
- * `web-functions` (functionalities invoked from the web release of the docs)
- * `contents` (textual and multimedia contents)
-
-New features should be proposed or discussed using `dev` as baseline, unless they refer to a particular `structure`-, `design`- or `contents`- commit.
+* 4 types of branch names, named after the type of commits you want to contribute. PRs should whenever possible concern just one type of commit.
+  * `structure` (how the textual and multimedia contents breaks down into different parts)
+  * `design` (web and non-web visuals)
+  * `web-functions` (functionalities invoked from the web release of the docs)
+  * `contents` (textual and multimedia contents)
 ### Pull Requests (PRs)
 When lodging a PR please make sure to give us permission to commit to the Pull Request branch by checking the `Allow edits from maintainers` checkbox on the Pull Request. Otherwise we won't be able to work with you on your PR.
 ### Style
