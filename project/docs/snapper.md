@@ -14,7 +14,7 @@ Snapper features 3 types of snapshots: Timeline, Installation, and Administratio
 
 #### Identifying Snapshots
 
-There are two ways to identify which snapshot you may want to rollback to: snapper command line and YaST Filesystem Snapshots
+There are two ways to identify which snapshot you may want to rollback to: Snapper command line and YaST Filesystem Snapshots
 
 Snapper command line:
 
