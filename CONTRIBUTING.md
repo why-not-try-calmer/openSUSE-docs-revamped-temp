@@ -1,6 +1,14 @@
 ## Getting in touch
 We often hang out on [this Telegram chat](https://t.me/opensuse_docs), which by the way is bridged to the IRC `#docs:opensuse.org` and to `#docs` on [this Discord channel](https://discord.gg/opensuse).
-## Contributing
+## Workflow
+_Outline of the general workflow_:
+```
+new document ------> review on structure and contents #1 ------> review on language, style and punctuation #1
+                                                                                        |
+                                                                                        |
+marked "ready for release" <--- review on language #2 <--- review on contents #2  <------
+```
+_Collaboration workflow_:
 * If you are not familiar with the fork -> pull request workflow, please refer to [this](https://jarv.is/notes/how-to-pull-request-fork-github/).
 * When adding a new article make sure it lands in `/project/docs`
 * Please try to comply with the guidelines under 'Commits' and 'Pull Requests' below.
