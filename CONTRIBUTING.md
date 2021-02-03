@@ -30,10 +30,12 @@ project/    # where you run your mkdocs commands from (while the pipenv commands
 You will need to test your changes. This means some groundwork:
 * You can either install mkdocs from pip or from a virtual environment.
 * It's highly recommended to use a virtual environment and not pip, so that the dependencies of this project won't mess with your system-wide python packages / modules. You still need to use pip to install pipenv though ;).
-* Personnally I am using pipenv, which you install on openSUSE distributions with: `pip3 install --user pipenv`. Then you'll need to add `~/.local/bin` to your PATH. The best method for that depends on your shell:
-    * for `bash` add `PATH=$PATH:/home/your-user-name/.local/bin` to `.bashrc`
+* Personnally I am using pipenv, which you install on openSUSE distributions with: `pip3 install --user pipenv`. Then you'll need to add `~/.local/bin` to your `PATH`. The best method for that depends on your shell:
+    * for `bash` add `PATH=$PATH:/home/your-user-name/.local/bin` to `~/.profile`
     * for `fish` run the following command once from a fish shell: `set -Ua fish_user_paths /home/your-user-name/.local/bin`
     * for `zsh` add `export PATH=$PATH/home/your-user-name/.local/bin` to `.zshrc`
+
+  Finally reload your shell (for `bash`: `source ~/.profile`). 
 
 * Then 
     1. clone this repo where you want in your home folder
