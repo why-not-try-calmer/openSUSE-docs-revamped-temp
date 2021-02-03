@@ -1,5 +1,14 @@
 ## Snapper
-Snapper is a command-line interface for filesystem snapshot management. It can create, delete and compare snapshots and undo changes done between snapshots.
+Snapper is a command-line and YaST interface for filesystem snapshot management. It can create, delete and compare snapshots and undo changes done between snapshots.
+
+#### Snapper capabilities
+- Undo system changes made by `zypper` and YaST.
+- Restore files from previous snapshots.
+- Do a system rollback by booting from a snapshot.
+- Manually create and manage snapshots, within the running system.
+
+!!! info "Snapshots"
+	By default, the root partition (/) of openSUSE Leap and Tumbleweed is formatted with Btrfs. Taking snapshots is automatically enabled if the root partition (/) is big enough (more than approximately 16 GB). By default, snapshots are disabled on partitions other than root (/).
 
 ### Choosing a Snapshot
 #### Snapshot Types
@@ -10,7 +19,7 @@ Snapper features 3 types of snapshots: Timeline, Installation, and Administratio
 * __Administration__ snapshots are created in pairs (_Pre and Post_) when system administration is performed using YaST. The Pre snapshot is created when a YaST module is started and the Post snapshot is created when the module is closed. Enabled by default.
 
 !!! note
-    The last ten important and the last ten regular snapshot pairs are kept. This total encompasses both Installation and Administration snapshot types.
+    The last ten important and the last ten regular snapshot pairs are kept. This total encompasses both Installation and Administration snapshot types. Snapshots are automatically deleted when they take up too much space on the disk, but four important and two regular snapshots are always kept.
 
 #### Identifying Snapshots
 
@@ -20,8 +29,8 @@ Snapper command line:
 
 `$ sudo snapper list`
 
-??? example "Snapper CLI Example"
-    ```
+__Snapper CLI Example__
+```
     $ sudo snapper list
     [sudo] password for root: 
       # | Type   | Pre # | Date                            | User | Cleanup | Description           | Userdata     
@@ -42,8 +51,9 @@ Snapper command line:
     49  | pre    |       | Tue 22 Dec 2020 07:40:20 PM MST | root | number  | yast snapper          |              
     50  | pre    |       | Tue 22 Dec 2020 07:42:33 PM MST | root | number  | zypp(zypper)          | important=yes
     51  | post   |    50 | Tue 22 Dec 2020 07:46:28 PM MST | root | number  |                       | important=yes
-    ```
-YaST filesystem snapshots:
+
+```
+__Snapper YaST interface example__
 
 ![YaST filesystem snapshots](image/snapper_post_zypper.png)
 
