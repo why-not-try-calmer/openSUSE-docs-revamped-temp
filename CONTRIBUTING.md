@@ -50,13 +50,13 @@ If you are new to `git` and GitHub, read https://jarv.is/notes/how-to-pull-reque
 When you are done working, go through the checklist before opening a Pull Request against our repository.
 
 __Checklist__:
-1. When doing `git checkout -b <meaningful name> <...>`, did you make sure that `meaningful name` satisfied the schema described under __Branches__ below? If not, you can still rename it using `git branch -m <new name that satsfies the schema> `.
-2. Have you followed the style guidelines below under __Style__?
-3. If you have added a new article:
+[] When doing `git checkout -b <meaningful name> <...>`, did you make sure that `meaningful name` satisfied the schema described under __Branches__ below? If not, you can still rename it using `git branch -m <new name that satsfies the schema> `.
+[] Have you followed the style guidelines below under __Style__?
+[] If you have added a new article:
   * a) did it land in `/project/docs`? If not, move it there.
   * b) have you added it to [table of contents](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/ToC.md)? Just follow the examples already there. The urls look like `https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/<some file.md>`
-4. Have you tested your work? If not consider the __Building and serving the docs__ section above.
-5. Are you going to make your PR editabled for us? If you don't know how, you will have to check the `Allow edits from maintainers` checkbox on the Pull Request screen, in GitHub. Otherwise we won't be able to work with you on your PR.
+[] Have you tested your work? If not consider the __Clone, edit, test__ section above.
+[] Are you going to make your PR editabled for us? If you don't know how, you will have to check the `Allow edits from maintainers` checkbox on the Pull Request screen, in GitHub. Otherwise we won't be able to work with you on your PR.
 
 ## Formal constraints
 ### Branches
