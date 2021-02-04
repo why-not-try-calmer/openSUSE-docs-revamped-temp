@@ -15,6 +15,18 @@ You can get them using Zypper, opi or YaST.
 
 For Installing codecs we have to add Packman Repo.(Require Root privilages use (su -i)) Remember If things don’t work after installing the codecs, make sure all your multimedia packages are coming from Packman.
 
+Use the following commands to add all of the third-party Packman repository (Packman Essentials is included), according to your installed openSUSE version:
+ 
+# Tumbleweed
+
+`sudo zypper addrepo -cfp 90 'https://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/' packman`
+
+# Leap
+
+`sudo zypper addrepo -cfp 90 'https://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Leap_$releasever/' packman`
+
+Then, install the desired codecs by first refreshing your local repository database and allowing vendor change for the required packages
+
 1. Add  Pacman Repo `zypper addrepo -f http://packman.inode.at/suse/openSUSE_Tumbleweed/packman`
 2. Installing Multimedia codecs `zypper install vlc vlc-codecs k3b-codecs ffmpeg lame gstreamer-plugins-libav gstreamer-plugins-bad gstreamer-plugins-ugly gstreamer-plugins-good gstreamer-fluendo-mp3 libdvdcss2`
 3. Update to latest Version `zypper dist-upgrade --from packman`
