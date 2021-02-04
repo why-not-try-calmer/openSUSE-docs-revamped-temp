@@ -1,4 +1,4 @@
-## Installing Codecs 
+# Installing Codecs 
 You need to play online or offline multimedia content but the content does not want to play or shows errors. Usually this is a sign of missing codecs: install these packages from Packman to play most music and video:
 
 - ffmpeg
@@ -17,11 +17,11 @@ For Installing codecs we have to add Packman Repo.(Require Root privilages use (
 
 Use the following commands to add all of the third-party Packman repository (Packman Essentials is included), according to your installed openSUSE version:
  
-# Tumbleweed
+## Tumbleweed
 
 `sudo zypper addrepo -cfp 90 'https://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/' packman`
 
-# Leap
+## Leap
 
 `sudo zypper addrepo -cfp 90 'https://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Leap_$releasever/' packman`
 
@@ -31,9 +31,9 @@ Then, install the desired codecs by first refreshing your local repository datab
 2. Installing Multimedia codecs `zypper install vlc vlc-codecs k3b-codecs ffmpeg lame gstreamer-plugins-libav gstreamer-plugins-bad gstreamer-plugins-ugly gstreamer-plugins-good gstreamer-fluendo-mp3 libdvdcss2`
 3. Update to latest Version `zypper dist-upgrade --from packman`
  
-## Installing Codecs for DVDs Using Zypper
+# Installing Codecs for DVDs Using Zypper
 
-You can install any DVD player(for example VLC). 
+You can install any DVD player(for example VLC) using following commands.
 
 1. `sudo zypper ar https://download.videolan.org/SuSE/<SUSE version> VLC`
 2. `sudo zypper mr -r VLC`
