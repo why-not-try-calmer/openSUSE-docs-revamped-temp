@@ -10,8 +10,6 @@ marked "ready for release" <--- review on language #2 <--- review on contents #2
 ```
 
 ## What preparation do I need?
-It's is minimal. Take a look at the repo structure. Then move onto the next section.
-
 ### Repo structure
 For your information:
 ```
