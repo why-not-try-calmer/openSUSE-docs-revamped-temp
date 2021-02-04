@@ -61,8 +61,8 @@ __NB__: Unless mentioned otherwise, a document corresponding to a parent section
 ### Completing and fine-tuning your setup 
 13. Finding & installing additional software
     * codecs
-    * drivers
-    * case study: Intel, NVIDIA and AMD drivers: [install_proprietary.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/install_proprietary.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/28)
+    * proprietary drivers [install_proprietary.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/install_proprietary.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/28)
+      * case study: Hybdrid/Optimus: [hybrid_graphics.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/hybrid_graphics.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/77) 
     * case study: printers
     * case study: scanners
     * case study: touchscreens
