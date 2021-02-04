@@ -25,6 +25,8 @@ Use the following commands to add all of the third-party Packman repository (Pac
 
 `sudo zypper addrepo -cfp 90 'https://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Leap_$releasever/' packman`
 
+#
+
 Then, install the desired codecs by first refreshing your local repository database and allowing vendor change for the required packages
 
 1. Add  Pacman Repo `zypper addrepo -f http://packman.inode.at/suse/openSUSE_Tumbleweed/packman`
