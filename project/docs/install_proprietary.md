@@ -25,29 +25,10 @@
 2. Install the appropriate driver by running `sudo zypper in x11-video-nvidiaG05` or `sudo zypper in x11-video-nvidiaG04`
 3. Reboot.
 
-
-###Hybrid Graphics/Optimus
-####Intel and Nvidia
-#####Installation
-1. Follow the above directions to install the correct driver.
-2. Install the the __suse_prime__ package using zypper or Yast.
-#####Set the Nvidia card as your active GPU
-1. Run `sudo prime-select nvidia` from the command line.
-2. Log off and back on.
-#####Set the Intel card as your active GPU
-1. Run `sudo prime-select intel` from the command line.
-2. Log off and back on.
-#####Offloading specific applications to the Nvidia GPU
-1. With Intel card set as your active GPU, you can also offload specific applications using an envoronment variable.
-2. For example, to run __supertuxkart__ using the the Nvidia driver, you can run `__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia supertuxkart`.
-3. To launch a game from Steam using the Nvidia driver, you can modify properties of the game, choose __Set Launch Options__ and add `__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia %command%`.
-
-####Recent AMD APUs and Nvidia
-1. Follow the above directions to install the correct driver. 
-2. The open source AMD GPU drivers will load by default.
-3. You can launch a program using the Nvidia card using an environment variable. For example, to run __supertuxkart__ using the the Nvidia driver, you can run `__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia supertuxkart`.
-4. 3. To launch a game from Steam using the Nvidia driver, you can modify properties of the game, choose __Set Launch Options__ and add `__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia %command%`.
-
-###CUDA
+####CUDA
 1. CUDA can be installed with the __Nvidia-ComputeG05__ or __Nvidia-ComputeG04__ package.
 2. See [Nvidia's documentation](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html) for further information.
+
+
+###Hybrid Graphics/Optimus
+1. See [Hybrid Graphics](/hybrid_graphics.md)
