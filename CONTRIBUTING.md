@@ -27,24 +27,27 @@ project/    # where you run your mkdocs commands from (while the pipenv commands
 `.gitignore` should not let you commit any `build` directory. Please make sure that is the case.
 
 ## Building and serving the docs
+### Prepare you work environment
 You will need to test your changes. This means some groundwork:
-* You can either install mkdocs from pip or from a virtual environment.
-* It's highly recommended to use a virtual environment and not pip, so that the dependencies of this project won't mess with your system-wide python packages / modules. You still need to use pip to install pipenv though ;).
-* Personnally I am using pipenv, which you install on openSUSE distributions with: `pip3 install --user pipenv`. Then you'll need to add `~/.local/bin` to your `PATH`. The best method for that depends on your shell:
-    * for `bash` add `PATH=$PATH:/home/your-user-name/.local/bin` to `~/.profile`
-    * for `fish` run the following command once from a fish shell: `set -Ua fish_user_paths /home/your-user-name/.local/bin`
-    * for `zsh` add `export PATH=$PATH/home/your-user-name/.local/bin` to `.zshrc`
+1. You can either install mkdocs from pip or from a virtual environment.
+2. It's highly recommended to use a virtual environment and not pip, so that the dependencies of this project won't mess with your system-wide python packages / modules. You still need to use pip to install pipenv though ;).
+3. Personnally I am using pipenv, which you install on openSUSE distributions with: `pip3 install --user pipenv`. Then you'll need to add `~/.local/bin` to your `PATH`. The best method for that depends on your shell:
+    * for `bash` add `PATH=$PATH:/home/your-user-name/.local/bin` to `~/.bashrc`; reload to apply changes with `source ~/.bashrc`
+    * for `fish` run the following command once from a fish shell: `set -Ua fish_user_paths /home/your-user-name/.local/bin`; start a fresh shell with `exec fish`
+    * for `zsh` add `export PATH=$PATH/home/your-user-name/.local/bin` to `~/.zshrc`; reload to apply changes with `source ~/.zshrc`
 
-  Finally reload your shell (for `bash`: `source ~/.profile`). 
+### Clone, edit, test
+Your work environment is now set. The rest is about getting the files:
+1. clone this repo where you want in your home folder
+2. `cd` to it and run `pipenv install` to install the dependencies, and then `pipenv shell` to run the environment. 
+3. finally `cd` to `project` and run you `mkdocs` and `mkdocs-versioning` commands from there, i.e. `mkdocs build` to generate the web content and `mkdocs serve` to serve it (by default at http://127.0.0.1:8000/) (replace `mkdocs` with `mkdocs-versioning` if you want to produce a multi-version build instead). 
 
-* Then 
-    1. clone this repo where you want in your home folder
-    2. `cd` to it and run `pipenv install` to install the dependencies, and then `pipenv shell` to run the environment. 
-    3. finally `cd` to `project` and run you `mkdocs` and `mkdocs-versioning` commands from there, i.e. `mkdocs build` to generate the web content and `mkdocs serve` to serve it (by default at http://127.0.0.1:8000/) (replace `mkdocs` with `mkdocs-versioning` if you want to produce a multi-version build instead). The built-in dev-server allows you to preview your documentation as you're writing it. It will even auto-reload and refresh your browser whenever you save your changes.
-* Available commands & documentation on mkdocs: https://www.mkdocs.org/
+The built-in dev-server allows you to preview your documentation as you're writing it. It will even auto-reload and refresh your browser whenever you save your changes.
+
+Available commands & documentation on mkdocs: https://www.mkdocs.org/
 
 ## What does the collaboration workflow look like?
-If you are new to `git` and GitHub, you might be interested in https://jarv.is/notes/how-to-pull-request-fork-github/.
+If you are new to `git` and GitHub, read https://jarv.is/notes/how-to-pull-request-fork-github/. Then go through the checklist.
 
 __Checklist before opening a Pull Request (PR)__:
 * When doing `git checkout -b <meaningful name> <...>`, did you make sure that `meaningful name` satisfied the schema described under __Branches__ below? If not, you can still rename it using `git branch -m <new name that satsfies the schema> `.
