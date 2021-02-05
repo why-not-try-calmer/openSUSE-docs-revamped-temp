@@ -15,7 +15,7 @@ __NB__: Unless mentioned otherwise, a document corresponding to a parent section
     * requisites
     * step by step guide
 ### Installing
-4. Step by step guide
+4. Step by step guide: [yast_installer.md]((https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/yast_installer.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/60)
 5. Quick install for experienced users
    * MicroOS: [microos_getting_started.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/microos_getting_started.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/24)
 ### Distro basics
