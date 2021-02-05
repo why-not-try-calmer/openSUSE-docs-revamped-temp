@@ -76,7 +76,7 @@ $ sudo reboot
 
 * You can also install some other useful packages trough transactional-update and then reboot:
 ```
-$ sudo transactional-update pkg install gnome-remote-desktop gnome-shell-search-provider-nautilus
+$ sudo transactional-update pkg install gnome-remote-desktop gnome-shell-search-provider-nautilus gnome-color-manager
 $ sudo reboot
 ```
 
