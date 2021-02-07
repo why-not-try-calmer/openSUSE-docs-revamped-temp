@@ -19,14 +19,14 @@ In what follows:
 ### Ways to install applications
 You can install applications in several ways:
 
-* flatpaks from flathub -- the _preferred solution_
+* flatpaks from flathub -- the _preferred solution_ 
 * RPM's via `sudo transactional-update pkg install package_name`
 * RPM's in a toolbox `toolbox -u`
 * snaps (requires some extra setup to get snapd installed)
 * AppImages
 
 !!! info
-    The reason flatpaks are preferred is that they provide a self-contained environment offering a pleasant balance between security, dependence integrity and performance. See [here](https://flatpak.org/) for details.
+    The reason _flatpaks_ are preferred is that they provide a self-contained environment offering a pleasant balance between security, dependence integrity and performance. See [here](https://flatpak.org/) for details.
 
 ### Full drive encryption
 If you need full drive encryption you can go through the ISO installer as normal, except for the last screen, where you need to click on _Partitioning_. Then use the guided partitioner to enable encryption. _LVM_ is not necessary for it to work. 
@@ -110,7 +110,7 @@ $ sudo transactional-update shell
   # exit
 $ sudo reboot
 ```
-* Other themes:
+* Other themes (also for Gnome):
     * [Qogir-icon-theme](https://github.com/vinceliuice/Qogir-icon-theme)
     * [Matcha-gtk](https://github.com/vinceliuice/Matcha-gtk-theme)
     * [Matcha-KDE](https://github.com/vinceliuice/Matcha-kde)
@@ -150,10 +150,14 @@ If you want to install flathub for only your user (in `/home/~ folder`):
 ```
 $ flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 ```
+Updating flatpaks via the terminal are done with the command `flatpak update`
+
 If you want to install flathub for all users (in `/var folder`):
 ```
 $ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 ```
+Updating flatpaks via the terminal are done with the command `sudo flatpak update`
+
 Some flatpaks you could install from [flathub](https://flathub.org/home):
 - [Firefox](https://flathub.org/apps/details/org.mozilla.firefox)
 - [Libreoffice](https://flathub.org/apps/details/org.libreoffice.LibreOffice)
@@ -173,6 +177,7 @@ $ sudo transactional-update shell
   # zypper in snapd
   # exit
 $ sudo reboot
+
 $ sudo mksubvolume /snap
 $ source /etc/profile
 $ sudo systemctl enable --now snapd
@@ -193,6 +198,7 @@ $ sudo reboot
 ```
 
 #### Adding the extension pack for the host
+_Installation can be done after you've rebooted into a new snapshot where virtualbox-qt is installed_
 ```
 $ sudo transactional-update shell
   # cd /tmp
@@ -209,6 +215,7 @@ You can't use the 1-click install as there is no YaST and the 1-click installer 
 1. Pick a _TumbleWeed_ repository.
 2. Click on _Expert Download_.
 3. Choose the option _Add repository and install manually_.
+4. Copy the commands to add the repository and install the package into a _transactional-update shell_
 ```
 $ sudo transactional-update shell
   # zypper addrepo https://download.opensuse.org/repositories/home:alphard:RHEL/openSUSE_Tumbleweed/home:alphard:RHEL.repo 
@@ -230,7 +237,7 @@ $ sudo reboot
 Two important packages were found missing for some users:
 
 * `tlp` for better battery management
-* `ModemManager` for laptops with a WWAN moden
+* `ModemManager` for laptops with a WWAN modem
 
 You can install both with:
 ```
@@ -250,8 +257,9 @@ alias sts="sudo transactional-update shell"
 alias stsc="sudo transactional-update shell --continue"
 alias stdc="sudo transactional-update dup --continue"
 alias std="sudo transactional-update dup"
-alias sfu="sudo flatpak update"
-alias fsu="sudo flatpak update && sudo snap refresh"
+alias sfu="sudo flatpak update && flatpak update"
+alias fsu="sudo flatpak update && flatpak update && sudo snap refresh"
+alias dfs="sudo transactional-update dup && sudo flatpak update && flatpak update && sudo snap refresh"
 ```
 Then for example typing `std` in a terminal prompt will issue the command `sudo transactional-update dup`.
 
