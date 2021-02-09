@@ -110,7 +110,7 @@ $ sudo transactional-update shell
   # exit
 $ sudo reboot
 ```
-* Other themes (also for Gnome):
+* Other themes (also for GNOME):
     * [Qogir-icon-theme](https://github.com/vinceliuice/Qogir-icon-theme)
     * [Matcha-gtk](https://github.com/vinceliuice/Matcha-gtk-theme)
     * [Matcha-KDE](https://github.com/vinceliuice/Matcha-kde)
@@ -164,7 +164,7 @@ Some flatpaks you could install from [flathub](https://flathub.org/home):
 - [VLC](https://flathub.org/apps/details/org.videolan.VLC)
 - etc.
 
-### Installing snapds
+### Installing snaps
 
 Snaps are mainly used with Ubuntu, but it is possible to install them as well in openSUSE MicroOS with the following commands.
 
@@ -215,7 +215,7 @@ You can't use the 1-click install as there is no YaST and the 1-click installer 
 1. Pick a _TumbleWeed_ repository.
 2. Click on _Expert Download_.
 3. Choose the option _Add repository and install manually_.
-4. Copy the commands to add the repository and install the package into a _transactional-update shell_
+4. Copy the commands into a _transactional-update shell_
 ```
 $ sudo transactional-update shell
   # zypper addrepo https://download.opensuse.org/repositories/home:alphard:RHEL/openSUSE_Tumbleweed/home:alphard:RHEL.repo 
