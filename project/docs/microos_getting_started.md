@@ -193,6 +193,7 @@ $ sudo snap install snap-store
 $ sudo transactional-update shell
   # zypper ref
   # zypper in virtualbox-qt
+  # usermod -a -G vboxusers <myuser>
   # exit
 $ sudo reboot
 ```
