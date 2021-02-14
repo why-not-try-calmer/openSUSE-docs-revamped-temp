@@ -56,7 +56,7 @@ nav:
     - Before installing:
         - Choosing a distribution: pick_an_image.md
         - Installation setups: ""
-        - Preparing the installation media: media_choice.md
+        - Preparing the installation media: image_choice.md
     - Installing:
         - Step by step guide: yast_installer.md
         - Quick install for experienced users:
