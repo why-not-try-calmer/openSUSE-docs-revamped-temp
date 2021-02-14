@@ -92,4 +92,4 @@ Once writing the image is done, you are ready to reboot from the USB drive. Leav
 
 ### Reboot to the device
 #### Windows
-You will need to repeatedly tap `ESC` after hearing the "reboot" sound. This will land you to a blue prompt, allowing you to select your USB flash drive as boot target.
+Use [these instructions](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/boot-to-uefi-mode-or-legacy-bios-mode) to reboot to your BIOS or UEFI. From there you will be able to select the USB flash drive hosting the installation image as boot target.
