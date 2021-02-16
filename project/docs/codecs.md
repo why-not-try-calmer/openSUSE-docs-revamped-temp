@@ -41,6 +41,13 @@ You can install any DVD player(for example VLC) using following commands.
 2. `sudo zypper mr -r VLC`
 3. `sudo zypper in vlc`
 
+# OBS Package Installer
+
+opi (Open Build Service Package Installer) works on both Leap and Tumbleweed:
+
+1. `sudo zypper install opi`
+2. `opi codecs`
+
 
 
 
