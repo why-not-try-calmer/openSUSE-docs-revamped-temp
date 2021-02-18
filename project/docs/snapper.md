@@ -26,8 +26,9 @@ The default snapshot configuration should only be changed by experienced users b
 
 ### Choosing a Snapshot
 #### Snapshot Types
-Snapper features 3 types of snapshots: Timeline, Installation, and Administration.
+`snapper` features 3 types of snapshots: _Timeline_, _Installation_, and _Administration_.
 
+<<<<<<< HEAD
 * __Timeline__ snapshots are single snapshots, created every hour and old snapshots are automatically deleted. By default, the first snapshot of the last ten days, months, and years are kept. Disabled by default on partitions larger than 16 Gigabytes. The only single snapshots present may be the ones created when openSUSE was installed.
 * __Installation__ snapshots are created in pairs (_Pre_ and _Post_) when packages are installed with YaST or Zypper. Snapshot pairs are marked as __important__ if an important system component, such as the kernel, has been installed. Enabled by default.
 * __Administration__ snapshots are created in pairs (_Pre and Post_) when system administration is performed using YaST. The Pre snapshot is created when a YaST module is started and the Post snapshot is created when the module is closed. Enabled by default.
@@ -37,7 +38,9 @@ Snapper features 3 types of snapshots: Timeline, Installation, and Administratio
 
 #### Identifying Snapshots
 
-There are two ways to identify which snapshot you may want to rollback to: Snapper command line and YaST Filesystem Snapshots
+There are two ways to identify which snapshot you may want to rollback to: 
+* with the `snapper` command line utility
+* with the _YaST_ utility at _YaST_ > _Filesystem Snapshots_
 
 Snapper command line:
 
@@ -72,9 +75,9 @@ __Snapper YaST interface example__
 ![YaST filesystem snapshots](image/snapper_post_zypper.png)
 
 !!! note
-    As snapshots are viewed, Snapper will create more snapshots, because Administrative tasks are being performed. 
+    As snapshots are viewed, `snapper` will create more snapshots, because administrative tasks are being performed. 
     
-Moving forward with the assumption there was an issue with the last Zypper update, #47 is chosen as the snapshot to recover.
+Moving forward with the assumption there was an issue with the last `zypper` update, #47 is chosen as the snapshot to recover.
 ### Initiating Rollback
 Upon identification of a recovery snapshot, reboot openSUSE. At the boot menu, scroll down to, and select, __Start bootloader from a read-only snapshot__.
 
@@ -87,11 +90,11 @@ On the Read-only Snapshot menu, scroll down to, and select, the desired recovery
 
 ![Boot Snapshot Selection](image/snapper_snapshot_selection.png)
 ### Finalizing Rollback
-Once openSUSE is booted, the rollback is completed by running:
+Once your system has booted, the rollback is completed by running:
 
 `$ sudo snapper rollback`
 
-openSUSE should then be rebooted and the recovered snapshot will be the new default boot option.
+Your system should then be rebooted and the recovered snapshot will be the new default boot option.
 
 ??? note "Snapper Resources"
     
