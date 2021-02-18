@@ -28,7 +28,7 @@ The default snapshot configuration should only be changed by experienced users b
 #### Snapshot Types
 `snapper` features 3 types of snapshots: _Timeline_, _Installation_, and _Administration_.
 
-<<<<<<< HEAD
+
 * __Timeline__ snapshots are single snapshots, created every hour and old snapshots are automatically deleted. By default, the first snapshot of the last ten days, months, and years are kept. Disabled by default on partitions larger than 16 Gigabytes. The only single snapshots present may be the ones created when openSUSE was installed.
 * __Installation__ snapshots are created in pairs (_Pre_ and _Post_) when packages are installed with YaST or Zypper. Snapshot pairs are marked as __important__ if an important system component, such as the kernel, has been installed. Enabled by default.
 * __Administration__ snapshots are created in pairs (_Pre and Post_) when system administration is performed using YaST. The Pre snapshot is created when a YaST module is started and the Post snapshot is created when the module is closed. Enabled by default.
