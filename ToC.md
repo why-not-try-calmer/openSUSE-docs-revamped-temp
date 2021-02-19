@@ -11,7 +11,7 @@ __NB__: Unless mentioned otherwise, a document corresponding to a parent section
     * disk partitioning
     * disk encryption
     * snapshots/btrfs
-3. Preparing the installation media: [media_choice.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/media_choice.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/26)
+3. Preparing the installation media: [image_choice.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/image_choice.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/26)
     * requisites
     * step by step guide
 ### Installing

@@ -23,7 +23,6 @@ The two other installation media we provide are DVD images and Network installer
 
 - DVD images are quite bulky (~4.5 GBs), but allow you to install an entire distribution without relying on network for retrieving components.
 - Networks installers are much lighter (~150 MBs); they require a stable and hopefully fast connection to fetch components over the network.
-
 ## Authenticity & integrity checks
 
 !!! note
@@ -69,3 +68,28 @@ It is an instance of the command:
 $  sha256sum <Image.iso>
 ```
 The check passes just in case the output of the above equals the checksum written in plain text in the __Target Checksum__ (see [Definitions & assumptions](#assumptions-definitions)).
+
+## Get to the installer
+In this section you will learn how to get to a running installer for _Tumbleweed_ or _Leap_. This involves:
+
+- Using a program to write an installation image -- see [Choosing an installation image above](#choosing-an-installation-media) -- to an external device, usually a USB pen drive or some other external storage medium.
+- Having the media adequately partioned to host the image, and making it bootable
+- Booting on the external media and run the installer.
+
+We will be assuming that you have downloaded an installation image and optionnally, have performed an authenticity check on it -- see the above sections for details. The next section also assumes that you will be using a USB flash drive as the installation media. The section after that handles external hard drives.
+
+### Prepare the installation media (USB flash drive)
+The process for preparing the installation media varies depending on the operating system from which you are following these steps. In different operating systems offer different applications. We recommend using any of the following programs, which we have tested and which are known to be simple to use and reliable on their respective available platforms:
+- Fedora Image Writer ([Windows](https://getfedora.org/fmw/FedoraMediaWriter-win32-latest.exe), Linux [[flatpak](https://flathub.org/apps/details/org.fedoraproject.MediaWriter)], [macOS](https://getfedora.org/fmw/FedoraMediaWriter-osx-latest.dmg))
+
+For _Fedora Image Writer_:
+
+1. Make sure your USB flash drive has enough storage to hold the image (either ~1 GB or ~5 GB) and plug it in.
+2. Run _Fedora Image Writer_. From the main menu pick __Custom image__ and then select the `.iso` image to write to the USB flash drive. Make sure that both the image and flash drive have been correctly selected, as in: ![this screenshot](image/image_choice_fiw_conf_prompt.png)
+3. Finally click on __Write to Disk__.
+
+Once writing the image is done, you are ready to reboot from the USB drive. Leaving the USB drive plugged in, use the method appropriate to your operating system to restart your computer.
+
+### Reboot to the device
+#### Windows
+Use [these instructions](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/boot-to-uefi-mode-or-legacy-bios-mode) to reboot to your BIOS or UEFI. From there you will be able to select as boot target the USB flash drive hosting the installation image.
