@@ -1,5 +1,9 @@
 ## Snapper
-Snapper is a command-line and YaST interface for filesystem snapshot management. It can create, delete and compare snapshots and undo changes done between snapshots.
+Snapper is a tool for filesystem snapshot management. It can create, delete and compare snapshots and undo changes from one snapshot to the next. Snapper is a powerful maintenance tool to keep your system running, with very little downtime, if something should go wrong. Snapper has both a __Command Line Interface__ (CLI) and __Graphical Interface__, not all functionality is available through the graphical interface but inexperienced users should find it sufficient for basic Snapper tasks.
+
+Snapper is deeply integrated with the Btrfs filesystem, serving as an easy to use helper for the built in functions of Btrfs. The most common Btrfs tasks can be conducted with Snapper, however, there may be instances when it is necessary to interact with Btrfs directly.
+
+Tumbleweed users should note that understanding how to use Snapper is an important step in maintaining a stable, functional system. As a rolling release, Tumbleweed, is subjected to less testing overall and the occasional system breaking update can be installed. Such problems are quickly and easily resolved with Snapper. 
 
 #### Snapper capabilities
 - Undo system changes made by `zypper` and YaST.
@@ -7,16 +11,27 @@ Snapper is a command-line and YaST interface for filesystem snapshot management.
 - Do a system rollback by booting from a snapshot.
 - Manually create and manage snapshots, within the running system.
 
-!!! info "Snapshots"
-	By default, the root partition (/) of openSUSE Leap and Tumbleweed is formatted with Btrfs. Taking snapshots is automatically enabled if the root partition (/) is big enough (more than approximately 16 GB). By default, snapshots are disabled on partitions other than root (/).
+### Defaults
+By default, openSUSE Tumbleweed formats your hard drive with the Btrfs filesystem which provides the powerful snapshot capabilities. Snapshots are automatically enabled for the root partition `/`.
+
+The default snapshot configuration should only be changed by experienced users but it is important to note some default behaviour for new users as well.
+
+* Snapshots are automatically enabled for the root `/` partition if it is larger than 16 Gigabytes. This is to ensure there is enough disk space for the snapshots and important system tasks to occure, which may include moving, writing or deleting files.
+
+* If the root `/` partition is smaller than 16 Gigabytes a different kind of snapshot is used, known as "Timeline Snapshots". These snapshots are created every hour. By default only the first snapshot of the last ten days, months, and years are kept. This ensures there are some snapshots for system rollbacks while taking up very minimal disk space.
+
+* The users `/home` directory is not included in snapshots and should not be relied on as a data backup for personal files. This prevents data loss if a system rollback is conducted. Changes to personal files would also be "undone".
+
+* Directories `/opt` and `/usr/local`, where various software and third-party products are installed are not included in snapshots by default. This prevents uninstalling the software if a system rollback is conducted.    
 
 ### Choosing a Snapshot
 #### Snapshot Types
 `snapper` features 3 types of snapshots: _Timeline_, _Installation_, and _Administration_.
 
-* __Timeline__ snapshots are single snapshots, created every hour and old snapshots are automatically deleted. Disabled by default, the only single snapshots present may be the ones created when openSUSE was installed.
-* __Installation__ snapshots are created in pairs (_Pre_ and _Post_) when packages are installed with _YaST_ or `zypper`. Snapshot pairs are marked as __important__ if an important system component, such as the kernel, has been installed. Enabled by default.
-* __Administration__ snapshots are created in pairs (_Pre and Post_) when system administration is performed using _YaST_. The Pre snapshot is created when a _YaST_ module is started and the Post snapshot is created when the module is closed. Enabled by default.
+
+* __Timeline__ snapshots are single snapshots, created every hour and old snapshots are automatically deleted. By default, the first snapshot of the last ten days, months, and years are kept. Disabled by default on partitions larger than 16 Gigabytes. The only single snapshots present may be the ones created when openSUSE was installed.
+* __Installation__ snapshots are created in pairs (_Pre_ and _Post_) when packages are installed with YaST or Zypper. Snapshot pairs are marked as __important__ if an important system component, such as the kernel, has been installed. Enabled by default.
+* __Administration__ snapshots are created in pairs (_Pre and Post_) when system administration is performed using YaST. The Pre snapshot is created when a YaST module is started and the Post snapshot is created when the module is closed. Enabled by default.
 
 !!! note
     The last ten important and the last ten regular snapshot pairs are kept. This total encompasses both Installation and Administration snapshot types. Snapshots are automatically deleted when they take up too much space on the disk, but four important and two regular snapshots are always kept.
