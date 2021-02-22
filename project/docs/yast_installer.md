@@ -86,33 +86,36 @@ Select one and press __Next__ to continue.
 
 ## Disk
 ### Picking a partition scheme
-Most Linux distributions have the same minimal partition scheme, and _Leap_ is no exception: 
+Most Linux distributions have the same minimal partition scheme, and _Leap_ is no exception:
+
 * a _bootloader partition_, hosting a small program called a _bootloader_, whose purpose is to take over from the UEFI/BIOS of your computer and set up the initial conditions for your operating system to get running 
 * a main _data partition_ (or _OS partition_), which is where the operating system (i.e. _Leap_), optionnally along with your personal user data, will be installed)
 
-If you are not interested in keeping whatever data or operating system is installed on the target machine, you can simply proceed with this partition scheme. But chances are that you will want to install Leap on a machine with an already functional operating system (i.e. Windows, macOS, or another Linux distribution). Or you might simply want to take care of the future, and adopt a scheme that will make installing other operating system alongside _Leap_ easier and more reliable. (Even though we hope, of course, that all your needs will be covered by an openSUSE distribution.)
+If you are not interested in keeping whatever data or operating system is installed on the target machine, you can simply proceed with this partition scheme. But chances are that you will want to install Leap on a machine with an already functional operating system (i.e. Windows, macOS, or another Linux distribution). Or you might simply want to take care of the future, and adopt a scheme that will make installing other operating system alongside _Leap_ easier and more reliable.
 
-The recommended partition schemes for a scenario where multiple operating systems are considered depends on whether you are interested in keeping a previously installed operating system or not. Here we are considering both options, using Windows as an example for the former.
+The recommended partition schemes for a scenario where multiple operating systems are considered depends on whether you are interested in keeping a previously installed operating system. Here we are considering both options, using Windows as an example.
 
 #### Installing Leap alongside Windows
 If you have Windows installed already, you are likely to have the following partitions already:
+
 * one 'recovery partition', about 500 MB large, usually using the _Ntfs_ filesystem (we won't consider it further as it is not relevant to what comes next)
 * one 'Windows data' partition, usually using the _Ntfs_ filesystem, hosting both Windows and your user data (you want to leave it untouched)
 * one 'Windows bootloader' partition, about 100 MB large, using the _Fat32_ filesystem, hosting the Windows bootloader.
 
 To this we recommend adding the following partitions:
+
 1. one 'Leap bootloader' partition, about 200-500 MB large, using the _Btrfs_ filesystem, that will be hosting the GRUB (version 2) bootloader for Leap
 2. one 'Leap data' partition, about 50 GB large, using the _Btrfs_ filesystem, that will be hosting both the operating system and your user data.
 
-If you plan on installing other operating systems in the future, we recommend splitting the data strictly required by Leap from your 'user data', which means replacing (2) above with:
+If you plan on installing other operating systems in the future, we recommend splitting the data strictly required by Leap from your 'user data', which means replacing (2) above with the following:
 
-2. (many operating systems) 
-    a. one 'Leap operating system partition', at least 40 GB large, using the _Btrfs_ filesystem, that will be hosting the operating system; and
-    b. one 'user data' partition, at least 10 Gb large, using the _Btrfs_ filesystem, that will be hosting your user data.
+* one 'Leap operating system partition', at least 40 GB large, using the _Btrfs_ filesystem, that will be hosting the operating system; and
+* one 'user data' partition, at least 10 Gb large, using the _Btrfs_ filesystem, that will be hosting your user data.
 
-Then for each subsequent operating system you would install later, repeat step (1) above so that each operating system uses its own bootloader partition.
+Then repeat (1) for each subsequent operating system to install, so that every operating system uses its own bootloader partition.
 
-Once all partitions are in place, make sure you set them to the appropriate mount point:
+Once all partitions are in place, set them to the appropriate mount point:
+
 * _Leap bootloader_: `/boot/efi`
 * _Leap_ (hosting both the operating system data and user data: use the `/` mount point
 * _Leap OS_ (hosting only the operating system data): `/`
