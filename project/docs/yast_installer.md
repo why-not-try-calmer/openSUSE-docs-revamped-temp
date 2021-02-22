@@ -85,7 +85,13 @@ At this section of the preparation you can select from a list of predefined use 
 Select one and press __Next__ to continue.
 
 ## Disk
-### Picking a partition scheme
+### Suggested Partitioning
+![Suggested Partitioning](image/yast_suggested_partitioning.png) 
+
+### Guided Setup
+
+### Expert Partitioner
+#### Picking a partition scheme
 Most Linux distributions have the same minimal partition scheme, and _Leap_ is no exception:
 
 * a _bootloader partition_, hosting a small program called a _bootloader_, whose purpose is to take over from the UEFI/BIOS of your computer and set up the initial conditions for your operating system to get running 
@@ -131,21 +137,18 @@ Even though it makes no difference from the installer's point of view, we recomm
 !!! warning
     Even though it is technically possible to write _Leap_'s bootloader to the Windows bootloader partition, we do not recommend it as the disk space on the Windows bootloader partition may exhaust itself at some point. If for some reason you need to do this, simply set the flag of this partition to `/boot/efi/`.
 
-### Picking a filesystem for data partitions
-When installing _Leap_ (or any other openSUSE distribution), the installer defaults to the _Btrfs_ filesystem. For years this file system has been the preferred filesystem for the openSUSE distributions. Indeed _Btrfs_ features a powerful _copy-on-write_ logic, which lies at the heart of openSUSE's approach to stability: only with _Btrfs_ is it possible to conveniently create and use _snapshots_, also known as 'restoration points' on Windows (see [Introduction to snapper](snapper.md) for details). 
+#### Picking a filesystem for data partitions
+The _Leap_ installer allows you to pick among several filesystems for _data partitions_, which for the purpose of this section we define as any partition mounted as `/` (root) or having root on its path (i.e. `/home`). Among the supported filesystems for data partitions you will find:
+
+* _Btrfs_
+* _Ext4_
+* _Zfs_
+
+However, _Btrfs_ has been the preferred filesystem for all openSUSE distributions for several years. This filesystem boasts a powerful _copy-on-write_ logic, which lies at the heart of openSUSE's approach to stability: _Btrfs_ allows to conveniently create and use _snapshots_, aka 'restoration points' on Windows (see [Introduction to snapper](snapper.md) for details). For this reason we highly recommend you to use it for all your data partitions when installing _Leap_.
 
 !!! info
     Snapshots take advantage of the _copy-on-write_ logic of _Btrfs_. On a copy-on write filesystem, submitted changes do not overwrite the previous state; instead, changes are 'moved' to a different location on the disk, so that the location of origin is left unchanged. Together with 'deduplication' rules aimed at minimizing redundancies between file changes, this logic allows for the layering of several versions of an entire filesystem, with each layer representing different sets of changes representing a certain meaningful action by the end user ('before installing package X', 'before creating subvolume Y', etc.).
     Renouncing _Brtfs_ thus means renouncing this feature. Given that _Tumbleweed_ was designed around this feature, it will not work as intended unless you pick this filesystem.
-
-For these reasons we warmly recommend you to pick the _Btrfs_ filesystem for _Leap_. However, _Leap_ supports other filesystems (_Ext4_ and _Zfs_ among others), and in contrast to _Tumbleweed_, it is not mandatory to use _Btrfs_.
-
-### Suggested Partitioning
-![Suggested Partitioning](image/yast_suggested_partitioning.png) 
-
-### Guided Setup
-
-### Expert Partitioner
 
 ## Time Zone
 ### Clock and Time Zone
