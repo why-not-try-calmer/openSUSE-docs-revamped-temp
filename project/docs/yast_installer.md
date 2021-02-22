@@ -95,7 +95,7 @@ If you are not interested in keeping whatever data or operating system is instal
 
 The recommended partition schemes for a scenario where multiple operating systems are considered depends on whether you are interested in keeping a previously installed operating system. Here we are considering both options, using Windows as an example.
 
-Go to [pick a filesystem for data partitions]() to for more details as to why we recommend _Btrfs_.
+Go to [pick a filesystem for data partitions](yast_installer#picking-a-file-system-for-data-partitions) to for more details as to why we recommend _Btrfs_.
 
 #### Installing Leap alongside Windows
 If you have Windows installed already, you are likely to have the following partitions already:
@@ -110,7 +110,7 @@ To this we recommend adding the following partitions:
 2. one 'Leap data' partition, about 50 GB large, using the _Btrfs_ filesystem, that will be hosting both the operating system and your user data.
 
 !!! info
-    Go to [pick a filesystem for data partitions]() to for more details as to why we recommend _Btrfs_.
+    Go to [pick a filesystem for data partitions](yast_installer#picking-a-file-system-for-data-partitions) to for more details as to why we recommend _Btrfs_.
 
 If you plan on installing other operating systems in the future, we recommend splitting the data strictly required by Leap from your 'user data', which means replacing (2) above with the following:
 
