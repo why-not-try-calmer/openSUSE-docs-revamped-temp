@@ -5,7 +5,7 @@ __NB__: Unless mentioned otherwise, a document corresponding to a parent section
     * desktop Environments
     * getting the right installer
     * FAQ: Issues & solutions
-2. Installation setups
+2. Installation setups ( /!\ will be merged under (4) )
     * full disk install
     * multiple boot
     * disk partitioning
