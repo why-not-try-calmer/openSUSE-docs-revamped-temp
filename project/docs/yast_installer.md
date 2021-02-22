@@ -85,6 +85,53 @@ At this section of the preparation you can select from a list of predefined use 
 Select one and press __Next__ to continue.
 
 ## Disk
+### Picking a partition scheme
+Most Linux distributions have the same minimal partition scheme, and _Leap_ is no exception: 
+* a _bootloader partition_, hosting a small program called a _bootloader_, whose purpose is to take over from the UEFI/BIOS of your computer and set up the initial conditions for your operating system to get running 
+* a main _data partition_ (or _OS partition_), which is where the operating system (i.e. _Leap_), optionnally along with your personal user data, will be installed)
+
+If you are not interested in keeping whatever data or operating system is installed on the target machine, you can simply proceed with this partition scheme. But chances are that you will want to install Leap on a machine with an already functional operating system (i.e. Windows, macOS, or another Linux distribution). Or you might simply want to take care of the future, and adopt a scheme that will make installing other operating system alongside _Leap_ easier and more reliable. (Even though we hope, of course, that all your needs will be covered by an openSUSE distribution.)
+
+The recommended partition schemes for a scenario where multiple operating systems are considered depends on whether you are interested in keeping a previously installed operating system or not. Here we are considering both options, using Windows as an example for the former.
+
+#### Installing Leap alongside Windows
+If you have Windows installed already, you are likely to have the following partitions already:
+* one 'recovery partition', about 500 MB large, usually using the _Ntfs_ filesystem (we won't consider it further as it is not relevant to what comes next)
+* one 'Windows data' partition, usually using the _Ntfs_ filesystem, hosting both Windows and your user data (you want to leave it untouched)
+* one 'Windows bootloader' partition, about 100 MB large, using the _Fat32_ filesystem, hosting the Windows bootloader.
+
+To this we recommend adding the following partitions:
+1. one 'Leap bootloader' partition, about 200-500 MB large, using the _Btrfs_ filesystem, that will be hosting the GRUB (version 2) bootloader for Leap
+2. one 'Leap data' partition, about 50 GB large, using the _Btrfs_ filesystem, that will be hosting both the operating system and your user data.
+
+If you plan on installing other operating systems in the future, we recommend splitting the data strictly required by Leap from your 'user data', which means replacing (2) above with:
+
+2. (many operating systems) 
+    a. one 'Leap operating system partition', at least 40 GB large, using the _Btrfs_ filesystem, that will be hosting the operating system; and
+    b. one 'user data' partition, at least 10 Gb large, using the _Btrfs_ filesystem, that will be hosting your user data.
+
+Then for each subsequent operating system you would install later, repeat step (1) above so that each operating system uses its own bootloader partition.
+
+Once all partitions are in place, make sure you set them to the appropriate mount point:
+* _Leap bootloader_: `/boot/efi`
+* _Leap_ (hosting both the operating system data and user data: use the `/` mount point
+* _Leap OS_ (hosting only the operating system data): `/`
+* _Linux user data_: `/home`
+
+Even though it makes no difference from the installer's point of view, we recommend assigning meaningful labels to each partition, to make them easier to identify across various contexts. You can get inspiration from the italicized phrases above.
+
+!!! warning
+    Even though it is technically possible to write _Leap_'s bootloader to the Windows bootloader partition, we do not recommend it as the disk space on the Windows bootloader partition may exhaust itself at some point. If for some reason you need to do this, simply set the flag of this partition to `/boot/efi/`.
+
+### Picking a filesystem for data partitions
+When installing _Leap_ (or any other openSUSE distribution), the installer defaults to the _Btrfs_ filesystem. For years this file system has been the preferred filesystem for the openSUSE distributions. Indeed _Btrfs_ features a powerful _copy-on-write_ logic, which lies at the heart of openSUSE's approach to stability: only with _Btrfs_ is it possible to conveniently create and use _snapshots_, also known as 'restoration points' on Windows (see [Introduction to snapper](snapper.md) for details). 
+
+!!! info
+    Snapshots take advantage of the _copy-on-write_ logic of _Btrfs_. On a copy-on write filesystem, submitted changes do not overwrite the previous state; instead, changes are 'moved' to a different location on the disk, so that the location of origin is left unchanged. Together with 'deduplication' rules aimed at minimizing redundancies between file changes, this logic allows for the layering of several versions of an entire filesystem, with each layer representing different sets of changes representing a certain meaningful action by the end user ('before installing package X', 'before creating subvolume Y', etc.).
+    Renouncing _Brtfs_ thus means renouncing this feature. Given that _Tumbleweed_ was designed around this feature, it will not work as intended unless you pick this filesystem.
+
+For these reasons we warmly recommend you to pick the _Btrfs_ filesystem for _Leap_. However, _Leap_ supports other filesystems (_Ext4_ and _Zfs_ among others), and in contrast to _Tumbleweed_, it is not mandatory to use _Btrfs_.
+
 ### Suggested Partitioning
 ![Suggested Partitioning](image/yast_suggested_partitioning.png) 
 
