@@ -36,7 +36,7 @@ Section "Device"
   Driver "nvidia"
 EndSection
 ```
-This allows the creating Nvidia GPU _screens_, and after the fact, a new entry should be added to output of `xrandr --listproviders`, in a way that you output should show an entry like this:
+This allows the creating Nvidia GPU _screens_, and after the fact, a new entry should be added to output of `xrandr --listproviders`, in a way that your output should show an entry like this:
 ```
 Provider 1: id: 0x240; cap: 0x2 (Sink Output); crtcs: 4; outputs: 1; associated providers: 1; name: NVIDIA-G0
     output HDMI-1-0
