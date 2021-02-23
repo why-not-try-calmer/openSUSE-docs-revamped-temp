@@ -100,9 +100,6 @@ Most Linux distributions have the same minimal partition scheme, and _Leap_ is n
 If you are not interested in keeping whatever data or operating system is installed on the target machine, you can simply proceed with this partition scheme. But chances are that you will want to install Leap on a machine with an already functional operating system (i.e. Windows, macOS, or another Linux distribution). Or you might simply want to take care of the future, and adopt a scheme that will make installing other operating system alongside _Leap_ easier and more reliable.
 
 The recommended partition schemes for a scenario where multiple operating systems are considered depends on whether you are interested in keeping a previously installed operating system. Here we are considering both options, using Windows as an example.
-
-Go to [pick a filesystem for data partitions](yast_installer#picking-a-file-system-for-data-partitions) to for more details as to why we recommend _Btrfs_.
-
 #### Installing Leap alongside Windows
 If you have Windows installed already, you are likely to have the following partitions already:
 
@@ -116,26 +113,27 @@ To this we recommend adding the following partitions:
 2. one 'Leap data' partition, about 50 GB large, using the _Btrfs_ filesystem, that will be hosting both the operating system and your user data.
 
 !!! info
-    Go to [pick a filesystem for data partitions](yast_installer#picking-a-file-system-for-data-partitions) to for more details as to why we recommend _Btrfs_.
+    Scroll down to [pick a filesystem for data partitions](yast_installer.md#picking-a-file-system-for-data-partitions) to for more details as to why we recommend _Btrfs_.
 
 If you plan on installing other operating systems in the future, we recommend splitting the data strictly required by Leap from your 'user data', which means replacing (2) above with the following:
 
 * one 'Leap operating system partition', at least 40 GB large, using the _Btrfs_ filesystem, that will be hosting the operating system; and
-* one 'user data' partition, at least 10 Gb large, using the _Btrfs_ filesystem, that will be hosting your user data.
+* one 'user data' partition, at least 15 Gb large, using the _Btrfs_ filesystem, that will be hosting your user data.
 
-Then repeat (1) for each subsequent operating system to install, so that every operating system uses its own bootloader partition.
+Then you will simply have to repeat (1) for each subsequent operating system to install, so that every operating system uses its own bootloader partition.
 
-Once all partitions are in place, set them to the appropriate mount point:
+<u>Step by step</u>
 
-* _Leap bootloader_: `/boot/efi`
-* _Leap_ (hosting both the operating system data and user data: use the `/` mount point
-* _Leap OS_ (hosting only the operating system data): `/`
-* _Linux user data_: `/home`
+1. From the _Disk_ view, select _Expert Partioner_
+2. Click the __Add Partition__ button (bottom left-hand side)
+3. Assign it at least 40 GBs, and set its filesystem to _Btrfs_, and the mount point to `/`. You could label this partition 'Leap data'.
+4. (optionnally) Create a new partition by repeating (2) and (3) but this time assign it at least 15 GBs using `/home` for mount point. You could label it 'Linux home' bearing in mind that, under this partition scheme, the partition will be accessible from other operating systems.
+5. Create a new partition by repeating (2), assigning it 500 MBs, and set its mount point to `/boot/efi`. You could label the partition 'Leap' or 'Leap bootloader'. 
 
-Even though it makes no difference from the installer's point of view, we recommend assigning meaningful labels to each partition, to make them easier to identify across various contexts. You can get inspiration from the italicized phrases above.
+Even though this makes no difference from the installer's point of view, we recommend assigning meaningful labels to each partition, to make them easier to identify across various contexts.
 
 !!! warning
-    Even though it is technically possible to write _Leap_'s bootloader to the Windows bootloader partition, we do not recommend it as the disk space on the Windows bootloader partition may exhaust itself at some point. If for some reason you need to do this, simply set the flag of this partition to `/boot/efi/`.
+    Technically it is possible to write _Leap_'s bootloader to the Windows bootloader partition, we do not recommend it as the disk space on the Windows bootloader partition may exhaust itself at some point. If for some reason you need to do this, simply set the flag of this partition to `/boot/efi/`.
 
 #### Picking a filesystem for data partitions
 The _Leap_ installer allows you to pick among several filesystems for _data partitions_, which for the purpose of this section we define as any partition mounted as `/` (root) or having root on its path (i.e. `/home`). Among the supported filesystems for data partitions you will find:
@@ -147,8 +145,30 @@ The _Leap_ installer allows you to pick among several filesystems for _data part
 However, _Btrfs_ has been the preferred filesystem for all openSUSE distributions for several years. This filesystem boasts a powerful _copy-on-write_ logic, which lies at the heart of openSUSE's approach to stability: _Btrfs_ allows to conveniently create and use _snapshots_, aka 'restoration points' on Windows (see [Introduction to snapper](snapper.md) for details). For this reason we highly recommend you to use it for all your data partitions when installing _Leap_.
 
 !!! info
-    Snapshots take advantage of the _copy-on-write_ logic of _Btrfs_. On a copy-on write filesystem, submitted changes do not overwrite the previous state; instead, changes are 'moved' to a different location on the disk, so that the location of origin is left unchanged. Together with 'deduplication' rules aimed at minimizing redundancies between file changes, this logic allows for the layering of several versions of an entire filesystem, with each layer representing different sets of changes representing a certain meaningful action by the end user ('before installing package X', 'before creating subvolume Y', etc.).
+    Snapshots take advantage of the _copy-on-write_ logic of _Btrfs_. On a copy-on write filesystem, submitted changes do not overwrite the previous state; instead, changes are 'moved' to a different location on the disk, so that the location of origin is left unchanged. Together with 'deduplication' rules aimed at minimizing redundancies between file changes, this logic allows for the layering of several versions of an entire filesystem, with each layer representing different sets of changes. These sets of changes thus correspond to meaningful actions from the end user's perspective, such as 'before installing package X', 'before creating subvolume Y', etc.
     Renouncing _Brtfs_ thus means renouncing this feature. Given that _Tumbleweed_ was designed around this feature, it will not work as intended unless you pick this filesystem.
+
+#### LUKS encryption
+If you are installing _Leap_ on a laptop, or generally on any machine accessible to untrusted individuals, we highly recommend protecting your data with a _full disk encryption_. The price to pay is that doing so will entirely wipe out your drive. The obvious advantage, however, is that this will protect your data with a sound security model. 
+
+!!! info
+    Full disk encryption contrasts with _partition encryption_ in that it protects your entire physical drive using cryptographic techniques. For reasons that go beyond the scope of this document, partition encryption is significantly less secure than full disk encryption. In pictures, partition encryption is like locking your house with an old fashioned padlock and hiding the key in a flowerpot lying on the terrace, while full disk encryption is like locking your house with a digital padlock and keeping the code only in your mind.
+
+To apply full disk encryption while installing, you can either use the _Guided Setup_ feature or manually create the partition scheme first and then apply encryption. If you do the latter, you can simply reproduce the steps listed below:
+
+<u>Step by step (Guided Setup)</u>
+
+1. Select _Guided Setup_'_ from the _Disk_ screen
+2. Check _Enable LVM_'_ and _Enable Disk Encryption_, and enter a strong password in both text fields
+3. Then, on the _Filesystem Options_ screen:
+    * Select _Btrfs_.
+    * Tick the _Enable Snapshots_ checkbox ([scroll up](yast_installer.md#picking-a-file-system-for-data-partitions) or see [this document](snapper.md) to understand the reason why we recommend this).
+    * Tick the _Propose Separate Home LVM Logical Volume_ checkbox.
+    * Select _Btfs_ again as _File System Type_ for your `/home` directory.
+    * Tick the _Propose Separate Swap LVM Logical Volume_.
+
+!!! info
+    The recommended setup mentioned here makes use of the [cryptsetup](https://gitlab.com/cryptsetup/cryptsetup/blob/master/README.md) utility in conjunction with an LVM partition. `cryptsetup` is a popular and trusted tool in the Linux community implementing the LUKS Linux kernel standard, while LVM is a tool allowing your machine to see multiple physical disks as one single (logical) partition, or vice-versa, to one unique physical disk as multiple (logical) partitions. LVM & LUKS work well together as it considerably simplifies the encryption - decryption operations. 
 
 ## Time Zone
 ### Clock and Time Zone
