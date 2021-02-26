@@ -127,7 +127,7 @@ Then you will simply have to repeat (1) for each subsequent operating system to 
 1. From the _Disk_ view, select _Expert Partioner_
 2. Click the __Add Partition__ button (bottom left-hand side)
 3. Assign it at least 40 GBs, and set its filesystem to _Btrfs_, and the mount point to `/`. You could label this partition 'Leap data'.
-4. (optionnally) Create a new partition by repeating (2) and (3) but this time assign it at least 15 GBs using `/home` for mount point. You could label it 'Linux home' bearing in mind that, under this partition scheme, the partition will be accessible from other operating systems.
+4. (optionnally) Create a new partition by repeating (2) and (3), but this time assign it at least 15 GBs using `/home` for mount point. You could label it 'Linux home' bearing in mind that, under this partition scheme, the partition will be accessible from other operating systems.
 5. Create a new partition by repeating (2), assigning it 500 MBs, and set its mount point to `/boot/efi`. You could label the partition 'Leap' or 'Leap bootloader'. 
 
 Even though this makes no difference from the installer's point of view, we recommend assigning meaningful labels to each partition, to make them easier to identify across various contexts.
@@ -168,7 +168,7 @@ To apply full disk encryption while installing, you can either use the _Guided S
     * Tick the _Propose Separate Swap LVM Logical Volume_.
 
 !!! info
-    The recommended setup mentioned here makes use of the [cryptsetup](https://gitlab.com/cryptsetup/cryptsetup/blob/master/README.md) utility in conjunction with an LVM partition. `cryptsetup` is a popular and trusted tool in the Linux community implementing the LUKS Linux kernel standard, while LVM is a tool allowing your machine to see multiple physical disks as one single (logical) partition, or vice-versa, to one unique physical disk as multiple (logical) partitions. LVM & LUKS work well together as it considerably simplifies the encryption - decryption operations. 
+    The recommended setup mentioned here makes use of the [cryptsetup](https://gitlab.com/cryptsetup/cryptsetup/blob/master/README.md) utility in conjunction with an LVM partition. `cryptsetup` is a popular and trusted tool in the Linux community implementing the LUKS Linux kernel standard, using the `aes-xts-plain64` encryption standard. As for LVM, it is a partitioning scheme that allows your machine to see multiple physical disks as one single (logical) partition, or vice-versa, to see one unique physical disk as multiple (logical) partitions. LVM & LUKS work well together, with LVM considerably simplifying encryption - decryption operations.
 
 ## Time Zone
 ### Clock and Time Zone
