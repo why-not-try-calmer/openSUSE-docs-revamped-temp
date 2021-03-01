@@ -10,7 +10,7 @@ This guide targets **openSUSE Leap**; however the differences between the instal
 
 * Any AMD64/Intel* EM64T processor (32-bit processors are not supported).
 * 1 GB physical RAM (4 GB or more strongly recommended).
-* 10 GB available disk space for a minimal installation, 16 GB for a graphical desktop (more is recommended). In case you plan to use Btrfs snapshots a minimum of 40 GB for the root partition is recommended.
+* 10 GB available disk space for a minimal installation, 16 GB for a graphical desktop (more is recommended). In case you plan to use _Btrfs_ snapshots, a minimum of 40 GB for the root partition is recommended.
 * Supports most modern sound and graphics cards, 1024 x 768 display resolution (higher recommended).
 
 ### Precautions
@@ -112,6 +112,9 @@ To this we recommend adding the following partitions:
 1. one 'Leap bootloader' partition, about 200-500 MB large, using the _Btrfs_ filesystem, that will be hosting the GRUB (version 2) bootloader for Leap
 2. one 'Leap data' partition, about 50 GB large, using the _Btrfs_ filesystem, that will be hosting both the operating system and your user data.
 
+!!! warning
+    Alternatively you could re-use the _Ntfs_ Windows bootloader partition (ESP), installing GRUB on it and flagging it as `/boot/efi`. Chances are however that this partition will be around 100 MBs large, exposing you to the risk of running short of space as you install more bootloaders. Another drawback is that you won't be able to do `snapper` snapshots with it, as `snapper` requires `/boot` to be installed on an _Btrfs_ partition. see [Introduction to snapper](snapper.md) for details. Consider also [the official documentation](https://doc.opensuse.org/documentation/leap/reference/html/book.opensuse.reference/cha-snapper.html#sec-snapper-snapshot-boot) on snapper rollbacks.
+
 !!! info
     Scroll down to [pick a filesystem for data partitions](yast_installer.md#picking-a-file-system-for-data-partitions) to for more details as to why we recommend _Btrfs_.
 
@@ -156,15 +159,27 @@ If you are installing _Leap_ on a laptop, or generally on any machine accessible
 
 To apply full disk encryption while installing, you can either use the _Guided Setup_ feature or manually create the partition scheme first and then apply encryption. If you do the latter, you can simply reproduce the steps listed below:
 
-<u>Step by step (Guided Setup)</u>
-
-1. Select _Guided Setup_'_ from the _Disk_ screen
-2. Check _Enable LVM_'_ and _Enable Disk Encryption_, and enter a strong password in both text fields
+<u>Step by step (Guided Setup: LUKS + Btrfs)</u>
+1. Select _Guided Setup_ from the _Disk_ screen
+2. Check _Enable Disk Encryption_, and enter a strong password in both text fields
 3. Then, on the _Filesystem Options_ screen:
     * Select _Btrfs_.
     * Tick the _Enable Snapshots_ checkbox ([scroll up](yast_installer.md#picking-a-file-system-for-data-partitions) or see [this document](snapper.md) to understand the reason why we recommend this).
+    * Select _Btfs_ again as _File System Type_ for your any mount point / partition presented to you by the installer.
+
+Alternatively, if you prefer to turn to a different filesystem than _Btrfs_ (typically _Ext4_) follow the following steps:
+
+!!! warning
+    Using _Ext4_ on either `/` or `/boot` will prevent you from using `snapper` snapshots.
+
+<u>Step by step (Guided Setup: LUKS + LVM + Ext4)</u>
+1. Select _Guided Setup_'_ from the _Disk_ screen
+2. Check _Enable LVM_'_ and _Enable Disk Encryption_, and enter a strong password in both text fields
+3. Then, on the _Filesystem Options_ screen:
+    * Select _Ext4_.
+    * Tick the _Enable Snapshots_ checkbox ([scroll up](yast_installer.md#picking-a-file-system-for-data-partitions) or see [this document](snapper.md) to understand the reason why we recommend this).
     * Tick the _Propose Separate Home LVM Logical Volume_ checkbox.
-    * Select _Btfs_ again as _File System Type_ for your `/home` directory.
+    * Select _Ext4_ again as _File System Type_ for your `/home` directory.
     * Tick the _Propose Separate Swap LVM Logical Volume_.
 
 !!! info
