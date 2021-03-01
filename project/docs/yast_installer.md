@@ -160,6 +160,7 @@ If you are installing _Leap_ on a laptop, or generally on any machine accessible
 To apply full disk encryption while installing, you can either use the _Guided Setup_ feature or manually create the partition scheme first and then apply encryption. If you do the latter, you can simply reproduce the steps listed below:
 
 <u>Step by step (Guided Setup: LUKS + Btrfs)</u>
+
 1. Select _Guided Setup_ from the _Disk_ screen
 2. Check _Enable Disk Encryption_, and enter a strong password in both text fields
 3. Then, on the _Filesystem Options_ screen:
@@ -173,6 +174,7 @@ Alternatively, if you prefer to turn to a different filesystem than _Btrfs_ (typ
     Using _Ext4_ on either `/` or `/boot` will prevent you from using `snapper` snapshots.
 
 <u>Step by step (Guided Setup: LUKS + LVM + Ext4)</u>
+
 1. Select _Guided Setup_'_ from the _Disk_ screen
 2. Check _Enable LVM_'_ and _Enable Disk Encryption_, and enter a strong password in both text fields
 3. Then, on the _Filesystem Options_ screen:
