@@ -183,6 +183,9 @@ The installation process for Mac users interested in dual-booting Leap alongside
 
 Optionnally, you could create a new partition for your user data under `/home`. This partition would then be easily accessible to other operating systems installed on your machine. If you do so, make sure there is no `/home` subvolume created inside the partition assigned to `/`.
 
+!!! warning
+    Some recent Macs are reported to ship with firmware lock enabled by default. Refer to [this guide](https://support.apple.com/en-gb/HT204455) to disable it.
+
 ??? info
     After the installation you will want to switch between Leap and macOS. Simply hold the `alt` (option) key immediately after restarting and select Leap or macOS.
 
