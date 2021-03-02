@@ -92,10 +92,11 @@ Select one and press __Next__ to continue.
 
 ### Expert Partitioner
 #### About partition schemes
-All Linux distributions use the same "base" partition scheme:
+Most Linux distributions use the same "base" partition scheme:
 
 * a _bootloader partition_, hosting a small program called a _bootloader_, whose purpose is to take over from the UEFI/BIOS of your computer and set up the initial conditions for your operating system to get running 
 * a main _data partition_ (or _OS partition_), which is where the operating system (i.e. _Leap_), optionnally along with your personal user data, will be installed)
+* (recommended but not necessary) a swap partition of the size of your machine's RAM, + 1 GB
 
 If you are not interested in keeping whatever data or operating system is installed on the target machine, you can simply proceed with the base partition scheme. In that cases, simply run the installer and, on the _Disk_ screen, pick the _Suggested Partitioning_ option, and accept all recommendations there. 
 
@@ -121,15 +122,27 @@ Whichever option you choose, you can refer to the following instructions:
 1. From the _Disk_ view, select _Expert Partioner_
 2. Click the __Add Partition__ button (bottom left-hand side)
 3. Assign it at least 40 GBs, and set its filesystem to _Btrfs_, and the mount point to `/`. You could label this partition 'Leap OS'.
-4. (optionnally) Create a new partition by repeating (2) and (3), using `/home` for mount point. You could label it 'Linux home'. The partition will be accessible to other operating systems.
-5. (optionnally, if 4) Make sure there is no `/home` subvolume created inside the partition assigned to `/`. Remove if you find it.
-6. If it is not set already, set the `/boot/efi` flag your 'Windows bootloader' partition (the ~100MB partition probably using the _Fat32_ filesystem)
+4. If it is not set already, set the `/boot/efi` flag your 'Windows bootloader' partition (the ~100MB partition probably using the _Fat32_ filesystem)
+5. (recommended) Add a `swap` partition with a size equal to your current RAM + 1 GB.
 
 ??? info
     Even though this makes no difference from the installer's point of view, we recommend assigning meaningful labels to each partition, to make them easier to reidentify them.
 
+The result should look like this:
+
+<u>Check list: Expert partitioning for Windows</u>
+
+* (old) ... some other Windows partitions ...
+* (old) `/boot/efi`, _Fat32_, ~ 100 MB
+* (new) `/`, _Btrfs_, > 40 GB
+
 !!! warning
     Because you are installing the Leap bootloader on a non-btrfs partition, the bootloader will be outside of the scope of the snapshotting system. This means that you won't be able to rollback from a misconfigured bootloader settings, and that in general rolling back won't suffice to fix issues with your bootloader configuration. See [Introduction to snapper](snapper.md) for details. Consider also [the official documentation](https://doc.opensuse.org/documentation/leap/reference/html/book.opensuse.reference/cha-snapper.html#sec-snapper-snapshot-boot) on snapper rollbacks.
+
+Optionnally, you could create a new partition for your user data under `/home`. This partition would then be easily accessible to other operating systems installed on your machine. If you do so, make sure there is no `/home` subvolume created inside the partition assigned to `/`.
+
+??? info
+    After the installation you will want to switch between Leap and Windows. Use [these instructions](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/boot-to-uefi-mode-or-legacy-bios-mode) to learn how to reboot to your UEFI. From there you will be able to select Windows or Leap as boot destination.
 
 #### Installing Leap alongside preexistent Linux partitions
 You can follow the _Step by Step_ from the previous section, making sure that:
@@ -137,11 +150,42 @@ You can follow the _Step by Step_ from the previous section, making sure that:
 * you flag your already existent bootloader partition as `/boot/efi`
 * (if it already exists on the disk before installing _Leap_) you flag your user data partition as `/home`, or alternatively, that you apply steps (4 & 5) if you need to have a `/home` partition outside of `/`.
 
-??? warning
+!!! warning
     Make sure there is enough space (>100 MB is fine) on whatever partition you're installing your bootloader(s) to. Resize it if necessary.
 
+<u>Check list: Expert partitioning for multiple Linux distributions</u>
+
+* (old) ... some other partitions ...
+* (old) `/boot/efi`, preferably _Btrfs_, > 100 MB
+* (new) `/`, _Btrfs_, > 40 GB
+
+Optionnally, you could create a new partition for your user data under `/home`. This partition would then be easily accessible to other operating systems installed on your machine. If you do so, make sure there is no `/home` subvolume created inside the partition assigned to `/`.
+
+??? info
+    After the installation you will want to switch between Leap and whichever operating system you're using. Refer to your machine's manufacturer for instructions. If your machine had Windows preinstalled, use [these instructions](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/boot-to-uefi-mode-or-legacy-bios-mode) to learn how to reboot to your UEFI. From there you will be able to select the desired boot destination.
+
 #### Installing Leap alongside preexistent macOS partitions
-...
+The installation process for Mac users interested in dual-booting Leap alongside their mac OS partitions is simple:
+
+<u>Step by step: Expert partitioning for Mac</u>
+
+1. From the _Disk_ view, select _Expert Partioner_
+2. Click the __Add Partition__ button (bottom left-hand side)
+3. Create a new _Btrfs_ partition of at least 100 MB for the Leap bootloader. Set it the `/boot/efi` mount point. You could label this partition 'Leap bootloader'.
+4. Create a new _Btrfs_ partition of at least 40 GBs by repeating (2). Set it the `/` mount point. You could label this partition 'Leap OS'.
+5. (recommended) Create a `swap` partition with a size equal to your current RAM + 1 GB.
+
+<u>Check list: Expert partitioning for macOS</u>
+
+* (old) ... some macOS partitions ...
+* (new) `/boot/efi`, _Btrfs_, > 100 MB
+* (new) `/`, _Btrfs_, > 40 GB
+
+Optionnally, you could create a new partition for your user data under `/home`. This partition would then be easily accessible to other operating systems installed on your machine. If you do so, make sure there is no `/home` subvolume created inside the partition assigned to `/`.
+
+??? info
+    After the installation you will want to switch between Leap and macOS. Simply hold the `alt` (option) key immediately after restarting and select Leap or macOS.
+
 #### Picking a filesystem for data partitions
 The _Leap_ installer allows you to pick among several filesystems for _data partitions_, which for the purpose of this section we define as any partition mounted as `/` (root) or having root on its path (i.e. `/home`). Among the supported filesystems for data partitions you will find:
 
