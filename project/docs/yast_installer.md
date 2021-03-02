@@ -140,7 +140,7 @@ You can follow the _Step by Step_ from the previous section, making sure that:
 ??? warning
     Make sure there is enough space (>100 MB is fine) on whatever partition you're installing your bootloader(s) to. Resize it if necessary.
 
-#### Installing Leap alongside preexistent Linux partitions
+#### Installing Leap alongside preexistent macOS partitions
 ...
 #### Picking a filesystem for data partitions
 The _Leap_ installer allows you to pick among several filesystems for _data partitions_, which for the purpose of this section we define as any partition mounted as `/` (root) or having root on its path (i.e. `/home`). Among the supported filesystems for data partitions you will find:
