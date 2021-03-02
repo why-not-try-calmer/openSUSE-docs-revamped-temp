@@ -116,7 +116,7 @@ Alternatively, you might want to install your user data under a separate partiti
 
 Whichever option you choose, you can refer to the following instructions:
 
-<u>Step by step</u>
+<u>Step by step: Expert partitioning for Windows</u>
 
 1. From the _Disk_ view, select _Expert Partioner_
 2. Click the __Add Partition__ button (bottom left-hand side)
@@ -132,7 +132,7 @@ Whichever option you choose, you can refer to the following instructions:
     Because you are installing the Leap bootloader on a non-btrfs partition, the bootloader will be outside of the scope of the snapshotting system. This means that you won't be able to rollback from a misconfigured bootloader settings, and that in general rolling back won't suffice to fix issues with your bootloader configuration. See [Introduction to snapper](snapper.md) for details. Consider also [the official documentation](https://doc.opensuse.org/documentation/leap/reference/html/book.opensuse.reference/cha-snapper.html#sec-snapper-snapshot-boot) on snapper rollbacks.
 
 #### Installing Leap alongside preexistent Linux partitions
-You can follow the __Step by Step__ from the previous section, making sure that:
+You can follow the _Step by Step_ from the previous section, making sure that:
 
 * you flag your already existent bootloader partition as `/boot/efi`
 * (if it already exists on the disk before installing _Leap_) you flag your user data partition as `/home`, or alternatively, that you apply steps (4 & 5) if you need to have a `/home` partition outside of `/`.
@@ -163,7 +163,7 @@ If you are installing _Leap_ on a laptop, or generally on any machine accessible
 
 To apply full disk encryption while installing, you can either use the _Guided Setup_ feature or manually create the partition scheme first and then apply encryption. If you do the latter, you can simply reproduce the steps listed below:
 
-<u>Step by step (Guided Setup: LUKS + Btrfs)</u>
+<u>Step by step: Guided partitioning for LUKS on Btrfs</u>
 
 1. Select _Guided Setup_ from the _Disk_ screen
 2. Check _Enable Disk Encryption_, and enter a strong password in both text fields
