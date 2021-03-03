@@ -40,6 +40,9 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/openSUSE
       name: openSUSE GitHub
+
+extra_css: 
+    - styles.css
       
 markdown_extensions:
     - admonition
@@ -65,6 +68,7 @@ nav:
         - KDE Plasma basics: ""
         - GNOME basics: ""
         - Interlude -- Fundamental openSUSE concepts:
+            - Zypper: zypper.md
             - Snapper: snapper.md
         - Getting & installing software: ""
         - Updating and upgrading: ""
@@ -72,7 +76,9 @@ nav:
         - Troubleshooting with autonomy: ""
     - Completing and fine-tuning your setup:
         - Finding & installing additional software:
-            - NVIDIA driver: install_proprietary.md 
+            - Graphic Drivers: 
+                - Proprietary: install_proprietary.md
+                - Hybrid GPUs: hybrid_graphics.md
         - Security basics: ""
         - Wifi & network: ""
         - Power management: ""

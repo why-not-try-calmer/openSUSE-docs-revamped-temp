@@ -80,3 +80,4 @@ _Format_:
 $ sudo zypper dup
 ```
 * short snippets of code or not part of a stepwise recipe can be inlined as in "... run `sudo zypper dup` before anything else".
+* first occurrence(s) of technical terms: italics
