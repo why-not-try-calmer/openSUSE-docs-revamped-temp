@@ -1,7 +1,7 @@
 # Step by step guide for openSUSE Leap
 ## Before you continue
 
-This guide targets **openSUSE Leap**; however the differences between the installers for the openSUSE variants -- like Tumbleweed, MicroOS and Kubic -- are minuscule and most parts of the installer will be identical. This guide also assumes that you will have no other Linux, Windows or MacOS operating systems alongside openSUSE after you are done installing.
+This guide targets **openSUSE Leap**; however the differences between the installers for the openSUSE variants -- like Tumbleweed, MicroOS and Kubic -- are minor and most parts of the installer will be identical. This guide also assumes that you will have no other Linux, Windows or MacOS operating systems alongside openSUSE after you are done installing.
 
 !!! warning
     Expect slight differences in *System Role* and *Installation Settings*.
@@ -20,25 +20,25 @@ This guide targets **openSUSE Leap**; however the differences between the instal
 * In case you are using a Network image (Netiso) make sure that you have a strong internet connection. A wired connection is always more reliable than a wifi signal.
 * If installing on a laptop, it is considered good practice to plug in the AC charger.
 
-You are now ready to boot the USB drive prepared as explained above and turn on your computer. Boot from the USB drive and select installation from the boot menu.
+You are now ready to boot the USB drive, which you have previously prepared as explained above and turn on your computer. Boot from the USB drive and select installation from the boot menu.
 
 If you want to see the details of the installation while the installer is booting you can press the `ESC` key.
 
 ??? info   
-    On the left you will see a list of items where you can follow the steps you will take next or took already. You can always press `Back` in case you want to change something you configured earlier.
+    On the left you will see a list of items where you can follow the steps you will take next or have already taken. You can always press `Back` in case you want to change something you configured earlier.
 ## Getting started    
 ## Welcome
 ### Language, keyboard and license agreement
 
 *Welcome to the YaST installer!*
 
-Here can change the language under `Language` (Alt+L), change the keyboard layout under `Keyboard Layout` (Alt+K) and you have a chance to test your selected keyboard layout in the field under `Keyboard Test` (Alt+y).
+Here you can change the language under `Language` (Alt+L), change the keyboard layout under `Keyboard Layout` (Alt+K) and you have a chance to test your selected keyboard layout in the field under `Keyboard Test` (Alt+y).
 
 The `License Agreement` informs you on roles, responsibilities and potential limitations.
 
 ## Network activation
 !!! note "Online repositories"
-    If you have an active internet conenction over an ethernet cable connected to your computer, right after you pass the *"Language, Keyboard and License Agreement"* section you will be prompted with a question if you want to *"Activate online repositories now?"*.It is recommended to select *Yes* which will provide with a list repositories, pre-selecting the main ones in advance. 
+    If you have an active internet conenction over an ethernet cable connected to your computer, right after you pass the *"Language, Keyboard and License Agreement"* section you will be prompted, asking if you want to *"Activate online repositories now?"*.It is recommended to select *Yes* which will provide you with a list of repositories, pre-selecting the main ones in advance. 
 
 ### Network settings
 You can skip this part if:
@@ -47,7 +47,7 @@ You can skip this part if:
 
 If you don't have a network connection -- because you have don't have an ethernet port or you're using wireless connections only -- you will be prompted to configure your network settings. By default the YaST system installer is using _Wicked_ as the network controller. Keep in mind that if you choose to use _Network Manager_ (NM) instead of _Wicked_, your network configuration will not be transferred from _Wicked_ to _Network Manager_.
 
-You will see a list of available network adapters in a list from which you can select the one that you wish to configure and press `Edit`. In case of configuring a wireless adapter you will see the `Wireless Specific` tab open. Here you can `Scan Network`, select the name of you wireless network (SSID), select the authentication mode -- which is in most cases will be WPA-PSK "home" -- and input your password. 
+You will see a list of available network adapters in a list from which you can select the one that you wish to configure and press `Edit`. In case of configuring a wireless adapter you will see the `Wireless Specific` tab open. Here you can `Scan Network`, select the name of your wireless network (SSID), select the authentication mode -- which in most cases will be WPA-PSK "home" -- and input your password. 
 On the `Addresses` tab you will be able to configure the IP address of your adapter. You can select `Dynamic Address` in which case you will receive an address from your router/other dhcp server on your network or `Statically Assigned IP Address` in which case you need to type an ip address, a subnet mask and a hostname. Click `Next` when finished.    
 ![Wireless configuration](image/yast_wireless_specific.png)
 
@@ -105,7 +105,7 @@ Select your region and the time zone that you want to use for the system. The ha
 ## User Settings
 ### Local User
 
-At this point you can create a local user or skipping that by selecting _Skip User Creation_ you can set up a password for `root`. 
+At this point you can create a local user or skip that by selecting _Skip User Creation_ you can set up a password for `root`. 
 You need to fill out the empty fields in order to create a first user:
 
 * _User's Full Name_: A human-friendly version of your username, which will be shown in login windows for example.

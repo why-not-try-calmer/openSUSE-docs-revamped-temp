@@ -10,7 +10,7 @@
 7. Run `psexec -s -i regedit.exe`
 8. Navigate to find the keys under `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\BTHPORT\Parameters\Keys`.  If there is no _CurrentControlSet_, try _ControlSet001_.
 9. You should see a few keys labels with the MAC addresses -- write down the MAC address associated with the unique identifier you copied before.
-10. Go back to Linux (if not in Linux) and add our Windows key to our Linux config entries. Just note that the Bluetooth port's MAC address is formatted differently when moving from Windows to Linux - referenced as aa1122334455 in Windows in my example above. The Linux version will be in all caps and punctuated by ':' after every two characters - for example `AA:11:22:33:44:55`.  
+10. Go back to Linux (if not in Linux) and add your Windows key to your Linux config entries. Just note that the Bluetooth port's MAC address is formatted differently when moving from Windows to Linux - referenced as aa1122334455 in Windows in my example above. The Linux version will be in all caps and punctuated by ':' after every two characters - for example `AA:11:22:33:44:55`.  
 11. Switch to root: do `sudo -s`
 12. `cd` to your Bluetooth config location at `/var/lib/bluetooth/[bth port  MAC addresses]`
 13. Here you'll find folders for each device you've paired with. The folder names being the Bluetooth devices' MAC addresses and contain a single file info. In these files, you'll see the link key you need to replace with your Windows ones, like so:

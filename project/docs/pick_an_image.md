@@ -31,8 +31,8 @@ Pick Tumbleweed if you intend to use your machine as a desktop machine, unless y
 * You don't want or you cannot update frequently over the network, because you have a very limited bandwidth or unreliable internet access.
 * You cannot afford to reboot your computer frequently to install updates.
 * You don't want to use, or for some reason cannot afford to switch between, different snapshots.
-* You have an old computer (more than 7-year old) which cannot take advantage of recent kernels.
-* You have a fixed set of packages you know you are going to install once and forget about, and usually you never want to have anything to do with command line utilities.
+* You have an old computer (more than 7-years old) which cannot take advantage of recent kernels.
+* You have a fixed set of packages you know you are going to install once and forget about, and you would prefer to never have anything to do with the command line utilities.
 
 ??? info
     It is not recommended for new users, however, it is possible to use microOS on a desktop computer, taking advantage of transactional updates. This might be appealing to advanced users who want to provide friends or relatives with an operating system that will require no maintenance from them, and very little from you. You might be interested in [this page]() for more about this use case.
@@ -42,7 +42,7 @@ Leap offers the __GNOME__ and __KDE Plasma__ desktop environments by default. Tu
 
 Modern desktop environments have evolved into highly consistent and productive computing experiences. Choosing the right desktop environment for you can be a deeply personal experience; many people feel as passionately about their desktop environment as they do their distribution. 
 
-One of the distinguishing options of openSUSE, during the installation, is the ability to choose a desktop environment. This provides a certain level of assurance that you will have a well-supported desktop experience for that respective desktop environment, no derivatives or spin-offs needed.
+One of the distinguishing options of openSUSE, during the installation, is the ability to choose a desktop environment. This provides a certain level of assurance that you will have a well-supported desktop experience for that desktop environment, no derivatives or spin-offs needed.
 
 ## Installation
 
@@ -99,7 +99,7 @@ The descriptions below are as provided by the respective projects.
 Another option for a __System Role__ is the __Generic Desktop__ environment. This option enables __IceWM__, but also allows selection of one of the optional desktop environments later, during the __Software__ selection of the installation. If you intend to choose one of the other desktop environments, choose __Yes__, when asked "Activate online repositories now?" and ensure __Main Repository (OSS)__ is enabled on the __Online Repositories__ step.
 
 #### IceWM
-> IceWM is a window manager for the X Window System. The goal of IceWM is speed, simplicity, and not getting in the user’s way. It comes with a taskbar with pager, global and per-window keybindings and a dynamic menu system. Application windows can be managed by keyboard and mouse. Windows can be iconified to the taskbar, to the tray, to the desktop or be made hidden. They are controllable by a quick switch window (Alt+Tab) and in a window list.
+> IceWM is a window manager for the X Window System. The goal of IceWM is speed, simplicity, and not getting in the user’s way. It comes with a taskbar with pager, global and per-window keybindings and a dynamic menu system. Application windows can be managed by the keyboard and mouse. Windows can be iconified to the taskbar, to the tray, to the desktop or be hidden. They are controllable by a quick switch window (Alt+Tab) and in a window list.
 >
 > [Ice-WM.org](https://ice-wm.org/)
 
