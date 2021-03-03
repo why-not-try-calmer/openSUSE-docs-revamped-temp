@@ -9,7 +9,7 @@ Are you looking for **better** Linux documentation? You are in the right place. 
 to provide a user friendly guide for quickly installing and setting up openSUSE with minimum fuss.
 
 ## For new users
-The documentation is laid out in a user friendly way. It caters for beginners or people new to Linux, and helps you get running quickly. Installing Linux can seem daunting at first, because there are a lot of new concepts, choices, and options. Choice is good, but it can sometimes be overwhelming or confusing.
+The documentation is laid out in a user friendly way. It caters to beginners and other people new to Linux, and helps you get running quickly. Installing Linux can seem daunting at first, because there are a lot of new concepts, choices, and options. Choice is good, but it can sometimes be overwhelming and confusing.
 
 Initially, the installation instruction will cover only the necessary options and configuration choices to help you quickly set up a running system with defaults suitable for daily use. With the system running and productive you can learn how to perform different routine system tasks such as installing apps, adjusting the system settings, or customizing openSUSE. And, if you're so inclined, start honing your Linux skills.
 
@@ -22,7 +22,7 @@ openSUSE and how things are different to other Linux distros. Links to advanced 
 ### Pre-install
 The pre-install documentation gives you everything you need to get a system running. This can be a simple installation using default settings, or you can make a few choices, such as choosing a desktop environment. You can find out more about things like desktop environments in this section.
 
-For experienced users, this section describes what differentiates openSUSE from other distros, and helps you get to know the unique features and make informed choises during the install process. For example, find out about the power of snapshots using Btrfs, advanced distros featuring atomic transactional updates, and distros designed to run container loads.
+For experienced users, this section describes what differentiates openSUSE from other distros, and helps you get to know the unique features and make informed choices during the install process. For example, find out about the power of snapshots using Btrfs, advanced distros featuring atomic transactional updates, and distros designed to run container loads.
 
 ### Install
 Now that you have a plan, this section will walk you through preparing installation media, and performing the installation based on the choice you made during pre-install.
