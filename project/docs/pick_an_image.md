@@ -27,13 +27,16 @@ It is worth noting that Leap provides a Linux kernel that is several years behin
 This means that you might be better served by Tumbleweed if you have a recent computer or rely extensively on "exotic" hardware.
 
 ### Our recommendation
-Pick Tumbleweed if you intend to use your machine as a desktop machine, unless you are concerned with any of these blockers:
+Pick Tumbleweed if you intend to use your machine as a desktop machine unless:
 
-* You have a very limited bandwidth or unreliable internet access.
+* You have a very limited bandwidth or an unreliable access to the Internet.
+* You have an old (7+ years old mechanical hard drive that will struggled with frequent, numerous updates.
 * You cannot afford to reboot your computer frequently to install updates.
 * You don't want to use, or switch between, different snapshots.
-* Your computer is more than 7 years old and cannot take advantage of recent kernels.
-* You know exactly what packages you are going to install once and forget about, and usually you don't use command line utilities.
+* Your rely on specific versions of fundamental softwares (such as a specific version of a package, including hardware drivers, and generally speaking you don't want or cannot take advantage of recent packages, including recent kernels.
+* You would rather not do package management manually, and more generally, you would rather avoid using the command line.
+
+The more conditions apply to your use case, the stronger we recommend you to install Leap instead of Tumbleweed.
 
 ??? info
     It is not recommended for new users, however, it is possible to use microOS on a desktop computer, taking advantage of transactional updates. This might appeal to advanced users who want to provide friends or relatives with an operating system that will require little to no maintenance. You might be interested in [our microOS documentation](microos_getting_started.md) for more about this use case.
