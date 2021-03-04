@@ -30,11 +30,11 @@ This means that you might be better served by Tumbleweed if you have a recent co
 Pick Tumbleweed if you intend to use your machine as a desktop machine unless:
 
 * You have a very limited bandwidth or an unreliable access to the Internet.
-* You have an old (7+ years old mechanical hard drive that will struggled with frequent, numerous updates.
+* You have an old (7+ years old mechanical hard drive that will struggle with frequent, numerous updates.
 * You cannot afford to reboot your computer frequently to install updates.
 * You don't want to use, or switch between, different snapshots.
-* Your rely on specific versions of fundamental softwares (such as a specific version of a package, including hardware drivers, and generally speaking you don't want or cannot take advantage of recent packages, including recent kernels.
-* You would rather not do package management manually, and more generally, you would rather avoid using the command line.
+* Your rely on specific versions of important packages, including hardware drivers, and generally speaking you don't want or cannot take advantage of recent packages, including recent kernels.
+* You would rather not do package management manually and more generally, you would rather avoid using the command line.
 
 The more conditions apply to your use case, the stronger we recommend you to install Leap instead of Tumbleweed.
 
