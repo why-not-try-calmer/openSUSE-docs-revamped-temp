@@ -1,7 +1,7 @@
 ## Enabling Hybrid Graphics
 ###Intel and Nvidia
 ####Installation
-1. [Install the correct Nvidia driver.](/install_proprietary.md) If using xorg 1.20.6 or greater, this is all that is required if you want to use the Intel GPU as your primary and have the ability to offload specific applications to the GPU. If that's the case, you can skip to the offloading section below. If you are using a release that includes an older version of xorg, such as Leap 15.2, or you wish to exclusively use the Intel or Nvidia card, continue to the next section.
+1. [Install the correct Nvidia driver.](install_proprietary.md) If using xorg 1.20.6 or greater, this is all that is required if you want to use the Intel GPU as your primary and have the ability to offload specific applications to the GPU. If that's the case, you can skip to the offloading section below. If you are using a release that includes an older version of xorg, such as Leap 15.2, or you wish to exclusively use the Intel or Nvidia card, continue to the next section.
 ####Set the Nvidia card as your active GPU
 1. Install the the __suse_prime__ package using zypper or Yast.
 2. To enable the Nvidia GPU, run `sudo prime-select nvidia` from the command line. Log off and back on.
@@ -9,7 +9,7 @@
 
 ###Recent AMD APUs and Nvidia
 ####Installation
-1. [Install the correct Nvidia driver.](/install_proprietary.md) If using xorg 1.20.6 or greater, this is all that is required if you want to use the AMD GPU as your primary and have the ability to offload specific applications to the GPU. If that's the case, you can skip to the offloading section below. If you are using a release that includes an older version of xorg, such as Leap 15.2, or you wish to exclusively use the Intel or Nvidia card, continue to the next section.
+1. [Install the correct Nvidia driver.](install_proprietary.md) If using xorg 1.20.6 or greater, this is all that is required if you want to use the AMD GPU as your primary and have the ability to offload specific applications to the GPU. If that's the case, you can skip to the offloading section below. If you are using a release that includes an older version of xorg, such as Leap 15.2, or you wish to exclusively use the Intel or Nvidia card, continue to the next section.
 ####Set the Nvidia card as your active GPU
 1. Install the the __suse_prime__ package using zypper or Yast.
 2. To enable the Nvidia GPU, run `sudo prime-select nvidia` from the command line. Log off and back on.

@@ -31,4 +31,4 @@
 
 
 ###Hybrid Graphics/Optimus
-1. See [Hybrid Graphics](/hybrid_graphics.md)
+1. See [Hybrid Graphics](hybrid_graphics.md)
