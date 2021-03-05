@@ -7,15 +7,15 @@ __NB__: Unless mentioned otherwise, a document corresponding to a parent section
     * FAQ: Issues & solutions
 2. Preparing the installation media: [image_choice.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/image_choice.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/26)
     * requisites
-    * step by step guide on
-       * full disk install
-       * multiple boot
-       * disk partitioning
-       * disk encryption
-       * snapshots/btrfs
+    * step by step guide
 ### Installing
-3. Step by step guide: [yast_installer.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/yast_installer.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/60)
-4. Quick install for experienced users
+3. Step by step guide: [yast_installer.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/yast_installer.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/60) touching on
+    * full disk install
+    * multiple boot
+    * disk partitioning
+    * disk encryption
+    * snapshots/btrfs
+5. Quick install for experienced users
    * MicroOS: [microos_getting_started.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/microos_getting_started.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/24)
 ### Distro basics
 5. KDE Plasma basics
