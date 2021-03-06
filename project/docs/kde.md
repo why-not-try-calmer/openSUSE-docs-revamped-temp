@@ -13,3 +13,11 @@ What makes KDE software on openSUSE special:
 * It has a team of dedicated engineers who spend much of their time fixing bugs so you can rely on KDE.
 * It has a large, active and highly experienced community team around it who bring multiple points of view and different interests to the project so that KDE software on openSUSE meets many users' needs.
 * Through its innovation it stimulates the openSUSE distribution to develop, evolve and progress.
+
+#### X11, XWayland & Wayland sessions
+
+#### Settings & Keybindings
+
+#### Using panes, bars, widgets & docks
+
+#### Learning more
