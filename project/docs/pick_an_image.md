@@ -9,40 +9,44 @@ If you are a desktop user, openSUSE offers the choice between two Linux distribu
 Tumbleweed is a _rolling-release_ distribution: instead of having fixed points where you will be offered to perform a system upgrade (think of Windows, Ubuntu, or macOS, where each numbered version leads to the next), you will be frequently offered to upgrade multiple components of your system.
 
 ??? info
-    Those components are called _packages_, because they "pack" the programs and resources making up most of your system, along with tools to install them). "Upgrading" means "Upgrading packages" (i.e. those that constitute you Linux distribution).
+    Those components are called _packages_, because they "pack" the programs and resources making up most of your system, along with tools to install them). "Upgrading" means "Upgrading packages" (such as those that constitute your Linux distribution).
 
-Even though Tumbleweed uses a rolling-release model, it is very stable: the packages are thoroughly tested and tried, and you can always revert back to the previous state of Tumbleweed (in jargon: "switching to the previous snapshot". Snapshots are explained [here]()).
+Even though Tumbleweed uses a rolling-release model, it is very stable: openSUSE thoroughly tests every package before going into an update, ensuring the stability of your system. Moreover you can always revert back to the previous state of Tumbleweed (in jargon: "switch to the previous snapshot". Snapshots are explained [here](snapper.md)).
 
 What you have to bear in mind, however, is that Tumbleweed requires a reliable internet connection and a healthy hard drive to work as designed. It also requires that you sometimes take interest in the updating process.
 
 ### Leap
-Leap is a more traditional distribution: it uses a fixed-points release model, just like Windows, Ubuntu, or macOS. Leap is a very battle-hardened operating system, mostly made up of packages brought over from SUSE Linux Entreprise, a commercial Linux operating system for servers, and of packages from Tumbleweed after they were tested, tried and used by the community.
+Leap is a more traditional distribution: it uses a fixed-points release model, just like Windows, Ubuntu, or macOS. Leap is a very battle-hardened operating system, mostly made up of packages brought over from SUSE Linux Enterprise, a commercial Linux operating system for servers, and of packages from Tumbleweed after they were tested, tried and used by the community.
 
 It is worth noting that Leap provides a Linux kernel that is several years behind the version offered by Tumbleweed. 
 
 ??? info
-    The kernel is the heart of any Linux operating system. It is key for a smooth user experience with recent machines, especially laptops and computers heavily relying on peripherals.
+    The kernel is the heart of any Linux operating system. It translates your keystrokes and mouse clicks into the ones and zeros the computer understands, and is updated regularly so that the computer can respond to new hardware added to the system." 
+.
     
 This means that you might be better served by Tumbleweed if you have a recent computer or rely extensively on "exotic" hardware.
 
 ### Our recommendation
-Pick Tumbleweed if you intend to use your machine as a desktop machine, unless you are concerned with any of these blockers:
+Pick Tumbleweed if you intend to use your machine as a desktop machine unless:
 
-* You don't want or you cannot update frequently over the network, because you have a very limited bandwidth or unreliable internet access.
+* You have a very limited bandwidth or an unreliable access to the Internet.
+* You have an old (7+ years old mechanical hard drive that will struggle with frequent, numerous updates.
 * You cannot afford to reboot your computer frequently to install updates.
-* You don't want to use, or for some reason cannot afford to switch between, different snapshots.
-* You have an old computer (more than 7-year old) which cannot take advantage of recent kernels.
-* You have a fixed set of packages you know you are going to install once and forget about, and usually you never want to have anything to do with command line utilities.
+* You don't want to use, or switch between, different snapshots.
+* Your rely on specific versions of important packages, including hardware drivers, and generally speaking you don't want or cannot take advantage of recent packages, including recent kernels.
+* You would rather not do package management manually and more generally, you would rather avoid using the command line.
+
+The more conditions apply to your use case, the stronger we recommend you to install Leap instead of Tumbleweed.
 
 ??? info
-    It is not recommended for new users, however, it is possible to use microOS on a desktop computer, taking advantage of transactional updates. This might be appealing to advanced users who want to provide friends or relatives with an operating system that will require no maintenance from them, and very little from you. You might be interested in [this page]() for more about this use case.
+    It is not recommended for new users, however, it is possible to use microOS on a desktop computer, taking advantage of transactional updates. This might appeal to advanced users who want to provide friends or relatives with an operating system that will require little to no maintenance. You might be interested in [our microOS documentation](microos_getting_started.md) for more about this use case.
 
 ## Desktop Environments
 Leap offers the __GNOME__ and __KDE Plasma__ desktop environments by default. Tumbleweed offers __GNOME__, __KDE Plasma__, and __XFCE__. These options are chosen during the __System Role__ section of the installation. Additional options are available in the __Software__ selection of the installer. These desktop environment patterns may also be viewed and modified with the [YaST](/yast/) __Software Management__ module.
 
 Modern desktop environments have evolved into highly consistent and productive computing experiences. Choosing the right desktop environment for you can be a deeply personal experience; many people feel as passionately about their desktop environment as they do their distribution. 
 
-One of the distinguishing options of openSUSE, during the installation, is the ability to choose a desktop environment. This provides a certain level of assurance that you will have a well-supported desktop experience for that respective desktop environment, no derivatives or spin-offs needed.
+One of the distinguishing options of openSUSE, during the installation, is the ability to choose a desktop environment. This provides a certain level of assurance that you will have a well-supported desktop experience for that desktop environment, no derivatives or spin-offs needed.
 
 ## Installation
 
@@ -99,7 +103,7 @@ The descriptions below are as provided by the respective projects.
 Another option for a __System Role__ is the __Generic Desktop__ environment. This option enables __IceWM__, but also allows selection of one of the optional desktop environments later, during the __Software__ selection of the installation. If you intend to choose one of the other desktop environments, choose __Yes__, when asked "Activate online repositories now?" and ensure __Main Repository (OSS)__ is enabled on the __Online Repositories__ step.
 
 #### IceWM
-> IceWM is a window manager for the X Window System. The goal of IceWM is speed, simplicity, and not getting in the user’s way. It comes with a taskbar with pager, global and per-window keybindings and a dynamic menu system. Application windows can be managed by keyboard and mouse. Windows can be iconified to the taskbar, to the tray, to the desktop or be made hidden. They are controllable by a quick switch window (Alt+Tab) and in a window list.
+> IceWM is a window manager for the X Window System. The goal of IceWM is speed, simplicity, and not getting in the user’s way. It comes with a taskbar with pager, global and per-window keybindings and a dynamic menu system. Application windows can be managed by the keyboard and mouse. Windows can be iconified to the taskbar, to the tray, to the desktop or be hidden. They are controllable by a quick switch window (Alt+Tab) and in a window list.
 >
 > [Ice-WM.org](https://ice-wm.org/)
 

@@ -60,7 +60,7 @@ $  gpg --verify <Target Checksum.iso.sha256>
 The check passes just in case the command outputs calls it a success.
 
 !!! warning
-    If the check fails, make sure you are honouring our [assumptions](#assumptions-definitions).
+    If the check fails, make sure you are honoring our [assumptions](#assumptions-definitions).
 
 ### Integrity check
 It is an instance of the command:
@@ -76,10 +76,10 @@ In this section you will learn how to get to a running installer for _Tumbleweed
 - Having the media adequately partioned to host the image, and making it bootable
 - Booting on the external media and run the installer.
 
-We will be assuming that you have downloaded an installation image and optionnally, have performed an authenticity check on it -- see the above sections for details. The next section also assumes that you will be using a USB flash drive as the installation media. The section after that handles external hard drives.
+We will assume that you have downloaded an installation image and optionally, have performed an authenticity check on it -- see the above sections for details. The next section also assumes that you will be using a USB flash drive as the installation media. The section after that handles external hard drives.
 
 ### Prepare the installation media (USB flash drive)
-The process for preparing the installation media varies depending on the operating system from which you are following these steps. In different operating systems offer different applications. We recommend using any of the following programs, which we have tested and which are known to be simple to use and reliable on their respective available platforms:
+The process for preparing the installation media varies depending on the operating system from which you are following these steps. Different operating systems offer different applications. We recommend using any of the following programs, which we have tested and which are known to be simple to use and reliable on their respective platforms:
 - Fedora Image Writer ([Windows](https://getfedora.org/fmw/FedoraMediaWriter-win32-latest.exe), Linux [[flatpak](https://flathub.org/apps/details/org.fedoraproject.MediaWriter)], [macOS](https://getfedora.org/fmw/FedoraMediaWriter-osx-latest.dmg))
 
 For _Fedora Image Writer_:
@@ -92,4 +92,6 @@ Once writing the image is done, you are ready to reboot from the USB drive. Leav
 
 ### Reboot to the device
 #### Windows
-Use [these instructions](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/boot-to-uefi-mode-or-legacy-bios-mode) to reboot to your BIOS or UEFI. From there you will be able to select as boot target the USB flash drive hosting the installation image.
+Use [these instructions](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/boot-to-uefi-mode-or-legacy-bios-mode) to reboot to your BIOS or UEFI. From there you will be able to select the USB flash drive hosting the installation image as boot destination.
+#### macOS
+Simply hold the `alt` (option) key immediately after restarting and select the openSUSE bootloader from there.
