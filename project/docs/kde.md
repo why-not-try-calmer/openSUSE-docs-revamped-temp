@@ -19,7 +19,7 @@ What makes KDE software on openSUSE special:
 #### Settings & Keybindings
 
 KDE settings can be customized through the __System Settings__ application found in 
-_Application Launcher --> Settings --> System Settings. A convenient shortcut for System Settings can be found on the system panel as well. KDE is extremely customizabl,to find more specific help visit the [Plasma Wiki](https://userbase.kde.org/Plasma)
+_Application Launcher --> Settings --> System Settings_. A convenient shortcut for System Settings can be found on the system panel as well. KDE is extremely customizabl,to find more specific help visit the [Plasma Wiki](https://userbase.kde.org/Plasma)
 
 Keybindings or keyboard shortcuts are an efficient way to interact with KDE without having to use the mouse. In __System Settings__ click __Shortcuts__ under the "Workspace" category.
 You will be able to find any pre-existing shortcuts for many KDE applications as well as create your own shortcuts for any applications you install yourself. The __Custom Shortcuts_ menu allows you to create shortcuts for almost any system task.
