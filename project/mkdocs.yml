@@ -65,7 +65,7 @@ nav:
         - Quick install for experienced users:
             - microOS specials: microos_getting_started.md
     - Distro basics:
-        - KDE Plasma basics: ""
+        - KDE Plasma basics: kde.md
         - GNOME basics: ""
         - Interlude -- Fundamental openSUSE concepts:
             - Zypper: zypper.md
