@@ -20,6 +20,12 @@
 2. For example, to run __supertuxkart__ using the the Nvidia driver, you can run `__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia __VK_LAYER_NV_optimus=NVIDIA_only supertuxkart`.
 3. To launch a game from Steam using the Nvidia driver, you can modify properties of the game, by choosing __Set Launch Options__ and adding `__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia __VK_LAYER_NV_optimus=NVIDIA_only %command%`.
 4. Additionally, to launch some programs (e.g. Minecraft or Steam) using the dGPU, you need to add the following lines to `/etc/X11/xorg.conf` (create the file if it does not exist). Note that this only applies to X.Org sessions.
+
+:   !!! warning
+        This is not needed if you are using `suse-prime`. After enabling to the NVIDIA card once,
+        the file `/etc/X11/xorg.conf.d/90-intel.conf` will be created automatically, with content
+        matching the one below.
+        
 ```
 Section "Device"
   Identifier "iGPU"
@@ -36,7 +42,7 @@ Section "Device"
   Driver "nvidia"
 EndSection
 ```
-This allows the creation of Nvidia GPU _screens_, and after the fact, a new entry should be added to the output of `xrandr --listproviders`, in a way that your output should show an entry like this:
+This allows the creation of Nvidia _GPU screens_, and after the fact, a new entry should be added to the output of `xrandr --listproviders`, in a way that your output should show an entry like this:
 ```
 Provider 1: id: 0x240; cap: 0x2 (Sink Output); crtcs: 4; outputs: 1; associated providers: 1; name: NVIDIA-G0
     output HDMI-1-0
