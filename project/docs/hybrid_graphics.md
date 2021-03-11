@@ -1,5 +1,5 @@
 ## Enabling Hybrid Graphics
-here goes an interesting introduction and a brief explanation of what this section is about, e.g. why this is needed and who is it for.
+[ here goes an interesting introduction and a brief explanation of what this section is about, e.g. why this is needed and who is it for. ]
 ###Dedicated NVIDIA GPU
 ####Getting the necessary software
 1. [Install the correct Nvidia driver](install_proprietary.md).
