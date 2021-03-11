@@ -1,12 +1,21 @@
 ## Enabling Hybrid Graphics
-[ here goes an interesting introduction and a brief explanation of what this section is about, e.g. why this is needed and who is it for. ]
+This section is dedicated to users with dual GPU setups, often the case for gaming or high end laptops. On these hardware combinations, the software usually picks an integrated graphics processor for low performance applications and switch to the dedicated GPU for more demanding tasks, such as videogames, 3D modelling, video editing and (de)coding content.
+
+Some software makes use of certain capabilites by just installing the necessary GPU drivers or software extensions. For example, Kdenlive can use VAAPI and NVENC without needing to offload the entire program to the dedicated GPU. The same applies to Open Broadcaster Software Studio.
+
+Certain hardware combinations have a multiplexer (_mux_), which is a hardware component that behaves like a hardware switch, and can be used to select the main graphics processor through the UEFI setup tool. This option is preferred if your hardware has one, as it performs better because there is no render offloading involved. On laptops, the HDMI and DisplayPort outputs are usually connected directly to the dedicated GPU; this means that if you use an external monitor you may get better performance.
+
+It is recommended to have your system up to date before proceeding to the next steps.
+
 ###Dedicated NVIDIA GPU
+To use an external monitor or be able to offload rendering to the NVIDIA GPU, you'll need to follow the next steps. The external monitor will work when you switch to the NVIDIA GPU.
+
 ####Getting the necessary software
 1. [Install the correct Nvidia driver](install_proprietary.md).
-2. Install the the __suse-prime__ package using zypper or YaST.  If you want to install via zypper run the following command in a terminal session: `sudo zypper in suse-prime`. Users on NVIDIA graphic cards released before GeForce 600 series should instead install __suse-prime-bbswitch__.
+2. Install the __suse-prime__ package using zypper or YaST. If you want to install via zypper run the following command in a terminal session: `sudo zypper in suse-prime`. Users on NVIDIA graphic cards released before GeForce 600 series should instead install __suse-prime-bbswitch__.
 :   !!! info 
         In case you are using KDE, a widget called _SUSE Prime Selector_ can be added as graphical way to switch graphics. Just right-click your desktop and go to _Add Widgets..._.
-3. To offload rendering to the dedicated GPU (NVIDIA Optimus) please see [Offloading specific applications to the Nvidia GPU](hybrid_graphics.md#Offloading specific applications to the Nvidia GPU). This allows you to use both graphical units simultaneously.
+3. To offload rendering to the dedicated GPU (NVIDIA Optimus) please see [Offloading specific applications to the Nvidia GPU](hybrid_graphics.md#offloading-specific-applications-to-the-nvidia-gpu). This allows you to use both graphical units simultaneously.
 
 ###Intel and NVIDIA
 * From the a terminal session, you can switch your main GPU too: for the NVIDIA GPU run `sudo prime-select nvidia`; conversely, for the Intel GPU run `sudo prime-select intel`. After executing either command, log out and back on to apply the changes.
