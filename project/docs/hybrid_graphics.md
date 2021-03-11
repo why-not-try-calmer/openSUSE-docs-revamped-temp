@@ -1,7 +1,7 @@
 ## Enabling Hybrid Graphics
 here goes an interesting introduction and a brief explanation of what this section is about, e.g. why this is needed and who is it for.
-
-###Getting the necessary software
+###Dedicated NVIDIA GPU
+####Getting the necessary software
 1. [Install the correct Nvidia driver](install_proprietary.md).
 2. Install the the __suse-prime__ package using zypper or YaST.  If you want to install via zypper run the following command in a terminal session: `sudo zypper in suse-prime`. Users on NVIDIA graphic cards released before GeForce 600 series should instead install __suse-prime-bbswitch__.
 :   !!! info 
@@ -39,3 +39,7 @@ If everything worked out fine for you, feel free to copy and modify the _.deskto
     
 This makes the desired program offload to the dedicated GPU everytime you launch it from the shortcut.
         
+###Dedicated AMD GPU
+To offload anything to the AMD GPU simply use the special enviroment variable to launch the desired program, as per the following example:
+
+    DRI_PRIME=1 supertuxkart
