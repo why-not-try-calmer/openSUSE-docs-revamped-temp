@@ -1,43 +1,45 @@
 ## Enabling Hybrid Graphics
-###Intel and Nvidia
-####Installation
-1. [Install the correct Nvidia driver.](install_proprietary.md) If using xorg 1.20.6 or greater, this is all that is required if you want to use the Intel GPU as your primary and have the ability to offload specific applications to the GPU. If that's the case, you can skip to the offloading section below. If you are using a release that includes an older version of xorg, such as Leap 15.2, or you wish to exclusively use the Intel or Nvidia card, continue to the next section.
-####Set the Nvidia card as your active GPU
-1. Install the the __suse-prime__ package using zypper or Yast.
-2. To enable the Nvidia GPU, run `sudo prime-select nvidia` from the command line. Log off and back on.
-3. To enable the Intel GPU, run `sudo prime-select intel` from the command line. Log off and back on.
+[ here goes an interesting introduction and a brief explanation of what this section is about, e.g. why this is needed and who is it for. ]
+###Dedicated NVIDIA GPU
+####Getting the necessary software
+1. [Install the correct Nvidia driver](install_proprietary.md).
+2. Install the the __suse-prime__ package using zypper or YaST.  If you want to install via zypper run the following command in a terminal session: `sudo zypper in suse-prime`. Users on NVIDIA graphic cards released before GeForce 600 series should instead install __suse-prime-bbswitch__.
+:   !!! info 
+        In case you are using KDE, a widget called _SUSE Prime Selector_ can be added as graphical way to switch graphics. Just right-click your desktop and go to _Add Widgets..._.
+3. To offload rendering to the dedicated GPU (NVIDIA Optimus) please see [Offloading specific applications to the Nvidia GPU](hybrid_graphics.md#Offloading specific applications to the Nvidia GPU). This allows you to use both graphical units simultaneously.
 
-###Recent AMD APUs and Nvidia
-####Installation
-1. [Install the correct Nvidia driver.](install_proprietary.md) If using xorg 1.20.6 or greater, this is all that is required if you want to use the AMD GPU as your primary and have the ability to offload specific applications to the GPU. If that's the case, you can skip to the offloading section below. If you are using a release that includes an older version of xorg, such as Leap 15.2, or you wish to exclusively use the Intel or Nvidia card, continue to the next section.
-####Set the Nvidia card as your active GPU
-1. Install the the __suse-prime__ package using zypper or Yast.
-2. To enable the Nvidia GPU, run `sudo prime-select nvidia` from the command line. Log off and back on.
-3. To enable the AMD GPU, run `sudo prime-select unset` from the command line. Log off and back on.
+###Intel and NVIDIA
+* From the a terminal session, you can switch your main GPU too: for the NVIDIA GPU run `sudo prime-select nvidia`; conversely, for the Intel GPU run `sudo prime-select intel`. After executing either command, log out and back on to apply the changes.
+* If you want to use the KDE widget, just click it and select _Switch to NVidia_. Then log out and back in and you should be set.
+
+###AMD APU and Nvidia
+When using XOrg 1.20.6 or higher: to make the APU the primary GPU and have the ability to offload specific applications to the GPU, you can skip to the offloading section below.
+
+If you are using an older release of XOrg, such as the case for Leap 15.2, or you wish to exclusively use the NVIDIA card, pick between the following steps:
+
+* To enable only the NVIDIA GPU, run `sudo prime-select nvidia` from the command line.
+* To enable the AMD GPU, run `sudo prime-select unset`.
+    
+After executing either command, log out and back on to apply the changes.
 
 ###Offloading specific applications to the Nvidia GPU
-1. With the onboard Intel or AMD GPU set as your active GPU, you can also offload specific applications using an envoronment variable.
-2. For example, to run __supertuxkart__ using the the Nvidia driver, you can run `__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia __VK_LAYER_NV_optimus=NVIDIA_only supertuxkart`.
-3. To launch a game from Steam using the Nvidia driver, you can modify properties of the game, by choosing __Set Launch Options__ and adding `__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia __VK_LAYER_NV_optimus=NVIDIA_only %command%`.
-4. Additionally, to launch some programs (e.g. Minecraft or Steam) using the dGPU, you need to add the following lines to `/etc/X11/xorg.conf` (create the file if it does not exist). Note that this only applies to X.Org sessions.
-```
-Section "Device"
-  Identifier "iGPU"
-  Driver "modesetting"
-EndSection
+With the integrated Intel GPU or AMD APU set as your main GPU, you can also offload specific applications using an envoronment variable. For example, to run __supertuxkart__ using the the NVIDIA driver, you can launch it from a terminal session as follows:
+    
+    __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia __VK_LAYER_NV_optimus=NVIDIA_only supertuxkart
+    
+To offload a game from Steam using the NVIDIA driver, you can modify properties of the game, by right clicking it, going to **Properties** choosing __Set Launch Options__ and adding a line like this:
 
-Section "Screen"
-  Identifier "iGPU"
-  Device "iGPU"
-EndSection
+    __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia __VK_LAYER_NV_optimus=NVIDIA_only %command%
 
-Section "Device"
-  Identifier "dGPU"
-  Driver "nvidia"
-EndSection
-```
-This allows the creation of Nvidia GPU _screens_, and after the fact, a new entry should be added to the output of `xrandr --listproviders`, in a way that your output should show an entry like this:
-```
-Provider 1: id: 0x240; cap: 0x2 (Sink Output); crtcs: 4; outputs: 1; associated providers: 1; name: NVIDIA-G0
-    output HDMI-1-0
-```
+For the offload process to work properly on integrated Intel cards, make sure the file `/etc/X11/xorg.conf.d/90-intel.conf` exists. If you do not have it, enable the NVIDIA card once and switch back to the integrated GPU; the required file will be created automatically along the way. Note that this only applies to XOrg sessions.
+
+If everything worked out fine for you, feel free to copy and modify the _.desktop_ files of your more demanding programs (like MATLAB or Octave) and append the enviroment variables to the `Exec` section of the file:
+    
+    Exec=__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia __VK_LAYER_NV_optimus=NVIDIA_only /usr/bin/octave --gui %f
+    
+This makes the desired program offload to the dedicated GPU everytime you launch it from the shortcut.
+        
+###Dedicated AMD GPU
+To offload anything to the AMD GPU simply use the special enviroment variable to launch the desired program, as per the following example:
+
+    DRI_PRIME=1 supertuxkart
