@@ -3,7 +3,7 @@ This section is meant for users with dual 'graphic cards' (GPUs), often present 
 
 On these hardware configurations, there is a software switch that picks the _integrated_ graphics processor for rendering most desktop applications, switching to the _dedicated_ GPU for more demanding tasks. The switch can be more or less fine-grained. Fine-grained switches, such as the ones used in _Kdenlive_ and _OBS Studio_, are able to use VAAPI and NVENC to offload specific processes to the dedicated GPU (i.e. those doing video encoding/decoding), while a coarse-grained switch would have to offload an entire program instead.
 
-Some hardware configurations have a multiplexer (_mux_), a hardware component that behaves like a switch, and can be configured from the machine's UEFI to select the main graphics processor. Multiplexers are preferred if your hardware has one, as it performs better since there is no render offloading involved. This matters especially for laptops using external monitors, as the HDMI and DisplayPort outputs are usually connected directly to the dedicated GPU. A muliplexer would thus offer these configurations the best performance.
+Some hardware configurations have a multiplexer (_mux_), a hardware component that behaves like a switch, and can be configured from the machine's UEFI to select the main graphics processor. Multiplexers are preferred if your hardware has one, as it performs better since there is no render offloading involved. This matters especially for users without external monitors, as the HDMI and DisplayPort outputs are usually connected directly to the dedicated GPU. A muliplexer would thus offer these configurations the best performance.
 
 Update your system before proceeding to the next steps:
 ```
@@ -11,7 +11,7 @@ sudo zypper dup
 ```
 
 ###Dedicated NVIDIA GPU
-To use an external monitor or be able to offload rendering to the NVIDIA GPU, you'll need to follow the next steps. The external monitor will work when you switch to the NVIDIA GPU.
+To use an external monitor or be able to offload rendering to the NVIDIA GPU, you'll need to follow the next steps. The external monitor will work when you switch to the NVIDIA GPU. This section applies to users interested in the propietary NVIDIA driver.
 
 ####Getting the necessary software
 1. [Install the correct Nvidia driver](install_proprietary.md).
@@ -51,7 +51,9 @@ If everything worked out fine for you, feel free to copy and modify the _.deskto
     
 This makes the desired program offload to the dedicated GPU everytime you launch it from the shortcut.
         
-###Dedicated AMD GPU
+###Dedicated AMD GPU and nouveau
 To offload anything to the AMD GPU simply use the special enviroment variable to launch the desired program, as per the following example:
 
     DRI_PRIME=1 supertuxkart
+
+The same applies to users with the open source _nouveau_ driver for NVIDIA cards.
