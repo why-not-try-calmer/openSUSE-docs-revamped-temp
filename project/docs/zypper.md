@@ -2,8 +2,6 @@
 
 Zypper is a command line package manager for installing, updating and removing packages. It also manages repositories, can perform various queries, and is a command-line interface to ZYpp system management library (libzypp).
 
-### Definitions
-
 ??? info "Show Definitions"
     `repository`
     :   Local or remote directory containing packages and various package information (package metadata).
