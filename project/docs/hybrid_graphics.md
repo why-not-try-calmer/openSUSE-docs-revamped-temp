@@ -1,11 +1,14 @@
 ## Enabling Hybrid Graphics
-This section is dedicated to users with dual GPU setups, often the case for gaming or high end laptops. On these hardware combinations, the software usually picks an integrated graphics processor for low performance applications and switch to the dedicated GPU for more demanding tasks, such as videogames, 3D modelling, video editing and (de)coding content.
+This section is meant for users with dual 'graphic cards' (GPUs), often present in high-end laptops and essential to a pleasant video intensive experience (gaming, streaming, video editing, etc.)
 
-Some software makes use of certain capabilites by just installing the necessary GPU drivers or software extensions. For example, Kdenlive can use VAAPI and NVENC without needing to offload the entire program to the dedicated GPU. The same applies to Open Broadcaster Software Studio.
+On these hardware configurations, there is a software switch that picks the _integrated_ graphics processor for rendering most desktop applications, switching to the _dedicated_ GPU for more demanding tasks. The switch can be more or less fine-grained, more or les coarse-grained. Fine-grained switches, such as the ones used in _Kdenlive_ and _OBS Studio_, are able to use VAAPI and NVENC to offload specific processes to the dedicated GPU (i.e. those doing video encoding/decoding), while a coarse-grained switch would have to offload an entire program instead.
 
-Certain hardware combinations have a multiplexer (_mux_), which is a hardware component that behaves like a hardware switch, and can be used to select the main graphics processor through the UEFI setup tool. This option is preferred if your hardware has one, as it performs better because there is no render offloading involved. On laptops, the HDMI and DisplayPort outputs are usually connected directly to the dedicated GPU; this means that if you use an external monitor you may get better performance.
+Some hardware configurations have a multiplexer (_mux_), a hardware component that behaves like a switch, and can be configured from the machine's UEFI to select the main graphics processor. Multiplexers are preferred if your hardware has one, as it performs better since there is no render offloading involved. This matters especially for laptops using external monitors, as the HDMI and DisplayPort outputs are usually connected directly to the dedicated GPU. A muliplexer would thus offer these configurations the best performance.
 
-It is recommended to have your system up to date before proceeding to the next steps.
+Update your system before proceeding to the next steps:
+```
+sudo zypper dup
+```
 
 ###Dedicated NVIDIA GPU
 To use an external monitor or be able to offload rendering to the NVIDIA GPU, you'll need to follow the next steps. The external monitor will work when you switch to the NVIDIA GPU.
