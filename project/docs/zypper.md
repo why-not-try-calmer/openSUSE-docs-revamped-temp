@@ -21,34 +21,198 @@ Zypper is a command line package manager for installing, updating and removing p
     :   Represents the whole product (e.g. 'openSUSE Leap 15.3').
 
 ### Usage
+Zypper is a command line tool, meaning that it is used from within the 
+terminal. Installing, updating and removing packages are operations that
+affect all users on the system and so many of these commands will not work
+unless they are run as a privileged user. Although special permissions
+can be granted to individual user accounts, it is simpler to run commands
+as the root user (the user with the most privilege). Prefixing
+a command with `sudo` (e.g. `sudo zypper install firefox`) will ask for the
+password of the `root` user account and then runs the command as `root`.
 
 !!! info
     The components enclosed in brackets are not required, thus the simplest way to execute zypper is to type its name followed by a command. See zypper help for a list of general options and all commands. To get help for a specific command, type zypper help command
 
-`# zypper [--GLOBAL-OPTIONS] <COMMAND> [--COMMAND-OPTIONS] [ARGUMENTS]`
-
-`# zypper <SUBCOMMAND> [--COMMAND-OPTIONS] [ARGUMENTS]`
+```
+# zypper [--GLOBAL-OPTIONS] <COMMAND> [--COMMAND-OPTIONS] [ARGUMENTS]
+```
+```
+# zypper <SUBCOMMAND> [--COMMAND-OPTIONS] [ARGUMENTS]`
+```
 
 !!! note on User Prompts
     Whenever Zypper needs input, it lists possible answers in brackets next to the prompt text. To choose the default answer, press &lt;__Enter__&gt; (the default answer is printed in capitals, with the exception of non-ascii characters). Some prompts also have help available, in which case there is a question mark '?' listed as a possible answer.
 
-!!! tip
     To make Zypper use the default answers without user interaction, use the `--non-interactive` global option.
 
 ### Commands    
-
+A single command is given to zypper (without a leading `--`) to instruct it on what kind of task
+it should do. For example `zypper install` instructs zypper that we want to install something and
+`zypper search` instructs zypper that we want to search for a package.
 !!! tip
-    Zypper provides commands to be used in various manners, but it also provides abbreviated aliases of those commands. If there is an alias it will be listed next to the command.
+    The most used zypper commands have shorter aliases; for example, `zypper in` is the same
+    as `zypper install`.
 
-    ``# zypper`` without any commands or arguments will print a list of commands and options.
+    ``zypper`` without any commands or arguments will print a list of commands and options.
+
+#### The Basics
+
+##### Installing packages
+To install a package type:
+```
+# zypper install packagename
+```
+or
+```
+# zypper in packagename
+```
+
+This will download the package you specified along with all of
+its dependencies and install them. If you want to install more than
+one package, you simply list them all:
+```
+# zypper in package1 package2 ... packageN
+```
+
+##### Searching for packages
+In order to install a package, you need to know its name. To search the repositories
+for a package type:
+```
+# zypper search packagename
+```
+or
+```
+# zypper se packagename
+```
+This will return a list of packages that contain your search string along
+with a summary, a type and whether they have been installed.
+??? Example "Example: Search for Firefox"
+    ```
+    # zypper se firefox
+    Loading repository data...
+    Reading installed packages...
+
+    S  | Name                               | Summary                                      | Type
+    ---+------------------------------------+----------------------------------------------+--------
+    i+ | MozillaFirefox                     | Mozilla Firefox Web Browser                  | package
+    i+ | MozillaFirefox-branding-openSUSE   | openSUSE branding of MozillaFirefox          | package
+       | MozillaFirefox-branding-upstream   | Upstream branding for Firefox                | package
+       | MozillaFirefox-buildsymbols        | Breakpad buildsymbols for Firefox            | package
+       | MozillaFirefox-devel               | Devel package for Firefox                    | package
+       | MozillaFirefox-translations-common | Common translations for Firefox              | package
+       | MozillaFirefox-translations-other  | Extra translations for Firefox               | package
+       | eid-mw-firefox                     | Firefox Extension for Belgium eID Middleware | package
+       | firefox-esr-branding-openSUSE      | openSUSE branding of MozillaFirefox          | package
+       | firefox-uget-integrator            | Integration of uGet with Firefox             | package
+    ```
+
+##### Adding a New Repository
+A repository is simply a source of packages. Zypper will already have a few
+added (the default for either Tumbleweed or Leap) but there are many reasons
+why you might want to add some more. You might need to install proprietary
+libraries such as cuda or non-free media codecs. To add a new repository type:
+```
+zypper addrepo https://somerepo.com/something name
+```
+or
+```
+zypper ar https://somerepo.com/something [optional-name]
+```
+If successful, zypper will report the settings of that repo:
+
+  1. URI of the repository
+  2. If the repository is enabled
+  3. If the repository will be GPG checked
+  4. The priority
+
+??? info "Understanding The Output"
+    `Enabled`/`Disabled`
+    : If a repository is disabled, it means that zypper still knows where it is
+    but will not use it. You can enable repositories globally or for single
+    commands.
+
+    `GPG check`
+    : If a repository has GPG checks enabled, it means that your computer will
+    save a key, which you will be asked if you trust it the first time you use a repository.
+    After downloading a package, zypper will use this key to make sure that the
+    download succeeded and the package is not corrupted. It also verifies that
+    the package is authentic. If a hacker intercepts a package download in an attempt
+    to load malicious software onto your computer, the evil package will fail the
+    GPG check.
+
+    `Priority`
+    : If two repositories contain the same package and you ask zypper to install it,
+    it will automatically use a repository with a higher priority (lower number).
+
+    `Autorefresh`
+    : If autorefresh is on, zypper will automatically download a fresh list
+    of packages from the repository to ensure that it isn't going to give
+    you out of date information or packages.
+
+??? Example "Example: Adding the cuda Leap repo"
+    ```
+    # sudo zypper ar https://developer.download.nvidia.com/compute/cuda/repos/opensuse15/x86_64/cuda-opensuse15.repo cuda
+    [sudo] password for root:
+    Adding repository 'cuda' ..................................................................................[done]
+    Repository 'cuda' successfully added
+
+    URI         : https://developer.download.nvidia.com/compute/cuda/repos/opensuse15/x86_64
+    Enabled     : Yes
+    GPG Check   : Yes
+    Autorefresh : No
+    Priority    : 99 (default priority)
+
+    Repository priorities are without effect. All enabled repositories share the same priority.
+    ```
+
+##### Removing Repositories
+You might decide that we no longer need a repository. Maybe you broke
+your nvidia graphics card and feel that having the cuda repository
+just slows down zypper operations. You can remove a repository typing
+```
+# zypper removerepo reponame
+```
+or
+```
+# zypper rr reponame
+```
+??? Example "Example: Removing the cuda repository"
+    ```
+    # sudo zypper rr cuda
+    [sudo] password for root:
+    Removing repository 'cuda' ...............................................[done]
+    Repository 'cuda' has been removed.
+    ```
+
+##### Listing Repositories
+To list all of the installed repositories type:
+```
+# zypper repos
+```
+```
+# zypper lr
+```
+This will display a table containing information and names of all the
+added repos
+
+??? Example "Example: Listing repositories"
+    ```
+    # zypper lr
+    Repository priorities are without effect. All enabled repositories share the same priority.
+
+    # | Alias             | Name                      | Enabled | GPG Check | Refresh
+    --+-------------------+---------------------------+---------+-----------+--------
+    1 | repo-debug        | Debug Repository          | No      | ----      | ----
+    2 | repo-debug-update | Update Repository (Debug) | No      | ----      | ----
+    3 | repo-oss          | Main Repository           | Yes     | (r ) Yes  | Yes
+    4 | repo-source       | Source Repository         | No      | ----      | ----
+    5 | repo-update       | Main Update Repository    | Yes     | (r ) Yes  | Yes
+    ```
+!!! info
+    See the info box in [Adding a New Repository](#adding-a-new-repository) to
+    understand the output
 
 #### Repository Management
-##### List all defined repositories
-* `repos` or `lr`
-##### Add a new repository
-* `addrepo` or `ar `
-##### Remove specified repository
-* `removerepo` or `rr `
 ##### Rename specified repository
 * `renamerepo` or `nr`
 ##### Modify specified repository
@@ -61,13 +225,6 @@ Zypper is a command line package manager for installing, updating and removing p
 ##### Clean local caches
 * `clean` or `cc`
 #### Software Management
-##### Install packages
-* `install` or `in`
-
-!!! example  
-    ``$ sudo zypper in [package]``
-
-    ``$ sudo zypper in [package1] [package2] [...]``
 ##### Remove packages
 * `remove` or `rm`
 
@@ -104,31 +261,6 @@ Zypper is a command line package manager for installing, updating and removing p
 ##### Check for patches
 * `patch-check` or `pchk`
 #### Querying
-##### Search for packages matching a pattern
-* `search` or `se`
-
-!!! example
-    ``# zypper se [package]``
-
-    ??? Example "Example: Search for Firefox"
-        ```
-        # zypper se firefox
-        Loading repository data...
-        Reading installed packages...
-
-        S  | Name                               | Summary                                      | Type
-        ---+------------------------------------+----------------------------------------------+--------
-        i+ | MozillaFirefox                     | Mozilla Firefox Web Browser                  | package
-        i+ | MozillaFirefox-branding-openSUSE   | openSUSE branding of MozillaFirefox          | package
-           | MozillaFirefox-branding-upstream   | Upstream branding for Firefox                | package
-           | MozillaFirefox-buildsymbols        | Breakpad buildsymbols for Firefox            | package
-           | MozillaFirefox-devel               | Devel package for Firefox                    | package
-           | MozillaFirefox-translations-common | Common translations for Firefox              | package
-           | MozillaFirefox-translations-other  | Extra translations for Firefox               | package
-           | eid-mw-firefox                     | Firefox Extension for Belgium eID Middleware | package
-           | firefox-esr-branding-openSUSE      | openSUSE branding of MozillaFirefox          | package
-           | firefox-uget-integrator            | Integration of uGet with Firefox             | package
-        ```
 ##### Show full information for specified packages
 * `info` or `if`
 
