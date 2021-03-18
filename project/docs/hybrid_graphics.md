@@ -3,7 +3,7 @@ This section is meant for users with dual 'graphic cards' (GPUs), often present 
 
 On these hardware configurations, there is a software switch that picks the _integrated_ graphics processor for rendering most desktop applications, switching to the _dedicated_ GPU for more demanding tasks. The switch can be more or less fine-grained. Fine-grained switches, such as the ones used in _Kdenlive_ and _OBS Studio_, are able to use VAAPI and NVENC to offload specific processes to the dedicated GPU (i.e. those doing video encoding/decoding), while a coarse-grained switch would have to offload an entire program instead.
 
-Some hardware configurations have a multiplexer (_mux_), a hardware component that behaves like a switch, and can be configured from the machine's UEFI to select the main graphics processor. Multiplexers are preferred if your hardware has one, as it performs better since there is no render offloading involved. This matters especially for users without external monitors, as the HDMI and DisplayPort outputs are usually connected directly to the dedicated GPU. A muliplexer would thus offer these configurations the best performance.
+Some hardware configurations have a multiplexer (_mux_), a hardware component that behaves like a switch, and can be configured from the machine's UEFI to select the main graphics processor. Multiplexers are preferred if your hardware has one, as it performs better since there is no render offloading involved. This matters especially for users without external monitors, as the HDMI and DisplayPort outputs are usually connected directly to the dedicated GPU. Switching the muliplexer or using an external monitor would thus offer better performance than using the built-in monitor or offloading the rendering to the dedicated GPU.
 
 Update your system before proceeding to the next steps:
 ```
@@ -18,13 +18,13 @@ To use an external monitor or be able to offload rendering to the NVIDIA GPU, yo
 2. Install the __suse-prime__ package using zypper or YaST. If you want to install via zypper run the following command in a terminal session: `sudo zypper in suse-prime`. Users on NVIDIA graphic cards released before GeForce 600 series should instead install __suse-prime-bbswitch__.
 :   !!! info 
         In case you are using KDE, a widget called _SUSE Prime Selector_ can be added as graphical way to switch graphics. Just right-click your desktop and go to _Add Widgets..._.
-3. To offload rendering to the dedicated GPU (NVIDIA Optimus) please see [Offloading specific applications to the Nvidia GPU](hybrid_graphics.md#offloading-specific-applications-to-the-nvidia-gpu). This allows you to use both graphical units simultaneously.
+3. See the next sections according to your dedicated and integrated GPU combination. Alternatively, to offload rendering to the dedicated GPU (NVIDIA Optimus), see [Offloading specific applications to the NVIDIA GPU](hybrid_graphics.md#offloading-specific-applications-to-the-nvidia-gpu). This allows you to use both graphical units simultaneously.
 
-###Intel and NVIDIA
+####Intel and NVIDIA
 * From the a terminal session, you can switch your main GPU too: for the NVIDIA GPU run `sudo prime-select nvidia`; conversely, for the Intel GPU run `sudo prime-select intel`. After executing either command, log out and back on to apply the changes.
 * If you want to use the KDE widget, just click it and select _Switch to NVidia_. Then log out and back in and you should be set.
 
-###AMD APU and NVIDIA
+####AMD APU and NVIDIA
 When using XOrg 1.20.6 or higher: to make the APU the primary GPU and have the ability to offload specific applications to the GPU, you can skip to the offloading section below.
 
 If you are using an older release of XOrg, such as the case for Leap 15.2, or you wish to exclusively use the NVIDIA card, pick between the following steps:
