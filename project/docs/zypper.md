@@ -2,8 +2,6 @@
 
 Zypper is a command line package manager for installing, updating and removing packages. It also manages repositories, can perform various queries, and is a command-line interface to ZYpp system management library (libzypp).
 
-### Definitions
-
 ??? info "Show Definitions"
     `repository`
     :   Local or remote directory containing packages and various package information (package metadata).
@@ -19,6 +17,39 @@ Zypper is a command line package manager for installing, updating and removing p
 
     `product`
     :   Represents the whole product (e.g. 'openSUSE Leap 15.3').
+
+### What is a Package Manager?
+Software is incredibly interconnected. Programming a user interface, a developer's code will specify the location on the screen
+of widgets, such as buttons or text, and define how these things rearrange when a window is resized. They will not describe how
+to render a button, instead they will opt to reference other code that does that for them (known as a library).
+This allows for a number of benefits. Some people specialise on writing button drawing routines while others specialise on using those routines to
+create feature-full applications.
+
+Apps written for Linux use this principle a lot and it opens up a lot of opportunity. If 100 apps all use the same
+library, we could install that library once and all 100 apps could use that single copy when running. This has
+the following benefits:
+
+  1. We save space! Instead of every graphical application containing the code necessary for drawing a button,
+  we have that code installed once!
+  2. If a library used by many is found to contain insecure code, buggy or slow code, the library can be fixed and updated
+  and every app that uses it gains that improvement. We don't have to rely on developers tracking the libraries that they use
+  and rebuilding their apps every time one changes.
+  3. If you decide that you want to improve upon a library in some way. You can exchange the version on your computer with
+  your modified version and all applications that use it will adopt your changes. This is a core principle in 
+  [free software](https://en.wikipedia.org/wiki/Free_software).
+
+However, there is a draw back. When installing software, we have to ensure that the libraries that it requires are also
+installed (known as dependencies), and when removing software, we cannot remove a dependency without checking to make sure that
+nothing else depends upon it. The user is also in a position where they have to track and update dependencies.
+
+These problems are solved with a package manager. Applications, libraries and many other things can built into packages which
+contains what you want install and a reference to any other packages that it depends on. The package manager is a bit
+of software that downloads, installs, uninstalls and updates packages for you. If you tell the package manager to install firefox,
+it will download a package containing the firefox executable, as well as a number of packages that contain the dependencies
+of firefox. It also holds a database of all installed packages so it knows when it can uninstall certain dependencies without
+breaking software on your computer. Zypper is the name of the package manager used by openSUSE and SUSE Enterprise Linux.
+
+
 
 ### Usage
 
