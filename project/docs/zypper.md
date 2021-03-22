@@ -86,6 +86,13 @@ it should do. For example `zypper install` instructs zypper that we want to inst
 
     ``zypper`` without any commands or arguments will print a list of commands and options.
 
+This manual is a great starting point but it does not cover all possible ways to use zypper. If you want to see all of the options
+that can be given to each subcommand in zypper, type:
+```
+zypper <COMMAND> -h
+```
+and it will show all of the different ways of configuring the command specified in an easy to read way.
+
 #### The Basics
 
 ##### Installing packages
@@ -102,7 +109,7 @@ This will download the package you specified along with all of
 its dependencies and install them. If you want to install more than
 one package, you simply list them all:
 ```
-# zypper in package1 package2 ... packageN
+# zypper in package_1 package_2 ... package_n
 ```
 
 ##### Searching for packages
@@ -243,55 +250,266 @@ added repos
     See the info box in [Adding a New Repository](#adding-a-new-repository) to
     understand the output
 
-#### Repository Management
+##### Removing Packages
+Sometimes you will want to remove packages. To achieve this, we type:
+```
+# zypper remove package
+```
+or
+```
+# zypper rm package
+```
+!!! tip
+    If your aim is to save space, you may way to add `-u` or `--clean-deps`
+    e.g. `sudo zypper rm -u firefox` to remove the uneeded dependencies
+    as well.
+
+Just like when installing, you can remove multiple packages at a time:
+```
+# zypper rm package_1 package_2 ... package_n
+```
+
+##### Refreshing your repositories
+Your computer stores a list of packages that each repository provides and metadata to help it work out
+what each package depends on. This is so that when you instruct zypper to do something, it can calculate
+the steps it will take without having to make many slow web requests. For some repositories,
+this offline list is automatically kept up to date (called autorefresh), but a lot of the time you will
+want to update this offline list yourself. Before updating, after adding a repository and before
+installing a package it is a good idea to update this list. You update it by typing:
+```
+# zypper refresh
+```
+or
+```
+# zypper ref
+```
+
+#### Updating Your Computer
+There are three different types of update that you can do with zypper
+
+  1. Standard Update
+  2. Patch Updates
+  3. Distro Upgrade
+
+Standard updates simply check to see if newer versions of your packages exist in the repository.
+If there is a newer version, it will download and install it.
+
+Patches are groups of package updates. They are categorised so that you can see why they are being updated, for example
+often, when you ask zypper to list available patches, some will be labeled as security patches meaning that they
+fix a certain security that has been discovered in some packages on your system.
+
+Distro upgrades do not only update the packages on your system, but also change the source that you get your packages from.
+This is used mostly on tumbleweed. The build server where tumbleweed packages are build is a bit chaotic, packages
+are updated at an extremely high speed. A consequence of this is that incompatibilities between new packages emerge all over the place. So how does
+tumbleweed stay so stable? In regular intervals, a stable snapshot of the tumbleweed packages is found and frozen for
+a short amount of time. Tumbleweed users use the distro upgrade feature of zypper to get their updates and so they change their
+distribution to the newest snapshot. This means that zypper changes repositories to point to the newer snapshot, and then updates all the packages
+with respect to the new snapshot. This means that tumbleweed users can enjoy incredibly up to date packages without having to deal with
+too much instability.
+
+##### Listing Updates
+To list all of packages that have updates waiting for them, type:
+```
+# zypper list-updates
+```
+or
+```
+# zypper lu
+```
+Zypper will print out a table that shows you the updatable packages, the repos they come from, the installed versions and
+the available versions.
+
+??? Example "Example: Listing updates"
+    ```
+    # zypper lu
+    Loading repository data...
+    Reading installed packages...
+    S | Repository             | Name             | Current Version      | Available Version    | Arch
+    --+------------------------+------------------+----------------------+----------------------+--------
+    v | Main Update Repository | grub2            | 2.04-lp152.7.18.2    | 2.04-lp152.7.22.7    | aarch64
+    v | Main Update Repository | grub2-arm64-efi  | 2.04-lp152.7.18.2    | 2.04-lp152.7.22.7    | noarch
+    v | Main Update Repository | hwdata           | 0.343-lp152.2.3.1    | 0.345-lp152.2.6.1    | noarch
+    v | Main Update Repository | libefivar1       | 37-lp152.3.6.1       | 37-lp152.3.9.1       | aarch64
+    v | Main Update Repository | libsolv-tools    | 0.7.16-lp152.2.13.1  | 0.7.17-lp152.2.16.1  | aarch64
+    v | Main Update Repository | libz1            | 1.2.11-lp152.8.6.1   | 1.2.11-lp152.8.9.1   | aarch64
+    v | Main Update Repository | libzypp          | 17.25.6-lp152.2.19.1 | 17.25.8-lp152.2.22.1 | aarch64
+    v | Main Update Repository | python3-solv     | 0.7.16-lp152.2.13.1  | 0.7.17-lp152.2.16.1  | aarch64
+    v | Main Update Repository | ruby-solv        | 0.7.16-lp152.2.13.1  | 0.7.17-lp152.2.16.1  | aarch64
+    v | Main Update Repository | tcl              | 8.6.7-lp152.7.3.1    | 8.6.7-lp152.7.6.1    | aarch64
+    v | Main Update Repository | tk               | 8.6.7-lp152.4.3.1    | 8.6.7-lp152.4.6.1    | aarch64
+    v | Main Update Repository | yast2-security   | 4.2.19-lp152.2.12.1  | 4.2.23-lp152.2.15.1  | noarch
+    v | Main Update Repository | yast2-storage-ng | 4.2.114-lp152.2.9.1  | 4.2.115-lp152.2.12.1 | aarch64
+    v | Main Update Repository | zypper           | 1.14.42-lp152.2.15.1 | 1.14.43-lp152.2.18.1 | aarch64
+    v | Main Update Repository | zypper-aptitude  | 1.14.42-lp152.2.15.1 | 1.14.43-lp152.2.18.1 | noarch
+    ```
+
+##### Updating
+In order to install all necessary updates, you can simply type:
+```
+# zypper update
+```
+or
+```
+# zypper up
+```
+You also have the option to update just a select few packages. And this is done, just like with installing
+and removing, by listing the packages you want to update after the command:
+```
+# zypper up package_1 package_2 ... package_n
+```
+
+##### Checking for patches
+To check for available patches, type:
+```
+# zypper patch-check
+```
+or
+```
+# zypper pchk
+```
+This will print out a table that shows the number of patches available for your system and how important they are
+
+??? Example "Example: Checking for patches"
+    ```
+    # sudo zypper pchk
+    Loading repository data...
+    Reading installed packages...
+
+    Found 8 applicable patches:
+    Category    | Updatestack | Patches
+    ------------+-------------+--------
+    security    | -           | 1
+    recommended | 1           | 5
+    optional    | -           | 1
+
+    1 patch optional                                 (use '--with-optional' to include optional patches)
+    7 patches needed (1 security patch)
+    ```
+
+##### Listing patches
+If you looked at the example in the section above, you may have noticed that very little information is
+given about the patches. To see much better information about the patches themselves, type:
+```
+# zypper list-patches
+```
+or
+```
+# zypper lp
+```
+This will output at least one table showing you the name, id, priority and a little note about each set of patches.
+
+??? Example "Example: Listing patches"
+    ```
+    # zypper lp
+    Loading repository data...
+    Reading installed packages...
+
+    Needed software management updates will be installed first:
+
+    Repository             | Name              | Category    | Severity | Interactive | Status | Summary
+    -----------------------+-------------------+-------------+----------+-------------+--------+------------------------------------------------
+    Main Update Repository | openSUSE-2021-456 | recommended | moderate | restart     | needed | Recommended update for libsolv, libzypp, zypper
+
+    The following updates are also available:
+
+    Repository             | Name              | Category    | Severity  | Interactive | Status   | Summary
+    -----------------------+-------------------+-------------+-----------+-------------+----------+----------------------------------------
+    Main Update Repository | openSUSE-2021-361 | optional    | low       | ---         | optional | Optional update for tk and tcl
+    Main Update Repository | openSUSE-2021-433 | recommended | moderate  | ---         | needed   | Recommended update for yast2-storage-ng
+    Main Update Repository | openSUSE-2021-434 | recommended | moderate  | ---         | needed   | Recommended update for yast2-security
+    Main Update Repository | openSUSE-2021-438 | recommended | moderate  | ---         | needed   | Recommended update for efivar
+    Main Update Repository | openSUSE-2021-439 | recommended | moderate  | ---         | needed   | Recommended update for zlib
+    Main Update Repository | openSUSE-2021-462 | security    | important | ---         | needed   | Security update for grub2
+    Main Update Repository | openSUSE-2021-463 | recommended | low       | ---         | needed   | Recommended update for hwdata
+
+    Found 8 applicable patches:
+    1 patch optional                                                                          (use '--with-optional' to include optional patches)
+    7 patches needed (1 security patch)
+    ```
+
+##### Installing a patch
+To install all available patches type:
+```
+# zypper patch
+```
+If you want to specify a specific category of patches, type:
+```
+# zypper patch -g CATEGORY
+```
+
+??? Example "Example: Applying only security patches"
+    ```
+    # sudo zypper patch -g security
+    Loading repository data...
+    Reading installed packages...
+    Patch 'openSUSE-2021-456-1' is not in the specified category.
+    Patch 'openSUSE-2021-463-1' is not in the specified category.
+    Patch 'openSUSE-2021-456-1' is not in the specified category.
+    Patch 'openSUSE-2021-439-1' is not in the specified category.
+    Patch 'openSUSE-2021-438-1' is not in the specified category.
+    Patch 'openSUSE-2021-434-1' is not in the specified category.
+    Patch 'openSUSE-2021-433-1' is not in the specified category.
+    Patch 'openSUSE-2021-361-1' is optional. Use 'zypper in patch:openSUSE-2021-361' to install it, or '--with-optional' to include all optional patches.
+    Resolving package dependencies...
+
+    The following 3 NEW packages are going to be installed:
+      dmraid grub2-systemd-sleep-plugin os-prober
+
+    The following NEW patch is going to be installed:
+      openSUSE-2021-462
+
+    The following 2 packages are going to be upgraded:
+      grub2 grub2-arm64-efi
+
+    2 packages to upgrade, 3 new.
+    Overall download size: 3.7 MiB. Already cached: 0 B. After the operation, additional 706.9 KiB will be used.
+    Continue? [y/n/v/...? shows all options] (y): y
+    Retrieving package dmraid-1.0.0.rc16-lp152.5.3.aarch64                                                 (1/5), 133.8 KiB (528.0 KiB unpacked)
+    Retrieving: dmraid-1.0.0.rc16-lp152.5.3.aarch64.rpm ..................................................................................[done]
+    Retrieving package os-prober-1.76-lp152.3.2.aarch64                                                    (2/5),  51.6 KiB (188.4 KiB unpacked)
+    Retrieving: os-prober-1.76-lp152.3.2.aarch64.rpm .....................................................................................[done]
+    Retrieving package grub2-2.04-lp152.7.22.7.aarch64                                                     (3/5),   2.6 MiB ( 23.9 MiB unpacked)
+    Retrieving: grub2-2.04-lp152.7.22.7.aarch64.rpm ..........................................................................[done (1.7 MiB/s)]
+    Retrieving package grub2-systemd-sleep-plugin-2.04-lp152.7.22.7.noarch                                 (4/5),  64.6 KiB (  7.1 KiB unpacked)
+    Retrieving: grub2-systemd-sleep-plugin-2.04-lp152.7.22.7.noarch.rpm ..................................................................[done]
+    Retrieving package grub2-arm64-efi-2.04-lp152.7.22.7.noarch                                            (5/5), 885.3 KiB (  5.1 MiB unpacked)
+    Retrieving: grub2-arm64-efi-2.04-lp152.7.22.7.noarch.rpm .................................................................[done (2.2 MiB/s)]
+
+    Checking for file conflicts: .........................................................................................................[done]
+    (1/5) Installing: dmraid-1.0.0.rc16-lp152.5.3.aarch64 ................................................................................[done]
+    (2/5) Installing: os-prober-1.76-lp152.3.2.aarch64 ...................................................................................[done]
+    (3/5) Installing: grub2-2.04-lp152.7.22.7.aarch64 ....................................................................................[done]
+    (4/5) Installing: grub2-systemd-sleep-plugin-2.04-lp152.7.22.7.noarch ................................................................[done]
+    (5/5) Installing: grub2-arm64-efi-2.04-lp152.7.22.7.noarch ...........................................................................[done]
+    ```
+
+##### Distro upgrading
+To do a distro upgrade, type:
+```
+# zypper dist-upgrade
+```
+or
+```
+# zypper dup
+```
+
+#### More advanced commands
 ##### Rename specified repository
 * `renamerepo` or `nr`
 ##### Modify specified repository
 * `modifyrepo` or `mr`
-##### Refresh all repositories
-* `refresh` or `ref`
 
-!!! example  
-    ``$ sudo zypper ref``
 ##### Clean local caches
 * `clean` or `cc`
-#### Software Management
-##### Remove packages
-* `remove` or `rm`
 
-!!! example  
-    ``$ sudo zypper rm [package]``
-
-    ``$ sudo zypper rm [package1] [package2] [...]``
 ##### Verify integrity of package dependencies
 * `verify` or `ve`
 ##### Install source packages and their build dependencies
 * `source-install` or `si`
 ##### Install newly added packages recommended by installed packages
 * `install-new-recommends` or `inr`
-#### Update Management
-##### Update installed packages with newer versions
-* `update` or `up`
 
-!!! example
-    ``$ sudo zypper up``
-##### List available updates
-* `list-updates` or `lu`
 
-!!! example
-    ``$ sudo zypper lu``
-##### Install needed patches
-* `patch`
-##### List available patches
-* `list-patches` or `lp`
-##### Perform a distribution upgrade
-* `dist-upgrade` or `dup`
-
-!!! example
-    ``$ sudo zypper dup``
-##### Check for patches
-* `patch-check` or `pchk`
-#### Querying
 ##### Show full information for specified packages
 * `info` or `if`
 
@@ -329,7 +547,6 @@ added repos
     ```
 ##### List packages providing specified capability
 * `what-provides` or `wp`
-#### Package Locks
 ##### Add a package lock
 * `locks` or `ll`
 ##### Remove a package lock
@@ -338,14 +555,12 @@ added repos
 * `removelock` or `rl`
 ##### Remove useless locks
 * `cleanlocks` or `cl`
-#### Locale Management
 ##### List requested locales (languages codes)
 * `locales` or `lloc`
 ##### Add locale(s) to requested locales
 * `addlocale` or `aloc`
 ##### Remove locale(s) from requested locales
 * `removelocale` or `rloc`
-#### Other Commands
 ##### Get command-specific help
 * `help`
 
