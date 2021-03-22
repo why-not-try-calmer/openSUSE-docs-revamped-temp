@@ -51,6 +51,9 @@ You will see a list of available network adapters in a list from which you can s
 On the `Addresses` tab you will be able to configure the IP address of your adapter. You can select `Dynamic Address` in which case you will receive an address from your router/other dhcp server on your network or `Statically Assigned IP Address` in which case you need to type an ip address, a subnet mask and a hostname. Click `Next` when finished.    
 ![Wireless configuration](image/yast_wireless_specific.png)
 
+??? info
+    Wireless networks configured here will be transferred to the finalized system as well, regardless the soluion you are choosing to use to manage your connections.
+
 **If** you configured a statically assigned IP address:
 1. Switch to the `Routing` tab.
 2. Press `Add`, add your default gateway address and select the network adapter to which you want this route assigned to.
