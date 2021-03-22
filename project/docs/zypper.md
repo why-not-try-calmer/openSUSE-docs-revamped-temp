@@ -307,6 +307,11 @@ distribution to the newest snapshot. This means that zypper changes repositories
 with respect to the new snapshot. This means that tumbleweed users can enjoy incredibly up to date packages without having to deal with
 too much instability.
 
+Don't be intimidated by the number of options available to you for updating. The golden rule is if you are on tumbleweed, do distro-upgrades
+and if you are on leap do normal upgrades. The exception to this rule is if you are in charge of a production system, such as a web-server
+(or any system where the only things scarier than change are security issues)
+then use patches to ensure that only the minimum amount of your system is touched by updates.
+
 ##### Listing Updates
 To list all of packages that have updates waiting for them, type:
 ```
