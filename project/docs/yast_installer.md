@@ -270,3 +270,8 @@ By default you will also use this newly created account to act as the administra
 ## Installation
 ## Installation Overview
 ### Installation Settings
+This is the final and probably the most important section of the installer, __don't skip it__! You can and should review your settings, fine tune your installation if you need to and even gain access to the _YaST Software Installer_ wich can be used to install additional packages or patterns.
+After you reviewed the settings you can move on with the installation which will finalize your openSUSE deployment based on your provided informations.
+
+??? info
+    Patterns are a group of packages that allows the user to easily install otherwise complex packages and configurations - like KDE Plasma or Gnome -.
