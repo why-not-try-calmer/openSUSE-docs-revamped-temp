@@ -1,7 +1,7 @@
 # Step by step guide for openSUSE Leap
 ## Before you continue
 
-This guide targets **openSUSE Leap**; however the differences between the installers for the openSUSE variants -- like Tumbleweed, MicroOS and Kubic -- are minor and most parts of the installer will be identical. This guide also assumes that you will have no other Linux, Windows or MacOS operating systems alongside openSUSE after you are done installing.
+This guide targets **openSUSE Leap**; however the differences between the installers for the openSUSE variants -- like Tumbleweed, MicroOS and Kubic -- are minor and most parts of the installer will be identical.
 
 !!! warning
     Expect slight differences in *System Role* and *Installation Settings*.
@@ -16,11 +16,11 @@ This guide targets **openSUSE Leap**; however the differences between the instal
 ### Precautions
 
 * Make sure that you have backed up all your data from the disk where you're planning to install openSUSE to.
-* If installing on a separate drive, it is recommended to disconnect the drives not in use. You can always probe a foreign operating systems to Grub from a finalized installation with *YaST*, but selecting the wrong drive to install openSUSE will overwrite the disk.
-* In case you are using a Network image (Netiso) make sure that you have a strong internet connection. A wired connection is always more reliable than a wifi signal.
-* If installing on a laptop, it is considered good practice to plug in the AC charger.
+* If installing on a separate drive, it is recommended to disconnect the drives not in use. You can always probe a foreign operating systems to Grub from a finalized installation with *YaST*, but selecting the wrong drive to install openSUSE will overwrite the disk destroying the data on it.
+* In case you are using a Network image (Netiso) make sure that you have a strong internet connection. A wired connection is always more reliable than a wifi one.
+* If installing on a laptop, it is good practice to plug in the AC charger.
 
-You are now ready to boot the USB drive, which you have previously prepared as explained above and turn on your computer. Boot from the USB drive and select installation from the boot menu.
+You are now ready to boot the USB drive, which you have previously prepared - as explained in the [Preparing the installation media](image_choice.md) section - and turn on your computer. Boot from the USB drive and select installation from the boot menu.
 
 If you want to see the details of the installation while the installer is booting you can press the `ESC` key.
 
@@ -38,7 +38,7 @@ The `License Agreement` informs you on roles, responsibilities and potential lim
 
 ## Network activation
 !!! note "Online repositories"
-    If you have an active internet conenction over an ethernet cable connected to your computer, right after you pass the *"Language, Keyboard and License Agreement"* section you will be prompted, asking if you want to *"Activate online repositories now?"*.It is recommended to select *Yes* which will provide you with a list of repositories, pre-selecting the main ones in advance. 
+    If you have an active internet conenction over an ethernet cable connected to your computer, right after you pass the *"Language, Keyboard and License Agreement"* section you will be prompted, asking if you want to *"Activate online repositories now?"*.It is recommended to select *Yes* which will provide you with a list of repositories, pre-selecting the main ones in advance and will download updated packages from the online repositiory during the installation. If you're on a metered connection you press "No". 
 
 ### Network settings
 You can skip this part if:
@@ -70,7 +70,8 @@ These repositories are the following:
 * _Source Repository_: Provides all source packages in the distribution, for experts only.
 * _Debug Repository_: A repository for those who want to debug applications for openSUSE, for experts only.
 
-NOTE: I need to further clarify this bit!!! Do keep in mind that if you're on a metered network and you choose to add the online repos, the installer will download packages with newer versions. 
+??? info 
+    Keep in mind that if you're on a metered network and you choose to add the online repos, the installer will download packages with newer versions. 
 
 ### System role
 
@@ -95,12 +96,12 @@ Select one and press __Next__ to continue.
 Most Linux distributions use the same "base" partition scheme:
 
 * a _bootloader partition_, hosting a small program called a _bootloader_, whose purpose is to take over from the UEFI/BIOS of your computer and set up the initial conditions for your operating system to get running 
-* a main _data partition_ (or _OS partition_), which is where the operating system (i.e. _Leap_), optionnally along with your personal user data, will be installed)
+* a main _data partition_ (or _OS partition_), which is where the operating system (i.e. _Leap_) is installed, optionnally along with your personal user data.
 * (recommended but not necessary) a swap partition of the size of your machine's RAM, + 1 GB
 
 If you are not interested in keeping whatever data or operating system is installed on the target machine, you can simply proceed with the base partition scheme. In that cases, simply run the installer and, on the _Disk_ screen, pick the _Suggested Partitioning_ option, and accept all recommendations there. 
 
-Chances are, however, that you will want to install Leap on a disk with an already functional operating system (i.e. Windows, macOS, or another Linux distribution). Or that you will want to install more operating systems alongside _Leap_ easily and reliably in the future. These  families of scenarios require some extra steps with respect ot to the "base" partition scheme above.
+Chances are, however, that you will want to install Leap on a disk with an already functional operating system (i.e. Windows, macOS, or another Linux distribution). Or that you will want to install more operating systems alongside _Leap_ easily and reliably in the future. These families of scenarios require some extra steps with respect ot to the "base" partition scheme above.
 #### Installing Leap alongside preexistent Windows partitions  
 If you have Windows installed already, you are likely to have the following (physical) partitions already:
 
@@ -194,7 +195,7 @@ The _Leap_ installer allows you to pick among several filesystems for _data part
 
 * _Btrfs_
 * _Ext4_
-* _Zfs_
+* _XFS_
 
 However, _Btrfs_ has been the preferred filesystem for all openSUSE distributions for several years. This filesystem boasts a powerful _copy-on-write_ logic, which lies at the heart of openSUSE's approach to stability: _Btrfs_ allows to conveniently create and use _snapshots_, aka 'restoration points' on Windows (see [Introduction to snapper](snapper.md) for details). For this reason we highly recommend you to use it for all your data partitions when installing _Leap_.
 
@@ -266,4 +267,3 @@ By default you will also use this newly created account to act as the administra
 ## Installation
 ## Installation Overview
 ### Installation Settings
-DO NOT SKIP THIS!
