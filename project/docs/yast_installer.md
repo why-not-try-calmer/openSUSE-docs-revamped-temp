@@ -270,7 +270,7 @@ By default you will also use this newly created account to act as the administra
 ## Installation
 ## Installation Overview
 ### Installation Settings
-This is the final and probably the most important section of the installer, __don't skip it__! You can and should review your settings, fine tune your installation if you need to and even gain access to the _YaST Software Installer_ wich can be used to install additional packages or patterns.
+This is the final and probably the an important section of the installer, __don't skip it__! You can and should review your settings, fine tune your installation if you need to and can even gain access to the _YaST Software Installer_ wich can be used to install additional packages or patterns. To change any of the settings just click the _headlines_ (like "Software" or "Security").
 After you reviewed the settings you can move on with the installation which will finalize your openSUSE deployment based on your provided informations.
 
 ??? info
