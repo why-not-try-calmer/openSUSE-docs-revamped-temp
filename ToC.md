@@ -28,37 +28,26 @@ __NB__: Unless mentioned otherwise, a document corresponding to a parent section
     * settings & keybindings
     * using extensions & plugins
     * learning more
-7. Interlude: Fundamental openSUSE concepts
-    * zypper: [zypper.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/zypper.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/32)
+7. openSUSE fundamentals
+    * zypper:
+        * commands list: [zypper.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/zypper.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/32)
+        * `tumbleweed-cli` & Tumbleweed snapshots: 
+        * best-practices for updating / upgrading Leap & Tumbleweed: 
     * YaST: [yast_installer.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/yast_installer.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/yast_installer.md)
-    * snapper & brtfs: [snapper.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/snapper.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/34)
-    * the Tumbleweed way
-8. Getting & installing software
-    * the Leap way & the Tumbleweed way
-    * installing distribution packages
-    * adding repositories
+    * `snapper` & `brtfs`: [snapper.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/snapper.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/34)
+8. Getting & installing additional software
     * flatpaks
     * snaps
     * running with podman
     * running with libvirt
     * building from source
-9. Updating and upgrading
-    * updating packages
-    * upgrading Leap
-    * updating / upgrading Tumbleweed  
-10. Managing snapshots
-    * brtfs snapshots
-    * rolling back with snapper
-    * introducing `tumbleweed-cli`
-    * tumbleweed snapshots
-    * rolling back with tumbleweed snapshots
-11. Troubleshooting with autonomy
+9. Troubleshooting with autonomy
     * how Linux logs errors
     * dmesg & journalctl
     * finding the culprit
     * exporting evidence & asking for help
 ### Completing and fine-tuning your setup 
-12. Finding & installing additional software
+10. Finding & installing additional software
     * codecs
     * proprietary drivers [install_proprietary.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/install_proprietary.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/28)
       * case study: Hybdrid/Optimus: [hybrid_graphics.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/hybrid_graphics.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/77) 
@@ -66,29 +55,29 @@ __NB__: Unless mentioned otherwise, a document corresponding to a parent section
     * case study: scanners
     * case study: touchscreens
     * case study: Wacom tablets
-13. Security basics
+11. Security basics
     * passwords
     * gpg & ssh keys
     * firewall
     * AppArmor
-14. Wifi & network
+12. Wifi & network
     * NetworkManager basics
     * setting up a VPN
-15. Power management
+13. Power management
     * hibernating from swap
     * hibernating from file
     * suspend & lock
     * CPU power control
-16. Pairing, syncing, sharing
+14. Pairing, syncing, sharing
     * bluetooth audio: [bluetooth.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/bluetooth.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/27)
     * sharing files
     * syncing files with other devices
-17. Advanced fine-tunings
+15. Advanced fine-tunings
     * kernel parameters
     * initramfs
     * systemd basics
-20. More partitioning
-21. Recommended setups
+16. More partitioning
+17. Recommended setups
     * internet & social
     * office users
     * privacy advocates
@@ -106,16 +95,16 @@ __NB__: Unless mentioned otherwise, a document corresponding to a parent section
     * servers/NAS
     * firewall/Router
 ### Giving back to the community
-22. Reporting bug reports
+18. Reporting bug reports
     * the openSUSE bugzilla
     * the KDE bugilla
     * GitHub & GitLab Issues
 ### Resources
-23. Other sources of documentation
+19. Other sources of documentation
     * Reference documentation
     * Wiki
 ### Contribute to this docs
-24. A contributor's checklist
+20. A contributor's checklist
     * get in touch
     * open an issue
     * make a pull request
