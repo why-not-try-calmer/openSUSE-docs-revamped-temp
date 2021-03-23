@@ -20,9 +20,7 @@ Zypper is a command line package manager for installing, updating and removing p
 
 ### What is a Package Manager?
 Software is incredibly interconnected. Programming a user interface, a developer's code will specify the location on the screen
-of widgets, such as buttons or text, and define how these things rearrange when a window is resized. They will not describe how
-to render a button, instead they will opt to reference other code that does that for them (known as a library).
-This allows for a number of benefits. Some people specialise on writing button drawing routines while others specialise on using those routines to
+of widgets, such as buttons or text, and define how these things rearrange when a window is resized. But most code depends on some other code that serves as a 'backend' (often called a _library_). For example, an application will rarely describe how to render a button, instead it will ask a library to do that for it. This allows for a number of benefits. Some people specialise on writing button drawing routines while others specialise on using those routines to
 create feature-full applications.
 
 Apps written for Linux use this principle a lot and it opens up a lot of opportunity. If 100 apps all use the same
@@ -38,28 +36,37 @@ the following benefits:
   your modified version and all applications that use it will adopt your changes. This is a core principle in 
   [free software](https://en.wikipedia.org/wiki/Free_software).
 
-However, there is a draw back. When installing software, we have to ensure that the libraries that it requires are also
+However, there is a drawback. When installing software, we have to ensure that the libraries that it requires are also
 installed (known as dependencies), and when removing software, we cannot remove a dependency without checking to make sure that
-nothing else depends upon it. The user is also in a position where they have to track and update dependencies.
+nothing else depends upon it -- or it will break the 'dependency-tree' of the operating system. To visualize the issue, consider the following illustration:
+```
+    lib5      lib6
+   /    \    /    \
+lib1     lib3      lib4
+  \      /  \      /
+  softwareA  softwareB
+```
+Let's assume for simplicity that no other software requires `lib4`. Under this assumption, if the user remove softwareB, they will want to remove `lib4`, but neither `lib3` nor `lib6`, because the former is directly required by `softwareA`, while the latter is indirectly by `softwareA` via `lib3`.
+
+In addition to this issue imagine the user updates `softwareB` so that it ends up depending on a new version of library `lib4`, say `lib4*`. This means that we need to recast the above structure as:
+``````
+    lib5      lib6
+   /    \    /    \
+lib1     lib3      lib4       lib4*
+  \      /  \                 /
+  softwareA  softwareB(updated)
+```
+This means that the system must be able to 'see through' the actual _versions_ of each package, so as to understand the path of their dependencies and warn about required alterations.
 
 These problems are solved with a package manager. Applications, libraries and many other things can built into packages which
-contains what you want install and a reference to any other packages that it depends on. The package manager is a bit
-of software that downloads, installs, uninstalls and updates packages for you. If you tell the package manager to install firefox,
+contains what you want install and a reference to any other packages that it depends on. The _package manager_ is an essential piece of software that downloads, installs, uninstalls and updates packages for you. If you tell the package manager to install Firefox,
 it will download a package containing the firefox executable, as well as a number of packages that contain the dependencies
-of firefox. It also holds a database of all installed packages so it knows when it can uninstall certain dependencies without
-breaking software on your computer. Zypper is the name of the package manager used by openSUSE and SUSE Enterprise Linux.
-
+of Firefox. It also holds a database of all installed packages so it knows when it can uninstall certain dependencies without
+breaking software on your computer. _Zypper_ is the name of the package manager used by openSUSE and SUSE Enterprise Linux.
 
 
 ### Usage
-Zypper is a command line tool, meaning that it is used from within the 
-terminal. Installing, updating and removing packages are operations that
-affect all users on the system and so many of these commands will not work
-unless they are run as a privileged user. Although special permissions
-can be granted to individual user accounts, it is simpler to run commands
-as the root user (the user with the most privilege). Prefixing
-a command with `sudo` (e.g. `sudo zypper install firefox`) will ask for the
-password of the `root` user account and then runs the command as `root`.
+Zypper is a command line tool, meaning that it is used from within the terminal. Installing, updating and removing packages are operations that affect all users on the system and so many of these commands will not work unless they are run as a privileged user. Although special permissions can be granted to individual user accounts, it is simpler to run commands as the root user (the user with the most privilege). Prefixing a command with `sudo` (e.g. `sudo zypper install firefox`) will ask for the password of the `root` user account and then runs the command as `root`.
 
 !!! info
     The components enclosed in brackets are not required, thus the simplest way to execute zypper is to type its name followed by a command. See zypper help for a list of general options and all commands. To get help for a specific command, type zypper help command
