@@ -181,6 +181,7 @@ $ sudo reboot
 $ sudo mksubvolume /snap
 $ source /etc/profile
 $ sudo systemctl enable --now snapd
+$ sudo systemctl enable --now apparmor.service
 $ sudo systemctl enable --now snapd.apparmor
 ```
 You can install snaps via the terminal (for example the snap store where you can find snaps and install them via a graphical interface):
