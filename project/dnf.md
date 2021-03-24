@@ -12,19 +12,21 @@ On Leap 15.2 and on Tumbleweed DNF is available from the official repositories a
 
 ### with YaST2
 
-Start YaST2, select "Software Management" and search for DNF. Select DNF and mark it for installation and press Accept.
+Start YaST2, select _Software Management_ and search for DNF. Select _DNF_ and mark it for installation and press Accept.
 
 ## Getting DNF running
 ### Configuring repositories
-Once the installation is finished you have no repositories configured for DNF to use. You need to symling your repository configurations from Zypp to DNF:
+Once the installation is finished you have no repositories configured for DNF to use. You need to add a symlink (a reference to a consumable resource, usually a program) to your repository configurations from Zypp to DNF:
 ```
  # ln -s /etc/zypp/repos.d/ /etc/dnf/repos.d/
 ```
-Alternatively you could also copy over repos.d, but then if you want/need to use zypper or dnf you need to make sure that repos.d is actually synced.
-Make sure that there are no repos configured under /etc/yum/repos.d or you will see warnings when you're using DNF. To avoid this you can either remove the repos from /etc/yum/repos.d or just rename the repos.d folder.
+Alternatively you could copy over `repos.d`, with the draback that switching from one to ther other would require making sure that repos.d is synced with the target package manager.
+
+Make sure that there are no repos configured under `/etc/yum/repos.d` or you will see warnings when you're using DNF. To avoid this you can either remove the repos from `/etc/yum/repos.d` or just rename the `repos.d` folder.
 
 ## Using DNF on openSUSE
-This is a list of the most used command to interact with packages using DNF.   
+This is a list of the most used command to interact with packages using DNF. 
+
 To refresh repos:
 
 ` # dnf makecache`
@@ -41,7 +43,7 @@ To remove a package:
 
  `# dnf remove packagename`
 
-### Other common DNF commands include
+### Other common DNF commands
 
 `autoremove`: removes packages installed as dependencies that are no longer required by currently installed programs.
 
@@ -57,7 +59,7 @@ To remove a package:
 
 `exclude`: exclude a package from the transaction.
 
-For example to update a Tumbleweed installation:
+For example, to update a Tumbleweed installation:
 ```
  # dnf makecache
  # dnf distro-sync
@@ -67,7 +69,7 @@ To update a Leap installation:
  # dnf makecache
  # dnf upgrade
 ```
-This is the equivalent of: 
+This is equivalent to: 
 ```
  # zypper refresh 
  # zypper dist-upgrade
@@ -106,11 +108,11 @@ To add a new alias for example for remove:
 
 ## Managing repositories
 ### Adding repositories
-DNF in this sense is very similar to zypper in a sense that it has to be pointed to .repo file:
+For adding repositories, DNF and zypper are very much alike: they both have to be pointed to a `.repo` file:
 
  `# dnf config-manager --add-repo URL`
 
-To add a repository from OBS you would have to replace the `zypper addrepo` part with `dnf config-manager --add-repo` and the url at the end.
+To add a repository from OBS you would have to replace the `zypper addrepo` part with `dnf config-manager --add-repo`, finally appending the url.
 
  `# dnf config-manager --add-repo https://download.opensuse.org/repositories/devel:languages:python/openSUSE_Tumbleweed/devel:languages:python.repo`
 
@@ -119,10 +121,10 @@ To add a repository from OBS you would have to replace the `zypper addrepo` part
 or
  `# dnf repolist all`
 
-These command will list the unique id and the name of the available repositories. `dnf repolist all` will add an extra status field after every repository listed indicating that the repository is enabled or disabled.
+These commands will list the unique id and the name of the available repositories. `dnf repolist all` will add an extra status field after every repository listed indicating whether the repository is enabled or disabled.
 
 ### Enable/Disable repository
-Before enabling or disabling a repository it is best to list all out with their current status
+Before enabling or disabling a repository it is best to list all registered repsositories along with their current status:
 
  `# dnf repolist all`
 
@@ -144,8 +146,8 @@ Or to disable:
 
 ## Troubleshooting 
 ### DNF dup can't update the kernel 
-Currently DNF is marking the kernel packages as protected and in case of a kernel update - which is fairly frequent on Tumbleweed - it will refuse to update. To get around the issue disable the running kernel protection:
+The last version of DNF marks the kernel packages as protected and it will refuse to update in case of a kernel update -- which is fairly frequent on Tumbleweed. To get around the issue disable the running kernel protection:
 
   `# dnf --setopt=protect_running_kernel=False --refresh distro-sync `
 
-__protect_running_kernel__: Controls whether the package corresponding to the running version of kernel is protected from removal. Default is True.
+The `protect_running_kernel` parameter determines whether the package corresponding to the running version of kernel should be protected from removal. The default is True.
