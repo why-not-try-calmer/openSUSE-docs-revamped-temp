@@ -95,7 +95,7 @@ __NB__: Unless mentioned otherwise, a document corresponding to a parent section
     * servers/NAS
     * firewall/Router
 ### Giving back to the community
-18. Reporting bug reports
+18. The Art of Reporting bugs
     * the openSUSE bugzilla
     * the KDE bugilla
     * GitHub & GitLab Issues
