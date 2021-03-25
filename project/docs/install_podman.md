@@ -6,11 +6,11 @@ Podman is a a daemonless, open-source tool to manage, deploy and build applicati
 
 ### Rootfull or rootless
 
-As Podman is daemonless running containers doesn't require running them with root, but can be started with a user as well. Granted, rootless containers will have no access to networking and can't use privileged ports, but it is a great way to keep the system secure. For instance if an application escapes the container ran as a user it will be able to cause less damage and would have limited access to the system than if it would if it would ran as root. Rootfull containers are recommended for running applications that require access over privileged ports like a public facing `nginx` reverse proxy. Even in that case there could be some rules implemented in the firewall that forwards requests, but that's a different story.
+As Podman is daemonless, running containers doesn't require running them with root, but can be started with a user as well. Granted, rootless containers will have no access to networking and can't use privileged ports, but it is a great way to keep the system secure. For instance if an application escapes the container ran as a user it will be able to cause less damage and would have limited access to the system than if it would if it would ran as root. Rootfull containers are recommended for running applications that require access over privileged ports like a public facing `nginx` reverse proxy. Even in that case there could be some rules implemented in the firewall that forwards requests, but that's a different story.
 
 #### Rootless environment configuration 
 
-The next steps will allow for the deployment of a *rootless* configuration with Podman. Important to note the I'm using openSUSE MicroOS and Tumbleweed, but these changes should apply for other distros as well: 
+The next steps will allow for the deployment of a *rootless* configuration with Podman. Important to note that these changes should apply for other distros as well: 
 1. **Make sure that `fuse-overlayfs` is installed and it is available in the user `$PATH`.** (In openSUSE `fuse-overlayfs` is a dependency of Podman therefore when Podman is being installed it will install `fuse-overlayfs` as well.) 
 ``` 
 # which fuse-overlayfs  
@@ -76,7 +76,7 @@ registries = []
 [registries.block]
 registries = []
 ```
-As I'm using openSUSE so I do have `registry.opensuse.org` added to my registries out of the box. You can add for example `quay.io` to this list to be able to search, pull, and push from/to Quay.
+On openSUSE you will have `registry.opensuse.org` added to your registries out of the box which is the official registry of the openSUSE project. You can add for example `quay.io` to this list to be able to search, pull, and push from/to Quay. When searching or pulling a container from a registry, `Podman` will check the registries from `/etc/containers/registries.conf` listed under `[registries.search]` block. `Podman` will check the URI in the order they're added in `[registries.search]`.
 
 #### Login to registry
 
