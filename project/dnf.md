@@ -1,6 +1,6 @@
 ## DNF package manager
 
-DNF is a package manager for RPM systems to install, update and remove packages. DNF was forked from Yum. Among the many improvements, it uses libsolv as a dependency resolver. DNF features support for plugins - which can be used to extend the core functionality of DNF -, automatic updates and parallel package downloads.
+`DNF` is a package manager for RPM-based distributions to install, update and remove packages. `DNF` was forked from Yum (Yellow-Dog Updater Modified) by Fedora. Among the many improvements, it uses `libdnf` in it's core and `libsolv` as a dependency resolver. `DNF` features support for plugins - which can be used to extend the core functionality of DNF -, automatic updates and parallel package downloads which makes it a great candidate to replace `Zypper` on `Tumbleweed` for instance where parallel download of packages can noticeably speed up the update process.
 
 ## Installation
 On Leap 15.2 and on Tumbleweed DNF is available from the official repositories and can be installed without adding another repository.
@@ -77,6 +77,13 @@ or
  # zypper refresh 
  # zypper update
 ```
+
+### Locking a package
+Packages can be excluded from being installed or updated by `DNF`. An interactive way of doing this is using the `--exclude=` flag: `sudo dnf update --exclude=packagename`. This can be troublesome if there are multiple packages to be excluded and simply don't want to type them all out every time the system is going through an update. To keep the list of excluded packages persisitent the `DNF` configuration file can be used:
+
+* edit the `/etc/dnf/dnf.conf` file,
+* at the bottom of it add the packages you want to exclude the following way: `excludepkgs=packagename`.
+
 ## openSUSE flavored DNF
 DNF on openSUSE also offers some aliases to mimic zypper commands out-of-the-box. These aliases can be listed:
 
@@ -136,11 +143,11 @@ Or to disable:
 
 ??? info
     Other resources:
-* [https://build.opensuse.org/package/show/openSUSE%3AFactory/dnf On OBS]
-* [https://docs.fedoraproject.org/en-US/quick-docs/dnf/ DNF reference guide]
-* [https://dnf.readthedocs.io/en/latest/ DNF manual]
-* [https://dnf-plugins-core.readthedocs.io/en/latest/ DNF core plugins manual]
-* [https://dnf-plugins-extras.readthedocs.io/en/latest/ DNF extra plugins manual]
+* [DNF on OBS](https://build.opensuse.org/package/show/openSUSE%3AFactory/dnf)
+* [DNF reference guide](https://docs.fedoraproject.org/en-US/quick-docs/dnf/) 
+* [DNF manual](https://dnf.readthedocs.io/en/latest/) 
+* [DNF core plugins manual](https://dnf-plugins-core.readthedocs.io/en/latest/)
+* [DNF extra plugins manual](https://dnf-plugins-extras.readthedocs.io/en/latest/) 
 
 ## Troubleshooting 
 ### DNF dup can't update the kernel 
