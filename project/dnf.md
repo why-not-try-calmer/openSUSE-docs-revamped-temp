@@ -82,7 +82,16 @@ or
 Packages can be excluded from being installed or updated by `DNF`. An interactive way of doing this is using the `--exclude=` flag: `sudo dnf update --exclude=packagename`. This can be troublesome if there are multiple packages to be excluded and simply don't want to type them all out every time the system is going through an update. To keep the list of excluded packages persisitent the `DNF` configuration file can be used:
 
 * edit the `/etc/dnf/dnf.conf` file,
-* add the packages you want to exclude the following way: `excludepkgs=packagename`.
+* add the packages you want to exclude the following way: `excludepkgs=packagename`.   
+
+#### Versionlock plugin
+Another way of adding a version lock is using the DNF Versionlock plugin. This requires the module to be installed first, following that package locks can be added and removed more similarly to `Zypper's` method.
+
+* Install the versionlock plugin: `sudo dnf install 'dnf-command(versionlock)'`
+* To lock a package: `sudo dnf versionlock add package`
+* To list all locks: `sudo dnf versionlock list`
+* To remove a lock: `sudo dnf versionlock delete package`
+* To remove all locks: `sudo dnf versionlock clear`
 
 ## openSUSE flavored DNF
 DNF on openSUSE also offers some aliases to mimic zypper commands out-of-the-box. These aliases can be listed:
