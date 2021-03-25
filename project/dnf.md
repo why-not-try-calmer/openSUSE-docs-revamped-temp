@@ -93,6 +93,17 @@ Another way of adding a version lock is using the DNF Versionlock plugin. This r
 * To remove a lock: `sudo dnf versionlock delete package`
 * To remove all locks: `sudo dnf versionlock clear`
 
+## Installing additional plugins
+
+The core `DNF` functionality can be extended with plugins. There are officially supported Core DNF plugins and also third-party Extras DNF Plugins. To install them:
+   
+`# dnf install dnf-plugins-core-PLUGIN_NAME`    
+or    
+`# dnf install dnf-plugins-extras-PLUGIN_NAME`    
+
+??? info
+  A list of available [Core plugins](https://dnf-plugins-core.readthedocs.io/en/latest/) and a list of available [Extra plugins](https://dnf-plugins-extras.readthedocs.io/en/latest/) can be searched to extend the funtionality of `DNF`.
+
 ## openSUSE flavored DNF
 DNF on openSUSE also offers some aliases to mimic zypper commands out-of-the-box. These aliases can be listed:
 
