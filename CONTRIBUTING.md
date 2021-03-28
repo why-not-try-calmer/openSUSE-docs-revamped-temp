@@ -43,7 +43,7 @@ Install via poetry installer : `curl -sSL https://raw.githubusercontent.com/pyth
 After installation command complete you will find your poetry install under `$HOME/.poetry/bin`
 This directory will be automatically added to your $PATH environment variable, by appending a statement to your $HOME/.profile configuration (or equivalent files). If you do not feel comfortable with this, please pass the --no-modify-path flag to the installer and manually add the Poetry's bin directory to your path.
 
-Another ways to install poetry are via openSUSE repository `zypper install python38-poetry` for python 3.8 and `zypper install python38-poetry` for python 3.6.
+Another ways to install poetry are via openSUSE repository `zypper install python38-poetry` for python 3.8 and `zypper install python36-poetry` for python 3.6.
 
 
 ### Clone, edit, test
