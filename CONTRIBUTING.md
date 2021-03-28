@@ -13,8 +13,9 @@ marked "ready for release" <--- review on language #2 <--- review on contents #2
 ### Understand the repo structure
 ```
 ... 
-Pipfile     <<< project dependencies in pipenv format. That is what 'pipenv install' operates on.
-requirements.txt    <<< project dependencies in pip format. Added for compatibility.
+Pipfile           <<< project dependencies in pipenv format. That is what 'pipenv install' operates on.
+requirements.txt  <<< project dependencies in pip format. Added for compatibility.
+pyproject.toml    <<< project dependencies in poetry format. That is what 'poetry install' operates on.
 project/    <<< 'cd' in here to run mkdocs commands (pipenv commands are to be run from the root directory)
     docs/   <<< WHERE YOU CONTRIBUTE. You will be adding or editing files there.
     mkdocs.yml <<< build config, but also used as Table of Contents. If you add a new file, reference it there.
@@ -28,14 +29,26 @@ You can either install mkdocs from pip or from a virtual environment.
 
 It's highly recommended to use a virtual environment manager and not `pip`, so that the dependencies of this project won't mess with your system-wide python packages / modules. You still need to run pip once to install your favorite virtual environment manager.
 
+## Pipenv installation
+
 We like using pipenv, which you install on openSUSE distributions with: `pip3 install --user pipenv`. Then you'll need to add `~/.local/bin` to your `PATH`. The best method for that depends on your shell:
 * for `bash` add `PATH=$PATH:/home/your-user-name/.local/bin` to `~/.bashrc`; reload to apply changes with `source ~/.bashrc`
 * for `fish` run the following command once from a fish shell: `set -Ua fish_user_paths /home/your-user-name/.local/bin`; start a fresh shell with `exec fish`
 * for `zsh` add `export PATH=$PATH/home/your-user-name/.local/bin` to `~/.zshrc`; reload to apply changes with `source ~/.zshrc`
 
+## Poetry installation (requires python3.5+)
+
+Install via poetry installer : `curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -`
+
+After installation command complete you will find your poetry install under `$HOME/.poetry/bin`
+This directory will be automatically added to your $PATH environment variable, by appending a statement to your $HOME/.profile configuration (or equivalent files). If you do not feel comfortable with this, please pass the --no-modify-path flag to the installer and manually add the Poetry's bin directory to your path.
+
+Another ways to install poetry are via openSUSE repository `zypper install python38-poetry` for python 3.8 and `zypper install python38-poetry` for python 3.6.
+
+
 ### Clone, edit, test
 1. clone this repo where you want in your home folder
-2. `cd` to it and run `pipenv install` to install the dependencies, and then `pipenv shell` to run the environment. 
+2. `cd` to it and run `pipenv install` or `poetry install` to install the dependencies, and then `pipenv shell` or `poetry shell` to run the environment. 
 3. finally `cd` to `project` and run you `mkdocs` commands from there.
 
 The only important command is `mkdocs serve`; it generates the website from the source files and service it on http://127.0.0.1:8000/. 
