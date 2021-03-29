@@ -45,6 +45,30 @@ This directory will be automatically added to your $PATH environment variable, b
 
 Another ways to install poetry are via openSUSE repository `zypper install python38-poetry` for python 3.8 and `zypper install python36-poetry` for python 3.6.
 
+### Enable tab completion for `poetry`
+```
+# Bash
+poetry completions bash > /etc/bash_completion.d/poetry.bash-completion
+
+# Bash (Homebrew)
+poetry completions bash > $(brew --prefix)/etc/bash_completion.d/poetry.bash-completion
+
+# Fish
+poetry completions fish > ~/.config/fish/completions/poetry.fish
+
+# Fish (Homebrew)
+poetry completions fish > (brew --prefix)/share/fish/vendor_completions.d/poetry.fish
+
+# Zsh
+poetry completions zsh > ~/.zfunc/_poetry
+
+# Oh-My-Zsh
+mkdir $ZSH_CUSTOM/plugins/poetry
+poetry completions zsh > $ZSH_CUSTOM/plugins/poetry/_poetry
+
+# prezto
+poetry completions zsh > ~/.zprezto/modules/completion/external/src/_poetry
+```
 
 ### Clone, edit, test
 1. clone this repo where you want in your home folder
