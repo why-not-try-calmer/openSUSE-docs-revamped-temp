@@ -70,14 +70,7 @@ nav:
         - Interlude -- Fundamental openSUSE concepts:
             - Zypper: zypper.md
             - Snapper: snapper.md
-        - Getting & installing software:
-            - Installing distribution packages: ""
-            - Adding repositories: ""
-            - Flatpaks: ""
-            - Snaps: ""
-            - Running with podman: "install_podman.md"
-            - Running with libvirt: ""
-            - Building from source: ""
+        - Getting & installing software: ""
         - Updating and upgrading: ""
         - Managing snapshots: ""
         - Troubleshooting with autonomy: ""
