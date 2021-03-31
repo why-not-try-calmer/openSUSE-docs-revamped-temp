@@ -49,7 +49,7 @@ lib1     lib3      lib4
 Let's assume for simplicity that no other software requires `lib4`. Under this assumption, if the user remove softwareB, they will want to remove `lib4`, but neither `lib3` nor `lib6`, because the former is directly required by `softwareA`, while the latter is indirectly by `softwareA` via `lib3`.
 
 In addition to this issue imagine the user updates `softwareB` so that it ends up depending on a new version of library `lib4`, say `lib4*`. This means that we need to recast the above structure as:
-``````
+```
     lib5      lib6
    /    \    /    \
 lib1     lib3      lib4       lib4*
