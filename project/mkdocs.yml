@@ -76,6 +76,7 @@ nav:
         - Troubleshooting with autonomy: ""
     - Completing and fine-tuning your setup:
         - Finding & installing additional software:
+            - Audio & Video Codecs: codecs.md
             - Graphic Drivers: 
                 - Proprietary: install_proprietary.md
                 - Hybrid GPUs: hybrid_graphics.md
