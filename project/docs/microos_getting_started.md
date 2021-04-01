@@ -168,6 +168,8 @@ Some flatpaks you could install from [flathub](https://flathub.org/home):
 
 Snaps are mainly used with Ubuntu, but it is possible to install them as well in openSUSE MicroOS with the following commands.
 
+First, Snapd must be installed on the system with transactional-update:
+
 ```
 $ sudo transactional-update shell
   # zypper addrepo --refresh https://download.opensuse.org/repositories/system:/snappy/openSUSE_Tumbleweed snappy
@@ -177,11 +179,21 @@ $ sudo transactional-update shell
   # zypper in snapd
   # exit
 $ sudo reboot
+```
 
-$ sudo mksubvolume /snap
+After a reboot, snapd will be installed. Files installed from Snapd will be contained in the [/snap directory](https://snapcraft.io/docs/system-snap-directory) which can be created as a subvolume on MicroOS.
+
+```
 $ source /etc/profile
+$ sudo mksubvolume /snap
+```
+
+Ubuntu uses [AppArmor](https://ubuntu.com/server/docs/security-apparmor) to handle permissions of Snap applications. Ensure AppArmor is enabled with `sudo systemctl status apparmor` - if systemd shows AppArmor is stopped, start it now (and on every boot) with `sudo systemctl enable --now apparmor.service`
+
+Once AppArmor is running, Snapd can be started with:
+
+```
 $ sudo systemctl enable --now snapd
-$ sudo systemctl enable --now apparmor.service
 $ sudo systemctl enable --now snapd.apparmor
 ```
 You can install snaps via the terminal (for example the snap store where you can find snaps and install them via a graphical interface):
