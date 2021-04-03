@@ -167,6 +167,8 @@ Some flatpaks you could install from [flathub](https://flathub.org/home):
 ### Installing snaps
 
 Snaps are mainly used with Ubuntu, but it is possible to install them as well in openSUSE MicroOS with the following commands.
+!!! info
+    _It is NOT recommended to install snaps on openSUSE MicroOS, there is a possibility this will break during an update or reboot_ 
 
 ```
 $ sudo transactional-update shell
