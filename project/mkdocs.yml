@@ -1,5 +1,5 @@
 site_name: openSUSE User Documentation Project
-repo_url: https://github.com/Nycticorax/openSUSE-docs-revamped
+repo_url: https://github.com/openSUSE/openSUSE-docs-revamped
 edit_uri: ""
 
 plugins:
@@ -76,6 +76,7 @@ nav:
         - Troubleshooting with autonomy: ""
     - Completing and fine-tuning your setup:
         - Finding & installing additional software:
+            - Audio & Video Codecs: codecs.md
             - Graphic Drivers: 
                 - Proprietary: install_proprietary.md
                 - Hybrid GPUs: hybrid_graphics.md

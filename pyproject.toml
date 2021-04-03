@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "opensuse-docs-revamped"
+version = "0.3.1"
+description = "openSUSE documentation"
+authors = ["Onuralp SEZER <thunderbirdtr@fedoraproject.org>"]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+mkdocs = "^1.1.2"
+mkdocs-material = "^7.0.7"
+mkdocs-git-revision-date-plugin = "^0.3.1"
+mkdocs-versioning = "^0.4.0"
+mkdocs-pdf-export-plugin = "^0.5.8"
+
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
