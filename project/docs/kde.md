@@ -4,6 +4,7 @@ Plasma, made by KDE is the default graphical desktop environment of openSUSE.
 The latest version, Plasma 5, is a fresh, elegant and powerful desktop for both beginner and advanced users.
 
 KDE software is not limited to a desktop environment. The software made by the community includes:
+
 * Plasma, the graphical desktop.
 * KDE Applications, a collection of a wide variety of applications for communication, work, education and entertainment, including famous programs like Kate.
 * Additional high-quality applications, such as DigiKam and Krita.
@@ -56,6 +57,34 @@ Click __Add custom shortcut__, the button will change to indicate it is waiting 
 ![Modify Shortcuts](image/Shortcuts_Spectacle.png)
 
 Once you are satisfied with the changes, click __Apply__ in the bottom right corner of the shortcuts window.
+
+#### Adding Custom Shortcuts
+
+Select the __Custom Shortcuts__ category from the left hand column of the __Shortcuts__ settings window. Custom shortcuts allow you to trigger your own events from simple to complex that would not normally be available. For demonstration purposes we are going to setup a keyboard shortcut for a program called _Rofi_. You may not want to use this program yourself but the process is the same for other programs.
+<br><br>
+First we will add a new __Custom Shortcut__ by clicking _Edit --> New --> Global Shortcut --> Command/URL_. A new entry will be added to the list in the middle column.
+
+![New Custom Shortcut](image/CustomShortcuts_AddNew.png)
+
+The entry will be highlighted and its name selected so you can rename it immediately just by typing. If you want to change the name later on, simply double-click the name in the list and start typing.
+
+![Rename Custom Shortcut](image/CustomShortcuts_NameNew.png)
+
+Using a name that is descriptive will help us remember what this custom shortcut does. In this case, the program _Rofi_ will display a list of open applications and switch between their windows with the keyboard.
+<br><br>
+Now add the command that will be run when the keyboard shortcut is pressed. When an action is selected from the middle column, the right hand area will change to the editing view. You will see tabs near the top for __Comment__, __Trigger__, and __Action__. Click the __Action__ tab and add the command to the text box labeled "Command/URL".
+
+![Add Custom Command](image/CustomShortcuts_Command.png)
+
+Next click the __Trigger__ tab. This is where the keyboard shortcut that triggers the command will be set. Click the button labeled "Shortcut" which will display the current keyboard shortcut if there is one. The button changes color and waits for you to type the desired shortcut.
+
+![Add Trigger](image/CustomShortcuts_Trigger.png)
+
+If this keyboard shortcut is already used, a warning will be displayed. Click "Cancel" to try a different shortcut or click "Reassign" if you wish to use it anyway. For this demonstration, "Reassign" is selected. Click __Apply__ at the bottom right of the window.
+<br><br>
+Now the custom keyboard shortcut runs the command system wide, no matter what applications are open.
+
+![Demonstrate Custom Shortcut](image/CustomShortcuts_Demonstration.png)
 
 #### Using panes, bars, widgets & docks
 
