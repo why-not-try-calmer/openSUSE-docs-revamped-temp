@@ -24,7 +24,7 @@ The default snapshot configuration should only be changed by experienced users b
 
 * Directories `/opt` and `/usr/local`, where various software and third-party products are installed are not included in snapshots by default. This prevents uninstalling the software if a system rollback is conducted.    
 
-### Choosing a Snapshot
+### Choosing a Snapshot 
 #### Snapshot Types
 `snapper` features 3 types of snapshots: _Timeline_, _Installation_, and _Administration_.
 
