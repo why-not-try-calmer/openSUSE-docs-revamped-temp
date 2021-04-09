@@ -6,7 +6,7 @@ Podman is a a daemonless, open-source tool to manage, deploy and build applicati
 
 ### Rootfull or rootless
 
-As Podman is daemonless, running containers doesn't require running them with root, but can be started with a user as well. Granted, rootless containers will have no access to networking and can't use privileged ports, but it is a great way to keep the system secure. For instance if an application escapes the container ran as a user it will be able to cause less damage and would have limited access to the system than if it would if it would ran as root. Rootfull containers are recommended for running applications that require access over privileged ports like a public facing `nginx` reverse proxy. Even in that case there could be some rules implemented in the firewall that forwards requests, but that's a different story.
+As Podman is daemonless, running containers doesn't require running them with root but can be started with a user as well. Granted, rootless containers will have no access to networking and can't use privileged ports, but it is a great way to keep the system secure. For instance, if an application escapes the container ran as a user it will be able to cause less damage and would have limited access to the system than if it would run as root. Rootfull containers are recommended for running applications that require access over privileged ports like a public facing `Nginx reverse proxy. Even in that case, there could be some rules implemented in the firewall that forwards requests, but that's a different story
 
 #### Rootless environment configuration 
 
