@@ -941,12 +941,7 @@ Podman's other important feature is the automatic updates of containers without 
 This to be followed by generating `systemd` units for the container: `podman generate systemd --new --files [container ID or name]`. Once this is ready and the unit file is under the corresponding `systemd` folder - depending on how podman is used, rootfull or rootless - the container unit to be started. Following this the `podman auto-update` command can update every container with changed images.
 ## References
 
-I strongly suggest checking out the man pages of podman which provides a lot of information straight from the terminal. Also the following articles will help a lot on your `podman` journey:
-* https://www.redhat.com/sysadmin/compose-podman-pods
-* https://www.redhat.com/sysadmin/rootless-podman-makes-sense
-* https://www.redhat.com/sysadmin/behind-scenes-podman
-* https://www.redhat.com/sysadmin/user-flag-rootless-containers
-* https://www.redhat.com/en/blog/understanding-root-inside-and-outside-container
-* https://developers.redhat.com/blog/2019/01/15/podman-managing-containers-pods/
-* https://developers.redhat.com/blog/2019/04/24/how-to-run-systemd-in-a-container/
-* https://github.com/containers/podman/blob/master/docs/tutorials/rootless_tutorial.md
+I strongly suggest checking out the `man` pages of `podman` which provides a lot of information straight from the terminal. Also the following resources can help a lot on your `podman` journey:
+* https://podman.io/
+* http://docs.podman.io/en/latest/
+* http://docs.podman.io/en/latest/Tutorials.html
