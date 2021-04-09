@@ -403,7 +403,7 @@ Lets break down the above:
 
 ### Podman and systemd
 
-Podman has a fantastic integration with `systemd`. I believe at this point the users are even able to run `systemd` **within** a container which makes perfect sense. Why would we have to use anything different inside a container than we already got used to outside of a container. Anyhow we not covering this, but managing containers with `systemd`. 
+Podman has fantastic integration with `systemd`. Users are even able to run `systemd` **within** a container which makes perfect sense. Why would we have to use anything different inside a container than we already got used to outside of a container? Anyhow, we are not covering this, but managing containers with `systemd`. 
 As we deploy more and more containers managing them using the Podman cli tool only may quickly become burdensome. It is much easier to manage the pods and containers with `systemd` for example to restart, stop, or to start them. Using `systemd` will also enable us to utilize `podman auto-update` for updating the containers.
 
 #### Generating a systemd unit
