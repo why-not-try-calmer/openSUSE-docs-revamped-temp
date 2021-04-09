@@ -1,6 +1,6 @@
 ## What is Podman
 
-Podman is a a daemonless, open-source tool to manage, deploy and build application containers. Podman is using Open Containers Initiative (OCI) Containers and container images, which means that containers crated with/for Docker or CRI-o will work with Podman as well and vice versa. It is coming with a command line interface (CLI) which offers pretty much the same commands like Docker does. How similar are Podman commands to Docker's? Let's put it this way: many Podman users just alias `docker` to `podman`. Like other runtimes, Podman also relies on an OCI compliant container runtime to interface with the operating system. Podamn also has a RESTful API to manage containers, offers automatic updates of containers and has a fantastic `systemd` integration.
+Podman is a daemon-less, open-source tool to manage, deploy and build application containers. Podman is using Open Containers Initiative (OCI) Containers and Container Images, which means that containers crated with/for Docker or CRI-o will work with Podman as well and vice versa. It is coming with a command-line interface (CLI) which offers pretty much the same commands as Docker does. How similar are Podman commands to Docker? Let's put it this way: many Podman users just alias `docker` to `podman`. Like other runtimes, Podman also relies on an OCI compliant container runtime to interface with the operating system. Podamn also has a RESTful API to manage containers, offers automatic updates of containers, and has a fantastic `systemd` integration.
 
 ## Getting containers running
 
