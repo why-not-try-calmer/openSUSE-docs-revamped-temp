@@ -233,6 +233,31 @@ as in for example:
 
 `sudo btrfs subvolume delete -i 1031 /.snapshots/171/snapshot/.snapshots/420/snapshot/.snapshots/1/snapshot`.
 
+You might also want to make sure the `/.snapshots` entry point is correctly registered against `fstab`:
+
+`$  cat /etc/fstab`
+
+`UUID=22e658f2-1586-4ac2-8aeb-a6862c8c9a25 /.snapshots btrfs subvol=/@/.snapshots 0 0`
+
+If this is not the case edit the `fstab` file accordingly:
+
+`$  sudo nano /etc/fstab`
+
+pasting on a new line
+
+`UUID={your UUID} /.snapshots btrfs subvol=/@/.snapshots 0 0`
+
+where the value of your UUID can be determined simply by copying from neighbour lines in the file. Look in particular for lines meeting in the pattern:
+
+```
+UID=22e658f2-1586-4ac2-8aeb-a6862c8c9a25 /var btrfs subvol=/@/var 0 0
+UUID=22e658f2-1586-4ac2-8aeb-a6862c8c9a25 /usr/local btrfs subvol=/@/usr/local 0 0
+UUID=22e658f2-1586-4ac2-8aeb-a6862c8c9a25 /srv btrfs subvol=/@/srv 0 0
+UUID=22e658f2-1586-4ac2-8aeb-a6862c8c9a25 /root btrfs subvol=/@/root 0 0
+UUID=22e658f2-1586-4ac2-8aeb-a6862c8c9a25 /opt btrfs subvol=/@/opt 0 0
+UUID=22e658f2-1586-4ac2-8aeb-a6862c8c9a25 /home btrfs subvol=/@/home 0 0
+```
+
 ### Further reading
 * [Snapper.io](http://snapper.io "Snapper.io")
 * [openSUSE Wiki Portal:Snapper](https://en.opensuse.org/Portal:Snapper "openSUSE Wiki Portal:Snapper")
