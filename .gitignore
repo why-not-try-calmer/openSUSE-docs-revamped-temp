@@ -28,7 +28,8 @@ poetry.lock
 #python venv
 .venv
 venv
-
+# dictonary
+dictionary/build/markdown.dic
 
 # Vim
 [._]*.s[a-v][a-z]

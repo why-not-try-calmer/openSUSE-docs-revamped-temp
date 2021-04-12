@@ -1,0 +1,23 @@
+matrix:
+- name: markdown
+  aspell:
+    lang: en
+    d: en_US
+  sources:
+  - 'project/docs/*.md'
+  default_encoding: utf-8
+  dictionary:
+    wordlists:
+    - dictionary/en-custom.txt
+    output: dictionary/build/markdown.dic
+  pipeline:
+  - pyspelling.filters.markdown:
+  - pyspelling.filters.html:
+      comments: false
+      attributes:
+      - title
+      - alt
+      ignores:
+      - code
+      - pre
+  - pyspelling.filters.url:
