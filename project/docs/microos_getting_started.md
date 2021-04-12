@@ -240,7 +240,7 @@ $ sudo transactional-update shell
   # exit
 $ sudo reboot
 ```
-If you have added repositories to `zypper` by yourself, it is possible that they will not refresh automatically with a `dup` command. You wll have to give them a flag for autorefresh:
+If you have added repositories to `zypper` by yourself, it is possible that they will not refresh automatically with a `dup` command. You will have to give them a flag for autorefresh:
 ```
 $ sudo transactional-update shell
   # zypper lr -p

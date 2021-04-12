@@ -38,7 +38,7 @@ The `License Agreement` informs you on roles, responsibilities and potential lim
 
 ## Network activation
 !!! note "Online repositories"
-    If you have an active internet conenction over an ethernet cable connected to your computer, right after you pass the *"Language, Keyboard and License Agreement"* section you will be prompted, asking if you want to *"Activate online repositories now?"*.It is recommended to select *Yes* which will provide you with a list of repositories, pre-selecting the main ones in advance and will download updated packages from the online repositiory during the installation. If you're on a metered connection you press "No". 
+    If you have an active internet conenction over an ethernet cable connected to your computer, right after you pass the *"Language, Keyboard and License Agreement"* section you will be prompted, asking if you want to *"Activate online repositories now?"*.It is recommended to select *Yes* which will provide you with a list of repositories, pre-selecting the main ones in advance and will download updated packages from the online repository during the installation. If you're on a metered connection you press "No". 
 
 ### Network settings
 You can skip this part if:
@@ -52,7 +52,7 @@ On the `Addresses` tab you will be able to configure the IP address of your adap
 ![Wireless configuration](image/yast_wireless_specific.png)
 
 ??? info
-    Wireless networks configured here will be transferred to the finalized system as well, regardless the soluion you are choosing to use to manage your connections.
+    Wireless networks configured here will be transferred to the finalized system as well, regardless the solution you are choosing to use to manage your connections.
 
 **If** you configured a statically assigned IP address:
 1. Switch to the `Routing` tab.
@@ -78,7 +78,7 @@ These repositories are the following:
 
 ### System role
 
-At this section of the preparation you can select from a list of predefined use cases which will tailor the system for the selected scenario. It is recommended to take a look at the [Choosing the right image](pick_an_image.md) page prior to continuing as it provides a brief explanation of desktop environments. Do note if you're using a DVD installer without an active internet connection, some of the listed desktop envirnments will not be available.
+At this section of the preparation you can select from a list of predefined use cases which will tailor the system for the selected scenario. It is recommended to take a look at the [Choosing the right image](pick_an_image.md) page prior to continuing as it provides a brief explanation of desktop environments. Do note if you're using a DVD installer without an active internet connection, some of the listed desktop environments will not be available.
 
 * _Desktop with KDE Plasma_: the Plasma desktop with KDE applications.
 * _Desktop with GNOME_: the GNOME desktop with GNOME applications.
@@ -99,7 +99,7 @@ Select one and press __Next__ to continue.
 Most Linux distributions use the same "base" partition scheme:
 
 * a _bootloader partition_, hosting a small program called a _bootloader_, whose purpose is to take over from the UEFI/BIOS of your computer and set up the initial conditions for your operating system to get running 
-* a main _data partition_ (or _OS partition_), which is where the operating system (i.e. _Leap_) is installed, optionnally along with your personal user data.
+* a main _data partition_ (or _OS partition_), which is where the operating system (i.e. _Leap_) is installed, optionally along with your personal user data.
 * (recommended but not necessary) a swap partition of the size of your machine's RAM, + 1 GB
 
 If you are not interested in keeping whatever data or operating system is installed on the target machine, you can simply proceed with the base partition scheme. In that cases, simply run the installer and, on the _Disk_ screen, pick the _Suggested Partitioning_ option, and accept all recommendations there. 
@@ -123,7 +123,7 @@ Whichever option you choose, you can refer to the following instructions:
 
 <u>Step by step: Expert partitioning for Windows</u>
 
-1. From the _Disk_ view, select _Expert Partioner_
+1. From the _Disk_ view, select _Expert Partitioner_
 2. Click the __Add Partition__ button (bottom left-hand side)
 3. Assign it at least 40 GBs, and set its filesystem to _Btrfs_, and the mount point to `/`. You could label this partition 'Leap OS'.
 4. If it is not set already, set the `/boot/efi` flag your 'Windows bootloader' partition (the ~100MB partition probably using the _Fat32_ filesystem)
@@ -143,7 +143,7 @@ The result should look like this:
 !!! warning
     Because you are installing the Leap bootloader on a non-btrfs partition, the bootloader will be outside of the scope of the snapshotting system. This means that you won't be able to rollback from a misconfigured bootloader settings, and that in general rolling back won't suffice to fix issues with your bootloader configuration. See [Introduction to snapper](snapper.md) for details. Consider also [the official documentation](https://doc.opensuse.org/documentation/leap/reference/html/book.opensuse.reference/cha-snapper.html#sec-snapper-snapshot-boot) on snapper rollbacks.
 
-Optionnally, you could create a new partition for your user data under `/home`. This partition would then be easily accessible to other operating systems installed on your machine. If you do so, make sure there is no `/home` subvolume created inside the partition assigned to `/`.
+Optionally, you could create a new partition for your user data under `/home`. This partition would then be easily accessible to other operating systems installed on your machine. If you do so, make sure there is no `/home` subvolume created inside the partition assigned to `/`.
 
 ??? info
     After the installation you will want to switch between Leap and Windows. Use [these instructions](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/boot-to-uefi-mode-or-legacy-bios-mode) to learn how to reboot to your UEFI. From there you will be able to select Windows or Leap as boot destination.
@@ -163,7 +163,7 @@ You can follow the _Step by Step_ from the previous section, making sure that:
 * (old) `/boot/efi`, preferably _Btrfs_, > 100 MB
 * (new) `/`, _Btrfs_, > 40 GB
 
-Optionnally, you could create a new partition for your user data under `/home`. This partition would then be easily accessible to other operating systems installed on your machine. If you do so, make sure there is no `/home` subvolume created inside the partition assigned to `/`.
+Optionally, you could create a new partition for your user data under `/home`. This partition would then be easily accessible to other operating systems installed on your machine. If you do so, make sure there is no `/home` subvolume created inside the partition assigned to `/`.
 
 ??? info
     After the installation you will want to switch between Leap and whichever operating system you're using. Refer to your machine's manufacturer for instructions. If your machine had Windows preinstalled, use [these instructions](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/boot-to-uefi-mode-or-legacy-bios-mode) to learn how to reboot to your UEFI. From there you will be able to select the desired boot destination.
@@ -173,7 +173,7 @@ The installation process for Mac users interested in dual-booting Leap alongside
 
 <u>Step by step: Expert partitioning for Mac</u>
 
-1. From the _Disk_ view, select _Expert Partioner_
+1. From the _Disk_ view, select _Expert Partitioner_
 2. Click the __Add Partition__ button (bottom left-hand side)
 3. Create a new _Btrfs_ partition of at least 100 MB for the Leap bootloader. Set it the `/boot/efi` mount point. You could label this partition 'Leap bootloader'.
 4. Create a new _Btrfs_ partition of at least 40 GBs by repeating (2). Set it the `/` mount point. You could label this partition 'Leap OS'.
@@ -185,7 +185,7 @@ The installation process for Mac users interested in dual-booting Leap alongside
 * (new) `/boot/efi`, _Btrfs_, > 100 MB
 * (new) `/`, _Btrfs_, > 40 GB
 
-Optionnally, you could create a new partition for your user data under `/home`. This partition would then be easily accessible to other operating systems installed on your machine. If you do so, make sure there is no `/home` subvolume created inside the partition assigned to `/`.
+Optionally, you could create a new partition for your user data under `/home`. This partition would then be easily accessible to other operating systems installed on your machine. If you do so, make sure there is no `/home` subvolume created inside the partition assigned to `/`.
 
 !!! warning
     Some recent Macs have been reported to ship with firmware lock enabled by default. Refer to [this guide](https://support.apple.com/en-gb/HT204455) to disable it.
@@ -204,7 +204,7 @@ However, _Btrfs_ has been the preferred filesystem for all openSUSE distribution
 
 !!! info
     Snapshots take advantage of the _copy-on-write_ logic of _Btrfs_. On a copy-on write filesystem, submitted changes do not overwrite the previous state; instead, changes are 'moved' to a different location on the disk, so that the location of origin is left unchanged. Together with 'deduplication' rules aimed at minimizing redundancies between file changes, this logic allows for the layering of several versions of an entire filesystem, with each layer representing different sets of changes. These sets of changes thus correspond to meaningful actions from the end user's perspective, such as 'before installing package X', 'before creating subvolume Y', etc.
-    Renouncing _Brtfs_ thus means renouncing this feature. Given that _Tumbleweed_ was designed around this feature, it will not work as intended unless you pick this filesystem.
+    Renouncing _Btrfs_ thus means renouncing this feature. Given that _Tumbleweed_ was designed around this feature, it will not work as intended unless you pick this filesystem.
 
 #### LUKS encryption
 If you are installing _Leap_ on a laptop, or generally on any machine accessible to untrusted individuals, we highly recommend protecting your data with a _full disk encryption_. The price to pay is that doing so will entirely wipe out your drive. The obvious advantage, however, is that this will protect your data with a sound security model. 
@@ -221,7 +221,7 @@ To apply full disk encryption while installing, you can either use the _Guided S
 3. Then, on the _Filesystem Options_ screen:
     * Select _Btrfs_.
     * Tick the _Enable Snapshots_ checkbox ([scroll up](yast_installer.md#picking-a-file-system-for-data-partitions) or see [this document](snapper.md) to understand the reason why we recommend this).
-    * Select _Btfs_ again as _File System Type_ for your any mount point / partition presented to you by the installer.
+    * Select _Btrfs_ again as _File System Type_ for your any mount point / partition presented to you by the installer.
 
 Alternatively, if you prefer to turn to a different filesystem than _Btrfs_ (typically _Ext4_) follow the following steps:
 
@@ -270,7 +270,7 @@ By default you will also use this newly created account to act as the administra
 ## Installation
 ## Installation Overview
 ### Installation Settings
-This is the final and probably the an important section of the installer, __don't skip it__! You can and should review your settings, fine tune your installation if you need to and can even gain access to the _YaST Software Installer_ wich can be used to install additional packages or patterns. To change any of the settings just click the _headlines_ (like "Software" or "Security").
+This is the final and probably the an important section of the installer, __don't skip it__! You can and should review your settings, fine tune your installation if you need to and can even gain access to the _YaST Software Installer_ which can be used to install additional packages or patterns. To change any of the settings just click the _headlines_ (like "Software" or "Security").
 After you reviewed the settings you can move on with the installation which will finalize your openSUSE deployment based on your provided informations.
 
 ??? info
