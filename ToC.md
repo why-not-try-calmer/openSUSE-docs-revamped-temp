@@ -34,7 +34,7 @@ __NB__: Unless mentioned otherwise, a document corresponding to a parent section
         * `tumbleweed-cli` & Tumbleweed snapshots: 
         * best-practices for updating / upgrading Leap & Tumbleweed: 
     * YaST: [yast_installer.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/yast_installer.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/yast_installer.md)
-    * `snapper` & `brtfs`: [snapper.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/snapper.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/34)
+    * `snapper` & `btrfs`: [snapper.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/snapper.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/34)
 8. Getting & installing additional software
     * flatpaks
     * snaps

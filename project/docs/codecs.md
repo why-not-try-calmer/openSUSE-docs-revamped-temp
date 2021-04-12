@@ -41,7 +41,7 @@ Use the following commands to add all of the third-party Packman repository (Pac
 #### Using the command line
 1. Refresh your local repository: `sudo zypper ref`,
 1. Install some generally needed codecs: `zypper install k3b-codecs ffmpeg lame gstreamer-plugins-libav gstreamer-plugins-bad gstreamer-plugins-ugly gstreamer-plugins-good gstreamer-fluendo-mp3 libdvdcss2`,
-1. Update everyting to the latest Version `zypper dist-upgrade --from packman`.
+1. Update everything to the latest Version `zypper dist-upgrade --from packman`.
 
 #### Using YaST
 1. Launch `YaST`,
