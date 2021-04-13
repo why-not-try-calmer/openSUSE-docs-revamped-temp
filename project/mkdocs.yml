@@ -80,6 +80,7 @@ nav:
             - Graphic Drivers: 
                 - Proprietary: install_proprietary.md
                 - Hybrid GPUs: hybrid_graphics.md
+            - Setting up a containerized environment: install_podman.md
         - Security basics: ""
         - Wifi & network: ""
         - Power management: ""
