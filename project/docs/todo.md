@@ -6,7 +6,7 @@
 ## Theme
 
 - [x] Fix logo color
-- [ ] Replace goole fonts
+- [ ] Replace google fonts
 - [ ] Fix logo size and aspect ratio
 
 ## Current Articles

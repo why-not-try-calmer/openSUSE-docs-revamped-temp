@@ -612,7 +612,7 @@ or
     | --no-color | Do no use colors in output |
     | --non-interactive | Do not ask anything, use default answers automatically | -n |
     | --promptids | Output a list of zypper's user prompts |
-    | --quiet | Surpress normal output, print only error messages | -q |
+    | --quiet | Suppress normal output, print only error messages | -q |
     | --table-style &lt;INTEGER&gt; | Table style (0-11) | -s &lt;INTEGER&gt; |
     | --terse | Terse output for machine consumption | -t |
     | --userdata &lt;STRING&gt; | User defined transaction id used in history and plugins |

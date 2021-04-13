@@ -16,7 +16,7 @@ By default, openSUSE Tumbleweed formats your hard drive with the Btrfs filesyste
 
 The default snapshot configuration should only be changed by experienced users but it is important to note some default behaviour for new users as well.
 
-* Snapshots are automatically enabled for the root `/` partition if it is larger than 16 Gigabytes. This is to ensure there is enough disk space for the snapshots and important system tasks to occure, which may include moving, writing or deleting files.
+* Snapshots are automatically enabled for the root `/` partition if it is larger than 16 Gigabytes. This is to ensure there is enough disk space for the snapshots and important system tasks to occur, which may include moving, writing or deleting files.
 
 * If the root `/` partition is smaller than 16 Gigabytes a different kind of snapshot is used, known as "Timeline Snapshots". These snapshots are created every hour. By default only the first snapshot of the last ten days, months, and years are kept. This ensures there are some snapshots for system rollbacks while taking up very minimal disk space.
 
@@ -50,7 +50,7 @@ __Snapper CLI Example__
 ```
     $ sudo snapper list
     [sudo] password for root: 
-      # | Type   | Pre # | Date                            | User | Cleanup | Description           | Userdata     
+      # | Type   | Pre # | Date                            | User | Cleanup | Description           | UserData     
     ----+--------+-------+---------------------------------+------+---------+-----------------------+--------------
      0  | single |       |                                 | root |         | current               |              
      1* | single |       | Thu 17 Dec 2020 10:59:10 PM MST | root |         | first root filesystem |              
