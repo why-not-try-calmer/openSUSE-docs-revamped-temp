@@ -193,7 +193,7 @@ Start with a simple list:
 
 The list features a column mentioning an estimate of the space occupied by each snapshot. You can remove unneeded snapshots with 
 
-`$  sudo snapshot delete <snapshot id>`
+`$  sudo snapper delete <snapshot id>`
 
 You will find the value of `<snapshot id>` in the first column ('#').
 
