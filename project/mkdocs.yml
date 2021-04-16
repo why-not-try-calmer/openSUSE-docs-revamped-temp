@@ -69,7 +69,7 @@ nav:
         - Interlude -- Fundamental openSUSE concepts:
             - Zypper: zypper.md
             - YaST2: ""
-            - Updating, upgrading, snapshots best practices: ""
+            - Updating, upgrading, snapshots best practices: updating_upgrading.md
             - Snapper and Btrfs: snapper.md
         - Additional software: ""
         - Troubleshooting with autonomy: ""
