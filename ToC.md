@@ -15,7 +15,7 @@ __NB__: Unless mentioned otherwise, a document corresponding to a parent section
     * disk partitioning
     * disk encryption
     * snapshots/btrfs
-5. Quick install for experienced users
+4. Quick install for experienced users
    * MicroOS: [microos_getting_started.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/microos_getting_started.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/24)
 ### Distro basics
 5. KDE Plasma basics [kde.md](project/docs/kde.md)
@@ -32,9 +32,10 @@ __NB__: Unless mentioned otherwise, a document corresponding to a parent section
     * zypper:
         * commands list: [zypper.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/zypper.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/32)
         * `tumbleweed-cli` & Tumbleweed snapshots: 
-        * best-practices for updating / upgrading Leap & Tumbleweed: 
-    * YaST: [yast_installer.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/yast_installer.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/yast_installer.md)
+        * best-practices for updating / upgrading Leap & Tumbleweed
+    * YaST
     * `snapper` & `btrfs`: [snapper.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/snapper.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/34)
+
 8. Getting & installing additional software
     * flatpaks
     * snaps
