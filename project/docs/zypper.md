@@ -537,6 +537,15 @@ or
 * `patches` or `pch`
 ##### List all available packages
 * `packages` or `pa`
+##### List all manually installed packages as a single history
+For the entire list:
+
+`sudo cut -d "|" -f 1-4 -s --output-delimiter " | " /var/log/zypp/history | grep -v " radd "`
+
+For a specific package:
+
+`sudo cut -d "|" -f 1-4 -s --output-delimiter " | " /var/log/zypp/history | grep -v " radd " | grep "<package name>"`
+
 ##### List all available patterns
 * `patterns` or `pt`
 ##### List all available products
