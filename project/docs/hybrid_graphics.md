@@ -23,6 +23,7 @@ To use an external monitor or be able to offload rendering to the NVIDIA GPU, yo
 ####Intel and NVIDIA
 
 Either one of these two options:
+
 * From a terminal session: to switch to the NVIDIA GPU run `sudo prime-select nvidia`; conversely, for the Intel GPU run `sudo prime-select intel`. After executing either command, log out and back on to apply the changes.
 * With the KDE widget _SUSE Prime Selector_, just click it and select _Switch to NVidia_. Then log out and back in and you should be set.
 
