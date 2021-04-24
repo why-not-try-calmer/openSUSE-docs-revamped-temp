@@ -22,11 +22,11 @@ What this command does is to check whether all repositories registered against t
 !!! info
     On Tumbleweed you will never have to use **zypper-up**, which is how you would update packages on Leap. The reason is that since Tumbleweed is a rolling-release distribution, updating it means not just updating an arbitrary collection of packages; it also means using the updated packages as _the new snapshot_ which Tumbleweed is to realize. In addition to this **zypper-dup** enjoys some extra power over **zypper-up**, being able to not only edit packages, but to remove them when they are no longer required.
 
-It may occur that some repositories, when registered against the system, have not been configured to automatically look for new available during a `zypper-dup`. For this reason it might be useful to accompany this command with another one forcing all repositories to check for new updates, resulting in the pair:
+It may occur that some repositories, when registered against the system, have not been configured to automatically look for new available updates during a `zypper-dup`. For this reason it might be useful to accompany this command with another one forcing all repositories to check for new updates, resulting in the pair:
 
 `sudo zypper ref && sudo zypper dup`
 
-That said, you can ensure that all repositories have been properly configured by listing them and, where applicable, by enable their autorefresh feature. From the list of repositories obtained from:
+That said, you can ensure that all repositories have been properly configured by listing them and, where applicable, by enabling their autorefresh feature. From the list of repositories obtained from:
 
 `zypper lr`
 
