@@ -115,7 +115,7 @@ as in:
 `$  sudo snapper -c foo delete-config /foot`
 
 ### Creating and Deleting Snapshots
-You can create a snapshot at any time. For example, to create a new snapshot for `root` (the default consumer of snapshots on openSUSE distributions):
+You can create snapshots at any time. For example, to create a new snapshot for `root` (the default consumer of snapshots on openSUSE distributions):
 
 `$ sudo snapper -c root create -d "<description>"`
 
