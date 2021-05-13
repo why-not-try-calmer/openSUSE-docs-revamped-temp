@@ -520,6 +520,9 @@ or
 ```
 
 #### More advanced commands
+If you are digging into these commands, then I think we can safely assume that you know what you are doing.
+All zypper commands have a plethora of options, which can be discovered in the man pages, or by adding
+`-h` to the end a subcommand invocation. This section is more to introduce you to things zypper can do!
 ##### Rename specified repository
 * `renamerepo` or `nr`
 ##### Modify specified repository
