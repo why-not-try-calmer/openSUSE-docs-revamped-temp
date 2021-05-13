@@ -20,7 +20,10 @@ Zypper is a command line package manager for installing, updating and removing p
 
 ### What is a Package Manager?
 Software is incredibly interconnected. Programming a user interface, a developer's code will specify the location on the screen
-of widgets, such as buttons or text, and define how these things rearrange when a window is resized. But most code depends on some other code that serves as a 'backend' (often called a _library_). For example, an application will rarely describe how to render a button, instead it will ask a library to do that for it. This allows for a number of benefits. Some people specialise on writing button drawing routines while others specialise on using those routines to
+of widgets, such as buttons or text, and define how these things rearrange when a window is resized. But most code depends on
+some other code that serves as a 'backend' (often called a _library_). For example, an application will rarely describe how to
+render a button, instead it will ask a library to do that for it. This allows for a number of benefits. Some people specialise
+on writing button drawing routines while others specialise on using those routines to
 create feature-full applications.
 
 Apps written for Linux use this principle a lot and it opens up a lot of opportunity. If 100 apps all use the same
@@ -29,16 +32,17 @@ the following benefits:
 
   1. We save space! Instead of every graphical application containing the code necessary for drawing a button,
   we have that code installed once!
-  2. If a library used by many is found to contain insecure code, buggy or slow code, the library can be fixed and updated
-  and every app that uses it gains that improvement. We don't have to rely on developers tracking the libraries that they use
+  2. If a library used by many is found to contain insecure, buggy or slow code, you can fix and update the library and every 
+  app that uses it gains that improvement. We don't have to rely on developers tracking the libraries that they use
   and rebuilding their apps every time one changes.
-  3. If you decide that you want to improve upon a library in some way. You can exchange the version on your computer with
-  your modified version and all applications that use it will adopt your changes. This is a core principle in 
-  [free software](https://en.wikipedia.org/wiki/Free_software).
+  3. If you improve upon a library in some way, you can exchange the version on your computer with
+  your modified version. Your improvment is then available to all applications that use that library and can adopt your changes. 
+  This is a core principle in [free software](https://en.wikipedia.org/wiki/Free_software).
 
-However, there is a drawback. When installing software, we have to ensure that the libraries that it requires are also
-installed (known as dependencies), and when removing software, we cannot remove a dependency without checking to make sure that
-nothing else depends upon it -- or it will break the 'dependency-tree' of the operating system. To visualize the issue, consider the following illustration:
+However, there is a drawback. When installing software, we have to ensure that the libraries that it requires (known as dependencies)
+are also installed. When removing software, we cannot remove a dependency without checking to make sure that
+nothing else depends upon it -- or it will break the 'dependency-tree' of the operating system. To visualize the issue, consider the
+following illustration:
 ```
     lib5      lib6
    /    \    /    \
@@ -46,9 +50,12 @@ lib1     lib3      lib4
   \      /  \      /
   softwareA  softwareB
 ```
-Let's assume for simplicity that no other software requires `lib4`. Under this assumption, if the user remove softwareB, they will want to remove `lib4`, but neither `lib3` nor `lib6`, because the former is directly required by `softwareA`, while the latter is indirectly by `softwareA` via `lib3`.
+Let's assume for simplicity that no other software requires `lib4`. Under this assumption, if the user remove softwareB, they will want
+to remove `lib4`, but neither `lib3` nor `lib6`, because the former is directly required by `softwareA`, while the latter is
+indirectly required by `softwareA` via `lib3`.
 
-In addition to this issue imagine the user updates `softwareB` so that it ends up depending on a new version of library `lib4`, say `lib4*`. This means that we need to recast the above structure as:
+In addition to this issue imagine the user updates `softwareB` so that it ends up depending on a new version of library `lib4`,
+say `lib4*`. This means that we need to recast the above structure as:
 ```
     lib5      lib6
    /    \    /    \
@@ -56,10 +63,12 @@ lib1     lib3      lib4       lib4*
   \      /  \                 /
   softwareA  softwareB(updated)
 ```
-This means that the system must be able to 'see through' the actual _versions_ of each package, so as to understand the path of their dependencies and warn about required alterations.
+This means that the system must be able to 'see through' the actual _versions_ of each package, so as to understand the path of
+their dependencies and warn about required alterations.
 
-These problems are solved with a package manager. Applications, libraries and many other things can built into packages which
-contains what you want install and a reference to any other packages that it depends on. The _package manager_ is an essential piece of software that downloads, installs, uninstalls and updates packages for you. If you tell the package manager to install Firefox,
+These problems are solved with a package manager. Developers can build applications, libraries and many other things into packages that
+contain what you want install and a set of references to any other packages that it depends upon. The _package manager_ is an essential
+piece of software that downloads, installs, uninstalls and updates packages for you. If you tell the package manager to install Firefox,
 it will download a package containing the firefox executable, as well as a number of packages that contain the dependencies
 of Firefox. It also holds a database of all installed packages so it knows when it can uninstall certain dependencies without
 breaking software on your computer. _Zypper_ is the name of the package manager used by openSUSE and SUSE Enterprise Linux.
@@ -150,6 +159,8 @@ with a summary, a type and whether they have been installed.
        | firefox-esr-branding-openSUSE      | openSUSE branding of MozillaFirefox          | package
        | firefox-uget-integrator            | Integration of uGet with Firefox             | package
     ```
+    Note: `i` or `i+` tell us that it is already installed. `i+` means installed by request of the user
+    and `i` means it was installed as a dependency
 
 ##### Adding a New Repository
 A repository is simply a source of packages. Zypper will already have a few
@@ -211,7 +222,7 @@ If successful, zypper will report the settings of that repo:
     ```
 
 ##### Removing Repositories
-You might decide that we no longer need a repository. Maybe you broke
+You might decide that you no longer need a repository. Maybe you broke
 your nvidia graphics card and feel that having the cuda repository
 just slows down zypper operations. You can remove a repository typing
 ```
@@ -258,7 +269,7 @@ added repos
     understand the output
 
 ##### Removing Packages
-Sometimes you will want to remove packages. To achieve this, we type:
+Sometimes you will want to remove packages. To achieve this, type:
 ```
 # zypper remove package
 ```
@@ -267,8 +278,8 @@ or
 # zypper rm package
 ```
 !!! tip
-    If your aim is to save space, you may way to add `-u` or `--clean-deps`
-    e.g. `sudo zypper rm -u firefox` to remove the uneeded dependencies
+    If your aim is to save space, you may want to add `-u` or `--clean-deps`
+    e.g. `sudo zypper rm -u firefox` to remove the unneeded dependencies
     as well.
 
 Just like when installing, you can remove multiple packages at a time:
@@ -301,20 +312,23 @@ There are three different types of update that you can do with zypper
 Standard updates simply check to see if newer versions of your packages exist in the repository.
 If there is a newer version, it will download and install it.
 
-Patches are groups of package updates. They are categorised so that you can see why they are being updated, for example
-often, when you ask zypper to list available patches, some will be labeled as security patches meaning that they
-fix a certain security that has been discovered in some packages on your system.
+Patches are groups of package updates. They are categorised so that you can see why they are being updated. For example,
+often, when you ask zypper to list available patches, some will be labeled as security patches. This  means that they
+fix a certain security problem that has been discovered in some packages on your system.
 
 Distro upgrades do not only update the packages on your system, but also change the source that you get your packages from.
-This is used mostly on tumbleweed. The build server where tumbleweed packages are build is a bit chaotic, packages
+This is used mostly on Tumbleweed. The build server where Tumbleweed packages are built is a bit chaotic; packages
 are updated at an extremely high speed. A consequence of this is that incompatibilities between new packages emerge all over the place. So how does
-tumbleweed stay so stable? In regular intervals, a stable snapshot of the tumbleweed packages is found and frozen for
-a short amount of time. Tumbleweed users use the distro upgrade feature of zypper to get their updates and so they change their
-distribution to the newest snapshot. This means that zypper changes repositories to point to the newer snapshot, and then updates all the packages
-with respect to the new snapshot. This means that tumbleweed users can enjoy incredibly up to date packages without having to deal with
-too much instability.
+Tumbleweed stay so stable? In regular intervals, a stable snapshot of the Tumbleweed packages is found and frozen for
+a short amount of time.
 
-Don't be intimidated by the number of options available to you for updating. The golden rule is if you are on tumbleweed, do distro-upgrades
+Tumbleweed users use the distro upgrade feature of zypper to get their updates and so they change their
+distribution to the newest snapshot. This means that zypper changes repositories to point to the newer snapshot, and then updates all the packages
+with respect to the new snapshot. This means that Tumbleweed users can enjoy incredibly up to date packages without having to deal with
+too much instability. Distro-upgrades can be used by leap users to upgrade version (for example, upgrading Leap 15.1 to 15.2). See 
+[here](https://en.opensuse.org/SDB:System_upgrade) for more details.
+
+Don't be intimidated by the number of options available to you for updating. The golden rule is if you are on Tumbleweed, do distro-upgrades
 and if you are on leap do normal upgrades. The exception to this rule is if you are in charge of a production system, such as a web-server
 (or any system where the only things scarier than change are security issues)
 then use patches to ensure that only the minimum amount of your system is touched by updates.
