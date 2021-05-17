@@ -21,8 +21,7 @@ Leap is a more traditional distribution: it uses a fixed-points release model, j
 It is worth noting that Leap provides a Linux kernel that is several years behind the version offered by Tumbleweed. 
 
 ??? info
-    The kernel is the heart of any Linux operating system. It translates your keystrokes and mouse clicks into the ones and zeros the computer understands, and is updated regularly so that the computer can respond to new hardware added to the system." 
-.
+    The kernel is the heart of any Linux operating system. It translates your keystrokes and mouse clicks into the ones and zeros the computer understands, and is updated regularly so that the computer can respond to new hardware added to the system.
     
 This means that you might be better served by Tumbleweed if you have a recent computer or rely extensively on "exotic" hardware.
 
