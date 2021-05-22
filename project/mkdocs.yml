@@ -85,7 +85,8 @@ nav:
         - Power management: ""
         - Pairing, syncing, sharing:
             - Bluetooth: bluetooth.md
-        - Advanced fine-tunings: ""
+        - Advanced fine-tunings:
+            - Transparent compression (zstd): zstd.md
         - More partitioning: ""
         - Recommended setups: ""
     - Giving back to the community:
