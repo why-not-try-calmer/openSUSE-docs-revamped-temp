@@ -1,22 +1,22 @@
 __NB__: Unless mentioned otherwise, a document corresponding to a parent section covers all topics listed as its children sections.
 ### Before installing
-1. Choosing a distribution: [pick_and_image.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/pick_an_image.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/37) 
+1. Choosing a distribution: [pick_and_image.md](https://github.com/openSUSE/openSUSE-docs-revamped-temp/blob/dev/project/docs/pick_an_image.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped-temp/issues/37) 
     * openSUSE distributions
     * desktop Environments
     * getting the right installer
     * FAQ: Issues & solutions
-2. Preparing the installation media: [image_choice.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/image_choice.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/26)
+2. Preparing the installation media: [image_choice.md](https://github.com/openSUSE/openSUSE-docs-revamped-temp/blob/dev/project/docs/image_choice.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped-temp/issues/26)
     * requisites
     * step by step guide
 ### Installing
-3. Step by step guide: [yast_installer.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/yast_installer.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/60) touching on
+3. Step by step guide: [yast_installer.md](https://github.com/openSUSE/openSUSE-docs-revamped-temp/blob/dev/project/docs/yast_installer.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped-temp/issues/60) touching on
     * full disk install
     * multiple boot
     * disk partitioning
     * disk encryption
     * snapshots/btrfs
 4. Quick install for experienced users
-   * MicroOS: [microos_getting_started.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/microos_getting_started.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/24)
+   * MicroOS: [microos_getting_started.md](https://github.com/openSUSE/openSUSE-docs-revamped-temp/blob/dev/project/docs/microos_getting_started.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped-temp/issues/24)
 ### Distro basics
 5. KDE Plasma basics [kde.md](project/docs/kde.md)
     * X, XWayland & Wayland sessions
@@ -30,11 +30,11 @@ __NB__: Unless mentioned otherwise, a document corresponding to a parent section
     * learning more
 7. openSUSE fundamentals
     * zypper:
-        * commands list: [zypper.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/zypper.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/32)
+        * commands list: [zypper.md](https://github.com/openSUSE/openSUSE-docs-revamped-temp/blob/dev/project/docs/zypper.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped-temp/issues/32)
         * `tumbleweed-cli` & Tumbleweed snapshots: 
         * best-practices for updating / upgrading Leap & Tumbleweed
     * YaST
-    * `snapper` & `btrfs`: [snapper.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/snapper.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/34)
+    * `snapper` & `btrfs`: [snapper.md](https://github.com/openSUSE/openSUSE-docs-revamped-temp/blob/dev/project/docs/snapper.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped-temp/issues/34)
 
 8. Getting & installing additional software
     * flatpaks
@@ -49,9 +49,9 @@ __NB__: Unless mentioned otherwise, a document corresponding to a parent section
     * exporting evidence & asking for help
 ### Completing and fine-tuning your setup 
 10. Finding & installing additional software
-    * codecs [codecs.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/codecs.md),
-    * proprietary drivers [install_proprietary.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/install_proprietary.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/28)
-      * case study: Hybdrid/Optimus: [hybrid_graphics.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/hybrid_graphics.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/77) 
+    * codecs [codecs.md](https://github.com/openSUSE/openSUSE-docs-revamped-temp/blob/dev/project/docs/codecs.md),
+    * proprietary drivers [install_proprietary.md](https://github.com/openSUSE/openSUSE-docs-revamped-temp/blob/dev/project/docs/install_proprietary.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped-temp/issues/28)
+      * case study: Hybdrid/Optimus: [hybrid_graphics.md](https://github.com/openSUSE/openSUSE-docs-revamped-temp/blob/dev/project/docs/hybrid_graphics.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped-temp/issues/77) 
     * case study: printers
     * case study: scanners
     * case study: touchscreens
@@ -70,7 +70,7 @@ __NB__: Unless mentioned otherwise, a document corresponding to a parent section
     * suspend & lock
     * CPU power control
 14. Pairing, syncing, sharing
-    * bluetooth audio: [bluetooth.md](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/project/docs/bluetooth.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped/issues/27)
+    * bluetooth audio: [bluetooth.md](https://github.com/openSUSE/openSUSE-docs-revamped-temp/blob/dev/project/docs/bluetooth.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped-temp/issues/27)
     * sharing files
     * syncing files with other devices
 15. Advanced fine-tunings

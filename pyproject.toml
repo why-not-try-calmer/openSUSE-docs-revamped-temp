@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "opensuse-docs-revamped"
+name = "opensuse-docs-revamped-temp"
 version = "0.3.1"
 description = "openSUSE documentation"
 authors = ["Onuralp SEZER <thunderbirdtr@fedoraproject.org>"]
