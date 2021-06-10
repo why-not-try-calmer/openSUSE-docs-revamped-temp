@@ -74,6 +74,7 @@ __NB__: Unless mentioned otherwise, a document corresponding to a parent section
     * sharing files
     * syncing files with other devices
 15. Advanced fine-tunings
+    * transparent compression
     * kernel parameters
     * initramfs
     * systemd basics
