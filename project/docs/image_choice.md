@@ -71,27 +71,6 @@ $  sha256sum <Image.iso>
 ```
 The check passes just in case the output of the above equals the checksum written in plain text in the __Target Checksum__ (see [Definitions & assumptions](#assumptions-definitions)).
 
-## Get to the installer
-In this section you will learn how to get to a running installer for _Tumbleweed_ or _Leap_. This involves:
-
-- Using a program to write an installation image -- see [Choosing an installation image above](#choosing-an-installation-media) -- to an external device, usually a USB pen drive or some other external storage medium.
-- Having the media adequately partioned to host the image, and making it bootable
-- Booting on the external media and run the installer.
-
-We will assume that you have downloaded an installation image and optionally, have performed an authenticity check on it -- see the above sections for details. The next section also assumes that you will be using a USB flash drive as the installation media. The section after that handles external hard drives.
-
-### Prepare the installation media (USB flash drive)
-The process for preparing the installation media varies depending on the operating system from which you are following these steps. Different operating systems offer different applications. We recommend using any of the following programs, which we have tested and which are known to be simple to use and reliable on their respective platforms:
-- Fedora Image Writer ([Windows](https://getfedora.org/fmw/FedoraMediaWriter-win32-latest.exe), Linux [[flatpak](https://flathub.org/apps/details/org.fedoraproject.MediaWriter)], [macOS](https://getfedora.org/fmw/FedoraMediaWriter-osx-latest.dmg))
-
-For _Fedora Image Writer_:
-
-1. Make sure your USB flash drive has enough storage to hold the image (either ~1 GB or ~5 GB) and plug it in.
-2. Run _Fedora Image Writer_. From the main menu pick __Custom image__ and then select the `.iso` image to write to the USB flash drive. Make sure that both the image and flash drive have been correctly selected, as in: ![this screenshot](image/image_choice_fiw_conf_prompt.png)
-3. Finally click on __Write to Disk__.
-
-Once writing the image is done, you are ready to reboot from the USB drive. Leaving the USB drive plugged in, use the method appropriate to your operating system to restart your computer.
-
 ## Authenticity and integrity checks (Windows 10)
 
 __Preparation__:
@@ -139,6 +118,28 @@ If the same hash is not found in `<file_name>.iso.sha256`, then your downloaded 
 ### Authenticity Check
 
 To perform the authenticity check of the ISO image, obtain the official GPG public key from openSUSE with keyserver information. You can then perform the check from a command prompt.
+
+## Get to the installer
+In this section you will learn how to get to a running installer for _Tumbleweed_ or _Leap_. This involves:
+
+- Using a program to write an installation image -- see [Choosing an installation image above](#choosing-an-installation-media) -- to an external device, usually a USB pen drive or some other external storage medium.
+- Having the media adequately partioned to host the image, and making it bootable
+- Booting on the external media and run the installer.
+
+We will assume that you have downloaded an installation image and optionally, have performed an authenticity check on it -- see the above sections for details. The next section also assumes that you will be using a USB flash drive as the installation media. The section after that handles external hard drives.
+
+### Prepare the installation media (USB flash drive)
+The process for preparing the installation media varies depending on the operating system from which you are following these steps. Different operating systems offer different applications. We recommend using any of the following programs, which we have tested and which are known to be simple to use and reliable on their respective platforms:
+- Fedora Image Writer ([Windows](https://getfedora.org/fmw/FedoraMediaWriter-win32-latest.exe), Linux [[flatpak](https://flathub.org/apps/details/org.fedoraproject.MediaWriter)], [macOS](https://getfedora.org/fmw/FedoraMediaWriter-osx-latest.dmg))
+
+For _Fedora Image Writer_:
+
+1. Make sure your USB flash drive has enough storage to hold the image (either ~1 GB or ~5 GB) and plug it in.
+2. Run _Fedora Image Writer_. From the main menu pick __Custom image__ and then select the `.iso` image to write to the USB flash drive. Make sure that both the image and flash drive have been correctly selected, as in: ![this screenshot](image/image_choice_fiw_conf_prompt.png)
+3. Finally click on __Write to Disk__.
+
+Once writing the image is done, you are ready to reboot from the USB drive. Leaving the USB drive plugged in, use the method appropriate to your operating system to restart your computer.
+
 
 ### Reboot to the device
 Assuming you have successfully installed an openSUSE distribution, you should reboot according to the method relevant to your current operating system.
