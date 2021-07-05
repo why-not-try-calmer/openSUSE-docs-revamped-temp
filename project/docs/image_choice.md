@@ -117,7 +117,20 @@ If the same hash is not found in `<file_name>.iso.sha256`, then your downloaded 
 
 ### Authenticity Check
 
-To perform the authenticity check of the ISO image, obtain the official GPG public key from openSUSE with keyserver information. You can then perform the check from a command prompt.
+To perform the authenticity check of the ISO image, 
+
+1. obtain the official GPG public key and SHA256 hash file from here (http://download.opensuse.org/tumbleweed/iso/) of your required openSUSE iso version. 
+2. Download the required "filename.iso.sha256.asc" and "filename.iso.sha256" file and save it named with "sha256sum.txt.gpg" and "sha256sum.txt" in one folder. (Note: ISO file and these two .txt file should be in one folder).
+3. You can then perform the check from a command prompt.
+
+   gpg --verify sha256sum.txt.gpg sha256sum.txt
+
+   {Message for you Ad: you can attach a image of the result of this command line}
+
+As long as it says Good signature from "openSUSE Tumbleweed ISO Signing Key <root@opensuse.org>" and with a fingerprint matching the one shown above and that you used to download the key, then that means your download is authentic. In case it was tampered with the message would be BAD signature from ....
+
+You can ignore the warning that comes after that, it is expected and perfectly normal.
+
 
 ## Get to the installer
 In this section you will learn how to get to a running installer for _Tumbleweed_ or _Leap_. This involves:
