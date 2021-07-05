@@ -71,7 +71,8 @@ nav:
             - YaST2: ""
             - Updating, upgrading, snapshots best practices: updating_upgrading.md
             - Snapper and Btrfs: snapper.md
-        - Additional software: ""
+        - Additional software: 
+            - Software procurement: source_rpms_flats_appimages.md
         - Troubleshooting with autonomy: ""
     - Completing and fine-tuning your setup:
         - Finding & installing additional software:
