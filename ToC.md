@@ -35,10 +35,8 @@ __NB__: Unless mentioned otherwise, a document corresponding to a parent section
         * best-practices for updating / upgrading Leap & Tumbleweed
     * YaST
     * `snapper` & `btrfs`: [snapper.md](https://github.com/openSUSE/openSUSE-docs-revamped-temp/blob/dev/project/docs/snapper.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped-temp/issues/34)
-
 8. Getting & installing additional software
-    * flatpaks
-    * snaps
+    * RPMs, flatpaks, snaps, AppImages
     * running with podman
     * running with libvirt
     * building from source
@@ -53,61 +51,29 @@ __NB__: Unless mentioned otherwise, a document corresponding to a parent section
     * pipewire [pipewire.md](https://github.com/openSUSE/openSUSE-docs-revamped-temp/blob/dev/project/docs/pipwire.md),
     * proprietary drivers [install_proprietary.md](https://github.com/openSUSE/openSUSE-docs-revamped-temp/blob/dev/project/docs/install_proprietary.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped-temp/issues/28)
       * case study: Hybdrid/Optimus: [hybrid_graphics.md](https://github.com/openSUSE/openSUSE-docs-revamped-temp/blob/dev/project/docs/hybrid_graphics.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped-temp/issues/77) 
-    * case study: printers
-    * case study: scanners
-    * case study: touchscreens
-    * case study: Wacom tablets
-11. Security basics
-    * passwords
-    * gpg & ssh keys
-    * firewall
-    * AppArmor
-12. Wifi & network
-    * NetworkManager basics
-    * setting up a VPN
-13. Power management
+11. Power management
     * hibernating from swap
     * hibernating from file
     * suspend & lock
     * CPU power control
-14. Pairing, syncing, sharing
+12. Pairing, syncing, sharing
     * bluetooth audio: [bluetooth.md](https://github.com/openSUSE/openSUSE-docs-revamped-temp/blob/dev/project/docs/bluetooth.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped-temp/issues/27)
     * sharing files
     * syncing files with other devices
-15. Advanced fine-tunings
+13. Advanced fine-tunings
     * transparent compression
     * kernel parameters
-    * initramfs
-    * systemd basics
-16. More partitioning
-17. Recommended setups
-    * internet & social
-    * office users
-    * privacy advocates
-    * graphics designers
-    * 3D animators
-    * audio recording
-    * photographers
-    * video editors
-    * education
-    * software developers
-    * system administrators
-    * hackers
-    * GIS users
-    * home automation
-    * servers/NAS
-    * firewall/Router
 ### Giving back to the community
-18. The Art of Reporting bugs
+14. The Art of Reporting bugs
     * the openSUSE bugzilla
     * the KDE bugilla
     * GitHub & GitLab Issues
 ### Resources
-19. Other sources of documentation
+15. Other sources of documentation
     * Reference documentation
     * Wiki
 ### Contribute to this docs
-20. A contributor's checklist
+16. A contributor's checklist
     * get in touch
     * open an issue
     * make a pull request
