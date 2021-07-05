@@ -72,7 +72,9 @@ nav:
             - Updating, upgrading, snapshots best practices: updating_upgrading.md
             - Snapper and Btrfs: snapper.md
         - Additional software: 
-            - Software procurement: source_rpms_flats_appimages.md
+            - Software procurement: 
+                - Alternative providers: alternative_procurement.md
+                - Building from source: ""
         - Troubleshooting with autonomy: ""
     - Completing and fine-tuning your setup:
         - Finding & installing additional software:

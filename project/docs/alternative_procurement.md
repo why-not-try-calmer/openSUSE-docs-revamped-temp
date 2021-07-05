@@ -113,7 +113,18 @@ And finally restart your system. From now on you will be able to install any of 
 $   flatpak install flathub com.spotify.Client
 ```
 
-Notice that installing applications in this way should automatically export a `.desktop` file to `/var/lib/flatpak/exports/share/applications` and add the corresponding symlinks to your system. This means applications will show up in your desktop environment's application launchers and other menus right after you have installed them (no reboot required).
+!!!
+    Notice that installing applications in this way should automatically export a `.desktop` file to `/var/lib/flatpak/exports/share/applications` and add the corresponding symlinks to your system. This means applications will show up in your desktop environment's application launchers and other menus right after you have installed them (no reboot required).
+
+Updating your flatpaks is then as easy as:
+```
+$   flatpak update
+```
+
+To update a single flatpak application, do instead:
+```
+$   flatpak update <the.application.name>
+```
 
 ### Additional details
 
@@ -122,11 +133,11 @@ Notice that installing applications in this way should automatically export a `.
 The two main themes behind flatpaks are _binary versioning control_ and _containerization_.
 
 Binary versioning control (BVC) ensures that the system sees flatpak applications not just as a bunch of files with a given name, but in a way that tracks them against the context of a full versioning control system, such as Git. Flatpak applications are thus much like Git branches, in that they "wear their orgin up their sleeves". For example, the complete reference of the Spotify application on my machine as of this writing is:
-
 ```
 $   flatpak list
 Spotify com.spotify.Client      1.1.55.498.gf9a83c60    stable  system
 ``` 
+
 which amounts to, in this order: a human-friendly name, the exact name as fixed by the provider, the (git) snapshot it is built from, the (git) branch hosting the snapshot (here _stable_), as well as the installation site on my machine (here, it is installed for the _system_, which means it can be run by any other user on my machine.)
 
 Under this constraint, any difference in the name or snapshot or branch or installation site will determine a different flatpak application reference.  Two applications that are byte-for-byte identical will not collide with one another if they are different under other aspects of their reference. This means that, at any point, you can identify the portion of the codebase from which the application stems and that is relevant to the binary you are running. This also means you can have multiple versions of "the same" application through multiple application references.
@@ -141,41 +152,41 @@ The other main theme behind flatpaks is containerization. Here it means that fla
 The degree of independence that flatpaks enjoy with respect to the host operating system means that some frictions may occur now and then. This is particularily true for applications (or for runtimes) which do not always play nice with recent rendering and compositing frameworks. For example, drag-dropping a file for sending via a messaging application run as flatpak might not work as seamlessly as exepcted. For these corner cases, there is not much choice but to tinker with the runtime's parameters.
 
 Consider for example `org.telegram.desktop`. Should your version of this app seem to be affected by the above bug, you can try to run the application as:
-
 ```
 $   flatpak run --env=QT_QPA_PLATFORM=xcb org.telegram.desktop
 ```
+
 which basically instructs the runtime to use X11 instead of Wayland as the compositing client. They are countless other environment parameters you can use, and the right approach is usually to read the documentation and Git Issues of your favorite flatpak applications.
 
 !!! info
     Every single flatpak has is a public repository (often on GitHub) where you read Issues and participate to the conversation. Do not hesitate to go there now and then, as the tips you might learn are likely to serve you for many other flatpak applications.
 
 When you are satisfied with the results, you can attach a runtime setting to an application permanently to the current user as in:
-
 ```
 $   flatpak override --user --env=QT_QPA_PLATFORM=xcb org.telegram.desktop
 ```
+
 (Remove the --user flag to apply the override system-wide). This will ensure that the application is always run with the corresponding environment parameter.
 
 More on the override option in the [official Flatpak documentation](https://docs.flatpak.org/en/latest/flatpak-command-reference.html?highlight=override#flatpak-override).
 
 #### Flatseal
 
-Syds?
-
 ### Pros, cons, when
+
 __Pros__:
-* has the best performance (startup time + execution speed) of all solutions
-* has the smallest footprint on your RAM and hard drive
+* decent performance (it runs as fast as "bare" binaries and launches almost as fast)
+* excellent safety for your operating system (because most dependencies are not shared with the host operating system)
+* easy to update (`flatpak update`)
 
 __Cons__:
-* heavily depends the libraries and other dependencies provided by your operating system, which means that drastic changes in your system-wide dependencies might prevent the program from running at all
-* depends on the availability of the distribution's packagers and maintainers, as opposed to solutions "closer" to the developers or that can benefit from cross-distribution maintainership (_flatpaks_, _AppImages_, _Ubuntu snaps_)
+* eats up significantly more hard drive space than the alternative methods and formats (because not all dependencies can be shared between flatpaks)
+* sometimes rough around the edges in terms of integration with the desktop environment
 
 __Go for it when__:
-* you are aiming for core utilities or libraries (e.g. _curl_, _gcc_, _python-devel_) and you know beforehand that you won't need to have several versions of these installed at the same time
-* you need maximal performance / minimal footprint
-* you can afford a marginally slower update pace than with other solutions
+* you are using many applications with a graphical interface and you don't want to expose them or your system to conflicts of dependencies (useful for Tumbleweed and microOS, whose core packages change frequently)
+* you want to have freshly updated and widely tested applications (the same as most other Linux distributions)
+* you plan on using many user applications (the more flatpaks you have, the more dependencies they can share)
 
 ## Snaps
 
