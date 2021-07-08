@@ -1,5 +1,5 @@
 site_name: openSUSE User Documentation Project
-repo_url: https://github.com/openSUSE/openSUSE-docs-revamped
+repo_url: https://github.com/openSUSE/openSUSE-docs-revamped-temp
 edit_uri: ""
 
 plugins:
@@ -75,19 +75,18 @@ nav:
         - Troubleshooting with autonomy: ""
     - Completing and fine-tuning your setup:
         - Finding & installing additional software:
-            - Audio & Video Codecs: codecs.md
+            - Audio & Video:
+                - Codecs: codecs.md
+                - Pipewire: pipewire.md
             - Graphic Drivers: 
                 - Proprietary: install_proprietary.md
                 - Hybrid GPUs: hybrid_graphics.md
             - Setting up a containerized environment: install_podman.md
-        - Security basics: ""
-        - Wifi & network: ""
         - Power management: ""
         - Pairing, syncing, sharing:
             - Bluetooth: bluetooth.md
-        - Advanced fine-tunings: ""
-        - More partitioning: ""
-        - Recommended setups: ""
+        - Advanced fine-tunings:
+            - Transparent compression (zstd): zstd.md
     - Giving back to the community:
         - The art of reporting bugs: ""
         - Resources: ""

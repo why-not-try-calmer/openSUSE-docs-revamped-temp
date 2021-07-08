@@ -91,7 +91,7 @@ __Checklist__:
 - [x] Have you followed the style guidelines below under __Style__?
 - [x] If you have added a new article:
   - a) did it land in `/project/docs`? If not, move it there.
-  - b) have you added it to [table of contents](https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/ToC.md)? Just follow the examples already there. The urls look like `https://github.com/openSUSE/openSUSE-docs-revamped/blob/dev/<some file.md>`
+  - b) have you added it to [table of contents](https://github.com/openSUSE/openSUSE-docs-revamped-temp/blob/dev/ToC.md)? Just follow the examples already there. The urls look like `https://github.com/openSUSE/openSUSE-docs-revamped-temp/blob/dev/<some file.md>`
 - [x] Have you tested your work? If not consider the __Clone, edit, test__ section above.
 - [x] Are you going to make your PR editabled for us? If you don't know how, you will have to check the `Allow edits from maintainers` checkbox on the Pull Request screen, in GitHub. Otherwise we won't be able to work with you on your PR.
 
