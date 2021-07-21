@@ -59,7 +59,7 @@ Check out the following documentation for this step:
 keepass or the Gnome safe or vault or what is that one called (also uses kdb IIRC))
 
 ### Have your backup plan ready
-Tumbleweed snapshots protect your system by allowing your to rollback to and from the snapshot of your liking. There are two noticeable exceptions to this protection:
+Tumbleweed snapshots protect your system by allowing you to rollback to and from the snapshot of your liking. There are two noticeable exceptions to this protection:
 * the bootloader (_GRUB2_ by default)
 * the `/home` directory of all the users.
 
