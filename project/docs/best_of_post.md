@@ -38,6 +38,33 @@ $   sudo zypper in flatpak
 $   flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 ```
 
+### Customize your .desktop files for a better user experience
+Most user applications shipping their own GUI install with a desktop file (`<program>.desktop`) providing the application with some parameters discovered at the installation. Some of these parameters are key to a comfortable user experience.
+
+Consider for examples Electron apps, which as of today (26th of July 2021) offload rendering to the X11 instead of the Wayland client. This means that your Desktop Environment, which is likely to run with Wayland enabled by default, will not be able to make the most of the application's GUI.
+
+We can improve the situation as follows:
+1. Locate the application's desktop file, most likely at `/usr/share/applications`. For instance you can go a simple:
+```
+$   ls /usr/share/applications | grep "name of the application"
+``` 
+2. Once you're certain of the file name, you can edit it on the fly:
+```
+$   sudo nano /usr/share/applications/code.desktop
+```
+For instance it makes sense to require vscode -- an Electron application -- to use Wayland. Change this:
+```
+Exec=/usr/share/code/code --unity-launch %F
+```
+to that:
+```
+Exec=/usr/share/code/code --enable-features=UseOzonePlatform --ozone-platform=wayland 
+```
+It might take a reboot for your applications to acknowledge the change to their `.desktop` file. If you want to compare the result of your changes -- if any -- to a run where these changes are known to be in force, just launch the application from a command line: 
+```
+code --enable-features=UseOzonePlatform --ozone-platform=wayland
+```
+
 ### Codecs
 openSUSE distributions do not ship with proprietary software, and for most cases there are Free and Open Source alternatives, such as the free codecs shipped with certain applications (most modern web browsers such as the Chromium-based ones and Firefox).
 
