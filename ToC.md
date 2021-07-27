@@ -18,7 +18,7 @@ __NB__: Unless mentioned otherwise, a document corresponding to a parent section
 4. Quick install for experienced users
    * MicroOS: [microos_getting_started.md](https://github.com/openSUSE/openSUSE-docs-revamped-temp/blob/dev/project/docs/microos_getting_started.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped-temp/issues/24)
 ### Distro basics
-5. Post-install checklist
+5. Post-install best-of [best_of_post.md](project/docs/best_of_post.md)
 6. KDE Plasma basics [kde.md](project/docs/kde.md)
     * X, XWayland & Wayland sessions
     * settings & keybindings

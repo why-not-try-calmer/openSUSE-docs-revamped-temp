@@ -64,6 +64,7 @@ nav:
         - Quick install for experienced users:
             - microOS specials: microos_getting_started.md
     - Distro basics:
+        - Post-installation best-of: best_of_post.md
         - KDE Plasma basics: kde.md
         - GNOME basics: ""
         - Interlude -- Fundamental openSUSE concepts:
