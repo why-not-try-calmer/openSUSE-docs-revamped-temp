@@ -83,16 +83,17 @@ Check out the following documentation for this step:
 * [integrated + dedicated GPUs](hybrid_graphics.md)
 
 ### Use a password manager
-keepass or the Gnome safe or vault or what is that one called (also uses kdb IIRC))
+KDE's _kwallet_ and _gnome-keyring_ are decent password managers as far as storing identifiers meant to be consumed by third-party applications, but some users might feel they fall short when it comes at providing a comfortable interface for auto-completion and daily management (especially the latter). 
+
+For alternatives you can consider _KeePass Password Safe_ (https://keepass.info/) and _Password Safe_ (https://gitlab.gnome.org/World/PasswordSafe).
 
 ### Have your backup plan ready
-Tumbleweed snapshots protect your system by allowing you to rollback to and from the snapshot of your liking. There are two noticeable exceptions to this protection:
-* the bootloader (_GRUB2_ by default)
-* the `/home` directory of all the users.
-
-To mitigate the first loophole, ...
+Tumbleweed snapshots protect your system by allowing you to rollback to and from the snapshot of your liking. One noticeable exceptions to this protection is `/home` (for the simple reason that it allows the user to backup their `home` at their own pace, independently from system snapshots.)
 
 To protect your users' `/home` directory you may want to use a third-party application to manage user-defined backups. We can recommend [restic](https://restic.net/) and the easier to the new user [rclone](https://rclone.org/).
+
+!!! info
+    If `/boot` is not on the same partition as `/`, it won't be covered by system snapshots either. In that case your bootloader (eg. _GRUB)_ will not benefit from snapshots.
 
 ### Fine-tune Btrfs snapshots settings
 Tumbleweed comes pre-configured with a generous _Btrfs_ snapshot policy that is likely to produce more snapshots than you need, leaving too significant a footprint on your storage device to be really worth it. If that is the case, please refer to the documentation on [Snapper](snapper.md) to change the defaults. Bear in mind that this is a fundamentally important aspect of Tumbleweed, so read the documentation thoroughly.
