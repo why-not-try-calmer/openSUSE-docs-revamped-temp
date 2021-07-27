@@ -71,6 +71,66 @@ $  sha256sum <Image.iso>
 ```
 The check passes just in case the output of the above equals the checksum written in plain text in the __Target Checksum__ (see [Definitions & assumptions](#assumptions-definitions)).
 
+## Authenticity and integrity checks (Windows 10)
+
+__Preparation__:
+1. Download the filename.iso.sha256 file from the Download section of opensuse.org or download the hash files from here 
+
+* for Tumbleweed: https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-DVD-x86_64-Current.iso.sha256
+* for Leap: https://download.opensuse.org/distribution/leap/15.3/iso/openSUSE-Leap-15.3-DVD-x86_64-Current.iso.sha256
+
+Note that it does not matter where exactly you put the files as long as they are all in the same folder and keep their original names.
+
+2. Then browse to https://www.gnupg.org/download/index.html and download and install the Windows installer for GnuPG.
+
+!!! info
+    For the purposes of this guide it does not matter whether you install the program as administrator or not, so just click yes to install to install without administrator rights if it asks you.
+
+3. Find the folder containing the files you downloaded in the first step, hold Shift while right-clicking it (the folder, not the files in it). Select it to open a command window.
+
+Use whichever command line utility you've got available, but if you used the PowerShell option, type `cmd` followed by `Enter` in the command prompt.
+
+### Integrity Check
+
+1. Locate the folder of the downloaded ISO image
+2. Open a command prompt.
+3. `cd` to the folder and finally type this command, confirming the command with `Enter`:
+```
+CertUtil -hashfile <filename>.iso SHA256    # replace <filename> with the actual name of your ISO image
+```
+Example:
+```
+certutil -hashfile openSUSE-Tumbleweed-DVD-x86_64-Snapshot20210611-Media.iso SHA256
+```
+
+Note that if you start typing a filename you can press Tab to automatically complete it.
+
+This will take a little while to complete and eventually present you with an alphanumeric sequence that is called a hash. If this hash is identical to the one listed in your filename.iso.sha256 then the integrity check passed. You can compare them by hand (note that some Windows text editors will not display the line breaks in that document so it may look weirdly formatted) or better use the find command.
+  
+If the same hash is not found in `<file_name>.iso.sha256`, then your downloaded ISO image did not pass the integrity check. Make sure you downloaded the correct `<file_name>.iso.sha256` and if yes, try to download the ISO image again from a different mirror server. Try on it the integrity again.
+   
+!!! info 
+    On older versions of Windows, the CertUtil command does not exist. Instead it is recommended to install `7zip` from https://www.7-zip.org/, then find and right-click the .iso file your downloaded in Windows Explorer and select 7-Zip's CRC SHA option to calculate the SHA 256 hash, which must then compare to the one from the filename.iso.sha256 file yourself.
+
+!!! warning
+    Never install from an .iso that failed the integrity check.
+
+### Authenticity Check
+
+To perform the authenticity check of the ISO image, 
+
+1. obtain the official GPG public key and SHA256 hash file from here (http://download.opensuse.org/tumbleweed/iso/) of your required openSUSE iso version. 
+2. Download the required "filename.iso.sha256.asc" and "filename.iso.sha256" file and save it named with "sha256sum.txt.gpg" and "sha256sum.txt" in one folder. (Note: ISO file and these two .txt file should be in one folder).
+3. You can then perform the check from a command prompt.
+
+   gpg --verify sha256sum.txt.gpg sha256sum.txt
+
+   {Message for you Ad: you can attach a image of the result of this command line}
+
+As long as it says Good signature from "openSUSE Tumbleweed ISO Signing Key <root@opensuse.org>" and with a fingerprint matching the one shown above and that you used to download the key, then that means your download is authentic. In case it was tampered with the message would be BAD signature from ....
+
+You can ignore the warning that comes after that, it is expected and perfectly normal.
+
 ## Get to the installer
 In this section you will learn how to get to a running installer for _Tumbleweed_ or _Leap_. This involves:
 
@@ -91,7 +151,6 @@ For _Fedora Image Writer_:
 3. Finally click on __Write to Disk__.
 
 Once writing the image is done, you are ready to reboot from the USB drive. Leaving the USB drive plugged in, use the method appropriate to your operating system to restart your computer.
-
 
 ### Reboot to the device
 Assuming you have successfully installed an openSUSE distribution, you should reboot according to the method relevant to your current operating system.

@@ -64,6 +64,7 @@ nav:
         - Quick install for experienced users:
             - microOS specials: microos_getting_started.md
     - Distro basics:
+        - Post-installation best-of: best_of_post.md
         - KDE Plasma basics: kde.md
         - GNOME basics: ""
         - Interlude -- Fundamental openSUSE concepts:
@@ -85,15 +86,11 @@ nav:
                 - Proprietary: install_proprietary.md
                 - Hybrid GPUs: hybrid_graphics.md
             - Setting up a containerized environment: install_podman.md
-        - Security basics: ""
-        - Wifi & network: ""
         - Power management: ""
         - Pairing, syncing, sharing:
             - Bluetooth: bluetooth.md
         - Advanced fine-tunings:
             - Transparent compression (zstd): zstd.md
-        - More partitioning: ""
-        - Recommended setups: ""
     - Giving back to the community:
         - The art of reporting bugs: ""
         - Resources: ""
