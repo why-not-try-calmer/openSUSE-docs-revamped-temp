@@ -27,7 +27,7 @@ Refer to the documentation provided by the developers to make your favorite shel
 For a terminal application we recommend to stick to the one provided by your desktop environment. Users interested in having a collapsible, HUD-like terminal can turn to the excellent _Yakuake_ terminal, based on KDE's _Konsole_.
 
 ### (KDE Plasma only) Disable Discover notifications
-On Tumbleweed software are better installed using the official package manager, at your own pace (although we recommend updating at least once a month) using either a terminal or Yast. This means that Discover update notifications will fee annoying at best, and will push to frantically update even in cases where you'd want to postpone updating for a couple of days or weeks. To regain your peace of mind:
+On Tumbleweed software are better installed using the official package manager, at your own pace (although we recommend updating at least once a month) using either a terminal or Yast. This means that Discover update notifications will feel annoying at best, and will push to frantically update even in cases where you'd want to postpone updating for a couple of days or weeks. To regain your peace of mind:
 
 Go to _Plasma settings_ > _Notification_ > _Applications: Configure_ > Select _Discover_ in the list > Untick as many boxes as you need.
 
@@ -68,7 +68,7 @@ code --enable-features=UseOzonePlatform --ozone-platform=wayland
 ### Codecs
 openSUSE distributions do not ship with proprietary software, and for most cases there are Free and Open Source alternatives, such as the free codecs shipped with certain applications (most modern web browsers such as the Chromium-based ones and Firefox).
 
-If however you do need proprietary codecs, you can add them manually. To do this we recommend using the `opi` -- Open Build Service Package Installer, who is able to fetch software sitting just outside of the official, system repositories:
+If however you do need proprietary codecs, you can add them manually. To do this we recommend using the `opi` -- Open Build Service Package Installer, which is able to fetch software sitting just outside of the official system repositories:
 
 ```
 sudo zypper in opi
