@@ -46,6 +46,7 @@ On some configurations not doing so might result in `sudo zypper dup` not automa
 ### Pros, cons, when
 
 __Pros__:
+* the most 'natural' way to install programs in the openSUSE ecosystem
 * has the best performance (startup time + execution speed) of all solutions
 * has the smallest footprint on your RAM and hard drive
 
@@ -80,10 +81,12 @@ __Pros__:
 * has the smallest footprint on your RAM and hard drive
 
 __Cons__:
+* no control over the behaviour of the script -- especially if the script asks to be run as `sudo` -- which may incur some risk 
 * heavily depends the libraries and other dependencies provided by your operating system, which means that drastic changes in your system-wide dependencies might prevent the program from running at all
 * depends on the availability of the distribution's packagers and maintainers, as opposed to solutions "closer" to the developers or that can benefit from cross-distribution maintainership (_flatpaks_, _AppImages_, _Ubuntu snaps_)
 
 __Go for it when__:
+* you are 100% sure you can trust the provider
 * you are aiming for core utilities or libraries (e.g. _curl_, _gcc_, _python-devel_) and you know beforehand that you won't need to have several versions of these installed at the same time
 * you need maximal performance / minimal footprint
 * you can afford a marginally slower update pace than with other solutions
@@ -98,7 +101,7 @@ _Flatpak_ is a complete solution for installing, updating and running desktop ap
 
 On openSUSE distributions, you can install flatpak as follows:
 
-Install the command line utility:
+Install the command line utility (not required if it's installed already; to double-check see if `flatpak --version` returns something):
 ```
 $   sudo zypper in flatpak
 ```
@@ -110,11 +113,12 @@ $   flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.
 
 And finally restart your system. From now on you will be able to install any of the very numerous apps provided from _flathub_, as in:
 ```
-$   flatpak install flathub com.spotify.Client
+$   flatpak install --user flathub com.spotify.Client
 ```
 
-!!!
-    Notice that installing applications in this way should automatically export a `.desktop` file to `/var/lib/flatpak/exports/share/applications` and add the corresponding symlinks to your system. This means applications will show up in your desktop environment's application launchers and other menus right after you have installed them (no reboot required).
+Two things are important to bear in mind:
+1. Using the `--user` flag is recommended for this reason: if the user has a separate `/home` and installs flatpaks using the `--user` flag, these applications will remain even after the entire file system is reinstalled, which means that the installed flatpaks can be reused after restoring the system.
+2. Installing applications (with or without `--user` should automatically export a `.desktop` file to `/var/lib/flatpak/exports/share/applications` and add the corresponding symlinks to your system. This means applications will show up in your desktop environment's application launchers and other menus right after you have installed them (no reboot required).
 
 Updating your flatpaks is then as easy as:
 ```
@@ -166,9 +170,9 @@ When you are satisfied with the results, you can attach a runtime setting to an 
 $   flatpak override --user --env=QT_QPA_PLATFORM=xcb org.telegram.desktop
 ```
 
-(Remove the --user flag to apply the override system-wide). This will ensure that the application is always run with the corresponding environment parameter.
+(Remove the --user flag to apply the override system-wide.)
 
-More on the override option in the [official Flatpak documentation](https://docs.flatpak.org/en/latest/flatpak-command-reference.html?highlight=override#flatpak-override).
+This will ensure that the application is always run with the corresponding environment parameter. More on the override option in the [official Flatpak documentation](https://docs.flatpak.org/en/latest/flatpak-command-reference.html?highlight=override#flatpak-override).
 
 #### Flatseal
 
@@ -176,7 +180,7 @@ More on the override option in the [official Flatpak documentation](https://docs
 
 __Pros__:
 * decent performance (it runs as fast as "bare" binaries and launches almost as fast)
-* excellent safety for your operating system (because most dependencies are not shared with the host operating system)
+* excellent safety for your operating system (because most dependencies are not shared with the host operating system and because flatpaks installed with `--user` survive system reinstallations/restorations)
 * easy to update (`flatpak update`)
 
 __Cons__:
