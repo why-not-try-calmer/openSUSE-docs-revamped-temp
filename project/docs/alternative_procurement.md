@@ -3,6 +3,7 @@
 ## Introduction
 
 When it comes at getting software, modern Linux operating systems have access to a wide array of methods and formats. The openSUSE distributions are no exception:
+
 * the official and unofficial repositories, which you interact with from zypper, and which provide binaries packaged as RPMs files
 * third-party providers, which you interact with from a command prompt through `wget` or `curl` or `git`, and which either provide you with a complete installation solution, including binaries and installation scripts, or include just the source files along with build scripts
 * _flatpaks_, which you typically interact with from the `flatpak` command line utility, providing you containerized applications along with all their dependencies
@@ -14,6 +15,7 @@ The goal of this document is to help you understand these various formats and me
 ## Official and third-party repositories (.rpm)
 
 `.rpm` packages are the traditional and most common way of obtaining new software on openSUSE distributions. You are likely already familiar with the method for obtaining these packages, but to be sure:
+
 1. Find the repository providing the package you are looking for.
     * If the package is provided by an official repository, such as http://download.opensuse.org/update/tumbleweed/, (use `zypper lr -d` to show the exact endpoint of all your repositories), then the desired package will show up in `zypper search <package_name>`.
     * If the package is _not_ provided by an official repository, you will need to first add the repository.
@@ -46,15 +48,18 @@ On some configurations not doing so might result in `sudo zypper dup` not automa
 ### Pros, cons, when
 
 __Pros__:
+
 * the most 'natural' way to install programs in the openSUSE ecosystem
 * has the best performance (startup time + execution speed) of all solutions
 * has the smallest footprint on your RAM and hard drive
 
 __Cons__:
+
 * heavily depends the libraries and other dependencies provided by your operating system, which means that drastic changes in your system-wide dependencies might prevent the program from running at all
 * depends on the availability of the distribution's packagers and maintainers, as opposed to solutions "closer" to the developers or that can benefit from cross-distribution maintainership (_flatpaks_, _AppImages_, _Ubuntu snaps_)
 
 __Go for it when__:
+
 * you are aiming for core utilities or libraries (e.g. _curl_, _gcc_, _python-devel_) and you know beforehand that you won't need to have several versions of these installed at the same time
 * you need maximal performance / minimal footprint
 * you can afford a marginally slower update pace than with other solutions
@@ -77,15 +82,18 @@ and following the interactive instructions.
 ### Pros, cons, when
 
 __Pros__:
+
 * has the best performance (startup time + execution speed) of all solutions
 * has the smallest footprint on your RAM and hard drive
 
 __Cons__:
+
 * no control over the behaviour of the script -- especially if the script asks to be run as `sudo` -- which may incur some risk 
 * heavily depends the libraries and other dependencies provided by your operating system, which means that drastic changes in your system-wide dependencies might prevent the program from running at all
 * depends on the availability of the distribution's packagers and maintainers, as opposed to solutions "closer" to the developers or that can benefit from cross-distribution maintainership (_flatpaks_, _AppImages_, _Ubuntu snaps_)
 
 __Go for it when__:
+
 * you are 100% sure you can trust the provider
 * you are aiming for core utilities or libraries (e.g. _curl_, _gcc_, _python-devel_) and you know beforehand that you won't need to have several versions of these installed at the same time
 * you need maximal performance / minimal footprint
@@ -94,6 +102,7 @@ __Go for it when__:
 ## Flatpaks
 
 _Flatpak_ is a complete solution for installing, updating and running desktop applications from a containerized environment. It makes use of the following components:
+
 * the `flatpak` command line utility
 * a remote application store at https://flathub.org/home
 * application references, such as `com.spotify.Client`, organized by the flathub store
@@ -117,6 +126,7 @@ $   flatpak install --user flathub com.spotify.Client
 ```
 
 Two things are important to bear in mind:
+
 1. Using the `--user` flag is recommended for this reason: if the user has a separate `/home` and installs flatpaks using the `--user` flag, these applications will remain even after the entire file system is reinstalled, which means that the installed flatpaks can be reused after restoring the system.
 2. Installing applications (with or without `--user` should automatically export a `.desktop` file to `/var/lib/flatpak/exports/share/applications` and add the corresponding symlinks to your system. This means applications will show up in your desktop environment's application launchers and other menus right after you have installed them (no reboot required).
 
@@ -180,15 +190,18 @@ Please refer to Flatseal's [official documentation](https://github.com/tchx84/Fl
 ### Pros, cons, when
 
 __Pros__:
+
 * decent performance (it runs as fast as "bare" binaries and launches almost as fast)
 * excellent safety for your operating system (because most dependencies are not shared with the host operating system and because flatpaks installed with `--user` survive system reinstallations/restorations)
 * easy to update (`flatpak update`)
 
 __Cons__:
+
 * eats up significantly more hard drive space than the alternative methods and formats (because not all dependencies can be shared between flatpaks)
 * sometimes rough around the edges in terms of integration with the desktop environment
 
 __Go for it when__:
+
 * you are using many applications with a graphical interface and you don't want to expose them or your system to conflicts of dependencies (useful for Tumbleweed and microOS, whose core packages change frequently)
 * you want to have freshly updated and widely tested applications (the same as most other Linux distributions)
 * you plan on using many user applications (the more flatpaks you have, the more dependencies they can share)
@@ -217,6 +230,7 @@ __Go for it when__:
 Even though Leap and Tumbleweed's official repositories are numerous, you will find yourself in search of alternatives at times. Here are some simple rules of thumbs that emerge from the Pros and cons discussed above:
 
 If you are looking for a program with a graphical interface that...
+
 1. updates often; or 
 2. relies on very recent dependencies; or
 3. requires you to install dependencies that:
@@ -225,6 +239,7 @@ If you are looking for a program with a graphical interface that...
     you will be better off using ; then snaps, flapaks or appimages offer you serious alternatives to official repositories, which may update less frequently. This applies to both Leap and Tumbleweed's official repositories.
 
 When wondering which to use, between snaps, flatpaks and appimages:
+
 1. favour __flatpaks__ if you want a streamlined experience or precise maintenance options via the command line or if you plan on using several other flatpaks (the more flatpaks, the most cost-efficient the sacrifice of storage space they demand)
 2. favour __appimages__ if you need a handful of "fire-and-forget" or "portable" (no installation needed) applications.
 
