@@ -36,7 +36,7 @@ __NB__: Unless mentioned otherwise, a document corresponding to a parent section
         * best-practices for updating / upgrading Leap & Tumbleweed
     * YaST
     * `snapper` & `btrfs`: [snapper.md](https://github.com/openSUSE/openSUSE-docs-revamped-temp/blob/dev/project/docs/snapper.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped-temp/issues/34)
-9. Getting & installing additional software
+9. Getting & installing additional software: [alternative_procurement.md](https://github.com/openSUSE/openSUSE-docs-revamped-temp/blob/dev/project/docs/alternative_procurement.md)
     * RPMs, flatpaks, snaps, AppImages
     * running with podman
     * running with libvirt

@@ -73,19 +73,17 @@ nav:
             - Updating, upgrading, snapshots best practices: updating_upgrading.md
             - Snapper and Btrfs: snapper.md
         - Additional software: 
-            - Software procurement: 
-                - Alternative providers: alternative_procurement.md
-                - Building from source: ""
+            - Software procurement: alternative_procurement.md
+            - Building from source: ""
         - Troubleshooting with autonomy: ""
     - Completing and fine-tuning your setup:
-        - Finding & installing additional software:
-            - Audio & Video:
-                - Codecs: codecs.md
-                - Pipewire: pipewire.md
-            - Graphic Drivers: 
-                - Proprietary: install_proprietary.md
-                - Hybrid GPUs: hybrid_graphics.md
-            - Setting up a containerized environment: install_podman.md
+        - Audio & Video:
+            - Codecs: codecs.md
+            - Pipewire: pipewire.md
+        - Graphic Drivers: 
+            - Proprietary: install_proprietary.md
+            - Hybrid GPUs: hybrid_graphics.md
+        - Setting up a containerized environment: install_podman.md
         - Power management: ""
         - Pairing, syncing, sharing:
             - Bluetooth: bluetooth.md
