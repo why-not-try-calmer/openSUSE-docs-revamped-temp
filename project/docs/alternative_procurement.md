@@ -175,6 +175,7 @@ $   flatpak override --user --env=QT_QPA_PLATFORM=xcb org.telegram.desktop
 This will ensure that the application is always run with the corresponding environment parameter. More on the override option in the [official Flatpak documentation](https://docs.flatpak.org/en/latest/flatpak-command-reference.html?highlight=override#flatpak-override).
 
 #### Flatseal
+Please refer to Flatseal's [official documentation](https://github.com/tchx84/Flatseal/blob/master/DOCUMENTATION.md).
 
 ### Pros, cons, when
 
@@ -194,13 +195,38 @@ __Go for it when__:
 
 ## Snaps
 
+!!! warning
+    Please help finish this section.
+
 ### Pros, cons, when
+
+!!! warning
+    Please help finish this section.
 
 ## AppImages
 
+!!! warning
+    Please help finish this section.
+
 ### Pros, cons, when
 
+!!! warning
+    Please help finish this section.
+
 ## Summary and conclusion
+Even though Leap and Tumbleweed's official repositories are numerous, you will find yourself in search of alternatives at times. Here are some simple rules of thumbs that emerge from the Pros and cons discussed above:
+
+If you are looking for a program with a graphical interface that...
+1. updates often; or 
+2. relies on very recent dependencies; or
+3. requires you to install dependencies that:
+    * are provided by the official repositories; but 
+    * differ in version from those provided by the official repositories; then
+    you will be better off using ; then snaps, flapaks or appimages offer you serious alternatives to official repositories, which may update less frequently. This applies to both Leap and Tumbleweed's official repositories.
+
+When wondering which to use, between snaps, flatpaks and appimages:
+1. favour __flatpaks__ if you want a streamlined experience or precise maintenance options via the command line or if you plan on using several other flatpaks (the more flatpaks, the most cost-efficient the sacrifice of storage space they demand)
+2. favour __appimages__ if you need a handful of "fire-and-forget" or "portable" (no installation needed) applications.
 
 ## References
 * Comparison between AppImage, Flatpak and Ubuntu Snap: https://github.com/AppImage/AppImageKit/wiki/Similar-projects#comparison
