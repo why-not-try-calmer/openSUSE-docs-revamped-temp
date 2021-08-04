@@ -131,7 +131,6 @@ As long as it says Good signature from "openSUSE Tumbleweed ISO Signing Key <roo
 
 You can ignore the warning that comes after that, it is expected and perfectly normal.
 
-
 ## Get to the installer
 In this section you will learn how to get to a running installer for _Tumbleweed_ or _Leap_. This involves:
 
@@ -152,7 +151,6 @@ For _Fedora Image Writer_:
 3. Finally click on __Write to Disk__.
 
 Once writing the image is done, you are ready to reboot from the USB drive. Leaving the USB drive plugged in, use the method appropriate to your operating system to restart your computer.
-
 
 ### Reboot to the device
 Assuming you have successfully installed an openSUSE distribution, you should reboot according to the method relevant to your current operating system.
