@@ -90,5 +90,5 @@ If both devices are on the network and the firewall is properly configured but n
 Open the KDE Connect settings on either device and ping the opposite or select Refresh to force connection.
 
 
-## Learing more
+## Learning more
 * [KDE Connect site](https://kdeconnect.kde.org)
