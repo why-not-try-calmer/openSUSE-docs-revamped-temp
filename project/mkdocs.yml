@@ -87,6 +87,7 @@ nav:
         - Power management: ""
         - Pairing, syncing, sharing:
             - Bluetooth: bluetooth.md
+            - KDE Connect: kdeconnect.md
         - Advanced fine-tunings:
             - Transparent compression (zstd): zstd.md
     - Giving back to the community:

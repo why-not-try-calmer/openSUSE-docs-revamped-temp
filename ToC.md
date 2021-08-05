@@ -61,6 +61,7 @@ __NB__: Unless mentioned otherwise, a document corresponding to a parent section
     * bluetooth audio: [bluetooth.md](https://github.com/openSUSE/openSUSE-docs-revamped-temp/blob/dev/project/docs/bluetooth.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped-temp/issues/27)
     * sharing files
     * syncing files with other devices
+    * KDE Connect: [kdeconnect.md](https://github.com/openSUSE/openSUSE-docs-revamped-temp/blob/dev/project/docs/kdeconnect.md)
 14. Advanced fine-tunings
     * transparent compression
     * kernel parameters
