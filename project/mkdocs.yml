@@ -27,7 +27,12 @@ theme:
     logo: image/Button-filled-colour.png
     favicon: image/geeko-color.png
     features:
+        - navigation.sections
         - navigation.instant
+        - navigation.tracking
+        - navigation.expand
+        # - navigation.tabs
+        # - navigation.tabs.sticky
     icon:
         repo: fontawesome/brands/github
 
