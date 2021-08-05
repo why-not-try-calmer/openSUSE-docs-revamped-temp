@@ -86,8 +86,8 @@ nav:
             - Codecs: codecs.md
             - Pipewire: pipewire.md
         - Graphic Drivers: 
-            - Proprietary: install_proprietary.md
-            - Hybrid GPUs: hybrid_graphics.md
+            - Getting started: install_proprietary.md
+            - Dual GPUs ("Optimus"): hybrid_graphics.md
         - Setting up a containerized environment: install_podman.md
         - Power management: ""
         - Pairing, syncing, sharing:

@@ -1,4 +1,4 @@
-## Enabling Hybrid Graphics
+## Dual GPUs setups
 This section is meant for users with dual 'graphic cards' (GPUs), often found in high-end laptops and essential to a pleasant video intensive experience (gaming, streaming, video editing, etc.)
 
 On these hardware configurations, there is a software switch that picks the _integrated_ graphics processor for rendering most desktop applications, switching to the _dedicated_ GPU for more demanding tasks. The switch can be more or less fine-grained. Fine-grained switches, such as the ones used in _Kdenlive_ and _OBS Studio_, are able to use VAAPI and NVENC to offload specific processes of encoding/decoding to the dedicated GPU, while a coarse-grained switch would have to offload an entire program instead.
