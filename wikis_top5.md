@@ -1,4 +1,4 @@
-# Rational
+# Rationale
 
 To comply with the newly added license, we are required to name the top 5 "principal" contributors to the wikis. If the top 5 (+ 1 for good measure) users with the most edits is a valid application of this notion, we have:
 ```
