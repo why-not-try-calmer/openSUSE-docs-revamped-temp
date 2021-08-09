@@ -585,6 +585,10 @@ For a specific package:
     ```
 ##### List packages providing specified capability
 * `what-provides` or `wp`
+
+!!! warning
+    The subcommand `what-provides` is deprecated. It is replaced by `search --provides --match-exact`.
+
 ##### Add a package lock
 * `locks` or `ll`
 ##### Remove a package lock
