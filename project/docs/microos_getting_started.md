@@ -3,15 +3,16 @@
 This document is meant for users interested in using the openSUSE MicroOS as a desktop. Although this operating system is offered in two flavours (one based on Leap, the other on Tumbleweed), we will only be concerned with the Tumbleweed base, as the Leap base does not provide the required patterns for desktop usage.
 
 ### Pre-installation
-1. Download the Tumbleweed base ISO image from [https://en.opensuse.org/Portal:MicroOS/Downloads](https://en.opensuse.org/Portal:MicroOS/Downloads)
-2. Write the ISO on a USB drive and start the installation process.
-3. Select GNOME or KDE Plasma as desktop environment.
-4. If desired, select _encryption_. 
+
+  1. Download the Tumbleweed base ISO image from [https://en.opensuse.org/Portal:MicroOS/Downloads](https://en.opensuse.org/Portal:MicroOS/Downloads)
+  2. Write the ISO on a USB drive and start the installation process.
+  3. Select GNOME or KDE Plasma as desktop environment.
+  4. If desired, select _encryption_. 
 
 In what follows:
 
-* commands starting with `$` can be copied straight into your terminal prompt.
-* commands starting with `#` can only be run inside a transactional-update shell.
+  * commands starting with `$` can be copied straight into your terminal prompt.
+  * commands starting with `#` can only be run inside a transactional-update shell.
 
 !!! info
     A _transactional-update shell_ is a chroot where you can open the snapshot you want to boot into next. In that context you can make adjustments to the normally immutable root filesystem. It is meant mostly for advanced users, so mind your keystrokes.
@@ -19,44 +20,51 @@ In what follows:
 ### Ways to install applications
 You can install applications in several ways:
 
-* flatpaks from flathub -- the _preferred solution_ 
-* RPM's via a package manager
-* RPM's in a toolbox `toolbox -u`
-* snaps (requires some extra setup to get snapd installed)
-* AppImages
+  * flatpaks from flathub -- the _preferred solution_ 
+  * RPM's via a package manager
+  * RPM's in a toolbox `toolbox -u`
+  * snaps (requires some extra setup to get snapd installed)
+  * AppImages
 
 !!! info
     The reason _flatpaks_ are preferred is that they provide a self-contained environment offering a pleasant balance between security, dependence integrity and performance. See [here](https://flatpak.org/) for details.
 
 ### Package manager options
 MicroOS now has a few different package managers as an option during install:
- * transactional-update with zypper `the old default, and still the default for the server version`
- * Packagekit + tukit `the new default, using pkcon and tukit`
- * microdnf `an experimental package manager based on dnf`
+
+  * transactional-update with zypper `the old default, and still the default for the server version`
+  * Packagekit + tukit `the new default, using pkcon and tukit`
+  * microdnf `an experimental package manager based on dnf`
 
 The reason for changing package managers is because pkcon gives the opportunity to use Gnome Software or Discover for KDE as an installer of RPM's. And currently we are working on the ability to let Gnome Software and Discover perform system upgrades.
 
 #### Transcational-update _old default_
 commands for transactional-update are:
-`sudo transactional-update pkg install package_name` install a rpm package
-`sudo transactional-udpdate dup` perform a system upgrade to the next release
-`sudo transactional-update shell` open a shell of the next snapshot (you can use zypper commands there)
+
+  * `sudo transactional-update pkg install package_name` install a rpm package
+  * `sudo transactional-udpdate dup` perform a system upgrade to the next release
+  * `sudo transactional-update shell` open a shell of the next snapshot (you can use zypper commands there)
 
 #### Packagekit + tukit _new default_
 commands for Packagekit and tukit:
-`pkcon install package_name` install a rpm package
-`pkcon update` perform a system upgrade to the next release
-`sudo tukit execute bash` open a shell of the next snapshot (you can use zypper commands there)
+
+  * `pkcon install package_name` install a rpm package
+  * `pkcon update` perform a system upgrade to the next release
+  * `sudo tukit execute bash` open a shell of the next snapshot (you can use zypper commands there)
 
 #### Microdnf
-_can someome please update this, i'm not sure of the commands_
+commands for microdnf:
+
+  * `microdnf install package_name` install a rpm package
+  * `microdnf upgrade` perform a system upgrade to the next release
 
 ### Full drive encryption
 If you need full drive encryption you can go through the ISO installer as normal, except for the last screen, where you need to click on _Partitioning_. Then use the guided partitioner to enable encryption. _LVM_ is not necessary for it to work. 
 
 Bear in mind however that with full drive encryption, you will need to enter your password twice: 
-1. the first time to open the grub menu
-2. the second time to decrypt during boot.
+
+  1. the first time to open the grub menu
+  2. the second time to decrypt during boot.
 
 Alternatively, the second decrypt can be performed automatically; instructions are provided at [manual](https://en.opensuse.org/SDB:Encrypted_root_file_system).
 
@@ -80,8 +88,9 @@ $ sudo reboot
 ```
 
 ### Installation: KDE
-* In _Discover_, enable the _flatpak_ repository.
-* For theming, normal theme installations don’t work in KDE Plasma. But you can install themes via a transactional-update shell:
+
+  * In _Discover_, enable the _flatpak_ repository.
+  * For theming, normal theme installations don’t work in KDE Plasma. But you can install themes via a transactional-update shell:
     * (For example the Arc theme and papirus-icon-theme)
 ```
 $ sudo transactional-update shell
@@ -91,7 +100,7 @@ $ sudo transactional-update shell
   # exit
 $ sudo reboot
 ```
-* Other themes (also for GNOME):
+  * Other themes (also for GNOME):
     * [Qogir-icon-theme](https://github.com/vinceliuice/Qogir-icon-theme)
     * [Matcha-gtk](https://github.com/vinceliuice/Matcha-gtk-theme)
     * [Matcha-KDE](https://github.com/vinceliuice/Matcha-kde)
@@ -124,9 +133,10 @@ $ sudo reboot
 #### Useful extra packages to install
 
 Some useful extra packages to install include:
-* `ntfs-3g ` for NTFS partitions
-* `fuse-exfat` for exfat partitions
-* `nano` instead of vim
+
+  * `ntfs-3g ` for NTFS partitions
+  * `fuse-exfat` for exfat partitions
+  * `nano` instead of vim
 
 You can install both with:
 ```
@@ -142,10 +152,11 @@ The `flatpak` package is already installed and the flathub repo enabled within a
 Updating flatpaks via the terminal are done with the command `sudo flatpak update`
 
 Some flatpaks you could install from [flathub](https://flathub.org/home):
-- [Firefox](https://flathub.org/apps/details/org.mozilla.firefox)
-- [Libreoffice](https://flathub.org/apps/details/org.libreoffice.LibreOffice)
-- [VLC](https://flathub.org/apps/details/org.videolan.VLC)
-- etc.
+
+  - [Firefox](https://flathub.org/apps/details/org.mozilla.firefox)
+  - [Libreoffice](https://flathub.org/apps/details/org.libreoffice.LibreOffice)
+  - [VLC](https://flathub.org/apps/details/org.videolan.VLC)
+  - etc.
 
 ### Installing snaps
 
@@ -211,10 +222,11 @@ $ sudo reboot
 Find what you need on [https://software.opensuse.org](https://software.opensuse.org). Then choose the openSUSE Tumbleweed repository, as MicroOS desktop is built from the same base as Tumbleweed. Everything that runs on Tumbleweed should in theory run reliably on MicroOS Desktop.
 
 You can't use the 1-click install as there is no YaST and the 1-click installer has no access to a transactional-update. So for example if you install `zerotier`:
-1. Pick a _TumbleWeed_ repository.
-2. Click on _Expert Download_.
-3. Choose the option _Add repository and install manually_.
-4. Copy the commands into a _transactional-update shell_
+
+  1. Pick a _TumbleWeed_ repository.
+  2. Click on _Expert Download_.
+  3. Choose the option _Add repository and install manually_.
+  4. Copy the commands into a _transactional-update shell_
 ```
 $ sudo tukit execute bash
   # zypper addrepo -cf https://download.opensuse.org/repositories/home:alphard:RHEL/openSUSE_Tumbleweed/home:alphard:RHEL.repo 
