@@ -18,7 +18,9 @@ plugins:
         
 theme:
     name: material
-    font: false
+    font:
+        code: Fira Code
+        text: Noto Sans TC
     custom_dir: overrides
     palette:
         scheme: preference
