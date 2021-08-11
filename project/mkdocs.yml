@@ -3,7 +3,8 @@ repo_url: https://github.com/openSUSE/openSUSE-docs-revamped-temp
 edit_uri: ""
 
 plugins:
-    - search
+    - search:
+        prebuild_index: true
     - git-revision-date
     - mkdocs-versioning:
         version: 0.3.1
