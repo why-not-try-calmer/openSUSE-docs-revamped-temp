@@ -16,7 +16,6 @@ plugins:
         #comment out the next two options to make every page have its own PDF
         combined: true
         combined_output_path: docs.pdf
-        
 theme:
     name: material
     font:
