@@ -3,15 +3,16 @@
 This document is meant for users interested in using the openSUSE MicroOS as a desktop. Although this operating system is offered in two flavours (one based on Leap, the other on Tumbleweed), we will only be concerned with the Tumbleweed base, as the Leap base does not provide the required patterns for desktop usage.
 
 ### Pre-installation
-1. Download the Tumbleweed base ISO image from [https://en.opensuse.org/Portal:MicroOS/Downloads](https://en.opensuse.org/Portal:MicroOS/Downloads)
-2. Write the ISO on a USB drive and start the installation process.
-3. Select GNOME or KDE Plasma as desktop environment.
-4. If desired, select _encryption_. 
+
+  1. Download the Tumbleweed base ISO image from [https://en.opensuse.org/Portal:MicroOS/Downloads](https://en.opensuse.org/Portal:MicroOS/Downloads)
+  2. Write the ISO on a USB drive and start the installation process.
+  3. Select GNOME or KDE Plasma as desktop environment.
+  4. If desired, select _encryption_. 
 
 In what follows:
 
-* commands starting with `$` can be copied straight into your terminal prompt.
-* commands starting with `#` can only be run inside a transactional-update shell.
+  * commands starting with `$` can be copied straight into your terminal prompt.
+  * commands starting with `#` can only be run inside a transactional-update shell.
 
 !!! info
     A _transactional-update shell_ is a chroot where you can open the snapshot you want to boot into next. In that context you can make adjustments to the normally immutable root filesystem. It is meant mostly for advanced users, so mind your keystrokes.
@@ -19,88 +20,77 @@ In what follows:
 ### Ways to install applications
 You can install applications in several ways:
 
-* flatpaks from flathub -- the _preferred solution_ 
-* RPM's via `sudo transactional-update pkg install package_name`
-* RPM's in a toolbox `toolbox -u`
-* snaps (requires some extra setup to get snapd installed)
-* AppImages
+  * flatpaks from flathub -- the _preferred solution_ 
+  * RPM's via a package manager
+  * RPM's in a toolbox `toolbox -u`
+  * snaps (requires some extra setup to get snapd installed)
+  * AppImages
 
 !!! info
     The reason _flatpaks_ are preferred is that they provide a self-contained environment offering a pleasant balance between security, dependence integrity and performance. See [here](https://flatpak.org/) for details.
+
+### Package manager options
+MicroOS now has a few different package managers as an option during install:
+
+  * transactional-update with zypper `the old default, and still the default for the server version`
+  * Packagekit + tukit `the new default, using pkcon and tukit`
+  * microdnf `an experimental package manager based on dnf`
+
+The reason for changing package managers is because pkcon gives the opportunity to use Gnome Software or Discover for KDE as an installer of RPM's. And currently we are working on the ability to let Gnome Software and Discover perform system upgrades.
+
+#### Transcational-update _old default_
+commands for transactional-update are:
+
+  * `sudo transactional-update pkg install package_name` install a rpm package
+  * `sudo transactional-udpdate dup` perform a system upgrade to the next release
+  * `sudo transactional-update shell` open a shell of the next snapshot (you can use zypper commands there)
+
+#### Packagekit + tukit _new default_
+commands for Packagekit and tukit:
+
+  * `pkcon install package_name` install a rpm package
+  * `pkcon update` perform a system upgrade to the next release
+  * `sudo tukit execute bash` open a shell of the next snapshot (you can use zypper commands there)
+
+#### Microdnf
+commands for microdnf:
+
+  * `microdnf install package_name` install a rpm package
+  * `microdnf upgrade` perform a system upgrade to the next release
 
 ### Full drive encryption
 If you need full drive encryption you can go through the ISO installer as normal, except for the last screen, where you need to click on _Partitioning_. Then use the guided partitioner to enable encryption. _LVM_ is not necessary for it to work. 
 
 Bear in mind however that with full drive encryption, you will need to enter your password twice: 
-1. the first time to open the grub menu
-2. the second time to decrypt during boot.
+
+  1. the first time to open the grub menu
+  2. the second time to decrypt during boot.
 
 Alternatively, the second decrypt can be performed automatically; instructions are provided at [manual](https://en.opensuse.org/SDB:Encrypted_root_file_system).
 
-#### Setting up a key file
-The steps below describe how to set up a key file. You will need to execute the commands and edit the files listed below in a _transactional-update_ shell.
-```
-$ sudo transactional-update shell
-  # touch /.root.key
-  # chmod 600 /.root.key
-  # dd if=/dev/urandom of=/.root.key bs=1024 count=1
-  # cryptsetup luksAddKey /dev/sda1 /.root.key
-```
-Replace `/dev/sda1` with the root partition (`sudo fdisk -l` to see partitions)
-```
-  # vim /etc/crypttab
-```
-Edit `/etc/crypttab`, find the line starting with the `UUID` reference of the root partition (`UUID=...`) and write the path to the key file in the third column.
+!!! info
+    Full disk encryption is _not_ recommended for SSD's as trimming is currently not supported due to the read only nature of the / filesystem during boot.
 
-    cr_sda1 UUID=... /.root.key
-
-  (The partition name is just an example.)S
-Configure `dracut` to add the key file to the initrd:
-```
-  # echo -e 'install_items+=" /.root.key "' | tee --append /etc/dracut.conf.d/99-root-key.conf > /dev/null
-  # mkinitrd
-  # exit
-$ sudo reboot
-```
 
 ### Installation: GNOME
+_Gnome is currently in a beta stage._
+
+At first boot flatpaks are enabled and some flatpaks are installed by default (MozillaFirefox, Gedit and Gnome Calculator).
+
 Make sure to install a browser via transactional-updates if you want to use GNOME extensions. The easiest way to install GNOME extensions is via the website provided by the [GNOME project](https://extensions.gnome.org/). For this to work however, you will need a browser installed on the system via transactional-update, as it will not work inside a containerized environment (like flatpaks, snaps, AppImages or in a toolbox). The browser will need to have the plugin mentioned on the top of the page when you first open it. 
 
 After installation of the plugin, you can reload the page and choose the GNOME Extensions you want to install.
 
 To get GNOME extensions running, you need the following command to install Chromium directly:
 ```
-$ sudo transactional-update pkg install chromium
-$ sudo reboot
-```
-
-* You can also install some other useful packages through transactional-update and then reboot:
-```
-$ sudo transactional-update pkg install gnome-remote-desktop gnome-shell-search-provider-nautilus gnome-color-manager
-$ sudo reboot
-```
-
-* Some necessary commands for _GNOME Software_: 
-```
-$ gsettings set org.gnome.software install-bundles-system-wide false
-$ gsettings set org.gnome.software allow-updates false
-$ gsettings set org.gnome.software download-updates false
-$ gsettings set org.gnome.software enable-repos-dialog false
-$ gsettings set org.gnome.software first-run true
-```
-and the following:
-```
-$ sudo rm -Rf /var/cache/app-info
-$ sudo transactional-update shell
-  # rpm -e --nodeps libzypp-plugin-appdata
-  # zypper al libzypp-plugin-appdata
-  # exit
+$ pkcon install chromium
 $ sudo reboot
 ```
 
 ### Installation: KDE
-* In _Discover_, enable the _flatpak_ repository.
-* For theming, normal theme installations don’t work in KDE Plasma. But you can install themes via a transactional-update shell:
+
+  * In _Discover_, enable the _flatpak_ repository.
+  * For theming, normal theme installations don’t work in KDE Plasma. But you can install themes via a transactional-update shell:
     * (For example the Arc theme and papirus-icon-theme)
 ```
 $ sudo transactional-update shell
@@ -110,25 +100,13 @@ $ sudo transactional-update shell
   # exit
 $ sudo reboot
 ```
-* Other themes (also for GNOME):
+  * Other themes (also for GNOME):
     * [Qogir-icon-theme](https://github.com/vinceliuice/Qogir-icon-theme)
     * [Matcha-gtk](https://github.com/vinceliuice/Matcha-gtk-theme)
     * [Matcha-KDE](https://github.com/vinceliuice/Matcha-kde)
     * [Akwa-gtk](https://github.com/berkiyo/akwa)
     
 ### General tips
-It is recommended to disable both automatic updating and automatic rebooting. They are handy features for servers running 24/7), but the developers are thinking about a different and better integration with desktop usage. For now it is recommended to do the same, at least until you have become more familiar with MicroOS. Then you will be able to come up with the best automatic updating & rebooting strategy for your workflow and use case. So:
-```
-$ sudo systemctl disable --now transactional-update.timer
-$ sudo systemctl disable --now rebootmgr.service
-```
-And then let’s check:
-```
-$ sudo rebootmgrctl is-active
-*RebootMgr is dead*
-$ sudo rebootmgrctl status
-*Error: The name org.opensuse.RebootMgr was not provided by any .service files*
-```
 Updates are now to be initialized manually with:
 ```
 $ sudo transactional-update dup
@@ -141,28 +119,44 @@ $ sudo transactional-update shell
   # exit
 $ sudo reboot
 ```
+Or
+```
+$ pkcon update
+```
+Or
+```
+$ sudo tukit execute bash
+  # zypper dup
+  # exit
+$ sudo reboot
+```
+#### Useful extra packages to install
+
+Some useful extra packages to install include:
+
+  * `ntfs-3g ` for NTFS partitions
+  * `fuse-exfat` for exfat partitions
+  * `nano` instead of vim
+
+You can install both with:
+```
+$ pkcon install tlp ntfs-3g fuse-exfat nano  
+$ sudo reboot
+```
+
 
 ### Installing flatpaks
 
-The `flatpak` package is already installed; all that needs to be done is to add the flathub repo. Within KDE Plasma this is possible from within _Discover_. For GNOME you have to use one of the two options below (also possible for a terminal prompt if you don't like Discover):
+The `flatpak` package is already installed and the flathub repo enabled within a Gnome install. Within KDE Plasma it is possible to enable the flathub repo from within _Discover_. 
 
-If you want to install flathub for only your user (in `/home/~ folder`):
-```
-$ flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-```
-Updating flatpaks via the terminal are done with the command `flatpak update`
-
-If you want to install flathub for all users (in `/var folder`):
-```
-$ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-```
 Updating flatpaks via the terminal are done with the command `sudo flatpak update`
 
 Some flatpaks you could install from [flathub](https://flathub.org/home):
-- [Firefox](https://flathub.org/apps/details/org.mozilla.firefox)
-- [Libreoffice](https://flathub.org/apps/details/org.libreoffice.LibreOffice)
-- [VLC](https://flathub.org/apps/details/org.videolan.VLC)
-- etc.
+
+  - [Firefox](https://flathub.org/apps/details/org.mozilla.firefox)
+  - [Libreoffice](https://flathub.org/apps/details/org.libreoffice.LibreOffice)
+  - [VLC](https://flathub.org/apps/details/org.videolan.VLC)
+  - etc.
 
 ### Installing snaps
 
@@ -173,7 +167,7 @@ Snaps are mainly used with Ubuntu, but it is possible to install them as well in
 First, Snapd must be installed on the system with transactional-update:
 
 ```
-$ sudo transactional-update shell
+$ sudo tukit execute bash
   # zypper addrepo --refresh https://download.opensuse.org/repositories/system:/snappy/openSUSE_Tumbleweed snappy
   # zypper --gpg-auto-import-keys refresh
   # zypper ref
@@ -205,7 +199,7 @@ $ sudo snap install snap-store
 
 ### Installing virtualbox
 ```
-$ sudo transactional-update shell
+$ sudo tukit execute bash
   # zypper ref
   # zypper in virtualbox-qt
   # usermod -a -G vboxusers <myuser>
@@ -216,7 +210,7 @@ $ sudo reboot
 #### Adding the extension pack for the host
 _Installation can be done after you've rebooted into a new snapshot where virtualbox-qt is installed_
 ```
-$ sudo transactional-update shell
+$ sudo tukit execute bash
   # cd /tmp
   # LatestVirtualBoxVersion=$(wget -qO - https://download.virtualbox.org/virtualbox/LATEST-STABLE.TXT) && wget "https://download.virtualbox.org/virtualbox/${LatestVirtualBoxVersion}/Oracle_VM_VirtualBox_Extension_Pack-${LatestVirtualBoxVersion}.vbox-extpack"
   # VBoxManage extpack install --replace Oracle_VM_VirtualBox_Extension_Pack-${LatestVirtualBoxVersion}.vbox-extpack
@@ -228,21 +222,22 @@ $ sudo reboot
 Find what you need on [https://software.opensuse.org](https://software.opensuse.org). Then choose the openSUSE Tumbleweed repository, as MicroOS desktop is built from the same base as Tumbleweed. Everything that runs on Tumbleweed should in theory run reliably on MicroOS Desktop.
 
 You can't use the 1-click install as there is no YaST and the 1-click installer has no access to a transactional-update. So for example if you install `zerotier`:
-1. Pick a _TumbleWeed_ repository.
-2. Click on _Expert Download_.
-3. Choose the option _Add repository and install manually_.
-4. Copy the commands into a _transactional-update shell_
+
+  1. Pick a _TumbleWeed_ repository.
+  2. Click on _Expert Download_.
+  3. Choose the option _Add repository and install manually_.
+  4. Copy the commands into a _transactional-update shell_
 ```
-$ sudo transactional-update shell
-  # zypper addrepo https://download.opensuse.org/repositories/home:alphard:RHEL/openSUSE_Tumbleweed/home:alphard:RHEL.repo 
+$ sudo tukit execute bash
+  # zypper addrepo -cf https://download.opensuse.org/repositories/home:alphard:RHEL/openSUSE_Tumbleweed/home:alphard:RHEL.repo 
   # zypper ref
   # zypper in zerotier-one
   # exit
 $ sudo reboot
 ```
-If you have added repositories to `zypper` by yourself, it is possible that they will not refresh automatically with a `dup` command. You will have to give them a flag for autorefresh:
+If you have added repositories to `zypper` by yourself, it is possible that they will not refresh automatically with a `dup` command. You will have to give them a flag for autorefresh: (or add the `-cf` to the command after `addrepo` or `ar`)
 ```
-$ sudo transactional-update shell
+$ sudo tukit execute bash
   # zypper lr -p
   # zypper mr -f <number of repo you want to add Yes to in the Refresh colomn>
   # exit
@@ -257,7 +252,7 @@ Two important packages were found missing for some users:
 
 You can install both with:
 ```
-$ sudo transactional-update pkg install tlp ModemManager
+$ pkcon install tlp ModemManager libmbim usb_modeswitch NetworkManager-connection-editor  
 $ sudo reboot
 ```
 
@@ -269,13 +264,15 @@ And add the following lines in the file at the end:
 #My custom aliases
 alias shalt="sudo systemctl halt"
 alias sboot="sudo systemctl reboot"
+alias pu="pkcon update"
+alias steb="sudo tukit execute bash"
 alias sts="sudo transactional-update shell"
 alias stsc="sudo transactional-update shell --continue"
 alias stdc="sudo transactional-update dup --continue"
 alias std="sudo transactional-update dup"
-alias sfu="sudo flatpak update && flatpak update"
-alias fsu="sudo flatpak update && flatpak update && sudo snap refresh"
-alias dfs="sudo transactional-update dup && sudo flatpak update && flatpak update && sudo snap refresh"
+alias sfu="sudo flatpak update -y && flatpak update -y"
+alias fsu="sudo flatpak update -y && flatpak update -y && sudo snap refresh"
+alias dfs="pkcon update && sudo flatpak update -y && flatpak update -y && sudo snap refresh"
 ```
 Then for example typing `std` in a terminal prompt will issue the command `sudo transactional-update dup`.
 
@@ -283,14 +280,14 @@ Then for example typing `std` in a terminal prompt will issue the command `sudo 
 ### No graphical session/login screen in Hyper-V
 _Hyper-V_ requires the package `xf86-video-fbdev` for graphical session:
 ```
-$ sudo transactional-update pkg install xf86-video-fbdev
+$ pkcon install xf86-video-fbdev
 $ sudo reboot
 ```
 
 ### Toolbox is not starting ("potentially insufficient UIDs and GIDs")
 UUI and GUI need to be set for `toolbox` to work:
 ```
-$ sudo transactional-update shell
+$ sudo tukit execute bash
   # echo "<yourusername>:100000:65536" > /etc/subuid 
   # echo "<yourusername>:100000:65536" > /etc/subgid
   # exit
@@ -317,3 +314,30 @@ You can then open the application _Get Extensions_ that is available from your l
 
 To uninstall:
 ```pip3 uninstall getextensions```
+
+
+Old items:
+It is recommended to disable both automatic updating and automatic rebooting. They are handy features for servers running 24/7), but the developers are thinking about a different and better integration with desktop usage. For now it is recommended to do the same, at least until you have become more familiar with MicroOS. Then you will be able to come up with the best automatic updating & rebooting strategy for your workflow and use case. So:
+```
+$ sudo systemctl disable --now transactional-update.timer
+$ sudo systemctl disable --now rebootmgr.service
+```
+And then let’s check:
+```
+$ sudo rebootmgrctl is-active
+*RebootMgr is dead*
+$ sudo rebootmgrctl status
+*Error: The name org.opensuse.RebootMgr was not provided by any .service files*
+```
+For GNOME you have to use one of the two options below (also possible for a terminal prompt if you don't like Discover):
+
+If you want to install flathub for only your user (in `/home/~ folder`):
+```
+$ flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+```
+Updating flatpaks via the terminal are done with the command `flatpak update`
+
+If you want to install flathub for all users (in `/var folder`):
+```
+$ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+```

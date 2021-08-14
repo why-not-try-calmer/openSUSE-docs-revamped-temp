@@ -47,6 +47,12 @@ which is a compact instance of
 `sudo zypper modifyrepo --refresh <repo identifier>` 
 
 ### tumbleweed-cli
+
+!!! warning
+    This section needs some rework as `tumbleweed-cli` introduces some safety issues in that:
+    a) the evaluation algorithm used to [collect statistics](https://review.tumbleweed.boombatower.com/) about the 'health condition' of available Tumbleweed snapshots has been alleged to produce false positives.
+    b) the advantages of rolling back to a previous Tumbleweed snapshot comes with the drawback that the user is no longer in sync with possible upcoming security fixes, which are shipped to target only the latest available snapshot.
+
 If you have not already, please read the short [introduction](#introduction).
 
 Tumbleweed users are gifted with the very useful command line utility `tumbleweed-cli`. This program lets you control finely your update process my making explicit which snapshot you are upgrading to, and by allowing you to roll in or back from snapshots. This comes in handy in cases where you know for sure that some outstanding issue is caused by one or by a combination of packages from the same snapshot, and go back to a previous snapshot which created no trouble. In addition to your own testing you can get some heads-up on which snapshots are deemed healthy or not from this [web application](https://review.tumbleweed.boombatower.com/).

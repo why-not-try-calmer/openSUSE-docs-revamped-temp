@@ -18,7 +18,7 @@ __NB__: Unless mentioned otherwise, a document corresponding to a parent section
 4. Quick install for experienced users
    * MicroOS: [microos_getting_started.md](https://github.com/openSUSE/openSUSE-docs-revamped-temp/blob/dev/project/docs/microos_getting_started.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped-temp/issues/24)
 ### Distro basics
-5. Post-install checklist
+5. Post-install best-of [best_of_post.md](project/docs/best_of_post.md)
 6. KDE Plasma basics [kde.md](project/docs/kde.md)
     * X, XWayland & Wayland sessions
     * settings & keybindings
@@ -36,7 +36,7 @@ __NB__: Unless mentioned otherwise, a document corresponding to a parent section
         * best-practices for updating / upgrading Leap & Tumbleweed
     * YaST
     * `snapper` & `btrfs`: [snapper.md](https://github.com/openSUSE/openSUSE-docs-revamped-temp/blob/dev/project/docs/snapper.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped-temp/issues/34)
-9. Getting & installing additional software
+9. Getting & installing additional software: [alternative_procurement.md](https://github.com/openSUSE/openSUSE-docs-revamped-temp/blob/dev/project/docs/alternative_procurement.md)
     * RPMs, flatpaks, snaps, AppImages
     * running with podman
     * running with libvirt
@@ -61,6 +61,7 @@ __NB__: Unless mentioned otherwise, a document corresponding to a parent section
     * bluetooth audio: [bluetooth.md](https://github.com/openSUSE/openSUSE-docs-revamped-temp/blob/dev/project/docs/bluetooth.md), [issue](https://github.com/openSUSE/openSUSE-docs-revamped-temp/issues/27)
     * sharing files
     * syncing files with other devices
+    * KDE Connect: [kdeconnect.md](https://github.com/openSUSE/openSUSE-docs-revamped-temp/blob/dev/project/docs/kdeconnect.md)
 14. Advanced fine-tunings
     * transparent compression
     * kernel parameters

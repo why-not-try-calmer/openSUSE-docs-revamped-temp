@@ -1,12 +1,12 @@
 ## Choosing an installation media
 The installers and images can be obtained on the [Tumbleweed](https://software.opensuse.org/distributions/tumbleweed) and [Leap](https://software.opensuse.org/distributions/leap) pages.
 
-Most users are used to Live images, packing a full-blown environment where they can test 
+Most users are used to Live images, packing a full-blown environment where they can test
 out a Linux distribution before installing.
 
 !!! note for Tumbleweed
     Users interested in Tumbleweed should bear in mind that, because of the way Tumbleweed is built, Tumbleweed Live images are missing a handful of tests in comparison to Tumbleweed DVD images (see below). So even if Live images can be considered reasonably safe for most users, we cannot guarantee the same quality assurance as for DVD images.
-    
+
 Our live images (~950 MBs) provide the following desktop environments:
 
 - KDE
@@ -39,12 +39,12 @@ In what follows we make the following assumptions:
 1. You have downloaded an openSUSE Live, Network or DVD image from openSUSE website (hereafter: the __Image__):
     * [Tumbleweed](https://software.opensuse.org/distributions/tumbleweed)
     * [Leap](https://software.opensuse.org/distributions/leap)
-2. You have obtained the __Target Checksum__ file for your image, by clicking on the _Checksum_ next to the image. 
+2. You have obtained the __Target Checksum__ file for your image, by clicking on the _Checksum_ next to the image.
 3. You have obtained openSUSE gpg __Public Key__ by importing it via its keyid into your gpg keyring with
     ```
     $  gpg --recv-keys 0x22C07BA534178CD02EFE22AAB88B2FD43DBDC284
     ```
-    or on a non-*NIX operating system, simply download the file at 
+    or on a non-*NIX operating system, simply download the file at
 4. You have obtained an openSUSE gpg __Detached Signature__ file corresponding to the image you want to perform the check upon. The Tumbleweed detached signature files are held within a single directory [here](http://download.opensuse.org/tumbleweed/iso/). Regarding Leap however you need to start [there](http://download.opensuse.org/distribution/openSUSE-current/) and use the `/live` subdirectory for the live images and the rescue images (the `/iso` subdirectory does not provide any detached signature for net installers and DVD images). Once you have the address of the signature file, the command looks like this (i.e. for KDE Live):
     ```
     $  wget http://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-KDE-Live-x86_64-Current.iso.sha256.asc
@@ -74,7 +74,7 @@ The check passes just in case the output of the above equals the checksum writte
 ## Authenticity and integrity checks (Windows 10)
 
 __Preparation__:
-1. Download the filename.iso.sha256 file from the Download section of opensuse.org or download the hash files from here 
+1. Download the filename.iso.sha256 file from the Download section of opensuse.org or download the hash files from here
 
 * for Tumbleweed: https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-DVD-x86_64-Current.iso.sha256
 * for Leap: https://download.opensuse.org/distribution/leap/15.3/iso/openSUSE-Leap-15.3-DVD-x86_64-Current.iso.sha256
@@ -106,10 +106,10 @@ certutil -hashfile openSUSE-Tumbleweed-DVD-x86_64-Snapshot20210611-Media.iso SHA
 Note that if you start typing a filename you can press Tab to automatically complete it.
 
 This will take a little while to complete and eventually present you with an alphanumeric sequence that is called a hash. If this hash is identical to the one listed in your filename.iso.sha256 then the integrity check passed. You can compare them by hand (note that some Windows text editors will not display the line breaks in that document so it may look weirdly formatted) or better use the find command.
-  
+
 If the same hash is not found in `<file_name>.iso.sha256`, then your downloaded ISO image did not pass the integrity check. Make sure you downloaded the correct `<file_name>.iso.sha256` and if yes, try to download the ISO image again from a different mirror server. Try on it the integrity again.
-   
-!!! info 
+
+!!! info
     On older versions of Windows, the CertUtil command does not exist. Instead it is recommended to install `7zip` from https://www.7-zip.org/, then find and right-click the .iso file your downloaded in Windows Explorer and select 7-Zip's CRC SHA option to calculate the SHA 256 hash, which must then compare to the one from the filename.iso.sha256 file yourself.
 
 !!! warning
@@ -117,9 +117,9 @@ If the same hash is not found in `<file_name>.iso.sha256`, then your downloaded 
 
 ### Authenticity Check
 
-To perform the authenticity check of the ISO image, 
+To perform the authenticity check of the ISO image,
 
-1. obtain the official GPG public key and SHA256 hash file from here (http://download.opensuse.org/tumbleweed/iso/) of your required openSUSE iso version. 
+1. obtain the official GPG public key and SHA256 hash file from here (http://download.opensuse.org/tumbleweed/iso/) of your required openSUSE iso version.
 2. Download the required "filename.iso.sha256.asc" and "filename.iso.sha256" file and save it named with "sha256sum.txt.gpg" and "sha256sum.txt" in one folder. (Note: ISO file and these two .txt file should be in one folder).
 3. You can then perform the check from a command prompt.
 
@@ -130,7 +130,6 @@ To perform the authenticity check of the ISO image,
 As long as it says Good signature from "openSUSE Tumbleweed ISO Signing Key <root@opensuse.org>" and with a fingerprint matching the one shown above and that you used to download the key, then that means your download is authentic. In case it was tampered with the message would be BAD signature from ....
 
 You can ignore the warning that comes after that, it is expected and perfectly normal.
-
 
 ## Get to the installer
 In this section you will learn how to get to a running installer for _Tumbleweed_ or _Leap_. This involves:
@@ -143,7 +142,7 @@ We will assume that you have downloaded an installation image and optionally, ha
 
 ### Prepare the installation media (USB flash drive)
 The process for preparing the installation media varies depending on the operating system from which you are following these steps. Different operating systems offer different applications. We recommend using any of the following programs, which we have tested and which are known to be simple to use and reliable on their respective platforms:
-- Fedora Image Writer ([Windows](https://getfedora.org/fmw/FedoraMediaWriter-win32-latest.exe), Linux [[flatpak](https://flathub.org/apps/details/org.fedoraproject.MediaWriter)], [macOS](https://getfedora.org/fmw/FedoraMediaWriter-osx-latest.dmg))
+- Fedora Image Writer ([Windows & Mac](https://getfedora.org/en/workstation/download/), [Linux flatpak](https://flathub.org/apps/details/org.fedoraproject.MediaWriter))
 
 For _Fedora Image Writer_:
 
@@ -152,7 +151,6 @@ For _Fedora Image Writer_:
 3. Finally click on __Write to Disk__.
 
 Once writing the image is done, you are ready to reboot from the USB drive. Leaving the USB drive plugged in, use the method appropriate to your operating system to restart your computer.
-
 
 ### Reboot to the device
 Assuming you have successfully installed an openSUSE distribution, you should reboot according to the method relevant to your current operating system.

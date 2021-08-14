@@ -24,7 +24,7 @@ You are now ready to boot the USB drive, which you have previously prepared - as
 
 If you want to see the details of the installation while the installer is booting you can press the `ESC` key.
 
-??? info   
+???+ info   
     On the left you will see a list of items where you can follow the steps you will take next or have already taken. You can always press `Back` in case you want to change something you configured earlier.
 ## Getting started    
 ## Welcome
@@ -51,7 +51,7 @@ You will see a list of available network adapters in a list from which you can s
 On the `Addresses` tab you will be able to configure the IP address of your adapter. You can select `Dynamic Address` in which case you will receive an address from your router/other dhcp server on your network or `Statically Assigned IP Address` in which case you need to type an ip address, a subnet mask and a hostname. Click `Next` when finished.    
 ![Wireless configuration](image/yast_wireless_specific.png)
 
-??? info
+???+ info
     Wireless networks configured here will be transferred to the finalized system as well, regardless the solution you are choosing to use to manage your connections.
 
 **If** you configured a statically assigned IP address:
@@ -73,7 +73,7 @@ These repositories are the following:
 * _Source Repository_: Provides all source packages in the distribution, for experts only.
 * _Debug Repository_: A repository for those who want to debug applications for openSUSE, for experts only.
 
-??? info 
+???+ info 
     Keep in mind that if you're on a metered network and you choose to add the online repos, the installer will download packages with newer versions. 
 
 ### System role
@@ -114,7 +114,7 @@ If you have Windows installed already, you are likely to have the following (phy
 
 We recommend adding to these physical partitions a single 'Leap OS' partition, at least 40 GB large, using the _Btrfs_ filesystem. Please scroll down to [pick a filesystem for data partitions](yast_installer.md#picking-a-file-system-for-data-partitions) to for more details as to why we recommend _Btrfs_.
 
-??? info
+???+ info
     The 'Leap OS' partition will host the Leap bootloader under the `/boot` subvolume, the operating system directly under `/` and your user data under the `/home` subvolume. Do note that, by default, a `/home` directory will be installed to store your user data. Also by default, this directory will be excluded from the snapshotting system, which means that there will be no _Btrfs_ backups for your user data. This permits rollbacks between snapshots to proceed smoothly, leaving your user data in no incoherent state. This also means that you will need to manually manage your user data [back ups](backing_up.md).
 
 Alternatively, you might want to install your user data under a separate partition, also mounted as `/home`, using any file system of your liking. This might come in handy if you plan on using multiple operating systems reading from, and writing to, a single user data partition.
@@ -129,7 +129,7 @@ Whichever option you choose, you can refer to the following instructions:
 4. If it is not set already, set the `/boot/efi` flag your 'Windows bootloader' partition (the ~100MB partition probably using the _Fat32_ filesystem)
 5. (recommended) Add a `swap` partition with a size equal to your current RAM + 1 GB.
 
-??? info
+???+ info
     Even though this makes no difference from the installer's point of view, we recommend assigning meaningful labels to each partition, to make them easier to reidentify them.
 
 The result should look like this:
@@ -145,7 +145,7 @@ The result should look like this:
 
 Optionally, you could create a new partition for your user data under `/home`. This partition would then be easily accessible to other operating systems installed on your machine. If you do so, make sure there is no `/home` subvolume created inside the partition assigned to `/`.
 
-??? info
+???+ info
     After the installation you will want to switch between Leap and Windows. Use [these instructions](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/boot-to-uefi-mode-or-legacy-bios-mode) to learn how to reboot to your UEFI. From there you will be able to select Windows or Leap as boot destination.
 
 #### Installing Leap alongside preexistent Linux partitions
@@ -165,7 +165,7 @@ You can follow the _Step by Step_ from the previous section, making sure that:
 
 Optionally, you could create a new partition for your user data under `/home`. This partition would then be easily accessible to other operating systems installed on your machine. If you do so, make sure there is no `/home` subvolume created inside the partition assigned to `/`.
 
-??? info
+???+ info
     After the installation you will want to switch between Leap and whichever operating system you're using. Refer to your machine's manufacturer for instructions. If your machine had Windows preinstalled, use [these instructions](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/boot-to-uefi-mode-or-legacy-bios-mode) to learn how to reboot to your UEFI. From there you will be able to select the desired boot destination.
 
 #### Installing Leap alongside preexistent macOS partitions
@@ -190,7 +190,7 @@ Optionally, you could create a new partition for your user data under `/home`. T
 !!! warning
     Some recent Macs have been reported to ship with firmware lock enabled by default. Refer to [this guide](https://support.apple.com/en-gb/HT204455) to disable it.
 
-??? info
+???+ info
     After the installation you will want to switch between Leap and macOS. Simply hold the `alt` (option) key immediately after restarting and select Leap or macOS.
 
 #### Picking a filesystem for data partitions
@@ -273,5 +273,5 @@ By default you will also use this newly created account to act as the administra
 This is the final and probably the an important section of the installer, __don't skip it__! You can and should review your settings, fine tune your installation if you need to and can even gain access to the _YaST Software Installer_ which can be used to install additional packages or patterns. To change any of the settings just click the _headlines_ (like "Software" or "Security").
 After you reviewed the settings you can move on with the installation which will finalize your openSUSE deployment based on your provided informations.
 
-??? info
+???+ info
     Patterns are a group of packages that allows the user to easily install otherwise complex packages and configurations - like KDE Plasma or Gnome -.

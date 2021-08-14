@@ -3,7 +3,8 @@ repo_url: https://github.com/openSUSE/openSUSE-docs-revamped-temp
 edit_uri: ""
 
 plugins:
-    - search
+    - search:
+        prebuild_index: true
     - git-revision-date
     - mkdocs-versioning:
         version: 0.3.1
@@ -15,10 +16,11 @@ plugins:
         #comment out the next two options to make every page have its own PDF
         combined: true
         combined_output_path: docs.pdf
-        
 theme:
     name: material
-    font: false
+    font:
+        code: Fira Code
+        text: Noto Sans TC
     custom_dir: overrides
     palette:
         scheme: preference
@@ -27,7 +29,12 @@ theme:
     logo: image/Button-filled-colour.png
     favicon: image/geeko-color.png
     features:
+        - navigation.sections
         - navigation.instant
+        - navigation.tracking
+        - navigation.expand
+        # - navigation.tabs
+        # - navigation.tabs.sticky
     icon:
         repo: fontawesome/brands/github
 
@@ -64,6 +71,7 @@ nav:
         - Quick install for experienced users:
             - microOS specials: microos_getting_started.md
     - Distro basics:
+        - Post-installation best-of: best_of_post.md
         - KDE Plasma basics: kde.md
         - GNOME basics: ""
         - Interlude -- Fundamental openSUSE concepts:
@@ -71,20 +79,22 @@ nav:
             - YaST2: ""
             - Updating, upgrading, snapshots best practices: updating_upgrading.md
             - Snapper and Btrfs: snapper.md
-        - Additional software: ""
+        - Additional software: 
+            - Software procurement: alternative_procurement.md
+            - Building from source: ""
         - Troubleshooting with autonomy: ""
     - Completing and fine-tuning your setup:
-        - Finding & installing additional software:
-            - Audio & Video:
-                - Codecs: codecs.md
-                - Pipewire: pipewire.md
-            - Graphic Drivers: 
-                - Proprietary: install_proprietary.md
-                - Hybrid GPUs: hybrid_graphics.md
-            - Setting up a containerized environment: install_podman.md
+        - Audio & Video:
+            - Codecs: codecs.md
+            - Pipewire: pipewire.md
+        - Graphic Drivers: 
+            - Getting started: install_proprietary.md
+            - Dual GPUs ("Optimus"): hybrid_graphics.md
+        - Setting up a containerized environment: install_podman.md
         - Power management: ""
         - Pairing, syncing, sharing:
             - Bluetooth: bluetooth.md
+            - KDE Connect: kdeconnect.md
         - Advanced fine-tunings:
             - Transparent compression (zstd): zstd.md
     - Giving back to the community:
