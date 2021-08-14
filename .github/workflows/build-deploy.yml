@@ -23,7 +23,7 @@ jobs:
               pip install -r requirements.txt
          - name: Build the docs
            working-directory: ./project
-           run: mkdocs gh-page deploy --force
+           run: mkdocs gh-deploy --force
          - name: Deploy to GitHub Pages
            uses: JamesIves/github-pages-deploy-action@3.7.1
            with:
