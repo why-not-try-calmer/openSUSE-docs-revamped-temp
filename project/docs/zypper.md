@@ -2,7 +2,7 @@
 
 Zypper is a command line package manager for installing, updating and removing packages. It also manages repositories, can perform various queries, and is a command-line interface to ZYpp system management library (libzypp).
 
-??? info "Show Definitions"
+???+ info "Show Definitions"
     `repository`
     :   Local or remote directory containing packages and various package information (package metadata).
 
@@ -140,7 +140,7 @@ or
 ```
 This will return a list of packages that contain your search string along
 with a summary, a type and whether they have been installed.
-??? Example "Example: Search for Firefox"
+???+ Example "Example: Search for Firefox"
     ```
     # zypper se firefox
     Loading repository data...
@@ -181,7 +181,7 @@ If successful, zypper will report the settings of that repo:
   3. If the repository will be GPG checked
   4. The priority
 
-??? info "Understanding The Output"
+???+ info "Understanding The Output"
     `Enabled`/`Disabled`
     : If a repository is disabled, it means that zypper still knows where it is
     but will not use it. You can enable repositories globally or for single
@@ -205,7 +205,7 @@ If successful, zypper will report the settings of that repo:
     of packages from the repository to ensure that it isn't going to give
     you out of date information or packages.
 
-??? Example "Example: Adding the cuda Leap repo"
+???+ Example "Example: Adding the cuda Leap repo"
     ```
     # sudo zypper ar https://developer.download.nvidia.com/compute/cuda/repos/opensuse15/x86_64/cuda-opensuse15.repo cuda
     [sudo] password for root:
@@ -232,7 +232,7 @@ or
 ```
 # zypper rr reponame
 ```
-??? Example "Example: Removing the cuda repository"
+???+ Example "Example: Removing the cuda repository"
     ```
     # sudo zypper rr cuda
     [sudo] password for root:
@@ -251,7 +251,7 @@ To list all of the installed repositories type:
 This will display a table containing information and names of all the
 added repos
 
-??? Example "Example: Listing repositories"
+???+ Example "Example: Listing repositories"
     ```
     # zypper lr
     Repository priorities are without effect. All enabled repositories share the same priority.
@@ -345,7 +345,7 @@ or
 Zypper will print out a table that shows you the updatable packages, the repos they come from, the installed versions and
 the available versions.
 
-??? Example "Example: Listing updates"
+???+ Example "Example: Listing updates"
     ```
     # zypper lu
     Loading repository data...
@@ -395,7 +395,7 @@ or
 ```
 This will print out a table that shows the number of patches available for your system and how important they are
 
-??? Example "Example: Checking for patches"
+???+ Example "Example: Checking for patches"
     ```
     # sudo zypper pchk
     Loading repository data...
@@ -424,7 +424,7 @@ or
 ```
 This will output at least one table showing you the name, id, priority and a little note about each set of patches.
 
-??? Example "Example: Listing patches"
+???+ Example "Example: Listing patches"
     ```
     # zypper lp
     Loading repository data...
@@ -463,7 +463,7 @@ If you want to specify a specific category of patches, type:
 # zypper patch -g CATEGORY
 ```
 
-??? Example "Example: Applying only security patches"
+???+ Example "Example: Applying only security patches"
     ```
     # sudo zypper patch -g security
     Loading repository data...
@@ -568,7 +568,7 @@ For a specific package:
 ##### List all available products
 * `products` or `pd`
 
-??? example
+???+ example
     ```
     # zypper pd
     Loading repository data...
@@ -631,7 +631,7 @@ For a specific package:
 * `purge-kernels`
 ### Global Options
 
-??? info "Show Options"
+???+ info "Show Options"
     | Option | Description | Alias |
     | --- | --- | --- |
     | --color | Use colors in output |
@@ -652,7 +652,7 @@ For a specific package:
 
 ### Repository Options
 
-??? info "Show Options"
+???+ info "Show Options"
     | Option | Description | Alias |
     | --- | --- | --- |
     | --disable-repositories | Do not read meta-data from repositories |
@@ -670,7 +670,7 @@ For a specific package:
 !!! info
     Command-specific options can be obtained using `# zypper help <COMMAND>`
 
-??? Example
+???+ Example
     ```
     # zypper help in
     install (in) [OPTIONS] <CAPABILITY|RPM_FILE_URI> ...

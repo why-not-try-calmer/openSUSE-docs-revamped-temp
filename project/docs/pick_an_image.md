@@ -8,7 +8,7 @@ If you are a desktop user, openSUSE offers the choice between two Linux distribu
 ### Tumbleweed
 Tumbleweed is a _rolling-release_ distribution: instead of having fixed points where you will be offered to perform a system upgrade (think of Windows, Ubuntu, or macOS, where each numbered version leads to the next), you will be frequently offered to upgrade multiple components of your system.
 
-??? info
+???+ info
     Those components are called _packages_, because they "pack" the programs and resources making up most of your system, along with tools to install them). "Upgrading" means "Upgrading packages" (such as those that constitute your Linux distribution).
 
 Even though Tumbleweed uses a rolling-release model, it is very stable: openSUSE thoroughly tests every package before going into an update, ensuring the stability of your system. Moreover you can always revert back to the previous state of Tumbleweed (in jargon: "switch to the previous snapshot". Snapshots are explained [here](snapper.md)).
@@ -20,7 +20,7 @@ Leap is a more traditional distribution: it uses a fixed-points release model, j
 
 It is worth noting that Leap provides a Linux kernel that is several years behind the version offered by Tumbleweed. 
 
-??? info
+???+ info
     The kernel is the heart of any Linux operating system. It translates your keystrokes and mouse clicks into the ones and zeros the computer understands, and is updated regularly so that the computer can respond to new hardware added to the system.
     
 This means that you might be better served by Tumbleweed if you have a recent computer or rely extensively on "exotic" hardware.
@@ -37,7 +37,7 @@ Pick Tumbleweed if you intend to use your machine as a desktop machine unless:
 
 The more conditions apply to your use case, the stronger we recommend you to install Leap instead of Tumbleweed.
 
-??? info
+???+ info
     It is not recommended for new users, however, it is possible to use microOS on a desktop computer, taking advantage of transactional updates. This might appeal to advanced users who want to provide friends or relatives with an operating system that will require little to no maintenance. You might be interested in [our microOS documentation](microos_getting_started.md) for more about this use case.
 
 ## Desktop Environments
@@ -60,7 +60,7 @@ The descriptions below are as provided by the respective projects.
 >
 > [GNOME.org](https://www.gnome.org)
 
-??? info "Install Gnome"
+???+ info "Install Gnome"
     __Installer__ &gt; __System Role__: Select __Desktop with GNOME__
 
 ### KDE Plasma
@@ -70,7 +70,7 @@ The descriptions below are as provided by the respective projects.
 >
 > [KDE.org](https://kde.org)
 
-??? info "Install KDE Plasma"
+???+ info "Install KDE Plasma"
     __Installer__ &gt; __System Role__: Select __Desktop with KDE Plasma__
 
 ### XFCE
@@ -82,7 +82,7 @@ The descriptions below are as provided by the respective projects.
 >
 > [XFCE.org](https://www.xfce.org)
 
-??? info "Install XFCE"
+???+ info "Install XFCE"
     Tumbleweed:
 
       * __Installer__ &gt; __System Role__: Select __Desktop with Xfce__
@@ -106,7 +106,7 @@ Another option for a __System Role__ is the __Generic Desktop__ environment. Thi
 >
 > [Ice-WM.org](https://ice-wm.org/)
 
-??? info "Install IceWM"    
+???+ info "Install IceWM"    
     __Installer__ &gt; __System Role__: Select __Generic Desktop__
 
 ### Additional Choices
@@ -118,7 +118,7 @@ If you prefer one of these desktop environments, de-select the __A very basic de
 >
 >[Enlightenment.org](https://www.enlightenment.org)
 
-??? info "Install Enlightment"
+???+ info "Install Enlightment"
 
     * __Installer__ &gt; __System Role__: Select __Generic Desktop__
     * __Installer__ &gt; __Installer Settings__: Select __Software__
@@ -133,7 +133,7 @@ If you prefer one of these desktop environments, de-select the __A very basic de
 >
 > [LXDE.org](http://www.lxde.org/)
 
-??? info "Install LXDE"
+???+ info "Install LXDE"
 
     * __Installer__ &gt; __System Role__: Select __Generic Desktop__
     * __Installer__ &gt; __Installer Settings__: Select __Software__
@@ -149,7 +149,7 @@ If you prefer one of these desktop environments, de-select the __A very basic de
 >
 > [LXQt-Project.org](https://lxqt-project.org)
 
-??? info "Install LXQt"
+???+ info "Install LXQt"
 
     * __Installer__ &gt; __System Role__: Select __Generic Desktop__
     * __Installer__ &gt; __Installer Settings__: Select __Software__
@@ -166,7 +166,7 @@ If you prefer one of these desktop environments, de-select the __A very basic de
 >
 > [Mate-Desktop.org](https://mate-desktop.org/)
 
-??? info "Install MATE"
+???+ info "Install MATE"
 
     * __Installer__ &gt; __System Role__: Select __Generic Desktop__
     * __Installer__ &gt; __Installer Settings__: Select __Software__
@@ -181,7 +181,7 @@ If you prefer one of these desktop environments, de-select the __A very basic de
 >
 > [SwayWM.org](https://swaywm.org/)
 
-??? info "Install Sway"
+???+ info "Install Sway"
 
     * __Installer__ &gt; __System Role__: Select __Generic Desktop__
     * __Installer__ &gt; __Installer Settings__: Select __Software__
@@ -201,7 +201,7 @@ If you prefer one of these desktop environments, de-select the __A very basic de
 >
 > [LinuxMint.com](https://projects.linuxmint.com/cinnamon/)
 
-??? info "Install Cinnamon"
+???+ info "Install Cinnamon"
     Tumbleweed:
 
     * __Installer__ &gt; __System Role__: Select __Generic Desktop__
