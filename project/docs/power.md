@@ -38,7 +38,7 @@ From _Yast2_:
 3. Add a `swap` partition with a size equal to your current RAM + 1 GB, making sure to format it as `swap`
 4. Confirm to apply the changes.
 
-No matter if you have followed the method before or By now Yast2 should have edited your `/etc/fstab` to reference the freshly created swap partition, which means that conditions (Swap exists) and (Swap referenced) above should be met. You can double check that this is the case with
+Whether or not you have followed the method before, by now Yast2 should have edited your `/etc/fstab`, and the two conditions (Swap exists; Swap referenced) should be met. You can check that this is the case with:
 
 ```
 $ blkid | grep "swap"
