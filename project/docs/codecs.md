@@ -9,9 +9,13 @@ You need to play online or offline multimedia content but the content does not p
 - libavcodec-full
 - vlc-codecs
 
+!!! info
+    Tumbleweed users who only occasionally use codecs (for example through a web browser or a handful of dedicated applications such as _VLC_ or _OBS Studio_) might find it convenient _to avoid_ the addition of external repositories by using a version of these applications shipping their own codecs. On Tumbleweed the advantage of this approach is that codecs will be kept separate from system libraries, securing extra stability for the user. Interested readers may refer to [this page](/alternative_procurement#flatpaks) for explanations.
+
 You can get them using `Zypper`, _OBS Package Installer_ (`opi`) or `YaST`.
 ## OBS Package Installer 
 `opi` can be used to search and install software from the _Open Build Service_ (OBS) and it works on __openSUSE__ and __SUSE__. To install the required codecs:
+
 1. Launch a _terminal emulator_ (_Konsole_, _Gnome Terminal_ etc.),
 1. Install `opi`: `sudo zypper install opi`
 1. Install codecs with `opi`: `opi codecs`
