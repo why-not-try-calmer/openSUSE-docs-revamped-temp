@@ -14,9 +14,9 @@ _Monitor dimming_ (1), _Monitor suspension_ (2) and _Session suspesion_ (3) shou
 
 An openSUSE operating system is ready for hibernation only when:
 
-(Swap exists) A swap space on the disk must exist (see below for details)
-(Swap referenced) The swap space must be referenced in `/etc/fstab`, the configuration file read on every boot and used to mount and integrate the different spaces listed on the file into a proper file structure
-(Resume referenced) The partition to which the user wants the hibernation to resume to must be made known to the kernel, usually as the value of a kernel parameter
+(__Swap exists__) A swap space on the disk must exist (see below for details)
+(__Swap referenced__) The swap space must be referenced in `/etc/fstab`, the configuration file read on every boot and used to mount and integrate the different spaces listed on the file into a proper file structure
+(__Resume referenced__) The partition to which the user wants the hibernation to resume to must be made known to the kernel, usually as the value of a kernel parameter
 
 Swap space can be created while partioning the disk while installating or after installing.
 
@@ -44,7 +44,7 @@ Whether or not you have followed the method before, by now Yast2 should have edi
 $ blkid | grep "swap"
 ```
 
-This command should return a line referencing various identifiers for your swap partition. You can compare the UUID visible from this context with the UUID lised in _Yast2_ for good measure (see. step 2 above). If you have created the swap space during installation, don't forget to search for the UUID and the `/dev/sda<number>` identifiers referencing the partition to which you will want to resume to.
+This command should return a line referencing various identifiers for your swap partition. You can compare the UUID visible from this context with the UUID lised in _Yast2_ for good measure (see. step 2 above). If you have created the swap space during installation, don't forget to search for the UUID and the `/dev/sda<number>` identifiers referencing the partition to which you will want to resume.
 
 Finally, to fulfill condition (Resume referenced), in _Yast2_:
 
