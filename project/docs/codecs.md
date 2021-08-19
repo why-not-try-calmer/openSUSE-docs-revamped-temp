@@ -1,5 +1,5 @@
 # Installing Codecs 
-You need to play online or offline multimedia content but the content does not play or you receive errors. Usually this is a sign of missing codecs. Due to legal limitations proprietary codecs can't be stored and served directly from the __openSUSE__/__SUSE__ infrastructure. To install certain codec packages you will need to add the Packman repository and install the required software from there. Some commonly used and installed codecs are:
+You need to play online or offline multimedia content but the content does not play or you receive errors. Usually this is a sign of missing codecs. Due to legal limitations proprietary codecs can't be stored and served directly from the __openSUSE__/__SUSE__ infrastructure. To install proprietary codec packages you will need to add the Packman repository and install the required software from there. Some commonly used and installed codecs are:
 
 - ffmpeg
 - gstreamer-plugins-good
@@ -12,45 +12,20 @@ You need to play online or offline multimedia content but the content does not p
 !!! info
     Tumbleweed users who only occasionally use codecs (for example through a web browser or a handful of dedicated applications such as _VLC_ or _OBS Studio_) might find it convenient _to avoid_ the addition of external repositories by using a version of these applications shipping their own codecs. On Tumbleweed the advantage of this approach is that codecs will be kept separate from system libraries, securing extra stability for the user. Interested readers may refer to [this page](/alternative_procurement#flatpaks) for explanations.
 
-You can get them using `Zypper`, _OBS Package Installer_ (`opi`) or `YaST`.
+You could get codecs using `Zypper` or `YaST` but you _should_ get them with _OBS Package Installer_ (`opi`) as there are complications and risks associated with the alternative methods.
+
 ## OBS Package Installer 
-`opi` can be used to search and install software from the _Open Build Service_ (OBS) and it works on __openSUSE__ and __SUSE__. To install the required codecs:
+`opi` can be used to search and install software from the _Open Build Service_ (OBS) and it works on _Leap_ and _Tumbleweed_. The only limitation is that this method will consider Packman as the unique provider of all codecs -- not just the propriery ones which openSUSE cannot provide Proceed if this limitation is acceptable for your. If it is not acceptable, consider using `flatpaks` (see the __Info__ above).
 
-1. Launch a _terminal emulator_ (_Konsole_, _Gnome Terminal_ etc.),
-1. Install `opi`: `sudo zypper install opi`
-1. Install codecs with `opi`: `opi codecs`
-1. Update the system: `zypper dist-upgrade --from packman`
+__From a terminal__:
 
-## The manual way
-### Adding the Packman repository
-For installing codecs we have to add the Packman repository. Remember if things don’t work after installing the codecs, make sure all your multimedia packages are coming from Packman.
+1. Install `opi`, the _Open Build Service_ command line utility: `sudo zypper install opi`
+2. Run the installer for Packman-provided codecs: `opi codecs` (this will add the Packman repository and take care of all configuration details)
+3. Confirm the prompt (`y` -- if you language is English -- and then `ENTER`).
 
-#### Using the command line
-Use the following commands to add all of the third-party Packman repository (Packman Essentials is included), according to your installed openSUSE version:
- 
-##### Tumbleweed
-`sudo zypper addrepo -cfp 90 'https://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed/' packman`
+As of this writing, `opi` performs the following operations behind the curtains (see [here](https://github.com/openSUSE/opi/blob/d880d81fb315838e17051ee518477498ee5ffd96/opi/plugins/packman.py#L15) and [there](https://github.com/openSUSE/opi/blob/d880d81fb315838e17051ee518477498ee5ffd96/opi/__init__.py#L62) for reference):
 
-##### Leap
-`sudo zypper addrepo -cfp 90 'https://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Leap_$releasever/' packman`
+1. it adds the Packman repository and sets its priority to a value slightly superior to official repositories;
+2. it runs the `sudo zypper dup --from packman --allow-downgrade --allow-vendor-change` command.
 
-#### Using YaST
-1. Launch `YaST`,
-1. Select _Software Repositories_,
-1. Press _Add_ (lower left corner),
-1. From the list select _Community repositories_ and press _Next_,
-1. Select _Packman Repository_ and press _Ok_.
-
-### Installing codecs
-#### Using the command line
-1. Refresh your local repository: `sudo zypper ref`,
-1. Install some generally needed codecs: `zypper install ffmpeg lame gstreamer-plugins-libav gstreamer-plugins-bad gstreamer-plugins-ugly gstreamer-plugins-good libavcodec-full vlc-codecs`,
-1. Update everything to the latest Version `zypper dist-upgrade --from packman`.
-
-#### Using YaST
-1. Launch `YaST`,
-1. Select _Software Management_,
-1. View > Repositories > Packman Repository,
-1. Click "Switch system packages" to packages from Packman repository.
-
-Furthermore you can type in the _Search_ field the name of the codec packages you're looking for.
+The latter command instructs the system to install the packman codecs and to set their provider to Packman. This means that updates from the openSUSE official repositories targeting the same packages will _not_ be applied. This is the expected behaviour from using Packman as the (sole) provider for all codecs.  
