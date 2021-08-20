@@ -72,5 +72,5 @@ You can finally lay back and admire your configuration. On my machine it looks l
 and 
 ```
 # /etc/fstab
-UUID=e0bac415-cbde-4c9b-8178-7874ac9de70a swap defaults 0 0
+UUID=e0bac415-cbde-4c9b-8178-7874ac9de70a none swap defaults 0 0
 ```
