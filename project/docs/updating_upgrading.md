@@ -49,19 +49,33 @@ which is a compact instance of
 ### tumbleweed-cli
 
 !!! warning
-    This section needs some rework as `tumbleweed-cli` introduces some safety issues in that:
-    a) the evaluation algorithm used to [collect statistics](https://review.tumbleweed.boombatower.com/) about the 'health condition' of available Tumbleweed snapshots has been alleged to produce false positives.
-    b) the advantages of rolling back to a previous Tumbleweed snapshot comes with the drawback that the user is no longer in sync with possible upcoming security fixes, which are shipped to target only the latest available snapshot.
+    `tumbleweed-cli` is an experimental tool that comes with a couple of safety issues:
+    
+    - the evaluation algorithm used to [collect statistics](https://review.tumbleweed.boombatower.com/) about the 'health condition' of available Tumbleweed snapshots has been alleged to produce false positives.
+    
+    - the advantages of rolling back to a previous Tumbleweed snapshot comes with the drawback that the user is no longer in sync with possible upcoming security fixes, which are shipped to target only the latest available snapshot.
 
-If you have not already, please read the short [introduction](#introduction).
+This tools is exclusively designed for _Tumbleweed_. If you have not already, please read the short [introduction](#introduction).
 
-Tumbleweed users are gifted with the very useful command line utility `tumbleweed-cli`. This program lets you control finely your update process my making explicit which snapshot you are upgrading to, and by allowing you to roll in or back from snapshots. This comes in handy in cases where you know for sure that some outstanding issue is caused by one or by a combination of packages from the same snapshot, and go back to a previous snapshot which created no trouble. In addition to your own testing you can get some heads-up on which snapshots are deemed healthy or not from this [web application](https://review.tumbleweed.boombatower.com/).
+`tumbleweed-cli` enables the user to control finely the update process by making explicit which Tumbleweed snapshot one is upgrading to. It also allows the user to select and rollback (or fast-forward) to any Tumbleweed snapshot comprised in a collection of recently released snapshots.
 
+!!! info
+    In this paragraph _snapshot_ is used to denote Tumbleweed snaphots unless qualified otherwise. Tumbleweed snapshots are "slices" coming out Factory -- the repository and production line for the Tumbleweed distribution. They consist of a collection of updates targeting a subset of all packages available. Do not conflate them with _Btrfs snapshots_, which are on-disk temporal stages of the file system. Both are discussed below.
+
+`tumbleweed-cli` may come in handy for users running into outstanding issues experienced with the latest or several snaphots across several snapshots -- including the latest one. It may be useful when three conditions occur:
+
+1. There is evidence that the cause(s) of the issue is one or several system packages; and
+2. The likely cause(s) "spill over" several single _Btrfs snapshots_ including the latest one; and
+3. No previous _Btrfs snapshot_ captures the state of the system which the user desires to rollback to.
+
+In addition to the "recovery" workflow described above, the user might use the tool preventively, by updating their system to a Tumbleweed snaphot located before the latest snapshot provided by Factory. Notice however that both the "recovery" and the preventive workflows could make your system unstable. This happens typically with packages provided by foreign repositories, which escape the scope of the rollbacks/fast-forwards mechanism. When foreign packages rely on dependences not or longer satisfied by the state of your system after rolling-back/fast-forwarding, they become unusable. Proceed only if you can accomodate these limitations.
+
+#### Installation and use
 To install `tumbleweed-cli`:
 
 `zypper in tumbleweed-cli`
 
-Then intialize it:
+To intialize it:
 
 `tumbleweed init`
 
@@ -69,11 +83,11 @@ The developer suggests to run this command to verify that the URLs of the repos 
 
 `zypper lr -EUP`
 
-Once this is done you can finally take advantage of the snapshotting system employed for producing Tumbleweed packages, keeping your system aligned with the latest healthy snapshot released. This is done by simply running:
+Once this is done you can finally take advantage of the snapshotting system employed for producing Tumbleweed packages, keeping your system in sync with recent snapshot of your choice. Updating to the latest snapshot released is done with:
 
 `tumbleweed update`
 
-It is worth noting that external repositories, that is, repositories manually added and whose packages are not included in Tumbleweed snaphshots, will not be updated just by running this command. You will still have to run `(sudo zypper ref &&) sudo zypper dup`. This is simply a consequence of the fact that the updates provided by Tumbleweed snapshots are but a subset of all the packages in reach of `zypper-dup`, which has access to the updates provided by external repositories.
+As explained above, packages installed from foreign repositories are not included in Tumbleweed snaphshots, and will not update when using `tumbleweed-cli`. For these packages you will still have to run `(sudo zypper ref &&) sudo zypper dup`.
 
 At any time you can then check the status of your system with respect to the latest snapshots released:
 
@@ -104,6 +118,7 @@ sudo zypper dup
 
 `tumbleweed history`
 
+#### Uninstall
 Should you want to uninstall `tumbleweed-cli`, make sure you deactive its particular update mechanism before. This is done with:
 
 `tumbleweed uninit`
