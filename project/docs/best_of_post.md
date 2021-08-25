@@ -39,7 +39,7 @@ $   flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.
 ```
 
 ### Customize your .desktop files for a better user experience
-Most user applications shipping their own GUI install with a desktop file (`<program anem>.desktop`) providing the application with some parameters discovered at the installation. Some of these parameters are key to a comfortable user experience.
+Most user applications shipping their own GUI install with a desktop file (`<program name>.desktop`) providing the application with some parameters discovered at the installation. Some of these parameters are key to a comfortable user experience.
 
 Consider for example Electron apps, which as of today (26th of July 2021) offload rendering to X11 instead of the Wayland client. This means that your Desktop Environment, which is likely to run with Wayland enabled by default, will not be able to make the most of the application's GUI.
 
