@@ -5,9 +5,7 @@
 * [Tumbleweed-specific knowledgebase](https://en.opensuse.org/Portal:Tumbleweed)
 
 ## Foreword
-This documentation is curated and maintained by openSUSE volunteers. The contents offered here must be distinguished from the Leap documentation, also available at https://doc.opensuse.org. Leap manuals inherit the contents from, and closely follow the presentation of, SLE manuals -- a commercial product offered by [SUSE](https://www.suse.com).
-
-Because of the differences, the reader is expected to be aware of the following caveats:
+This documentation is curated and maintained by openSUSE volunteers. The contents offered here must be distinguished from the Leap documentation, also available at https://doc.opensuse.org. In contrast to this documentation, Leap manuals inherit the contents from, and closely follow the presentation of, SLE manuals -- a commercial product offered by [SUSE](https://www.suse.com) Because of this difference the reader should be aware of the following caveats:
 
 * The present documentation is the work of volunteers -- not SUSE employees -- working under the Free and Open Source Software tradition. Our best efforts notwithstanding, inaccuracies and oversights are possible.
 
