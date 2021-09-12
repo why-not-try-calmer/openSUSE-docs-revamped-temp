@@ -1,6 +1,7 @@
 ## Setting up MicroOS as a desktop OS
 
-!!! warning Parts of this documentation is not in line with the _official_ intent of the developers such as the use of _snap_ packages which are considered a security risk as proper _snap_ to _system_ separation is not possible. You can also visit the [official documentation](https://en.opensuse.org/Portal:MicroOS) for _upstream_ recommendations.
+!!! warning 
+    Parts of this documentation is not in line with the _official_ intent of the developers such as the use of _snap_ packages which are considered a security risk as proper _snap_ to _system_ separation is not possible. You can also visit the [official documentation](https://en.opensuse.org/Portal:MicroOS) for _upstream_ recommendations. Also the use of _MicroOS Desktop_ with _KDE Plasma_ is discouraged as it is not being actively maintained.
 
 ### Audience and context
 This document is meant for users interested in using the openSUSE MicroOS as a desktop. Although this operating system is offered in two flavours (one based on Leap, the other on Tumbleweed), we will only be concerned with the Tumbleweed base, as the Leap base does not provide the required patterns for desktop usage.
