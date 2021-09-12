@@ -69,6 +69,7 @@ nav:
     - Installing: yast_installer.md
     - Distro basics:
         - Post-installation best-of: best_of_post.md
+        - MicroOS Desktop: microos_getting_started.md
         - KDE Plasma basics: kde.md
         - GNOME basics: ""
         - Interlude -- Fundamental openSUSE concepts:
