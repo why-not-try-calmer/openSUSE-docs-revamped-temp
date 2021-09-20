@@ -46,6 +46,55 @@ which is a compact instance of
 
 `sudo zypper modifyrepo --refresh <repo identifier>` 
 
+
+### Reverting to an old kernel (Tumbleweed only)
+
+Regressions happen, even to the Linux kernel. For the end user this often translates into hardware issues. 
+
+Fortunately, `zypper` enables you to reinstall "old" kernels. Even though you can build a kernel from source, it's easier to download and install one from [Tumbleweed's official "history" repositories](https://download.opensuse.org/history/).
+
+Just like other packages, kernel packages are organized under Tumbleweed snapshots and CPU architecture. Thus to pick the right kernel package, you need to know:
+
+1. the version of the kernel you need;
+2. the Tumbleweed snapshot that shipped (1);
+3. your CPU architecture.
+
+Note that there is exactly one `kernel-default` per snapshot per CPU architecture.
+
+These informations will enable you to find a directory on a path of type: `https://download.opensuse.org/history/<snapshot-you-need>/tumbleweed/repo/oss/<your-cpu-architecture>/`, and in it a `kernel-default-<version>.<your-cpu-architecture>.rpm` package. Download it and do:
+
+```
+$   sudo zypper in -f --oldpackage <path/to/kernel package.rpm>
+```
+
+`zypper` will take care of writing a new GRUB entry for the newly installed old kernel, but it is likely to place the new entry _below_ the entries for the more recent kernel entry or entries you are staying away from. If you want to set the new entry as default, follow the path below and select the entry listed at the end:
+
+* _Yast_ > _Bootloader_ > _Bootloader Options_ > _Default Boot Section_ > __`<new kernel entry>`__ (select it)
+
+You can now reboot and select the new entry and press `ENTER` to start using the newly installed kernel.
+
+If for any reason you need to cling on to an outdated kernel installed with the above method, discarding kernel packages shipped with more recent Tumbleweed snapshots, you can add a package lock to the corresponding package name:
+
+```
+$   sudo zypper al "kernel-*"
+```
+
+Bear in mind that this will put a lock on all packages with a name starting with "kernel-". Make sure to unlock all of them by first listing the locks with
+
+```
+$   zypper ll
+```
+
+and unlocking them with
+
+```
+$   sudo zypper rl <package_name>
+```
+
+as soon as possible, as keeping an outdated kernel induces stability and security risks for your system.
+
+It's also a good idea to keep your kernel version aligned with the Tumbleweed snapshot it stems from. For that, you can use `tumbleweed-cli`.
+
 ### tumbleweed-cli
 
 !!! warning
