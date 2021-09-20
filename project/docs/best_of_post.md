@@ -1,11 +1,11 @@
 # Our "post installation" best of
+
 Some of the material covered below is presented and discussed in more details elsewhere in this documentation. Use the links if you'd like to learn more.
 
 The order in which you carry out these recommendations is not crucial, but we advise you to follow our order, as certain steps feel more natural if you have followed previous ones on the list. 
 
 The list takes the point of view of a user who has just rebooted and logged in to an openSUSE distribution.
 
-## Tumbleweed
 
 ### Update
 Even if you have installed Tumbleweed with repositories enabled, who knows if there isn't a bunch of updates pending already? 
@@ -85,7 +85,7 @@ Check out the following documentation for this step:
 ### Use a password manager
 KDE's _kwallet_ and _gnome-keyring_ are decent password managers as far as storing identifiers meant to be consumed by third-party applications, but some users might feel they fall short when it comes at providing a comfortable interface for auto-completion and daily management (especially the latter). 
 
-For alternatives you can consider _KeePass Password Safe_ (https://keepass.info/) and _Password Safe_ (https://gitlab.gnome.org/World/PasswordSafe).
+For alternatives you can consider [KeePass Password Safe](https://keepass.info/) and [Password Safe](https://gitlab.gnome.org/World/PasswordSafe).
 
 ### Have your backup plan ready
 Tumbleweed snapshots protect your system by allowing you to rollback to and from the snapshot of your liking. One noticeable exceptions to this protection is `/home` (for the simple reason that it allows the user to backup their `home` at their own pace, independently from system snapshots.)
