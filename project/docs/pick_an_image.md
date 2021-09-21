@@ -26,7 +26,7 @@ It is worth noting that Leap provides a Linux kernel that is several years behin
 This means that you might be better served by Tumbleweed if you have a recent computer or rely extensively on "exotic" hardware.
 
 ### Our recommendation
-Tumbleweed is a great choice if you want to use your machine as a desktop PC. Unlike Leap, it also supports 32-bit hardware.
+Tumbleweed is a great choice for use as a daily driver and workstation. Unlike Leap it supports both 64- and 32-bit hardware and packs a fresh Linux kernel good at supporting recent machines -- notably laptops -- and peripherals.
 
 Nevertheless, Leap is to be preferred if you:
 
