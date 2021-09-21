@@ -71,7 +71,7 @@ $   sudo zypper in -f --oldpackage <path/to/kernel package.rpm>
 
 * _Yast_ > _Bootloader_ > _Bootloader Options_ > _Default Boot Section_ > __`<new kernel entry>`__ (select it)
 
-You can now reboot and select the new entry and press `ENTER` to start using the newly installed kernel.
+You can now reboot and select the new entry and press `Enter` to start using the newly installed kernel.
 
 If for any reason you need to cling on to an outdated kernel installed with the above method, discarding kernel packages shipped with more recent Tumbleweed snapshots, you can add a package lock to the corresponding package name:
 
