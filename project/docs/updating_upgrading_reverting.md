@@ -8,10 +8,13 @@ Tumbleweed snapshots are thus batches of updates which are tested in openQA -- o
 
 It should be emphasized that by default, Tumbleweed updates across all available updates, whether or not they belong to the same snapshots. In other words, the distribution of updates into snapshots is, by default, only used for production purposes. To take advantage of it at the user level, consider the [tumbleweed-cli section below](#tumbleweed-cli).
 
-## Updating and upgrading
-As for Leap updating Tumbleweed is done with
+## Updating/upgrading
 
-`sudo zypper dup`
+Unlike other Linux distributions, such as Leap, on Tumbleweed there is no distinction between updating (on other distributions: applying updates to packages) and upgrading (on other distributions: bringing the entire operating system to its latest possible state). You update/upgrade your system with:
+
+```
+sudo zypper dup
+```
 
 What this command does is to check whether all repositories registered against the system provide packages with available updates, collect and return the results. Upon confirmation from the user (`y` in a terminal window) it will download and then install them.
 
@@ -42,11 +45,19 @@ which is a compact instance of
 
 `sudo zypper modifyrepo --refresh <repo identifier>` 
 
-### Reverting to an old kernel (Tumbleweed only)
+## Rolling back
 
-Regressions happen, even to the Linux kernel. For the end user this often translates into issues where the system has trouble communicating with the hardware. Of course you could rollback to a previous _Btrfs_ snapshot, but this would rollback your entire system -- not just the kernel. However there are situations where only the kernel is the culprit. When that is the case you are often better off _reverting_ to an older kernel instead of clinging on a old Tumbleweed snapshot through a snapper rollback.
+On Tumbleweed _rolling back_ means changing the on-disk state of your system to a previous iteration. This is documented in details [there](/snapper#rolling-back). In a nutshell:
 
-Here we will look at two scenarios:
+1. Reboot your system. From the GRUB2 screen (bootloader), select __Start Bootloader from a read-only snapshot__.
+2. Select the snapshot you want to boot to.
+3. Log in normally and do `sudo snapper rollback`.
+
+## Reverting to a previous kernel image
+
+As it happens, the Linux kernel sometimes undergoes regressions. For the end user this often translates into issues where the system has trouble communicating with the hardware. The user could rollback to a previous _Btrfs_ snapshot (see previous section), but this would move the entire system -- not just the kernel -- to a previous state. However there are situations where only the kernel is the culprit. When that is the case you are often better off _reverting_ to an older kernel instead of clinging on a old Tumbleweed snapshot through a snapper rollback.
+
+Here we will look at two likely scenarios:
 
 1. You want to revert to a recent kernel version shortly after noticing issues with the latest kernel.
 2. You want to revert to a not-so-recent kernel version because you weren't able to identify issues before it was removed from the official Tumbleweed repository.
@@ -82,7 +93,7 @@ Now the system should not remove:
 
 If you have followed through, you system now will _accept_ to use an old kernel __name__. Now you need to install and expose to the bootloader the __actual__ kernel image bearing the name.
 
-#### Reverting to an old but recent kernel still in the official repositories
+### Reverting to an old but recent kernel still in the official repositories
 
 If the kernel you have just allowed using the instructions from the previous section exists in the official repository, you simply have to do:
 
@@ -99,7 +110,7 @@ __GRUB2__:
 1. Select `Advanced options for openSUSE Tumbleweed`
 2. Select the entry corresponding to the newly installed kernel.
 
-#### Reverting to an old kernel only present in Tumbleweed history
+### Reverting to an old kernel only present in Tumbleweed history
 
 Unfortunately the official repositories do not store a wide gamut of kernels at any time. This means that if you notice that you need to revert to an old kernel after the kernel is gone from the official repositories, you need to manually download the kernel using [Tumbleweed's official "history" repositories](https://download.opensuse.org/history/).
 
