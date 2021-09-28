@@ -95,6 +95,7 @@ nav:
                 - Printers: printersetc.md
         - Setting up a containerized environment: install_podman.md
         - Power management: power.md
+        - Alternative update workflow on Tumbleweed: tw-cli.md
         - Advanced fine-tunings:
             - Transparent compression (zstd): zstd.md
     - Giving back to the community:
