@@ -1,8 +1,4 @@
-## Leap
-...
-
-## Tumbleweed
-### Introduction
+## Introduction
 Tumbleweed is a rolling-release distribution. This means it gets updates on a continuous basis, usually several times a week. However, to bring some order and make it easier to manage producing and consuming updates, Tumbleweed fetches updates in batches. A single batch of updates is called a _snapshot_.
 
 !!! info
@@ -12,7 +8,7 @@ Tumbleweed snapshots are thus batches of updates which are tested in openQA -- o
 
 It should be emphasized that by default, Tumbleweed updates across all available updates, whether or not they belong to the same snapshots. In other words, the distribution of updates into snapshots is, by default, only used for production purposes. To take advantage of it at the user level, consider the [tumbleweed-cli section below](#tumbleweed-cli).
 
-### Updating and upgrading
+## Updating and upgrading
 As for Leap updating Tumbleweed is done with
 
 `sudo zypper dup`
@@ -46,12 +42,66 @@ which is a compact instance of
 
 `sudo zypper modifyrepo --refresh <repo identifier>` 
 
-
 ### Reverting to an old kernel (Tumbleweed only)
 
-Regressions happen, even to the Linux kernel. For the end user this often translates into hardware issues. 
+Regressions happen, even to the Linux kernel. For the end user this often translates into issues where the system has trouble communicating with the hardware. Of course you could rollback to a previous _Btrfs_ snapshot, but this would rollback your entire system -- not just the kernel. However there are situations where only the kernel is the culprit. When that is the case you are often better off _reverting_ to an older kernel instead of clinging on a old Tumbleweed snapshot through a snapper rollback.
 
-Fortunately, `zypper` enables you to reinstall "old" kernels. Even though you can build a kernel from source, it's easier to download and install one from [Tumbleweed's official "history" repositories](https://download.opensuse.org/history/).
+Here we will look at two scenarios:
+
+1. You want to revert to a recent kernel version shortly after noticing issues with the latest kernel.
+2. You want to revert to a not-so-recent kernel version because you weren't able to identify issues before it was removed from the official Tumbleweed repository.
+
+For either scenario to work, you will need to configure your system to accept using an older kernel and to expose GRUB2 entries enabling you to use it persistently. So if you find yourself in the (1) or in the (2) scenario, please follow along:
+
+Open zypper configuration file:
+
+```
+$   sudo nano /etc/zypp/zypp.conf
+```
+
+Make sure that the line `multiversion = provides:multiversion(kernel)` is not commented out (make sure there is no `#` prepended to `multiversion = provides:multiversion(kernel)`). If the line is commented out, use the arrow keys to bring the cursor near the `#` and delete it.
+
+Then look at the line reading `multiversion.kernels = <...>`. It encodes the policy the system uses for keeping kernels. By default, what fills the `<...>` is `latest,latest-1,running`. This means that zypper should not remove:
+
+- the kernel available from the latest Tumbleweed snapshot installed on the system; nor
+- the one before; nor
+- the current, running kernel
+
+Once you have identified the exact kernel version you want to keep using for some time, simply add it as:
+
+```
+multiversion.kernels = latest,latest-1,5.13.12-2-default,running    # new: 5.13.12-2-default
+```
+
+Now the system should not remove:
+
+- the kernel available from the latest Tumbleweed snapshot installed on the system; nor
+- the one before; nor
+- the kernel image named `5.13.12-2-default` (new)
+- the current, running kernel
+
+If you have followed through, you system now will _accept_ to use an old kernel __name__. Now you need to install and expose to the bootloader the __actual__ kernel image bearing the name.
+
+#### Reverting to an old but recent kernel still in the official repositories
+
+If the kernel you have just allowed using the instructions from the previous section exists in the official repository, you simply have to do:
+
+```
+$   sudo zypper in <name of the kernel package>
+```
+
+where `<name of the kernel package>` could well be `5.13.12-2-default`.
+
+Finally, reboot your system and pick the newly installed kernel from the corresponding GRUB2 entry:
+
+__GRUB2__:
+
+1. Select `Advanced options for openSUSE Tumbleweed`
+2. Select the entry corresponding to the newly installed kernel.
+
+#### Reverting to an old kernel only present in Tumbleweed history
+
+Unfortunately the official repositories do not store a wide gamut of kernels at any time. This means that if you notice that you need to revert to an old kernel after the kernel is gone from the official repositories, you need to manually download the kernel using [Tumbleweed's official "history" repositories](https://download.opensuse.org/history/).
 
 Just like other packages, kernel packages are organized under Tumbleweed snapshots and CPU architecture. Thus to pick the right kernel package, you need to know:
 
@@ -95,7 +145,7 @@ as soon as possible, as keeping an outdated kernel induces stability and securit
 
 It's also a good idea to keep your kernel version aligned with the Tumbleweed snapshot it stems from. For that, you can use `tumbleweed-cli`.
 
-### tumbleweed-cli
+## tumbleweed-cli
 
 !!! warning
     `tumbleweed-cli` is an experimental tool that comes with a couple of safety issues:
@@ -117,9 +167,9 @@ This tools is exclusively designed for _Tumbleweed_. If you have not already, pl
 2. The likely cause(s) "spill over" several single _Btrfs snapshots_ including the latest one; and
 3. No previous _Btrfs snapshot_ captures the state of the system which the user desires to rollback to.
 
-In addition to the "recovery" workflow described above, the user might use the tool preventively, by updating their system to a Tumbleweed snaphot located before the latest snapshot provided by Factory. Notice however that both the "recovery" and the preventive workflows could make your system unstable. This happens typically with packages provided by foreign repositories, which escape the scope of the rollbacks/fast-forwards mechanism. When foreign packages rely on dependences not or longer satisfied by the state of your system after rolling-back/fast-forwarding, they become unusable. Proceed only if you can accomodate these limitations.
+In addition to the _responsive_ workflow described above, the user might use the tool _preventively_, by updating their system to a Tumbleweed snaphot located before the latest snapshot provided by Factory. Notice however that both the responsive and the preventive workflows could make your system unstable. This happens typically with packages provided by foreign repositories, which escape the scope of the rollbacks/fast-forwards mechanism. When foreign packages rely on dependences not or longer satisfied by the state of your system after rolling-back/fast-forwarding, they become unusable. Proceed only if you can accomodate these limitations.
 
-#### Installation and use
+### Installation and use
 To install `tumbleweed-cli`:
 
 `zypper in tumbleweed-cli`
@@ -167,7 +217,7 @@ sudo zypper dup
 
 `tumbleweed history`
 
-#### Uninstall
+### Uninstall
 Should you want to uninstall `tumbleweed-cli`, make sure you deactive its particular update mechanism before. This is done with:
 
 `tumbleweed uninit`
