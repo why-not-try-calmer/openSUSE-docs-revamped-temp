@@ -67,17 +67,17 @@ nav:
         - Choosing a distribution: pick_an_image.md
         - Preparing the installation media: image_choice.md
     - Installing: yast_installer.md
-    - Distro basics:
-        - Post-installation best-of: best_of_post.md
-        - Safety and usability on Tumbleweed: safety_usability.md
-        - MicroOS Desktop: microos_getting_started.md
-        - KDE Plasma basics: kde.md
-        - GNOME basics: ""
-        - Interlude -- Fundamental openSUSE concepts:
+    - Learning:
+        - openSUSE core tools:
             - Zypper: zypper.md
             - YaST2: ""
             - Updating, upgrading, snapshots and best practices: updating_upgrading_reverting.md
             - Snapper and Btrfs: snapper.md
+        - Safety and usability on Tumbleweed: safety_usability.md
+    - Distro basics:
+        - Post-installation best-of: best_of_post.md
+        - KDE Plasma basics: kde.md
+        - GNOME basics: ""
         - Additional software: 
             - Software procurement: alternative_procurement.md
             - Building from source: ""
@@ -96,9 +96,11 @@ nav:
                 - Printers: printersetc.md
         - Setting up a containerized environment: install_podman.md
         - Power management: power.md
-        - Alternative update workflow on Tumbleweed: tw-cli.md
         - Advanced fine-tunings:
             - Transparent compression (zstd): zstd.md
+    - Experimenting:
+        - MicroOS Desktop: microos_getting_started.md
+        - Alternative update workflow on Tumbleweed: tw-cli.md
     - Giving back to the community:
         - The art of reporting bugs: ""
         - Resources: ""
