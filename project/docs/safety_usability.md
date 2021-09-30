@@ -16,7 +16,7 @@ Linux distributions try to strike a balance between the time and effort expected
 
  Moreover individuals have different priorities, preferences and degrees of curiosity. For Tumbleweed this means different possible answers to the question: "How should I maintain my running system productive and healthy?".
 
-On the one end there might be users who want to make the least possible effort to keep their system productive and healthy, or are not deeply interested in learning how it works. On the other end there might be users willing to sacrifice a lot of time and effort for tinkering and learning -- and hopefully in the long run, [contributing to openSUSE](https://en.opensuse.org/Portal:How_to_participate).
+On one end there might be users who want to make the least possible effort to keep their system productive and healthy, or are not deeply interested in learning how it works. On the other end there might be users willing to sacrifice a lot of time and effort for tinkering and learning -- and hopefully in the long run, [contributing to openSUSE](https://en.opensuse.org/Portal:How_to_participate).
 
 ### The lazy way
 
