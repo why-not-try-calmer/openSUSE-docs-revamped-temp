@@ -1,7 +1,7 @@
 ## Pairing a Bluetooth device across different operating systems
 
 ### Shared chipset for wifi and bluetooth functionalities
-Some machines -- especially laptops -- feature a single chip handling both wireless and bluetooth connections. Some Linux kernel drivers have a hard time communicating with microcontrollers using this scheme, meaning that you may run into issues when trying to pair up or connect a bluetooth device. If this is the case:
+Some machines -- especially laptops -- feature a single chip handling both wireless and bluetooth connections. Single chips like these are difficult to interface with for certain Linux drivers. This means that you may run into issues when trying to pair up or connect a bluetooth device. If this is the case:
 
 1. Turn off all network connections (enable "Fly mode", represented with an airplane icon in most Linux desktop environments.)
 2. Enable bluetooth, and pair up or connect the device.
