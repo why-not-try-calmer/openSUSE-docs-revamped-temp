@@ -81,7 +81,7 @@ nav:
         - Additional software: 
             - Software procurement: alternative_procurement.md
             - Building from source: ""
-        - Troubleshooting with autonomy: ""
+        - Troubleshooting with autonomy: troubleshooting.md
     - Completing and fine-tuning your setup:
         - Audio & Video:
             - Codecs: codecs.md
