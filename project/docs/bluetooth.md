@@ -1,7 +1,7 @@
 ## Pairing a Bluetooth device across different operating systems
 
 ### Shared chipset for wifi and bluetooth functionalities
-Some machines -- especially laptops -- feature a single chip handling both wireless and bluetooth connections. Single chips like these are difficult to interface with for certain Linux drivers. This means that you may run into issues when trying to pair up or connect a bluetooth device. If this is the case:
+Some machines -- especially laptops -- feature a single chip handling both wireless and bluetooth connections. Certain Linux drivers have a hard time communicating with microcontrollers using this architecture. This means that you may run into issues when trying to pair up or connect a bluetooth device. If this is the case:
 
 1. Turn off all network connections (enable "Fly mode", represented with an airplane icon in most Linux desktop environments.)
 2. Enable bluetooth, and pair up or connect the device.
@@ -15,6 +15,7 @@ When you pair up a bluetooth device to your machine for the first time, they neg
 You can however circumvent this issue by manually re-applying the same key across operating systems. The procedure below has been tested across any operating system (except macOS). It works across different Linux distributions (you will just need steps 10-14 then).
 
 __Windows 10 and Linux__ (adapted from [StackExchange](https://unix.stackexchange.com/questions/255509/bluetooth-pairing-on-dual-boot-of-windows-linux-mint-ubuntu-stop-having-to-p))
+
 1. Pair all devices on Linux 
 2. Pair all devices on Windows
 3. From Windows, go to _Device & Printers_ in _Control Panel_ and go to your Bluetooth device's properties. Then, in the _Bluetooth_ section, you can find the unique identifier. Copy it as you will need it.
