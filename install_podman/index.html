@@ -1,0 +1,2533 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../image/geeko-color.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.4">
+    
+    
+      
+        <title>Setting up a containerized environment - openSUSE User Documentation Project</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.f7f47774.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4cae4f">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,400,400i,700%7CFira+Code&display=fallback">
+        <style>:root{--md-text-font-family:"Noto Sans TC";--md-code-font-family:"Fira Code"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../styles.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="preference" data-md-color-primary="green" data-md-color-accent="red">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#what-is-podman" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="openSUSE User Documentation Project" class="md-header__button md-logo" aria-label="openSUSE User Documentation Project" data-md-component="logo">
+      
+  <img src="../image/Button-filled-colour.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            openSUSE User Documentation Project
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Setting up a containerized environment
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/openSUSE/openSUSE-docs-revamped-temp" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="openSUSE User Documentation Project" class="md-nav__button md-logo" aria-label="openSUSE User Documentation Project" data-md-component="logo">
+      
+  <img src="../image/Button-filled-colour.png" alt="logo">
+
+    </a>
+    openSUSE User Documentation Project
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/openSUSE/openSUSE-docs-revamped-temp" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Version Selector
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        Before installing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Before installing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Before installing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pick_an_image/" class="md-nav__link">
+        Choosing a distribution
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../image_choice/" class="md-nav__link">
+        Preparing the installation media
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../yast_installer/" class="md-nav__link">
+        Installing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
+      
+      <label class="md-nav__link" for="__nav_5">
+        Learning
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Learning" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Learning
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1" data-md-state="indeterminate" type="checkbox" id="__nav_5_1" checked>
+      
+      <label class="md-nav__link" for="__nav_5_1">
+        openSUSE core tools
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="openSUSE core tools" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          openSUSE core tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../zypper/" class="md-nav__link">
+        Zypper
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        YaST2
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../updating_upgrading_reverting/" class="md-nav__link">
+        Updating, upgrading, snapshots and best practices
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snapper/" class="md-nav__link">
+        Snapper and Btrfs
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../safety_usability/" class="md-nav__link">
+        Safety and usability on Tumbleweed
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" data-md-state="indeterminate" type="checkbox" id="__nav_6" checked>
+      
+      <label class="md-nav__link" for="__nav_6">
+        Distro basics
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Distro basics" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Distro basics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../best_of_post/" class="md-nav__link">
+        Post-installation best-of
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kde/" class="md-nav__link">
+        KDE Plasma basics
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        GNOME basics
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_4" data-md-state="indeterminate" type="checkbox" id="__nav_6_4" checked>
+      
+      <label class="md-nav__link" for="__nav_6_4">
+        Additional software
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Additional software" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_4">
+          <span class="md-nav__icon md-icon"></span>
+          Additional software
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../alternative_procurement/" class="md-nav__link">
+        Software procurement
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Building from source
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Troubleshooting with autonomy
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+      
+      <label class="md-nav__link" for="__nav_7">
+        Completing and fine-tuning your setup
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Completing and fine-tuning your setup" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Completing and fine-tuning your setup
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_1" data-md-state="indeterminate" type="checkbox" id="__nav_7_1" checked>
+      
+      <label class="md-nav__link" for="__nav_7_1">
+        Audio & Video
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Audio & Video" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_1">
+          <span class="md-nav__icon md-icon"></span>
+          Audio & Video
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../codecs/" class="md-nav__link">
+        Codecs
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pipewire/" class="md-nav__link">
+        Pipewire
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_2" data-md-state="indeterminate" type="checkbox" id="__nav_7_2" checked>
+      
+      <label class="md-nav__link" for="__nav_7_2">
+        Graphic Drivers
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Graphic Drivers" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_2">
+          <span class="md-nav__icon md-icon"></span>
+          Graphic Drivers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../install_proprietary/" class="md-nav__link">
+        Getting started
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hybrid_graphics/" class="md-nav__link">
+        Dual GPUs ("Optimus")
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3" data-md-state="indeterminate" type="checkbox" id="__nav_7_3" checked>
+      
+      <label class="md-nav__link" for="__nav_7_3">
+        Peripherals
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Peripherals" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_3">
+          <span class="md-nav__icon md-icon"></span>
+          Peripherals
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bluetooth/" class="md-nav__link">
+        Bluetooth
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kdeconnect/" class="md-nav__link">
+        KDE Connect
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3_3" data-md-state="indeterminate" type="checkbox" id="__nav_7_3_3" checked>
+      
+      <label class="md-nav__link" for="__nav_7_3_3">
+        Printers & scanners
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Printers & scanners" data-md-level="3">
+        <label class="md-nav__title" for="__nav_7_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Printers & scanners
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../printersetc/" class="md-nav__link">
+        Printers
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Setting up a containerized environment
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Setting up a containerized environment
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-podman" class="md-nav__link">
+    What is Podman
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-containers-running" class="md-nav__link">
+    Getting containers running
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting containers running">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rootfull-or-rootless" class="md-nav__link">
+    Rootfull or rootless
+  </a>
+  
+    <nav class="md-nav" aria-label="Rootfull or rootless">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rootless-environment-configuration" class="md-nav__link">
+    Rootless environment configuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registries" class="md-nav__link">
+    Registries
+  </a>
+  
+    <nav class="md-nav" aria-label="Registries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#login-to-registry" class="md-nav__link">
+    Login to registry
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#searching-for-a-container" class="md-nav__link">
+    Searching for a container
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pulling-a-container" class="md-nav__link">
+    Pulling a container
+  </a>
+  
+    <nav class="md-nav" aria-label="Pulling a container">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#starting-a-container" class="md-nav__link">
+    Starting a container
+  </a>
+  
+    <nav class="md-nav" aria-label="Starting a container">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deleting-containers-and-images" class="md-nav__link">
+    Deleting containers and images
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#managing-images" class="md-nav__link">
+    Managing images
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#podman-pods" class="md-nav__link">
+    Podman Pods
+  </a>
+  
+    <nav class="md-nav" aria-label="Podman Pods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pod-creation" class="md-nav__link">
+    Pod creation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-containers-to-a-pod" class="md-nav__link">
+    Adding containers to a pod
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#managing-containers-in-pods" class="md-nav__link">
+    Managing containers in pods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exporting-pods" class="md-nav__link">
+    Exporting pods
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#podman-and-systemd" class="md-nav__link">
+    Podman and systemd
+  </a>
+  
+    <nav class="md-nav" aria-label="Podman and systemd">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generating-a-systemd-unit" class="md-nav__link">
+    Generating a systemd unit
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#podman-inspect-and-logs" class="md-nav__link">
+    Podman inspect and logs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persistent-data" class="md-nav__link">
+    Persistent data
+  </a>
+  
+    <nav class="md-nav" aria-label="Persistent data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mounts" class="md-nav__link">
+    Mounts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#volumes" class="md-nav__link">
+    Volumes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-containers" class="md-nav__link">
+    Updating containers
+  </a>
+  
+    <nav class="md-nav" aria-label="Updating containers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#podman-auto-update" class="md-nav__link">
+    Podman auto-update
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../power/" class="md-nav__link">
+        Power management
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_6" data-md-state="indeterminate" type="checkbox" id="__nav_7_6" checked>
+      
+      <label class="md-nav__link" for="__nav_7_6">
+        Advanced fine-tunings
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Advanced fine-tunings" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_6">
+          <span class="md-nav__icon md-icon"></span>
+          Advanced fine-tunings
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../zstd/" class="md-nav__link">
+        Transparent compression (zstd)
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" data-md-state="indeterminate" type="checkbox" id="__nav_8" checked>
+      
+      <label class="md-nav__link" for="__nav_8">
+        Experimenting
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Experimenting" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Experimenting
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../microos_getting_started/" class="md-nav__link">
+        MicroOS Desktop
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tw-cli/" class="md-nav__link">
+        Alternative update workflow on Tumbleweed
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" data-md-state="indeterminate" type="checkbox" id="__nav_9" checked>
+      
+      <label class="md-nav__link" for="__nav_9">
+        Giving back to the community
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Giving back to the community" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Giving back to the community
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        The art of reporting bugs
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Resources
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference_docs/" class="md-nav__link">
+        Other sources of documentation
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9_4" data-md-state="indeterminate" type="checkbox" id="__nav_9_4" checked>
+      
+      <label class="md-nav__link" for="__nav_9_4">
+        Contribute to this docs
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Contribute to this docs" data-md-level="2">
+        <label class="md-nav__title" for="__nav_9_4">
+          <span class="md-nav__icon md-icon"></span>
+          Contribute to this docs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../markdown.md" class="md-nav__link">
+        Markdown flavour
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../todo/" class="md-nav__link">
+        Todo
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        A contributor's checklist
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-podman" class="md-nav__link">
+    What is Podman
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-containers-running" class="md-nav__link">
+    Getting containers running
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting containers running">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rootfull-or-rootless" class="md-nav__link">
+    Rootfull or rootless
+  </a>
+  
+    <nav class="md-nav" aria-label="Rootfull or rootless">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rootless-environment-configuration" class="md-nav__link">
+    Rootless environment configuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registries" class="md-nav__link">
+    Registries
+  </a>
+  
+    <nav class="md-nav" aria-label="Registries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#login-to-registry" class="md-nav__link">
+    Login to registry
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#searching-for-a-container" class="md-nav__link">
+    Searching for a container
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pulling-a-container" class="md-nav__link">
+    Pulling a container
+  </a>
+  
+    <nav class="md-nav" aria-label="Pulling a container">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#starting-a-container" class="md-nav__link">
+    Starting a container
+  </a>
+  
+    <nav class="md-nav" aria-label="Starting a container">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deleting-containers-and-images" class="md-nav__link">
+    Deleting containers and images
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#managing-images" class="md-nav__link">
+    Managing images
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#podman-pods" class="md-nav__link">
+    Podman Pods
+  </a>
+  
+    <nav class="md-nav" aria-label="Podman Pods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pod-creation" class="md-nav__link">
+    Pod creation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-containers-to-a-pod" class="md-nav__link">
+    Adding containers to a pod
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#managing-containers-in-pods" class="md-nav__link">
+    Managing containers in pods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exporting-pods" class="md-nav__link">
+    Exporting pods
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#podman-and-systemd" class="md-nav__link">
+    Podman and systemd
+  </a>
+  
+    <nav class="md-nav" aria-label="Podman and systemd">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generating-a-systemd-unit" class="md-nav__link">
+    Generating a systemd unit
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#podman-inspect-and-logs" class="md-nav__link">
+    Podman inspect and logs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persistent-data" class="md-nav__link">
+    Persistent data
+  </a>
+  
+    <nav class="md-nav" aria-label="Persistent data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mounts" class="md-nav__link">
+    Mounts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#volumes" class="md-nav__link">
+    Volumes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-containers" class="md-nav__link">
+    Updating containers
+  </a>
+  
+    <nav class="md-nav" aria-label="Updating containers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#podman-auto-update" class="md-nav__link">
+    Podman auto-update
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Setting up a containerized environment</h1>
+                
+                <h2 id="what-is-podman">What is Podman<a class="headerlink" href="#what-is-podman" title="Permanent link">⚓︎</a></h2>
+<p>Podman is a daemon-less, open-source tool to manage, deploy and build application containers. Podman is using Open Containers Initiative (OCI) Containers and Container Images, which means that containers crated with/for Docker or CRI-o will work with Podman as well and vice versa. It is coming with a command-line interface (CLI) which offers pretty much the same commands as Docker does. How similar are Podman commands to Docker? Let's put it this way: many Podman users just alias <code>docker</code> to <code>podman</code>. Like other runtimes, Podman also relies on an OCI compliant container runtime to interface with the operating system. Podamn also has a RESTful API to manage containers, offers automatic updates of containers, and has a fantastic <code>systemd</code> integration.</p>
+<h2 id="getting-containers-running">Getting containers running<a class="headerlink" href="#getting-containers-running" title="Permanent link">⚓︎</a></h2>
+<h3 id="rootfull-or-rootless">Rootfull or rootless<a class="headerlink" href="#rootfull-or-rootless" title="Permanent link">⚓︎</a></h3>
+<p>As Podman is daemonless, running containers doesn't require running them with root but can be started with a user as well. Granted, rootless containers will have no access to networking and can't use privileged ports, but it is a great way to keep the system secure. For instance, if an application escapes the container ran as a user it will be able to cause less damage and would have limited access to the system than if it would run as root. Rootfull containers are recommended for running applications that require access over privileged ports like a public facing `Nginx reverse proxy. Even in that case, there could be some rules implemented in the firewall that forwards requests, but that's a different story</p>
+<h4 id="rootless-environment-configuration">Rootless environment configuration<a class="headerlink" href="#rootless-environment-configuration" title="Permanent link">⚓︎</a></h4>
+<p>The next steps will allow for the deployment of a <em>rootless</em> configuration with Podman. Important to note that these changes should apply for other distros as well: 
+1. <strong>Make sure that <code>fuse-overlayfs</code> is installed and it is available in the user <code>$PATH</code>.</strong> (In openSUSE <code>fuse-overlayfs</code> is a dependency of Podman therefore when Podman is being installed it will install <code>fuse-overlayfs</code> as well.) 
+<div class="highlight"><pre><span></span><code># which fuse-overlayfs  
+/usr/bin/fuse-overlayfs 
+</code></pre></div>
+2. <strong>Enable user namespaces.</strong> On openSUSE this step should not be necessary. Check the number of available namespaces that are allowed in the system in <code>/proc/sys/user/max_user_namespaces</code>. To set a value or a different value you need to run <code>sysctl user.max_user_namespaces=28633</code> as <strong>root</strong>. 
+3. <strong>/etc/subuid and /etc/subgid configuration.</strong> This is very important so instead of using my own words I move this out from the official Podman documentation and insert it here (source: <a href="https://github.com/containers/podman/blob/master/docs/tutorials/rootless_tutorial.md">rootless tutorial</a>)    </p>
+<p>Rootless Podman requires the user running it to have a range of UIDs listed in /etc/subuid and /etc/subgid files.  The <code>shadow-utils</code> or <code>newuid</code> package provides these files on different distributions and  they must be installed on the system.  These files will need someone with root privileges on the system to add or update the entries withi
+n them.  The following is a summarization from the <a href="https://opensource.com/article/19/2/how-does-rootless-podman-work">How does rootless Podman work?</a> article by Dan Walsh on <a href="https://opensource.com">opensource.com</a> </p>
+<p>Update the /etc/subuid and /etc/subgid with fields for each user that will be allowed to create containers that look like the following.  Note that the values for each user must be unique and without any overlap.  If there is an overlap, there is a potential for a user to use another’s namespace and they could corrupt it. </p>
+<div class="highlight"><pre><span></span><code>cat /etc/subuid 
+johndoe:100000:65536 
+test:165536:65536 
+</code></pre></div>
+<p>The format of this file is USERNAME:UID:RANGE </p>
+<ul>
+<li>username as listed in /etc/passwd or getpwent. </li>
+<li>The initial uid allocated for the user. </li>
+<li>The size of the range of UIDs allocated for the user. </li>
+</ul>
+<p>This means the user johndoe is allocated UIDS 100000-165535 as well as their standard UID in the /etc/passwd file.  NOTE: this is not currently supported with network installs.  These files must be available locally to the host machine.  It is not possible to configure this with LDAP or Active Directory. </p>
+<p>If you update either the /etc/subuid or the /etc/subgid file, you need to stop all the running containers owned by the user and kill the pause process that is running on the system for that user.  This can be done automatically by using the <a href="https://github.com/containers/podman/blob/master/docs/podman-system-migrate.1.md">podman system migrate</a> command which will stop all the containers for the user and will kill the pause process. </p>
+<p>Rather than updating the files directly, the usermod program can be used to assign UIDs and GIDs to a user. 
+<div class="highlight"><pre><span></span><code>usermod --add-subuids 200000-201000 --add-subgids 200000-201000 johndoe 
+grep johndoe /etc/subuid /etc/subgid 
+/etc/subuid:johndoe:200000:1001 
+/etc/subgid:johndoe:200000:1001 
+</code></pre></div></p>
+<p>Here I would also add that you need to be careful with the <code>subuid</code> and <code>subgid</code> allocation as if the same <code>UID</code>/<code>GID</code> values are given to <code>users y</code> as well as for <code>user x</code> then <code>user y</code> will have access to the containers ran by <code>user x</code>.  </p>
+<h3 id="registries">Registries<a class="headerlink" href="#registries" title="Permanent link">⚓︎</a></h3>
+<p>Podman supports every OCI compliant registries like Dockerhub, Quay.io, Treescale etc. To check, add, and remove the registries the system uses one can simply edit <code>/etc/containers/registries.conf</code>.</p>
+<p><div class="highlight"><pre><span></span><code># For more information on this configuration file, see containers-registries.conf(5).
+#
+# Registries to search for images that are not fully-qualified.
+# i.e. foobar.com/my_image:latest vs my_image:latest
+[registries.search]
+registries = [&quot;registry.opensuse.org&quot;, &quot;docker.io&quot;]
+
+# Registries that do not use TLS when pulling images or uses self-signed
+# certificates.
+[registries.insecure]
+registries = []
+
+# Blocked Registries, blocks the `docker daemon` from pulling from the blocked registry.  If you specify
+# &quot;*&quot;, then the docker daemon will only be allowed to pull from registries listed above in the search
+# registries.  Blocked Registries is deprecated because other container runtimes and tools will not use it.
+# It is recommended that you use the trust policy file /etc/containers/policy.json to control which
+# registries you want to allow users to pull and push from.  policy.json gives greater flexibility, and
+# supports all container runtimes and tools including the docker daemon, cri-o, buildah ...
+[registries.block]
+registries = []
+</code></pre></div>
+On openSUSE you will have <code>registry.opensuse.org</code> added to your registries out of the box which is the official registry of the openSUSE project. You can add for example <code>quay.io</code> to this list to be able to search, pull, and push from/to Quay. When searching or pulling a container from a registry, <code>Podman</code> will check the registries from <code>/etc/containers/registries.conf</code> listed under <code>[registries.search]</code> block. <code>Podman</code> will check the URI in the order they're added in <code>[registries.search]</code>.</p>
+<h4 id="login-to-registry">Login to registry<a class="headerlink" href="#login-to-registry" title="Permanent link">⚓︎</a></h4>
+<p>Just like with Docker you can log in to a registry with your username and password using <code>podman login [registry]</code>. Once logged in the credentials will be stored in <code>${XDG_RUNTIME_DIR}/containers/auth.json</code>. For the sake of automation you could make a copy of this <code>auth.json</code> file to be used in different scripts for building or deploying containerized applications, but keep the file with your credentials safe.</p>
+<h3 id="searching-for-a-container">Searching for a container<a class="headerlink" href="#searching-for-a-container" title="Permanent link">⚓︎</a></h3>
+<p>To search with Podman for an application use:
+<div class="highlight"><pre><span></span><code>$ podman search nginx                                                                                                                                                     
+INDEX         NAME                                                                                                                  DESCRIPTION                                      STARS   OFFICIAL  AUTOMATED
+opensuse.org  registry.opensuse.org/devel/kubic/containers/container/opensuse/nginx                                                                                                  0                 
+opensuse.org  registry.opensuse.org/home/dcassany/obs-service/container/kubic-nginx-ingress-controller                                                                               0                 
+opensuse.org  registry.opensuse.org/home/dcassany/obs-service/container/kubic/nginx-ingress-controller                                                                               0                 
+opensuse.org  registry.opensuse.org/home/dmolkentin/video/containers/opensuse-nginx                                                                                                  0                 
+opensuse.org  registry.opensuse.org/home/illuusio/images/images_15.2/opensuse/ilmi/nginx-fpm                                                                                         0                 
+opensuse.org  registry.opensuse.org/home/illuusio/images/images_15.2/opensuse/ilmi/nginx-ssl                                                                                         0                 
+opensuse.org  registry.opensuse.org/home/illuusio/images/images_15.2/opensuse/ilmi/nginx-uwsgi                                                                                       0                 
+opensuse.org  registry.opensuse.org/home/mook_work/scf/nginx-buildpack-release/images/images/nginx-buildpack                                                                         0                 
+opensuse.org  registry.opensuse.org/home/onielsen/virtualization/kubic-container/15.0/containers/kubic/nginx                                                                         0                 
+opensuse.org  registry.opensuse.org/home/pgeorgiadis/branches/devel/caasp/kubic-container/container/kubic/nginx-ingress-controller                                                   0                 
+opensuse.org  registry.opensuse.org/home/sjamgade/helm/opensuse_leap_15.2/nginx                                                                                                      0                 
+opensuse.org  registry.opensuse.org/opensuse/factory/arm/totest/containers/opensuse/nginx                                                                                            0                 
+opensuse.org  registry.opensuse.org/opensuse/factory/powerpc/totest/containers/opensuse/nginx                                                                                        0                 
+opensuse.org  registry.opensuse.org/opensuse/factory/powerpc/totest/images/opensuse/nginx                                                                                            0                 
+opensuse.org  registry.opensuse.org/opensuse/factory/totest/containers/opensuse/nginx                                                                                                0                 
+opensuse.org  registry.opensuse.org/opensuse/factory/zsystems/images/opensuse/nginx                                                                                                  0                 
+opensuse.org  registry.opensuse.org/opensuse/factory/zsystems/totest/containers/opensuse/nginx                                                                                       0                 
+opensuse.org  registry.opensuse.org/opensuse/nginx                                                                                                                                   0                 
+docker.io     docker.io/library/nginx                                                                                               Official build of Nginx.                         14378   [OK]      
+docker.io     docker.io/jwilder/nginx-proxy                                                                                         Automated Nginx reverse proxy for docker con...  1951              [OK]
+</code></pre></div></p>
+<p>To search in a specific repository:
+<div class="highlight"><pre><span></span><code>$ podman search registry.opensuse.org/nginx                                                                                                                               
+INDEX         NAME                                                                                                                  DESCRIPTION  STARS   OFFICIAL  AUTOMATED
+opensuse.org  registry.opensuse.org/devel/kubic/containers/container/opensuse/nginx                                                              0                 
+opensuse.org  registry.opensuse.org/home/dcassany/obs-service/container/kubic-nginx-ingress-controller                                           0                 
+opensuse.org  registry.opensuse.org/home/dcassany/obs-service/container/kubic/nginx-ingress-controller                                           0                 
+opensuse.org  registry.opensuse.org/home/dmolkentin/video/containers/opensuse-nginx                                                              0                 
+opensuse.org  registry.opensuse.org/home/illuusio/images/images_15.2/opensuse/ilmi/nginx-fpm                                                     0                 
+opensuse.org  registry.opensuse.org/home/illuusio/images/images_15.2/opensuse/ilmi/nginx-ssl                                                     0                 
+opensuse.org  registry.opensuse.org/home/illuusio/images/images_15.2/opensuse/ilmi/nginx-uwsgi                                                   0                 
+opensuse.org  registry.opensuse.org/home/mook_work/scf/nginx-buildpack-release/images/images/nginx-buildpack                                     0                 
+opensuse.org  registry.opensuse.org/home/onielsen/virtualization/kubic-container/15.0/containers/kubic/nginx                                     0                 
+opensuse.org  registry.opensuse.org/home/pgeorgiadis/branches/devel/caasp/kubic-container/container/kubic/nginx-ingress-controller               0                 
+opensuse.org  registry.opensuse.org/home/sjamgade/helm/opensuse_leap_15.2/nginx                                                                  0                 
+opensuse.org  registry.opensuse.org/opensuse/factory/arm/totest/containers/opensuse/nginx                                                        0                 
+opensuse.org  registry.opensuse.org/opensuse/factory/powerpc/totest/containers/opensuse/nginx                                                    0                 
+opensuse.org  registry.opensuse.org/opensuse/factory/powerpc/totest/images/opensuse/nginx                                                        0                 
+opensuse.org  registry.opensuse.org/opensuse/factory/totest/containers/opensuse/nginx                                                            0                 
+opensuse.org  registry.opensuse.org/opensuse/factory/zsystems/images/opensuse/nginx                                                              0                 
+opensuse.org  registry.opensuse.org/opensuse/factory/zsystems/totest/containers/opensuse/nginx                                                   0                 
+opensuse.org  registry.opensuse.org/opensuse/nginx                                                                                               0                 
+</code></pre></div></p>
+<h2 id="pulling-a-container">Pulling a container<a class="headerlink" href="#pulling-a-container" title="Permanent link">⚓︎</a></h2>
+<p>To pull a container:
+<div class="highlight"><pre><span></span><code>$ podman pull nginx                                                                                                                                                      Completed short name &quot;nginx&quot; with unqualified-search registries (origin: /etc/containers/registries.conf)
+Trying to pull registry.opensuse.org/nginx:latest...
+  name unknown
+Trying to pull docker.io/library/nginx:latest...
+Getting image source signatures
+Copying blob f72584a26f32 done  
+Copying blob 0732ab25fa22 done  
+Copying blob 7125e4df9063 done  
+Copying blob a076a628af6f done  
+Copying blob d7f36f6fe38f done  
+Copying config f6d0b4767a done  
+Writing manifest to image destination
+Storing signatures
+f6d0b4767a6c466c178bf718f99bea0d3742b26679081e52dbf8e0c7c4c42d74
+</code></pre></div>
+To pull from a specific registry:
+<div class="highlight"><pre><span></span><code>$ podman pull registry.opensuse.org/opensuse/nginx                                                                                                                       
+Trying to pull registry.opensuse.org/opensuse/nginx:latest...
+Getting image source signatures
+Copying blob fc491b4cab32 done  
+Copying blob fd4952530c86 done  
+Copying config 36fa073c57 done  
+Writing manifest to image destination
+Storing signatures
+36fa073c57cc5251ac2df80de6a2e052dad9a10d6ffc9a9e65ba6eaa0ddea6ff
+</code></pre></div>
+To pull from a registry authenticated with an <code>auth.json</code> file stored in <code>~/.secret</code>:
+<div class="highlight"><pre><span></span><code>$ podman pull --authfile=~/.secret/auth.json registry.opensuse.org/opensuse/nginx                                                                                
+Trying to pull registry.opensuse.org/opensuse/nginx:latest...
+Getting image source signatures
+Copying blob fc491b4cab32 done  
+Copying blob fd4952530c86 done  
+Copying config 36fa073c57 done  
+Writing manifest to image destination
+Storing signatures
+19162aa1f28d9b92c87f788939bad1e3f6100ac8a1aeeed9448f642e8eb695d2
+</code></pre></div></p>
+<h3 id="starting-a-container">Starting a container<a class="headerlink" href="#starting-a-container" title="Permanent link">⚓︎</a></h3>
+<p>Starting a container that runs in the background and exposing port 8000 to be accessible from the outside:
+<div class="highlight"><pre><span></span><code>$ podman run -d -p 8000:8000 nginx                                                                                                      
+41e3829d1c800d40feb9d88ac962d29c8256b60ec5747f732717893d93b0f35e
+</code></pre></div>
+To list running containers:
+<div class="highlight"><pre><span></span><code>[~] podman ps                                                                                                                                              
+CONTAINER ID  IMAGE                           COMMAND               CREATED        STATUS            PORTS                   NAMES
+41e3829d1c80  docker.io/library/nginx:latest  nginx -g daemon o...  3 seconds ago  Up 3 seconds ago  0.0.0.0:8000-&gt;8000/tcp  suspicious_feistel
+</code></pre></div>
+This list provides a lot of information about running containers. 
+To list every container, running or not:
+<div class="highlight"><pre><span></span><code>$ podman ps -a
+CONTAINER ID  IMAGE                           COMMAND               CREATED         STATUS                      PORTS                   NAMES
+81a872daad56  docker.io/library/nginx:latest  nix                   6 seconds ago   Exited (127) 6 seconds ago  0.0.0.0:8001-&gt;8001/tcp  wonderful_rubin
+41e3829d1c80  docker.io/library/nginx:latest  nginx -g daemon o...  18 minutes ago  Up 18 minutes ago           0.0.0.0:8000-&gt;8000/tcp  suspicious_feistel
+bc5030bffd6c  docker.io/library/nginx:latest  nginx -g daemon o...  18 minutes ago  Created                     0.0.0.0:80-&gt;8000/tcp    jolly_johnson
+</code></pre></div>
+If needed the output format of <code>podman ps</code> can be manipulated with the <code>--format</code> flag. For example to list only the container ID and the image name:
+<div class="highlight"><pre><span></span><code>[~] podman ps --format &quot;{{.ID}} {{.Image}}&quot;                                                                                                                           
+41e3829d1c80 docker.io/library/nginx:latest
+</code></pre></div>
+This pretty print containers to JSON. The following placeholders are available:
+* .ID: Container ID                           <br />
+<em> .Image:Image Name/ID
+* .ImageID: Image ID
+* .Command: Quoted command used                    <br />
+</em> .CreatedAt: Creation time for container            <br />
+<em> .RunningFor: Time elapsed since container was started 
+* .Status: Status of container
+* .Pod: Pod the container is associated with   <br />
+</em> .Ports: Exposed ports                          <br />
+<em> .Size: Size of container
+* .Names: Name of container                      <br />
+</em> .Labels: All the labels assigned to the container
+* .Mounts: Volumes mounted in the container          <br />
+For more visit the <code>podman ps</code> man page.</p>
+<h4 id="deleting-containers-and-images">Deleting containers and images<a class="headerlink" href="#deleting-containers-and-images" title="Permanent link">⚓︎</a></h4>
+<p>Running containers or images that are being used can't be deleted unless it is forced. The best course of action is to stop the container then delete it, and then delete the image.
+<div class="highlight"><pre><span></span><code>[~] podman ps #List running containers                                                                                                                          
+CONTAINER ID  IMAGE                           COMMAND               CREATED         STATUS             PORTS                   NAMES
+41e3829d1c80  docker.io/library/nginx:latest  nginx -g daemon o...  22 minutes ago  Up 22 minutes ago  0.0.0.0:8000-&gt;8000/tcp  suspicious_feistel
+$ podman stop suspicious_feistel #stop container by name                                                                             
+41e3829d1c800d40feb9d88ac962d29c8256b60ec5747f732717893d93b0f35e
+$ podman rm suspicious_feistel #Delete container by name
+41e3829d1c800d40feb9d88ac962d29c8256b60ec5747f732717893d93b0f35e
+[~] podman rmi nginx #Delete container image, this fails as there are other containers still using it                      
+Error: 1 error occurred:
+        * could not remove image f6d0b4767a6c466c178bf718f99bea0d3742b26679081e52dbf8e0c7c4c42d74 as it is being used by 2 containers: image is being used
+[~] podman rm jolly_johnson wonderful_rubin #Remove containers that are still using the nginx image                                    
+81a872daad5661a7704e47c4f5025db502852cf7cc0aaaa439e71a9fa915e9b9
+bc5030bffd6c604192c31911141d728378b69832cafbf81d97d976d59fc5f86d
+[~] podman rmi nginx #Delete the image                                                                         
+Untagged: docker.io/library/nginx:latest
+Deleted: f6d0b4767a6c466c178bf718f99bea0d3742b26679081e52dbf8e0c7c4c42d74
+$ podman images #List available, pulled images
+REPOSITORY                                 TAG     IMAGE ID      CREATED      SIZE
+registry.opensuse.org/opensuse/tumbleweed  latest  111d1befeae4  2 days ago   94.4 MB
+registry.opensuse.org/opensuse/nginx       latest  36fa073c57cc  3 days ago   103 MB
+docker.io/prom/prometheus                  latest  19162aa1f28d  2 weeks ago  174 MB
+</code></pre></div></p>
+<h4 id="managing-images">Managing images<a class="headerlink" href="#managing-images" title="Permanent link">⚓︎</a></h4>
+<p>To list all available images use <code>podman images</code>. This will provide a list of every image that is currently available in the system and ready to be used without needing to pull it from a registry. To delete an image use <code>podman rmi</code>. Visit the <code>podman images</code> man page for more.</p>
+<h3 id="podman-pods">Podman Pods<a class="headerlink" href="#podman-pods" title="Permanent link">⚓︎</a></h3>
+<p>The <code>pod</code> concept has been introduced in Kubernetes and Docker users usually don't even think of the possibility or benefits to run pods in a local runtime or a development environment. Pods are great if, for example, you need a database (DB) container that you don't want to bind to a routable network. In comes the idea of the <code>pod</code>. Instead of binding the DB to a routable network, you can bind it to <code>localhost</code> therefore other containers within the pod can connect to it using <code>localhost</code> as they share the network namespace. Another use case can be to group containers in pods.
+ Every pod has an 'infra' container that functions as the namespace holder, stores data on port bindings, cgroup-parent values, and kernel namespaces are all assigned to the “infra” container. Once the pod is created these values can not be changed. The pod can also allow starting, stop, pause multiple containers at once just by doing the same as would with a single container, but instead by container the commands can be executed by pods resulting in the desired effect, but faster and a lot more comfortably.
+For details on pod related cli commands visit the <code>podman pod</code> man page. </p>
+<h4 id="pod-creation">Pod creation<a class="headerlink" href="#pod-creation" title="Permanent link">⚓︎</a></h4>
+<p>You can create the pods by naming them and exposing the required ports. This way we're not required to setup containers individually in terms of publishing ports just adding the containers to them. <br />
+<div class="highlight"><pre><span></span><code>$ podman pod create -n yaltb -p 8000:8000                                                                        
+7244e77552d9bee402383a37906813b4194cef89c930c87d4d590d92fce827b0
+$ podman pod list                                                                            
+POD ID        NAME    STATUS   CREATED        INFRA ID      # OF CONTAINERS
+7244e77552d9  yaltb   Created  8 seconds ago  4a696258e500  1
+</code></pre></div>
+A little breakdown here:
+* <code>-n</code> or <code>--name</code> will allow to set the name of the pod.
+* <code>-p</code> or <code>--publish</code> will expose the desired port(s) that will be used to access container(s) from outside the host.
+* <code>podman pod list</code> is listing the available pods with their basic information.
+For more information visit the <code>podman pod create</code> man page.</p>
+<h4 id="adding-containers-to-a-pod">Adding containers to a pod<a class="headerlink" href="#adding-containers-to-a-pod" title="Permanent link">⚓︎</a></h4>
+<p>Pods can hold as many containers as you want. To add containers just set the <code>--pod</code> flag when creating the container.
+<div class="highlight"><pre><span></span><code>$ podman run -d --pod yaltb nginx                                                                                                                                         
+6645234da2d18f60632fdcfed3a7825a81649c606dfeba70fec11b9d5479174d
+$ podman pod list                                                                                                                                                         
+POD ID        NAME    STATUS   CREATED         INFRA ID      # OF CONTAINERS
+7244e77552d9  yaltb   Running  10 minutes ago  4a696258e500  2
+$ podman ps -a --pod                                                                                                                                                      
+CONTAINER ID  IMAGE                 COMMAND          CREATED         STATUS             PORTS                   NAMES               POD ID        PODNAME
+6645234da2d1  nginx                 /usr/sbin/nginx  15 seconds ago  Up 15 seconds ago  0.0.0.0:8000-&gt;8000/tcp  clever_williamson   7244e77552d9  yaltb
+4a696258e500  k8s.gcr.io/pause:3.2                   10 minutes ago  Up 15 seconds ago  0.0.0.0:8000-&gt;8000/tcp  7244e77552d9-infra  7244e77552d9  yaltb
+</code></pre></div>
+Breaking it down:
+* <code>podman run -d --pod yaltb nginx</code> will create and add an <code>nginx</code> container to the previously create <code>yaltb</code> pod. The pod has been defined by the <code>--pod</code> flag followed by the name of the pod. Notice that we didn't expose ports as they are already exposed in the created port. <strong>Important:</strong> network can't be configured when it is shared with a pod therefore you need to expose/publish ports upon pod creation.
+* <code>podman ps -a --pod</code> will list every container that is running in pods.</p>
+<h4 id="managing-containers-in-pods">Managing containers in pods<a class="headerlink" href="#managing-containers-in-pods" title="Permanent link">⚓︎</a></h4>
+<p>Containers in pods can be managed individually regardless they're running within a pod. Do check above for the options for managing containers. This means that if you need to remove a container from a pod </p>
+<h4 id="exporting-pods">Exporting pods<a class="headerlink" href="#exporting-pods" title="Permanent link">⚓︎</a></h4>
+<p>Pods can be exported with <code>podman generate</code> command. This would allow one to take the exported pod and deploy it the same way it is deployed on the local runtime on a different Podman server or even on a Kubernetes cluster.
+<div class="highlight"><pre><span></span><code>$ podman generate kube yaltb                                                                                                                                              
+# Generation of Kubernetes YAML is still under development!
+#
+# Save the output of this file and use kubectl create -f to import
+# it into Kubernetes.
+#
+# Created with podman-2.2.1
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: &quot;2021-02-05T05:28:08Z&quot;
+  labels:
+    app: yaltb
+  name: yaltb
+spec:
+  containers:
+  - command:
+    - /usr/sbin/nginx
+    env:
+    - name: PATH
+      value: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+    - name: TERM
+      value: xterm
+    - name: container
+      value: podman
+    - name: HOSTNAME
+      value: yaltb
+    image: nginx
+    name: condescendinggalois
+    ports:
+    - containerPort: 8000
+      hostPort: 8000
+      protocol: TCP
+    resources: {}
+    securityContext:
+      allowPrivilegeEscalation: true
+      capabilities: {}
+      privileged: false
+      readOnlyRootFilesystem: false
+      seLinuxOptions: {}
+    workingDir: /
+  - command:
+    - /usr/sbin/nginx
+    env:
+    - name: PATH
+      value: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+    - name: TERM
+      value: xterm
+    - name: container
+      value: podman
+    - name: HOSTNAME
+      value: yaltb
+    image: nginx
+    name: cleverwilliamson
+    resources: {}
+    securityContext:
+      allowPrivilegeEscalation: true
+      capabilities: {}
+      privileged: false
+      readOnlyRootFilesystem: false
+      seLinuxOptions: {}
+    workingDir: /
+  restartPolicy: Never
+status: {}
+---
+metadata:
+  creationTimestamp: null
+spec: {}
+status:
+  loadBalancer: {}
+
+$ podman pod stop yaltb                                                                                                                                                   
+7244e77552d9bee402383a37906813b4194cef89c930c87d4d590d92fce827b0
+$ podman pod rm yaltb                                                                                                                                                     
+7244e77552d9bee402383a37906813b4194cef89c930c87d4d590d92fce827b0
+
+$ podman play kube yaltb_pod.yml                                                                                                                                          
+Pod:
+ce21bc0689409795800d7e0f699f4503b6be8f7f81bcc4fabc33e5da32bba164
+Containers:
+13e9f16b1aaaa7be1f19c87c21d99deaca3862d97293b98c20bf792d72738911
+c5f8e4364b0e0caca047b3797ffc0aaf268460aee9249efc4d46259c4693eddd
+
+[~] podman pod ps                                                                                                                                                           
+POD ID        NAME    STATUS    CREATED         INFRA ID      # OF CONTAINERS
+ce21bc068940  yaltb   Degraded  11 seconds ago  c78bebfb3cc3  3
+[~] podman ps -a --pod                                                                                                                                                      
+CONTAINER ID  IMAGE                 COMMAND          CREATED         STATUS                     PORTS                   NAMES                      POD ID        PODNAME
+13e9f16b1aaa  nginx                 /usr/sbin/nginx  19 seconds ago  Up 19 seconds ago          0.0.0.0:8000-&gt;8000/tcp  yaltb-condescendinggalois  ce21bc068940  yaltb
+c5f8e4364b0e  nginx                 /usr/sbin/nginx  19 seconds ago  Exited (1) 16 seconds ago  0.0.0.0:8000-&gt;8000/tcp  yaltb-cleverwilliamson     ce21bc068940  yaltb
+c78bebfb3cc3  k8s.gcr.io/pause:3.2                   19 seconds ago  Up 19 seconds ago          0.0.0.0:8000-&gt;8000/tcp  ce21bc068940-infra         ce21bc068940  yaltb
+[~] podman ps  --pod                                                                                                                                                        
+CONTAINER ID  IMAGE                 COMMAND          CREATED         STATUS             PORTS                   NAMES                      POD ID        PODNAME
+13e9f16b1aaa  nginx                 /usr/sbin/nginx  30 seconds ago  Up 30 seconds ago  0.0.0.0:8000-&gt;8000/tcp  yaltb-condescendinggalois  ce21bc068940  yaltb
+c78bebfb3cc3  k8s.gcr.io/pause:3.2                   30 seconds ago  Up 30 seconds ago  0.0.0.0:8000-&gt;8000/tcp  ce21bc068940-infra         ce21bc068940  yaltb
+</code></pre></div>
+Lets break down the above:
+* <code>podman generate kube yaltb</code> will generated a <code>YAML</code> file which one can take to another server and <code>play</code> it providing the same exact pod that it is running on the local runtime.
+* <code>podman pod stop yaltb</code> will stop the <code>yaltb</code> pod and all the containers in it.
+* <code>podman pod rm yaltb</code> will delete the <code>yaltb</code> pod.
+* <code>podman play kube yaltb_pod.yml</code> will start the exported pods based on the <code>YAML</code> file. The pod and the containers in the pod listed in the following commands.</p>
+<h3 id="podman-and-systemd">Podman and systemd<a class="headerlink" href="#podman-and-systemd" title="Permanent link">⚓︎</a></h3>
+<p>Podman has fantastic integration with <code>systemd</code>. Users are even able to run <code>systemd</code> <strong>within</strong> a container which makes perfect sense. Why would we have to use anything different inside a container than we already got used to outside of a container? Anyhow, we are not covering this, but managing containers with <code>systemd</code>. 
+As we deploy more and more containers managing them using the Podman cli tool only may quickly become burdensome. It is much easier to manage the pods and containers with <code>systemd</code> for example to restart, stop, or to start them. Using <code>systemd</code> will also enable us to utilize <code>podman auto-update</code> for updating the containers.</p>
+<h4 id="generating-a-systemd-unit">Generating a systemd unit<a class="headerlink" href="#generating-a-systemd-unit" title="Permanent link">⚓︎</a></h4>
+<p>Podman has the ability to generate the unit files for us which is probably a relief as it makes life incredibly comfortable. Criteria is that it outputs the generated units into a file using the container's name or ID. In this example I will go for the ID which I will cover why in the <code>Podman auto-update</code> section.
+<div class="highlight"><pre><span></span><code>$ podman generate systemd --files --new admiring_franklin                                                                                                                 
+/home/yaltb/container-aaef566e500973a2d4e9df22208e4a74ae5ea961083adbbe6bb6e98fbb19f7e7.service   
+
+$ cat container-aaef566e500973a2d4e9df22208e4a74ae5ea961083adbbe6bb6e98fbb19f7e7.service                                                                                  
+# container-aaef566e500973a2d4e9df22208e4a74ae5ea961083adbbe6bb6e98fbb19f7e7.service
+# autogenerated by Podman 2.2.1
+# Fri Feb  5 12:52:43 WIB 2021
+
+[Unit]
+Description=Podman container-aaef566e500973a2d4e9df22208e4a74ae5ea961083adbbe6bb6e98fbb19f7e7.service
+Documentation=man:podman-generate-systemd(1)
+Wants=network.target
+After=network-online.target
+
+[Service]
+Environment=PODMAN_SYSTEMD_UNIT=%n
+Restart=on-failure
+ExecStartPre=/bin/rm -f %t/container-aaef566e500973a2d4e9df22208e4a74ae5ea961083adbbe6bb6e98fbb19f7e7.pid %t/container-aaef566e500973a2d4e9df22208e4a74ae5ea961083adbbe6bb6e98fbb19f7e7.ctr-id
+ExecStart=/usr/bin/podman run --conmon-pidfile %t/container-aaef566e500973a2d4e9df22208e4a74ae5ea961083adbbe6bb6e98fbb19f7e7.pid --cidfile %t/container-aaef566e500973a2d4e9df22208e4a74ae5ea961083adbbe6bb6e98fbb19f7e7.ctr-id --cgroups=no-conmon -d -p 8000:8000 nginx
+ExecStop=/usr/bin/podman stop --ignore --cidfile %t/container-aaef566e500973a2d4e9df22208e4a74ae5ea961083adbbe6bb6e98fbb19f7e7.ctr-id -t 10
+ExecStopPost=/usr/bin/podman rm --ignore -f --cidfile %t/container-aaef566e500973a2d4e9df22208e4a74ae5ea961083adbbe6bb6e98fbb19f7e7.ctr-id
+PIDFile=%t/container-aaef566e500973a2d4e9df22208e4a74ae5ea961083adbbe6bb6e98fbb19f7e7.pid
+KillMode=none
+Type=forking
+
+[Install]
+WantedBy=multi-user.target default.target
+</code></pre></div>
+Breaking all that down:
+* <code>podman generate systemd</code> which will generate <code>systemd</code> units
+* <code>--files</code> which will output the generated unit to a file as <code>container-[$CONTAINERNAME]
+*</code> --new admiring_franklin<code>will allow</code>systemd` to create and run updated images followed by the container's name.</p>
+<p>This unit file can be added to <code>systemd</code>, enabled and pretty much it. Podman and systemd will take care of everything following like starting the container on boot and updating it. When running a rootless Podman session:
+<div class="highlight"><pre><span></span><code>$ mv container-aaef566e500973a2d4e9df22208e4a74ae5ea961083adbbe6bb6e98fbb19f7e7.service ~/.config/systemd/user/
+$ systemctl --user enable --now container-aaef566e500973a2d4e9df22208e4a74ae5ea961083adbbe6bb6e98fbb19f7e7.service
+</code></pre></div></p>
+<h3 id="podman-inspect-and-logs">Podman inspect and logs<a class="headerlink" href="#podman-inspect-and-logs" title="Permanent link">⚓︎</a></h3>
+<p>To reveal the parameters a container or a pod has been created with we can use the <code>podman inspect</code> command followed by the name/id of the container or pod.
+<div class="highlight"><pre><span></span><code>$ podman inspect admiring_franklin                                                                                                                                        
+[
+    {
+        &quot;Id&quot;: &quot;aaef566e500973a2d4e9df22208e4a74ae5ea961083adbbe6bb6e98fbb19f7e7&quot;,
+        &quot;Created&quot;: &quot;2021-02-05T12:52:23.83123341+07:00&quot;,
+        &quot;Path&quot;: &quot;/usr/local/bin/entrypoint.sh&quot;,
+        &quot;Args&quot;: [
+            &quot;/usr/sbin/nginx&quot;
+        ],
+        &quot;State&quot;: {
+            &quot;OciVersion&quot;: &quot;1.0.2-dev&quot;,
+            &quot;Status&quot;: &quot;running&quot;,
+            &quot;Running&quot;: true,
+            &quot;Paused&quot;: false,
+            &quot;Restarting&quot;: false,
+            &quot;OOMKilled&quot;: false,
+            &quot;Dead&quot;: false,
+            &quot;Pid&quot;: 26725,
+            &quot;ConmonPid&quot;: 26714,
+            &quot;ExitCode&quot;: 0,
+            &quot;Error&quot;: &quot;&quot;,
+            &quot;StartedAt&quot;: &quot;2021-02-05T12:52:24.009065815+07:00&quot;,
+            &quot;FinishedAt&quot;: &quot;0001-01-01T00:00:00Z&quot;,
+            &quot;Healthcheck&quot;: {
+                &quot;Status&quot;: &quot;&quot;,
+                &quot;FailingStreak&quot;: 0,
+                &quot;Log&quot;: null
+            }
+        },
+        &quot;Image&quot;: &quot;36fa073c57cc5251ac2df80de6a2e052dad9a10d6ffc9a9e65ba6eaa0ddea6ff&quot;,
+        &quot;ImageName&quot;: &quot;nginx&quot;,
+        &quot;Rootfs&quot;: &quot;&quot;,
+        &quot;Pod&quot;: &quot;&quot;,
+        &quot;ResolvConfPath&quot;: &quot;/run/user/1000/containers/overlay-containers/aaef566e500973a2d4e9df22208e4a74ae5ea961083adbbe6bb6e98fbb19f7e7/userdata/resolv.conf&quot;,
+        &quot;HostnamePath&quot;: &quot;/run/user/1000/containers/overlay-containers/aaef566e500973a2d4e9df22208e4a74ae5ea961083adbbe6bb6e98fbb19f7e7/userdata/hostname&quot;,
+        &quot;HostsPath&quot;: &quot;/run/user/1000/containers/overlay-containers/aaef566e500973a2d4e9df22208e4a74ae5ea961083adbbe6bb6e98fbb19f7e7/userdata/hosts&quot;,
+        &quot;StaticDir&quot;: &quot;/home/apinter/.local/share/containers/storage/overlay-containers/aaef566e500973a2d4e9df22208e4a74ae5ea961083adbbe6bb6e98fbb19f7e7/userdata&quot;,
+        &quot;OCIConfigPath&quot;: &quot;/home/apinter/.local/share/containers/storage/overlay-containers/aaef566e500973a2d4e9df22208e4a74ae5ea961083adbbe6bb6e98fbb19f7e7/userdata/config.json&quot;,
+        &quot;OCIRuntime&quot;: &quot;runc&quot;,
+        &quot;LogPath&quot;: &quot;/home/apinter/.local/share/containers/storage/overlay-containers/aaef566e500973a2d4e9df22208e4a74ae5ea961083adbbe6bb6e98fbb19f7e7/userdata/ctr.log&quot;,
+        &quot;LogTag&quot;: &quot;&quot;,
+        &quot;ConmonPidFile&quot;: &quot;/run/user/1000/containers/overlay-containers/aaef566e500973a2d4e9df22208e4a74ae5ea961083adbbe6bb6e98fbb19f7e7/userdata/conmon.pid&quot;,
+        &quot;Name&quot;: &quot;admiring_franklin&quot;,
+        &quot;RestartCount&quot;: 0,
+        &quot;Driver&quot;: &quot;overlay&quot;,
+        &quot;MountLabel&quot;: &quot;&quot;,
+        &quot;ProcessLabel&quot;: &quot;&quot;,
+        &quot;AppArmorProfile&quot;: &quot;&quot;,
+        &quot;EffectiveCaps&quot;: [
+            &quot;CAP_AUDIT_WRITE&quot;,
+            &quot;CAP_CHOWN&quot;,
+            &quot;CAP_DAC_OVERRIDE&quot;,
+            &quot;CAP_FOWNER&quot;,
+            &quot;CAP_FSETID&quot;,
+            &quot;CAP_KILL&quot;,
+            &quot;CAP_MKNOD&quot;,
+            &quot;CAP_NET_BIND_SERVICE&quot;,
+            &quot;CAP_NET_RAW&quot;,
+            &quot;CAP_SETFCAP&quot;,
+            &quot;CAP_SETGID&quot;,
+            &quot;CAP_SETPCAP&quot;,
+            &quot;CAP_SETUID&quot;,
+            &quot;CAP_SYS_CHROOT&quot;
+        ],
+        &quot;BoundingCaps&quot;: [
+            &quot;CAP_AUDIT_WRITE&quot;,
+            &quot;CAP_CHOWN&quot;,
+            &quot;CAP_DAC_OVERRIDE&quot;,
+            &quot;CAP_FOWNER&quot;,
+            &quot;CAP_FSETID&quot;,
+            &quot;CAP_KILL&quot;,
+            &quot;CAP_MKNOD&quot;,
+            &quot;CAP_NET_BIND_SERVICE&quot;,
+            &quot;CAP_NET_RAW&quot;,
+            &quot;CAP_SETFCAP&quot;,
+            &quot;CAP_SETGID&quot;,
+            &quot;CAP_SETPCAP&quot;,
+            &quot;CAP_SETUID&quot;,
+            &quot;CAP_SYS_CHROOT&quot;
+        ],
+        &quot;ExecIDs&quot;: [],
+        &quot;GraphDriver&quot;: {
+            &quot;Name&quot;: &quot;overlay&quot;,
+            &quot;Data&quot;: {
+                &quot;LowerDir&quot;: &quot;/home/apinter/.local/share/containers/storage/overlay/9f76177964d37dd2b6b0a0d675d83279c746568e764856d39cbcd9124196d776/diff:/home/apinter/.local/share/containers/storage/overlay/b81706afabe1f2b78cf2592b4f177f245563e5a33819f4e04a9edff9e0ddbbd8/diff&quot;,
+                &quot;MergedDir&quot;: &quot;/home/apinter/.local/share/containers/storage/overlay/4eda62ca4ff798cc5e7361e8ea0f9126aa12e91e676036245d90b3e0d790b632/merged&quot;,
+                &quot;UpperDir&quot;: &quot;/home/apinter/.local/share/containers/storage/overlay/4eda62ca4ff798cc5e7361e8ea0f9126aa12e91e676036245d90b3e0d790b632/diff&quot;,
+                &quot;WorkDir&quot;: &quot;/home/apinter/.local/share/containers/storage/overlay/4eda62ca4ff798cc5e7361e8ea0f9126aa12e91e676036245d90b3e0d790b632/work&quot;
+            }
+        },
+        &quot;Mounts&quot;: [
+            {
+                &quot;Type&quot;: &quot;volume&quot;,
+                &quot;Name&quot;: &quot;c86360b3e3d6b0a0cdc60cf3cb4504a267933d154dae282a7caf760c7b599cdf&quot;,
+                &quot;Source&quot;: &quot;/home/apinter/.local/share/containers/storage/volumes/c86360b3e3d6b0a0cdc60cf3cb4504a267933d154dae282a7caf760c7b599cdf/_data&quot;,
+                &quot;Destination&quot;: &quot;/data&quot;,
+                &quot;Driver&quot;: &quot;local&quot;,
+                &quot;Mode&quot;: &quot;&quot;,
+                &quot;Options&quot;: [
+                    &quot;nodev&quot;,
+                    &quot;exec&quot;,
+                    &quot;nosuid&quot;,
+                    &quot;rbind&quot;
+                ],
+                &quot;RW&quot;: true,
+                &quot;Propagation&quot;: &quot;rprivate&quot;
+            }
+        ],
+        &quot;Dependencies&quot;: [],
+        &quot;NetworkSettings&quot;: {
+            &quot;EndpointID&quot;: &quot;&quot;,
+            &quot;Gateway&quot;: &quot;&quot;,
+            &quot;IPAddress&quot;: &quot;&quot;,
+            &quot;IPPrefixLen&quot;: 0,
+            &quot;IPv6Gateway&quot;: &quot;&quot;,
+            &quot;GlobalIPv6Address&quot;: &quot;&quot;,
+            &quot;GlobalIPv6PrefixLen&quot;: 0,
+            &quot;MacAddress&quot;: &quot;&quot;,
+            &quot;Bridge&quot;: &quot;&quot;,
+            &quot;SandboxID&quot;: &quot;&quot;,
+            &quot;HairpinMode&quot;: false,
+            &quot;LinkLocalIPv6Address&quot;: &quot;&quot;,
+            &quot;LinkLocalIPv6PrefixLen&quot;: 0,
+            &quot;Ports&quot;: {
+                &quot;8000/tcp&quot;: [
+                    {
+                        &quot;HostIp&quot;: &quot;&quot;,
+                        &quot;HostPort&quot;: &quot;8000&quot;
+                    }
+                ]
+            },
+            &quot;SandboxKey&quot;: &quot;/run/user/1000/netns/cni-ca08b508-01ec-9f12-554f-109725a54e4f&quot;
+        },
+        &quot;ExitCommand&quot;: [
+            &quot;/usr/bin/podman&quot;,
+            &quot;--root&quot;,
+            &quot;/home/apinter/.local/share/containers/storage&quot;,
+            &quot;--runroot&quot;,
+            &quot;/run/user/1000/containers&quot;,
+            &quot;--log-level&quot;,
+            &quot;error&quot;,
+            &quot;--cgroup-manager&quot;,
+            &quot;cgroupfs&quot;,
+            &quot;--tmpdir&quot;,
+            &quot;/run/user/1000/libpod/tmp&quot;,
+            &quot;--runtime&quot;,
+            &quot;runc&quot;,
+            &quot;--storage-driver&quot;,
+            &quot;overlay&quot;,
+            &quot;--storage-opt&quot;,
+            &quot;overlay.mount_program=/usr/bin/fuse-overlayfs&quot;,
+            &quot;--events-backend&quot;,
+            &quot;journald&quot;,
+            &quot;container&quot;,
+            &quot;cleanup&quot;,
+            &quot;aaef566e500973a2d4e9df22208e4a74ae5ea961083adbbe6bb6e98fbb19f7e7&quot;
+        ],
+        &quot;Namespace&quot;: &quot;&quot;,
+        &quot;IsInfra&quot;: false,
+        &quot;Config&quot;: {
+            &quot;Hostname&quot;: &quot;aaef566e5009&quot;,
+            &quot;Domainname&quot;: &quot;&quot;,
+            &quot;User&quot;: &quot;&quot;,
+            &quot;AttachStdin&quot;: false,
+            &quot;AttachStdout&quot;: false,
+            &quot;AttachStderr&quot;: false,
+            &quot;Tty&quot;: false,
+            &quot;OpenStdin&quot;: false,
+            &quot;StdinOnce&quot;: false,
+            &quot;Env&quot;: [
+                &quot;PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin&quot;,
+                &quot;TERM=xterm&quot;,
+                &quot;container=podman&quot;,
+                &quot;HOSTNAME=aaef566e5009&quot;,
+                &quot;HOME=/root&quot;
+            ],
+            &quot;Cmd&quot;: [
+                &quot;/usr/sbin/nginx&quot;
+            ],
+            &quot;Image&quot;: &quot;nginx&quot;,
+            &quot;Volumes&quot;: null,
+            &quot;WorkingDir&quot;: &quot;/&quot;,
+            &quot;Entrypoint&quot;: &quot;/usr/local/bin/entrypoint.sh&quot;,
+            &quot;OnBuild&quot;: null,
+            &quot;Labels&quot;: {
+                &quot;org.openbuildservice.disturl&quot;: &quot;obs://build.opensuse.org/openSUSE:Factory/images/d720a7068b306d15952c962f20a9524c-opensuse-nginx-image&quot;,
+                &quot;org.opencontainers.image.created&quot;: &quot;2021-01-30T17:23:14.138895035Z&quot;,
+                &quot;org.opencontainers.image.description&quot;: &quot;Image containing nginx as web server.&quot;,
+                &quot;org.opencontainers.image.title&quot;: &quot;openSUSE nginx web server container&quot;,
+                &quot;org.opencontainers.image.url&quot;: &quot;https://www.opensuse.org/&quot;,
+                &quot;org.opencontainers.image.vendor&quot;: &quot;openSUSE Project&quot;,
+                &quot;org.opencontainers.image.version&quot;: &quot;1.19.6-8.919&quot;,
+                &quot;org.opensuse.nginx.created&quot;: &quot;2021-01-30T17:23:14.138895035Z&quot;,
+                &quot;org.opensuse.nginx.description&quot;: &quot;Image containing nginx as web server.&quot;,
+                &quot;org.opensuse.nginx.disturl&quot;: &quot;obs://build.opensuse.org/openSUSE:Factory/images/d720a7068b306d15952c962f20a9524c-opensuse-nginx-image&quot;,
+                &quot;org.opensuse.nginx.reference&quot;: &quot;registry.opensuse.org/opensuse/nginx:1.19.6-8.919&quot;,
+                &quot;org.opensuse.nginx.title&quot;: &quot;openSUSE nginx web server container&quot;,
+                &quot;org.opensuse.nginx.version&quot;: &quot;1.19.6-8.919&quot;,
+                &quot;org.opensuse.reference&quot;: &quot;registry.opensuse.org/opensuse/nginx:1.19.6-8.919&quot;,
+                &quot;org.opensuse.tumbleweed.busybox.created&quot;: &quot;2021-01-30T17:00:57.705148070Z&quot;,
+                &quot;org.opensuse.tumbleweed.busybox.description&quot;: &quot;Small image containing busybox.&quot;,
+                &quot;org.opensuse.tumbleweed.busybox.disturl&quot;: &quot;obs://build.opensuse.org/openSUSE:Factory/images/e1deab10410717d6b30d6ff1940e1777-tumbleweed-busybox-image&quot;,
+                &quot;org.opensuse.tumbleweed.busybox.reference&quot;: &quot;registry.opensuse.org/opensuse/busybox:1.32.1-14.1&quot;,
+                &quot;org.opensuse.tumbleweed.busybox.title&quot;: &quot;openSUSE Busybox Container&quot;,
+                &quot;org.opensuse.tumbleweed.busybox.url&quot;: &quot;https://www.opensuse.org/&quot;,
+                &quot;org.opensuse.tumbleweed.busybox.vendor&quot;: &quot;openSUSE Project&quot;,
+                &quot;org.opensuse.tumbleweed.busybox.version&quot;: &quot;1.32.1-14.1&quot;
+            },
+            &quot;Annotations&quot;: {
+                &quot;io.container.manager&quot;: &quot;libpod&quot;,
+                &quot;io.kubernetes.cri-o.Created&quot;: &quot;2021-02-05T12:52:23.83123341+07:00&quot;,
+                &quot;io.kubernetes.cri-o.TTY&quot;: &quot;false&quot;,
+                &quot;io.podman.annotations.autoremove&quot;: &quot;FALSE&quot;,
+                &quot;io.podman.annotations.init&quot;: &quot;FALSE&quot;,
+                &quot;io.podman.annotations.privileged&quot;: &quot;FALSE&quot;,
+                &quot;io.podman.annotations.publish-all&quot;: &quot;FALSE&quot;,
+                &quot;org.opencontainers.image.stopSignal&quot;: &quot;15&quot;
+            },
+            &quot;StopSignal&quot;: 15,
+            &quot;CreateCommand&quot;: [
+                &quot;podman&quot;,
+                &quot;run&quot;,
+                &quot;-d&quot;,
+                &quot;-p&quot;,
+                &quot;8000:8000&quot;,
+                &quot;nginx&quot;
+            ],
+            &quot;Umask&quot;: &quot;0022&quot;
+        },
+        &quot;HostConfig&quot;: {
+            &quot;Binds&quot;: [
+                &quot;c86360b3e3d6b0a0cdc60cf3cb4504a267933d154dae282a7caf760c7b599cdf:/data:rprivate,rw,nodev,exec,nosuid,rbind&quot;
+            ],
+            &quot;CgroupManager&quot;: &quot;cgroupfs&quot;,
+            &quot;CgroupMode&quot;: &quot;host&quot;,
+            &quot;ContainerIDFile&quot;: &quot;&quot;,
+            &quot;LogConfig&quot;: {
+                &quot;Type&quot;: &quot;k8s-file&quot;,
+                &quot;Config&quot;: null
+            },
+            &quot;NetworkMode&quot;: &quot;slirp4netns&quot;,
+            &quot;PortBindings&quot;: {
+                &quot;8000/tcp&quot;: [
+                    {
+                        &quot;HostIp&quot;: &quot;&quot;,
+                        &quot;HostPort&quot;: &quot;8000&quot;
+                    }
+                ]
+            },
+            &quot;RestartPolicy&quot;: {
+                &quot;Name&quot;: &quot;&quot;,
+                &quot;MaximumRetryCount&quot;: 0
+            },
+            &quot;AutoRemove&quot;: false,
+            &quot;VolumeDriver&quot;: &quot;&quot;,
+            &quot;VolumesFrom&quot;: null,
+            &quot;CapAdd&quot;: [],
+            &quot;CapDrop&quot;: [],
+            &quot;Dns&quot;: [],
+            &quot;DnsOptions&quot;: [],
+            &quot;DnsSearch&quot;: [],
+            &quot;ExtraHosts&quot;: [],
+            &quot;GroupAdd&quot;: [],
+            &quot;IpcMode&quot;: &quot;private&quot;,
+            &quot;Cgroup&quot;: &quot;&quot;,
+            &quot;Cgroups&quot;: &quot;default&quot;,
+            &quot;Links&quot;: null,
+            &quot;OomScoreAdj&quot;: 0,
+            &quot;PidMode&quot;: &quot;private&quot;,
+            &quot;Privileged&quot;: false,
+            &quot;PublishAllPorts&quot;: false,
+            &quot;ReadonlyRootfs&quot;: false,
+            &quot;SecurityOpt&quot;: [],
+            &quot;Tmpfs&quot;: {},
+            &quot;UTSMode&quot;: &quot;private&quot;,
+            &quot;UsernsMode&quot;: &quot;&quot;,
+            &quot;ShmSize&quot;: 65536000,
+            &quot;Runtime&quot;: &quot;oci&quot;,
+            &quot;ConsoleSize&quot;: [
+                0,
+                0
+            ],
+            &quot;Isolation&quot;: &quot;&quot;,
+            &quot;CpuShares&quot;: 0,
+            &quot;Memory&quot;: 0,
+            &quot;NanoCpus&quot;: 0,
+            &quot;CgroupParent&quot;: &quot;&quot;,
+            &quot;BlkioWeight&quot;: 0,
+            &quot;BlkioWeightDevice&quot;: null,
+            &quot;BlkioDeviceReadBps&quot;: null,
+            &quot;BlkioDeviceWriteBps&quot;: null,
+            &quot;BlkioDeviceReadIOps&quot;: null,
+            &quot;BlkioDeviceWriteIOps&quot;: null,
+            &quot;CpuPeriod&quot;: 0,
+            &quot;CpuQuota&quot;: 0,
+            &quot;CpuRealtimePeriod&quot;: 0,
+            &quot;CpuRealtimeRuntime&quot;: 0,
+            &quot;CpusetCpus&quot;: &quot;&quot;,
+            &quot;CpusetMems&quot;: &quot;&quot;,
+            &quot;Devices&quot;: [],
+            &quot;DiskQuota&quot;: 0,
+            &quot;KernelMemory&quot;: 0,
+            &quot;MemoryReservation&quot;: 0,
+            &quot;MemorySwap&quot;: 0,
+            &quot;MemorySwappiness&quot;: 0,
+            &quot;OomKillDisable&quot;: false,
+            &quot;PidsLimit&quot;: 0,
+            &quot;Ulimits&quot;: [],
+            &quot;CpuCount&quot;: 0,
+            &quot;CpuPercent&quot;: 0,
+            &quot;IOMaximumIOps&quot;: 0,
+            &quot;IOMaximumBandwidth&quot;: 0,
+            &quot;CgroupConf&quot;: null
+        }
+    }
+]
+</code></pre></div>
+<code>Podman inspect</code> literally covers everything that container is running with. Labels, mounts, volumes, exposed ports etc. Extremely useful for debugging and of course the output can be filtered. For more visit the <code>podman inspect</code> man page.</p>
+<p>The next useful tool to check what is happening real-time inside a container is <code>podman logs</code> which will output the <code>stdout</code> of the container. This can cover errors, warnings or general output information from the application inside the container.
+<div class="highlight"><pre><span></span><code>$ podman logs admiring_franklin
+[Thu Feb 04 20:30:48.909589 2021] [so:debug] [pid 10] mod_so.c(266): AH01575: loaded module actions_module from /usr/lib64/apache2-prefork/mod_actions.so
+[Thu Feb 04 20:30:48.928259 2021] [so:debug] [pid 10] mod_so.c(266): AH01575: loaded module alias_module from /usr/lib64/apache2-prefork/mod_alias.so
+[Thu Feb 04 20:30:48.937031 2021] [so:debug] [pid 10] mod_so.c(266): AH01575: loaded module auth_basic_module from /usr/lib64/apache2-prefork/mod_auth_basic.so
+[Thu Feb 04 20:30:48.938069 2021] [so:debug] [pid 10] mod_so.c(266): AH01575: loaded module authn_core_module from /usr/lib64/apache2-prefork/mod_authn_core.so
+[Thu Feb 04 20:30:48.946344 2021] [so:debug] [pid 10] mod_so.c(266): AH01575: loaded module authn_file_module from /usr/lib64/apache2-prefork/mod_authn_file.so
+[Thu Feb 04 20:30:48.956344 2021] [so:debug] [pid 10] mod_so.c(266): AH01575: loaded module authz_host_module from /usr/lib64/apache2-prefork/mod_authz_host.so
+[Thu Feb 04 20:30:48.974215 2021] [so:debug] [pid 10] mod_so.c(266): AH01575: loaded module authz_groupfile_module from /usr/lib64/apache2-prefork/mod_authz_groupfile.so
+[Thu Feb 04 20:30:48.990336 2021] [so:debug] [pid 10] mod_so.c(266): AH01575: loaded module authz_core_module from /usr/lib64/apache2-prefork/mod_authz_core.so
+[Thu Feb 04 20:30:48.991396 2021] [so:debug] [pid 10] mod_so.c(266): AH01575: loaded module authz_user_module from /usr/lib64/apache2-prefork/mod_authz_user.so
+[Thu Feb 04 20:30:48.992640 2021] [so:debug] [pid 10] mod_so.c(266): AH01575: loaded module autoindex_module from /usr/lib64/apache2-prefork/mod_autoindex.so
+[Thu Feb 04 20:30:48.995014 2021] [so:debug] [pid 10] mod_so.c(266): AH01575: loaded module cgi_module from /usr/lib64/apache2-prefork/mod_cgi.so
+[Thu Feb 04 20:30:48.996348 2021] [so:debug] [pid 10] mod_so.c(266): AH01575: loaded module dir_module from /usr/lib64/apache2-prefork/mod_dir.so
+[Thu Feb 04 20:30:49.003103 2021] [so:debug] [pid 10] mod_so.c(266): AH01575: loaded module env_module from /usr/lib64/apache2-prefork/mod_env.so
+[Thu Feb 04 20:30:49.003674 2021] [so:debug] [pid 10] mod_so.c(266): AH01575: loaded module expires_module from /usr/lib64/apache2-prefork/mod_expires.so
+[Thu Feb 04 20:30:49.004606 2021] [so:debug] [pid 10] mod_so.c(266): AH01575: loaded module include_module from /usr/lib64/apache2-prefork/mod_include.so
+[Thu Feb 04 20:30:49.005130 2021] [so:debug] [pid 10] mod_so.c(266): AH01575: loaded module log_config_module from /usr/lib64/apache2-prefork/mod_log_config.so
+[Thu Feb 04 20:30:49.018137 2021] [so:debug] [pid 10] mod_so.c(266): AH01575: loaded module mime_module from /usr/lib64/apache2-prefork/mod_mime.so
+[Thu Feb 04 20:30:49.028327 2021] [so:debug] [pid 10] mod_so.c(266): AH01575: loaded module negotiation_module from /usr/lib64/apache2-prefork/mod_negotiation.so
+[Thu Feb 04 20:30:49.036869 2021] [so:debug] [pid 10] mod_so.c(266): AH01575: loaded module setenvif_module from /usr/lib64/apache2-prefork/mod_setenvif.so
+[Thu Feb 04 20:30:49.078484 2021] [so:debug] [pid 10] mod_so.c(266): AH01575: loaded module ssl_module from /usr/lib64/apache2-prefork/mod_ssl.so
+[Thu Feb 04 20:30:49.081221 2021] [so:debug] [pid 10] mod_so.c(266): AH01575: loaded module socache_shmcb_module from /usr/lib64/apache2-prefork/mod_socache_shmcb.so
+[Thu Feb 04 20:30:49.081547 2021] [so:debug] [pid 10] mod_so.c(266): AH01575: loaded module userdir_module from /usr/lib64/apache2-prefork/mod_userdir.so
+[Thu Feb 04 20:30:49.082180 2021] [so:debug] [pid 10] mod_so.c(266): AH01575: loaded module reqtimeout_module from /usr/lib64/apache2-prefork/mod_reqtimeout.so
+[Thu Feb 04 20:30:49.084216 2021] [so:debug] [pid 10] mod_so.c(266): AH01575: loaded module rewrite_module from /usr/lib64/apache2-prefork/mod_rewrite.so
+[Thu Feb 04 20:30:49.089975 2021] [so:debug] [pid 10] mod_so.c(266): AH01575: loaded module headers_module from /usr/lib64/apache2-prefork/mod_headers.so
+[Thu Feb 04 20:30:49.135714 2021] [so:debug] [pid 10] mod_so.c(266): AH01575: loaded module php7_module from /usr/lib64/apache2/mod_php7.so
+[Thu Feb 04 20:30:49.430178 2021] [core:info] [pid 10] AH00545: MaxRequestsPerChild is deprecated, use MaxConnectionsPerChild instead.
+AH00558: httpd-prefork: Could not reliably determine the server&#39;s fully qualified domain name, using 127.0.1.1. Set the &#39;ServerName&#39; directive globally to suppress this message
+</code></pre></div>
+This can output a lot of information and it is rolling with the container's life cycle. To monitor the logs real-time as they come in - such as one would do with <code>tail -f</code> - you can do that with <code>podman logs -f</code> followed by the container's name or ID.</p>
+<h3 id="persistent-data">Persistent data<a class="headerlink" href="#persistent-data" title="Permanent link">⚓︎</a></h3>
+<p>Containers are not able to store persistent data. If you need an application to store data between restarts and updates you need to either attach a <code>volume</code> or <code>mount</code> storage space outside of the container from the host system.</p>
+<h4 id="mounts">Mounts<a class="headerlink" href="#mounts" title="Permanent link">⚓︎</a></h4>
+<p>Are basically can be anything, a file, a folder stored anywhere on the host system. This is not a storage space that is managed by Podman and can be accessed from the host system and from within the container as well. Creating a container with bind mount:</p>
+<p><div class="highlight"><pre><span></span><code>$ podman run -it --name tw --mount type=bind,source=./binder,target=/mnt opensuse/tumbleweed /bin/bash                                                              
+# 8453197c43b9:/ # df -h
+Filesystem           Size  Used Avail Use% Mounted on
+fuse-overlayfs       231G   36G  195G  16% /
+/dev/mapper/cr_root  231G   36G  195G  16% /mnt
+tmpfs                 64M     0   64M   0% /dev
+tmpfs                4.0M     0  4.0M   0% /sys/fs/cgroup
+tmpfs                782M  374M  409M  48% /etc/hosts
+shm                   63M     0   63M   0% /dev/shm
+devtmpfs             3.9G     0  3.9G   0% /dev/tty
+tmpfs                3.9G     0  3.9G   0% /sys/kernel
+tmpfs                3.9G     0  3.9G   0% /proc/acpi
+tmpfs                3.9G     0  3.9G   0% /proc/scsi
+tmpfs                3.9G     0  3.9G   0% /sys/firmware
+tmpfs                3.9G     0  3.9G   0% /sys/dev
+# 8453197c43b9:/ # cd /mnt/
+# 8453197c43b9:/mnt # ls
+# 8453197c43b9:/mnt # touch -a test
+# 8453197c43b9:/mnt # ls
+test
+# 8453197c43b9:/mnt # exit
+exit
+$ cd binder                                                                                                                                                         
+$ ls -a                                                                                                                                                                
+total 0
+drwxr-xr-x 1 apinter users  8 Feb  5 18:31 .
+drwxr-xr-x 1 apinter users 32 Feb  5 17:58 ..
+-rw-r--r-- 1 apinter users  0 Feb  5 18:31 test                                                                                                                        
+</code></pre></div>
+Breaking it down:
+* <code>podman run -it --name tw</code> will start a container in interactive mode and open a terminal (tty) inside the container which is named <code>tw</code>,
+* <code>--mount type=bind,source=./binder,target=/mnt</code> the <code>--mount</code> flag will tell Podman that we want to mount something from the host file system, the type is set to <code>bind</code> then with <code>source</code> set the path to the folder and with <code>target</code> set the path within the container where to mount it,
+* <code>opensuse/tumbleweed /bin/bash</code> defining the image - in this case openSUSE Tumbleweed - and what to run which will be the <code>bash</code> shell,
+* Following that is a little proof-of-concept that the created file from within the container stay on the host file system after exiting.</p>
+<h4 id="volumes">Volumes<a class="headerlink" href="#volumes" title="Permanent link">⚓︎</a></h4>
+<p>Volumes, unlike bind mounts are managed by Podman and this is the preferred way of having a persistent storage space attached to a container. If running a rootfull session the volume will be stored under <code>/var/lib/containers</code>, while rootless volumes will be stored under <code>~/.local/share/containers/storage</code>. To be able to attach volumes first need to create them with <code>podman volume create</code> and volumes can be listed with <code>podman volume list</code>. The volumes can be named and can have labels for meta information. 
+<div class="highlight"><pre><span></span><code>$ podman volume create testvol                                                                                               
+testvol
+$ podman volume list                                                                                                        
+DRIVER      VOLUME NAME
+local       2508530e4332a17683c91aabd18e310607ac57b418da21900e72589c7285ed6f
+local       49ad9d0c48db6b8b58a5434de01f2a1b0e2e29fef5ed4b8cf6f85cd11162e985
+local       4e79dd89718157538f394e085021800e9f76720f45fed7763793b9cbd2092e4e
+local       6c62ee3bc47ad16086cbc772e3dcb358229b2c56b1055167291d5a93bb2f9b4c
+local       81d45f6f954fbb85fb4058394b5415c352b05358fc5ed2ae0d05b8ddb885d8d2
+local       90d034f570fc7a8b2cb5592cd47a1183c24ff92b2c200e4a8e3a91ab5a70f1ed
+local       a297bfa38aecb84775bcfd764dbdc1f885ba0c2d93cdf0ff9bc1e957de6fcef4
+local       a6d423add657f0e5ad4ecb5d9c643d2df1ac3708ed433cf857a35b5d2879707a
+local       c86360b3e3d6b0a0cdc60cf3cb4504a267933d154dae282a7caf760c7b599cdf
+local       f6aec4ec8449c00c5c8f340634571f96befdda2f5c218fb93f2ee4bfb436154e
+local       testvol
+</code></pre></div>
+Now mounting the created volume inside a container:
+<div class="highlight"><pre><span></span><code>$ podman run -it --name tw --mount type=volume,source=testvol,target=/mnt opensuse/tumbleweed /bin/bash                                                             
+# 03b1eb2c4b48:/ # df -h
+Filesystem           Size  Used Avail Use% Mounted on
+fuse-overlayfs       231G   36G  195G  16% /
+tmpfs                 64M     0   64M   0% /dev
+tmpfs                4.0M     0  4.0M   0% /sys/fs/cgroup
+/dev/mapper/cr_root  231G   36G  195G  16% /mnt
+tmpfs                782M  374M  408M  48% /etc/hosts
+shm                   63M     0   63M   0% /dev/shm
+devtmpfs             3.9G     0  3.9G   0% /dev/tty
+tmpfs                3.9G     0  3.9G   0% /sys/kernel
+tmpfs                3.9G     0  3.9G   0% /proc/acpi
+tmpfs                3.9G     0  3.9G   0% /proc/scsi
+tmpfs                3.9G     0  3.9G   0% /sys/firmware
+tmpfs                3.9G     0  3.9G   0% /sys/dev
+# 03b1eb2c4b48:/ # cd /mnt 
+# 03b1eb2c4b48:/mnt # ls
+# 03b1eb2c4b48:/mnt # echo &quot;a message for the future&quot;&gt;&gt; testing
+# 03b1eb2c4b48:/mnt # ls
+testing
+# 03b1eb2c4b48:/mnt # exit
+exit
+$ podman rm tw                                                                                                                                                      
+03b1eb2c4b48d4badc17dfd8f25430afa2e5a32bb10f32e982a4deb86488f6de
+$ podman run -it --name tw --mount type=volume,source=testvol,target=/mnt opensuse/tumbleweed /bin/bash                                                             
+# 1a203240e9d7:/ # df -h
+Filesystem           Size  Used Avail Use% Mounted on
+fuse-overlayfs       231G   36G  195G  16% /
+tmpfs                 64M     0   64M   0% /dev
+tmpfs                4.0M     0  4.0M   0% /sys/fs/cgroup
+/dev/mapper/cr_root  231G   36G  195G  16% /mnt
+tmpfs                782M  374M  408M  48% /etc/hosts
+shm                   63M     0   63M   0% /dev/shm
+devtmpfs             3.9G     0  3.9G   0% /dev/tty
+tmpfs                3.9G     0  3.9G   0% /sys/kernel
+tmpfs                3.9G     0  3.9G   0% /proc/acpi
+tmpfs                3.9G     0  3.9G   0% /proc/scsi
+tmpfs                3.9G     0  3.9G   0% /sys/firmware
+tmpfs                3.9G     0  3.9G   0% /sys/dev
+# 1a203240e9d7:/ # cd /mnt/
+# 1a203240e9d7:/mnt # ls
+testing
+# 1a203240e9d7:/mnt # cat testing
+a message for the future
+# 1a203240e9d7:/mnt # exit
+exit
+</code></pre></div>
+Breaking it down (the command is almost identical to the one used in <code>bind mount</code> so to keep it short will focus only the differences):
+* <code>--mount type=volume,source=testvol,target=/mnt</code> just like with <code>bind mounts</code> need to use the <code>--mount</code> flag, but the <code>type</code> will be <code>volume</code> and the <code>source</code> does not need the whole path just the name/id of the <code>volume</code>. Upon the creation of the volume if a name is not set a random one will be generated
+* This is being followed by a proof-of-concept in which I created a container, mounted the volume, wrote a file and stored it in the volume then destroyed the container. Recreated it with the same command and <code>volume</code> and read out the files previously created inside the already destroyed container.
+For more visit the <code>podman volume</code> man page.</p>
+<h3 id="updating-containers">Updating containers<a class="headerlink" href="#updating-containers" title="Permanent link">⚓︎</a></h3>
+<p>Can go about this a few different ways like pulling a container, launching it, mounting the necessary shares and config files and starting it on a different exposed port than the one we're planning to "update". Once this is done, tested and works fine can just change the route to point to this updated container. Me being a lazy DevOps engineer I don't like this option so let's visit <code>podman auto-update</code>.</p>
+<h4 id="podman-auto-update">Podman auto-update<a class="headerlink" href="#podman-auto-update" title="Permanent link">⚓︎</a></h4>
+<p>Before we go any further there are few things to make sure are set correctly on our container:
+* there is no <code>--restart=always</code> flag present,
+* the container is managed by <code>systemd</code>,
+* the <code>systemd</code> unit has been generated by the container's ID not by it's name,
+* the <code>systemd</code> unit has been generated with the <code>--new</code> flag.</p>
+<p>Podman's other important feature is the automatic updates of containers without the need of even putting containers in pods or adding a Watchtower service. This is done by adding the <code>--label io.containers.autoupdate=image</code> label during container creation.  <br />
+This to be followed by generating <code>systemd</code> units for the container: <code>podman generate systemd --new --files [container ID or name]</code>. Once this is ready and the unit file is under the corresponding <code>systemd</code> folder - depending on how podman is used, rootfull or rootless - the container unit to be started. Following this the <code>podman auto-update</code> command can update every container with changed images.</p>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">⚓︎</a></h2>
+<p>I strongly suggest checking out the <code>man</code> pages of <code>podman</code> which provides a lot of information straight from the terminal. Also the following resources can help a lot on your <code>podman</code> journey:
+* https://podman.io/
+* http://docs.podman.io/en/latest/
+* http://docs.podman.io/en/latest/Tutorials.html</p>
+                
+                  
+                    
+
+<hr>
+<div class="md-source-date">
+  <small>
+    
+      Last update: 2021-11-04
+    
+  </small>
+</div>
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../printersetc/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Printers
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../power/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Power management
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made by the <a href="https://en.opensuse.org/openSUSE:Documentation_team">openSUSE Documentation Team. </a> using <a href="https://www.mkdocs.org/">MkDocs</a> 
+        and the <a href="https://squidfunk.github.io/mkdocs-material/">Material theme.</a>
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+      <a href="https://www.opensuse.org" target="_blank" rel="noopener" title="openSUSE Main Website" class="md-footer-social__link">
+        <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256.00001" version="1.1" id="svg8">
+  <defs id="defs2"/>
+  <metadata id="metadata5">
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <dc:title/>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <circle r="98" style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.96168292;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" id="path907" cx="128" cy="127.99999"/>
+  <path style="opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:13.84463978;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="M 128,16 A 112,112 0 0 0 16,128 112,112 0 0 0 128,240 112,112 0 0 0 240,128 112,112 0 0 0 128,16 Z m 0,14 a 97.998915,97.999659 0 0 1 98,98 97.998915,97.999659 0 0 1 -98,98 97.998915,97.999659 0 0 1 -73.763183,-33.66528 c 7.061098,-5.10706 18.640211,-3.80284 32.872314,-2.19605 6.934989,0.81013 14.833329,1.71669 23.008059,1.89869 22.82389,0.14504 47.40688,-4.07013 62.55908,-10.69825 9.80273,-4.26047 16.0584,-7.09653 19.97802,-10.66064 1.40972,-1.16811 2.14191,-3.06412 2.90357,-5.10474 l 0.53491,-1.34839 c 0.63379,-1.65411 1.56454,-5.13956 1.97388,-7.04956 0.16481,-0.8414 0.35765,-1.66518 -0.33838,-2.20288 -0.6363,-0.49168 -2.09863,0.38964 -2.09863,0.38964 -6.65366,4.00476 -23.28584,11.58939 -38.83667,11.91334 -19.30731,0.38942 -58.425755,-19.5443 -62.478764,-21.64942 -2.71264,-6.45909 -5.424076,-12.92177 -8.175778,-19.3645 27.986982,18.44043 51.201812,28.63435 68.971192,30.20631 19.78212,1.76219 35.20114,-9.03277 41.89404,-13.5232 0.87612,-0.58244 1.75161,-1.23425 2.55493,-1.86109 h 0.004 c 0.14375,-0.11214 0.47936,-0.40775 0.43579,-0.68017 -1.10961,-6.93392 -11.43969,-40.557897 -19.25854,-48.644534 -2.15437,-2.202672 -3.87946,-4.375411 -7.37256,-6.418947 -28.28567,-16.482787 -95.389828,-26.430355 -98.533705,-26.88574 0,0 -0.316184,-0.06492 -0.534912,0.14868 -0.169835,0.165952 -0.20337,0.485353 -0.20337,0.485353 0,0 -0.257656,13.903155 -0.297362,15.457768 -2.533803,-0.851287 -10.99503,-3.594596 -22.948243,-6.788093 A 97.998915,97.999659 0 0 1 128,30 Z m 20.42578,56.851078 c 0.4763,-0.0079 0.95442,-0.0035 1.43384,0.01199 15.81694,0.565582 28.24724,13.917972 27.70434,29.717522 -0.29835,7.66562 -3.50617,14.77959 -9.09692,19.98145 -5.60761,5.26668 -12.90665,7.97471 -20.61206,7.71607 -15.79992,-0.5826 -28.21547,-13.9073 -27.68555,-29.72095 0.28408,-7.66561 3.49191,-14.778768 9.09693,-19.996831 5.25711,-4.90819 12.01497,-7.59416 19.15942,-7.709222 z m 0.1897,8.457758 c -4.99469,0.0623 -9.69358,1.940689 -13.33862,5.359374 -3.88819,3.64661 -6.17999,8.5876 -6.34204,13.93677 -0.37225,11.05356 8.28161,20.35056 19.30981,20.75732 5.36323,0.16206 10.47533,-1.73499 14.38622,-5.38159 3.90522,-3.66361 6.15261,-8.6024 6.32325,-13.93163 0.37225,-11.05065 -8.28164,-20.337805 -19.33545,-20.729989 -0.33538,-0.01207 -0.6702,-0.01444 -1.00317,-0.01024 z m 4.27929,10.060794 c 4.91126,0 8.89014,2.64343 8.89014,5.93189 0,3.25718 -3.98164,5.91479 -8.89014,5.91479 -4.91139,0 -8.87817,-2.65746 -8.87817,-5.91479 0,-3.28846 3.96678,-5.93189 8.87817,-5.93189 z" id="path820-3-6"/>
+  <circle style="opacity:0.3;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:3.088377;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" id="path872" cx="787.51135" cy="-1078.8389" r="0"/>
+</svg>
+      </a>
+    
+      
+      
+      <a href="https://github.com/openSUSE" target="_blank" rel="noopener" title="openSUSE GitHub" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "navigation.instant", "navigation.tracking", "navigation.expand"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.febc23d1.min.js"></script>
+      
+    
+  </body>
+</html>
