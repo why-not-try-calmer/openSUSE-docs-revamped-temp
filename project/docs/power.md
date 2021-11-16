@@ -45,7 +45,7 @@ Whichever method was used, by now Yast2 should have edited your `/etc/fstab` to 
 $ blkid | grep "swap"
 ```
 
-This command should return a line referencing various identifiers for your swap partition. You can compare the UUID visible from this context with the UUID lised in _Yast2_ for good measure (see. step 2 above). If you have created the swap space during installation, don't forget to search for the UUID and the `/dev/sda<number>` identifiers referencing the partition you are resuming to.
+This command should return a line referencing various identifiers for your swap partition. You can compare the UUID visible from this context with the UUID lised in _Yast2_ for good measure (see step 2 above). If you have created the swap space during installation, don't forget to search for the UUID and the `/dev/sda<number>` identifiers referencing the partition you are resuming to.
 
 Finally, to fulfill condition (Resume referenced), in _Yast2_:
 
