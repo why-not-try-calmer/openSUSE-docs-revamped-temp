@@ -52,7 +52,7 @@ This has important consequences:
             ```
             Then close the admin prompt and reboot.
 
-*   Hibernation will not work if you use a swap _file_ in your root partition instead of a separate swap partition.
+*   Hibernation should but might not work if you use a swap _file_ in your root partition instead of a separate swap partition.
 
 *   Hibernation will not work if you use the `ZRAM` tool to swap into compressed RAM disks.
 
