@@ -67,7 +67,6 @@ If they have a Linux repository, you can add it to your system, or download and 
     Carelessly updating (with `zypper up` or `zypper dup`) afterwards can lead to surprising changes in your software selection.
     This is especially when you accidentally subscribe to repositories meant for different distribution versions.
 
-
 ### Using repositories from third-party providers
 
 Certain application providers offer RPM packages and RPM repositories themselves.
@@ -107,8 +106,6 @@ If you don't do this, in some configurations, `sudo zypper dup` will not automat
     $   sudo zypper modifyrepo --refresh <repo_number>
     ```
 
-
-
 ### Pros, cons, when to use
 
 __Pros:__
@@ -141,7 +138,6 @@ __Best used when:__
 
 *   You can afford a marginally slower update pace than with other solutions.
 
-
 ## Third-party remote providers
 
 We use "third-party remote providers" to mean websites, services or remote machines offering automatic installation using scripts provided along with the desired application.
@@ -159,7 +155,6 @@ Then follow the interactive instructions.
 !!! warning
     Installation scripts might require `sudo` rights.
     Be mindful about what you are installing, and from whom and where you obtained it.
-
 
 ### Pros, cons, when
 
@@ -186,7 +181,6 @@ __Best used when:__
 *   You know that you won't need several versions of the software installed at the same time.
 
 *   You need maximal performance and minimal resource usage.
-
 
 ## Flatpaks
 
@@ -238,7 +232,6 @@ To update a single Flatpak application, instead do:
 $   flatpak update <the.application.name>
 ```
 
-
 ### Additional details
 
 #### How it works
@@ -253,7 +246,6 @@ For example, for the Spotify application, the `flatpak` command has the followin
 $   flatpak list
 Spotify com.spotify.Client      1.1.55.498.gf9a83c60    stable  system
 ```
-
 This amounts to, in this order:
 
 *   A human-friendly name
@@ -282,7 +274,6 @@ The Flatpak system then makes sure that runtimes meet the requirements of the ap
     While Flatpak applications share some dependencies if they share the same runtime, users can't ensure that _all_ dependencies are shared between different applications.
      For users, there is also no way to ensure that different Flatpak applications use the same runtime, as dependencies on runtimes are specified by developers.
     This means that some duplication is to be expected, wasting some disk space.
-
 
 #### Improving desktop integration (KDE Plasma)
 
@@ -315,12 +306,10 @@ $   flatpak override --user --env=QT_QPA_PLATFORM=xcb org.telegram.desktop
 This will ensure that the application is always run with the corresponding environment parameter.
 More on the override option in the [official Flatpak documentation](https://docs.flatpak.org/en/latest/flatpak-command-reference.html?highlight=override#flatpak-override).
 
-
 #### Flatseal
 
 Flatseal allows changing Flatpak isolation parameters for applications.
 Please refer to Flatseal's [official documentation](https://github.com/tchx84/Flatseal/blob/master/DOCUMENTATION.md).
-
 
 ### Pros, cons, when to use
 
@@ -346,14 +335,12 @@ __Best used when:__
 
 *   You plan on using many user applications (the more Flatpaks you have, the more dependencies they can share).
 
-
 ## Snaps
 
 !!! info
     Please help finish this section.
 
 <!-- ### Pros, cons, when -->
-
 
 ## AppImage
 
@@ -381,7 +368,6 @@ While some apps notify you when a new version becomes available, you will usuall
 *   Download the new version, move it into your desired folder and mark it executable
 *   If you have created any shortcuts or launchers, you will have to edit their settings to point to the new version.
 *   When everything works, delete the `.AppImage` file of the old version.
-
 
 ### Pros, cons, when
 
@@ -415,7 +401,6 @@ __Best used when:__
 
 *   You don't have privileges to install new software system-wide.
 
-
 ## Summary and conclusion
 
 Even though Leap and Tumbleweed's official repositories are numerous, you will find yourself in search of alternatives at times.
@@ -443,7 +428,6 @@ When wondering which to use, between Snaps, Flatpaks and AppImages:
         The more Flatpaks using the same dependencies there are on your system, the more storage-efficient the format becomes.
 
 *   Favour __AppImages__ if you need a handful of "fire-and-forget" or "portable" (no installation needed) applications.
-
 
 ## References
 
