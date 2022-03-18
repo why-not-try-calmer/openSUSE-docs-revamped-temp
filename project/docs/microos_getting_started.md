@@ -36,20 +36,20 @@ You can install applications in several ways:
 ### Package manager options
 MicroOS now has a few different package managers as an option during install:
 
-  * transactional-update with zypper `the old default, and still the default for the server version`
-  * Packagekit + tukit `the new default, using pkcon and tukit`
+  * transactional-update with zypper `the default, and still the default for the server version`
   * microdnf `an experimental package manager based on dnf`
+  * Packagekit + tukit alternative, using pkcon and tukit`
 
 The reason for changing package managers is because pkcon gives the opportunity to use Gnome Software or Discover for KDE as an installer of RPM's. And currently we are working on the ability to let Gnome Software and Discover perform system upgrades.
 
-#### Transcational-update _old default_
+#### Transcational-update _default_
 commands for transactional-update are:
 
   * `sudo transactional-update pkg install package_name` install a rpm package
   * `sudo transactional-udpdate dup` perform a system upgrade to the next release
   * `sudo transactional-update shell` open a shell of the next snapshot (you can use zypper commands there)
 
-#### Packagekit + tukit _new default_
+#### Packagekit + tukit _packagekit alternative_
 commands for Packagekit and tukit:
 
   * `pkcon install package_name` install a rpm package
@@ -87,7 +87,7 @@ After installation of the plugin, you can reload the page and choose the GNOME E
 
 To get GNOME extensions running, you need the following command to install Chromium directly:
 ```
-$ pkcon install chromium
+$ transactional-update pkg install chromium
 $ sudo reboot
 ```
 
@@ -144,7 +144,7 @@ Some useful extra packages to install include:
 
 You can install both with:
 ```
-$ pkcon install tlp ntfs-3g fuse-exfat nano  
+$ transactional-update pkg install tlp ntfs-3g fuse-exfat nano  
 $ sudo reboot
 ```
 
@@ -256,7 +256,7 @@ Two important packages were found missing for some users:
 
 You can install both with:
 ```
-$ pkcon install tlp ModemManager libmbim usb_modeswitch NetworkManager-connection-editor  
+$ transactional-update pkg install tlp ModemManager libmbim usb_modeswitch NetworkManager-connection-editor  
 $ sudo reboot
 ```
 
@@ -284,7 +284,7 @@ Then for example typing `std` in a terminal prompt will issue the command `sudo 
 ### No graphical session/login screen in Hyper-V
 _Hyper-V_ requires the package `xf86-video-fbdev` for graphical session:
 ```
-$ pkcon install xf86-video-fbdev
+$ transactional-update pkg install xf86-video-fbdev
 $ sudo reboot
 ```
 
