@@ -335,14 +335,10 @@ __Best used when:__
 
 *   You plan on using many user applications (the more Flatpaks you have, the more dependencies they can share).
 
-## Snaps
-
-!!! info
-    Please help finish this section.
-
-<!-- ### Pros, cons, when -->
-
 ## AppImage
+
+!!! Warning
+    AppImages are not recommended, and some _openSUSE_ distributions like _MicroOS_ [not even supporting it](https://bugzilla.opensuse.org/show_bug.cgi?id=1198653)
 
 AppImage is the simplest cross-platform application package format.
 However, you need to do a little manual work.
