@@ -94,7 +94,6 @@ nav:
             - KDE Connect: kdeconnect.md
             - Printers & scanners:
                 - Printers: printersetc.md
-        - Setting up a containerized environment: install_podman.md
         - Power management: power.md
         - Advanced fine-tunings:
             - Transparent compression (zstd): zstd.md
