@@ -94,12 +94,10 @@ nav:
             - KDE Connect: kdeconnect.md
             - Printers & scanners:
                 - Printers: printersetc.md
-        - Setting up a containerized environment: install_podman.md
         - Power management: power.md
         - Advanced fine-tunings:
             - Transparent compression (zstd): zstd.md
-    - Experimenting:
-        - Alternative update workflow on Tumbleweed: tw-cli.md
+    - Experimenting: ""
     - Giving back to the community:
         - The art of reporting bugs: ""
         - Resources: ""

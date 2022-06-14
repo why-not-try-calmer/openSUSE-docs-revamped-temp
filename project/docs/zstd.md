@@ -1,4 +1,8 @@
 ## Enable zstd compression
+
+!!! Warning
+    Currently _Leap_ doesn't support `zstd`, do not enable it!
+
 First enable `zstd` compression on `/` (root) and `/home` by adding the corresponding parameters to `/etc/fstab`:
 
 ```

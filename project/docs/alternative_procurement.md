@@ -335,14 +335,10 @@ __Best used when:__
 
 *   You plan on using many user applications (the more Flatpaks you have, the more dependencies they can share).
 
-## Snaps
-
-!!! info
-    Please help finish this section.
-
-<!-- ### Pros, cons, when -->
-
 ## AppImage
+
+!!! Warning
+    AppImages are executable, file-like application bundles which are somewhat controversial in the Linux community for their lack of UI consistency with the host system and for the security risks they might incur. Furthermore they are [not supported on MicroOS](https://bugzilla.opensuse.org/show_bug.cgi?id=1198653). For these reasons we recommend preferring other software procurement methods when possible. 
 
 AppImage is the simplest cross-platform application package format.
 However, you need to do a little manual work.
