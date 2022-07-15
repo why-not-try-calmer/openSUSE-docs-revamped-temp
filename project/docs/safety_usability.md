@@ -39,6 +39,32 @@ _Update pace and method_
 
 When updating, aim for least every other week or about twice a month. More or less frequently might create issues. Use `sudo zypper dup`, plus if that applies to you, `flatpak update` (see this [systemd unit](alternative_procurement.md#flatpaks) for automatic daily flatpak updates). Never update with `gnome-software` (GNOME) or `discover` (KDE Plasma), as they create unnecessary risks for your system.
 
+_Beware of patterns_
+
+openSUSE applies the notion of a _pattern_ -- a distinguished collection of packages related to the same theme. You can view all the patterns (and the packages that constitute them) with:
+
+```
+zypper search -t pattern
+```
+
+The ones indicated with _i_ or _i+_ are installed on your system.
+
+In a way patterns exist over and above packages, which means they can be tricky to work with. For example, because of how patterns interact with the `--recommends` flag, zypper tends to reinstall packages you have (consciously) removed in the past, should they belong to a pattern which in itself is not removed yet. To counteract this interaction it might be helpful to update with the `--no-recommends` flag, as in:
+
+```
+sudo zypper dup --no-recommends
+```
+
+Generally it is safe to omit this flag when installing specific packages with `zypper in`. As for removing an entire pattern, it is possible with the command:
+
+```
+zypper rm -u <name of the pattern>
+
+```
+
+This functionality is also offered by _YaST_, which might be easier to use for removing patterns.
+
+
 _Crucially fresh software with a set workflow_
 
 If you need fresh updates for essential parts of your toolchain (typically when working with a programming language stack), always favour the language's official, remote installer.
