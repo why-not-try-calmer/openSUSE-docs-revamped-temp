@@ -14,15 +14,6 @@ $   sudo zypper dup
 ```
 
 
-### Take advantage of zypper's concurrent downloader
-The backend for the `zypper` package manager recently got a more efficient downloader, able to download data concurrently. You can turn it on by setting the `ZYPP_MEDIANETWORK` environment variable to `1`:
-
-```
-$   export ZYPP_MEDIANETWORK=1
-```
-
-To set this variable at every boot, add the same command line to your shell's initialization file (i.e. `~/.bashrc`, `~/bash_profile`, etc).
-
 ### Get used to adding repositories with auto-refresh on
 When you add repositories to Tumbleweed, those do not have their auto-refresh setting on by default. This means that doing `sudo zypper dup` might report no pending updates when in fact there __are__ updates, but those were just not seen by the package manager. To change this behavior and ensure that your system will always hook up to repositories with auto-refresh enabled, make sure you add repositories with auto-refresh on:
 ```

@@ -1,15 +1,9 @@
 ## Installing Codecs 
 
-!!! Warning
-   The _packman_ repository is not officially supported, not an _openSUSE_ maintained repository, contains software that is not compatible with the _GPL_, and can potentially break multimedia in the system such as _pipewire_ or _wireplumber_.
-
-You need to play online or offline multimedia content, but the content does not play or you receive errors. Usually this is a sign of missing codecs. Due to legal limitations proprietary codecs can't be stored and served directly from the __openSUSE__/__SUSE__ infrastructure. To install proprietary codec packages you will need to add the [Packman](http://packman.links2linux.org/) repository and install the required software from there. Some commonly used and installed codecs are:
+You need to play online or offline multimedia content, but the content does not play or you receive errors. Usually this is a sign of missing codecs. Due to legal limitations patent-encumbered codecs can't be distributed directly from the __openSUSE__/__SUSE__ infrastructure. To install these codec packages you will need to add the community-supported [Packman](http://packman.links2linux.org/) repository and install the required software from there. Some commonly installed codecs from this repository are:
 
 - ffmpeg
-- gstreamer-plugins-good
-- gstreamer-plugins-bad
 - gstreamer-plugins-libav
-- gstreamer-plugins-ugly
 - libavcodec-full
 - vlc-codecs
 

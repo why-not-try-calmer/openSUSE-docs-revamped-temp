@@ -68,7 +68,7 @@ For either scenario to work, you will need to configure your system to accept us
 Open zypper configuration file:
 
 ```
-$   sudo nano /etc/zypp/zypp.conf
+$   EDITOR=nano sudoedit /etc/zypp/zypp.conf
 ```
 
 Make sure that the line `multiversion = provides:multiversion(kernel)` is not commented out (make sure there is no `#` prepended to `multiversion = provides:multiversion(kernel)`). If the line is commented out, use the arrow keys to bring the cursor near the `#` and delete it.
@@ -131,6 +131,9 @@ These informations will enable you to find a directory on a path of type: `https
 ```
 $   sudo zypper in -f --oldpackage <path/to/kernel package.rpm>
 ```
+
+!!! info
+    If you have any out-of-tree (external) kernel module installed, you'll need `kernel-devel` (in `noarch` directory) and `kernel-default-devel` (`<your-cpu-architecture>`) from a matching version.
 
 `zypper` will take care of writing a new GRUB entry for the newly installed old kernel, but it is likely to place the new entry _below_ the entries for the more recent kernel entry or entries you are staying away from. If you want to set the new entry as default, follow the path below and select the entry listed at the end:
 

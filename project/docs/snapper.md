@@ -262,7 +262,7 @@ You might also want to make sure the `/.snapshots` entry point is correctly regi
 
 If this is not the case edit the `fstab` file accordingly:
 
-`$  sudo nano /etc/fstab`
+`$  EDITOR=nano sudoedit /etc/fstab`
 
 pasting on a new line
 

@@ -17,16 +17,12 @@ Install the package:
 sudo zypper in pipewire pipewire-pulseaudio
 ```
 
-Then enable the pipewire audio socket:
+Then enable pipewire sockets and session manager:
 
 ```
-systemctl --user enable --now pipewire.{service,socket}
-systemctl --user enable --now pipewire-pulse.{service,socket}
+systemctl --user enable --now pipewire.socket
+systemctl --user enable --now pipewire-pulse.socket
 systemctl --user enable --now wireplumber.service
 ```
 
-Finally reboot your system:
-
-```
-systemctl reboot
-```
+Pipewire services will be started automatically when needed.
