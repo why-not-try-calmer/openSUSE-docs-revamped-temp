@@ -27,7 +27,7 @@ As of this writing, `opi` performs the following operations behind the curtains 
 2. Upgrade the system exclusively using the Packman repository.
    + `sudo zypper dist-upgrade --from packman --allow-downgrade --allow-vendor-change`
 3. Install the codecs to the system.
-   + `sudo zypper in --from packman ffmpeg pipewire-aptx libavcodec-full vlc-codecs gstreamer-plugins-bad-codecs gstreamer-plugins-ugly-codecs gstreamer-plugins-libav
+   + `sudo zypper in --from packman ffmpeg pipewire-aptx libavcodec-full vlc-codecs gstreamer-plugins-bad-codecs gstreamer-plugins-ugly-codecs gstreamer-plugins-libav`
    + `sudo zypper in gstreamer-plugins-good gstreamer-plugins-good-extra gstreamer-plugins-bad gstreamer-plugins-ugly`
 
 
